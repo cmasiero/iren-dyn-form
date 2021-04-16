@@ -1,2 +1,2 @@
 # iren-dyn-form
-Dynamic form from json
+Dynamic html form from json
