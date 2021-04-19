@@ -1,0 +1,57 @@
+/* form {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+} */
+.div-table {
+    display: table, inline;         
+    width: auto;         
+    background-color: white; 
+    /* border: 1px solid #666666;          */
+    border-spacing: 5px; /* cellspacing:poor IE support for  this */
+    border-radius: 15px;
+    /* border: 2px solid #73AD21; */
+    border: 2px solid rgb(86, 186, 219);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.table-title{
+    /* font-family:    Arial, Helvetica, sans-serif; */
+    width: 30%;
+    border-radius: 15px;
+    border: 2px solid rgb(64, 155, 185);
+    margin-bottom: 1px;
+    cursor: pointer;
+    text-align: center;
+    font-size:      20px;
+    font-weight:    bold;
+}
+.table-title:hover{
+    background-color: lightblue;
+}
+
+
+.div-table-row {
+    display: table-row;
+    width: auto;
+    clear: both;
+    background-color: rgb(241, 241, 241);
+}
+.div-table-row-even {
+    background-color: white;
+}
+.div-table-col {
+    float: left; /* fix for  buggy browsers */
+    display: table-column;         
+    width: auto;         
+    margin: 3px;
+
+    border-radius: 10px;
+    border: 1px solid  lightblue;
+    padding: 20px;
+
+}
+.div-table-col-desc {
+    font-weight: bold;
+    background-color: transparent;
+}
