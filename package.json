@@ -4,5 +4,10 @@
   },
   "scripts": {
     "test": "jest"
+  },
+  "dependencies": {
+    "jsdom": "^16.5.3",
+    "json-query": "^2.2.2",
+    "pretty": "^2.0.0"
   }
 }

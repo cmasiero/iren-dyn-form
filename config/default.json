@@ -1,0 +1,46 @@
+
+{
+    "00":{
+        "comment": "Area con un titolo, non viene visualizzata in html!",
+        "title":{
+            "content": "Titolo 1"
+        },
+        "row_00":
+        [
+            {"type": "description", "value": "Descrizione text e checkbox"},
+            {"type": "text", "id": "00_identificativo", "label": "descrizione text 00"},
+            {"type": "text", "id": "01_identificativo", "label": "descrizione text 01"},
+            {"group":
+                [
+                    {"type": "checkbox", "id": "02_identificativo", "label": "descrizione checkbox 02"},
+                    {"type": "checkbox", "id": "03_identificativo", "label": "descrizione checkbox 03"}
+                ]
+            }
+        ],
+        "row_01":[
+            {"type": "description", "value": "Please select your gender"},
+            {"type": "radio", "id": "gender", "label": "Choose a gender",
+                "option":[
+                    {"value":"male", "label":"description male"},
+                    {"value":"female", "label":"description female"},
+                    {"value":"other", "label":"description other"}
+                ]
+            }
+        ]
+    },
+    "01":{
+        "comment": "Area SENZA titolo,  non viene visualizzata in html!",
+        "row_00":[
+            {"type": "description", "value": "Descrizione combo box"},
+            {"type": "select", "id": "id_cars", "label": "Choose a car:",
+                "option":[
+                    {"value":"volvo", "label":"description volvo"},
+                    {"value":"saab", "label":"description saab"},
+                    {"value":"fiat", "label":"description fiat"}
+                ]
+            }
+        ]
+
+    }
+
+}

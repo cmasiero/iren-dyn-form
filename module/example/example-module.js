@@ -1,11 +1,23 @@
-class MyExample01{
+"use strict"
+class ExampleClass{
     constructor(name){
         this.name = name;
     }
-
     show(){
-        console.log("" + this.name);
+        console.log("[ExampleClass:show]" + this.name);
     }
 }
 
-module.exports = MyExample01;
+
+module.exports = {
+    //ExampleClass: ExampleClass
+    ExampleClass
+}
+
+/*
+// CommonJS module like.
+export default {
+    //ExampleClass: ExampleClass
+    ExampleClass
+}
+*/
