@@ -5,8 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../example/example.css">
-    <title>Titolo documento</title>
+    <link rel="stylesheet" href="/example/example.css">
+    <title>Titolo scheda di test!</title>
+    <script type="text/javascript">
+      let result = true;
+      let a = document.getElementById('00_identificativo').value;
+      if (a === '') {
+        result = false;
+      }
+    </script>
   </head>
 
   <body>
@@ -17,9 +24,7 @@
       </div>
       <div class="div-table" id="00">
         <div class="div-table-row" id="id_row_0">
-          <div class="div-table-col div-table-col-desc">
-            Descrizione text e checkbox
-          </div>
+          <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox</strong></div>
           <div class="div-table-col" id="id_col_0_1">
             <label for="00_identificativo">descrizione text 00</label>
             <input type="text" id="00_identificativo">
@@ -28,11 +33,20 @@
             <label for="01_identificativo">descrizione text 01</label>
             <input type="text" id="01_identificativo">
           </div>
+          <div class="div-table-col" id="id_col_0_3">
+            <input type="checkbox" id="02_identificativo" name="02_identificativo">
+            <label for="02_identificativo">descrizione checkbox 02</label>
+          </div>
+          <div class="div-table-col" id="id_col_0_4">
+            <input type="checkbox" id="02_identificativo" name="02_identificativo">
+            <label for="02_identificativo">descrizione checkbox 02</label>
+
+            <input type="checkbox" id="03_identificativo" name="03_identificativo">
+            <label for="03_identificativo">descrizione checkbox 03</label>
+          </div>
         </div>
         <div class="div-table-row" id="id_row_1">
-          <div class="div-table-col div-table-col-desc">
-            Please select your gender
-          </div>
+          <div class="div-table-col" id="id_col_1_0"><strong>Please select your gender</strong></div>
           <div class="div-table-col" id="id_col_1_1">
             <input type="radio" id="male" name="gender" value="male">
             <label for="male">description male</label>
@@ -45,9 +59,7 @@
       </div>
       <div class="div-table" id="01">
         <div class="div-table-row" id="id_row_2">
-          <div class="div-table-col div-table-col-desc">
-            Descrizione combo box
-          </div>
+          <div class="div-table-col" id="id_col_2_0"><strong>Descrizione combo box</strong></div>
           <div class="div-table-col" id="id_col_2_1">
             <label for="id_cars">Choose a car:</label>
             <select name="id_cars" id="id_cars">
@@ -59,6 +71,7 @@
         </div>
       </div>
     </form>
+
 
   </body>
 

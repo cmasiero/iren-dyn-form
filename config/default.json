@@ -1,15 +1,21 @@
 
 {
+
+    "config": {
+        "css" : "/example/example.css",
+        "title": "Titolo scheda di test!"
+    },
     "00":{
         "comment": "Area con un titolo, non viene visualizzata in html!",
         "title":{
-            "content": "Titolo 1"
+            "value": "Titolo 1"
         },
         "row_00":
         [
             {"type": "description", "value": "Descrizione text e checkbox"},
-            {"type": "text", "id": "00_identificativo", "label": "descrizione text 00"},
-            {"type": "text", "id": "01_identificativo", "label": "descrizione text 01"},
+            {"type": "text", "id": "00_identificativo", "label": "descrizione text 00", "validation": "mandatory"},
+            {"type": "text", "id": "01_identificativo", "label": "descrizione text 01", "validation": "visible if 01_identificativo > 10"},
+            {"type": "checkbox", "id": "02_identificativo", "label": "descrizione checkbox 02"},
             {"group":
                 [
                     {"type": "checkbox", "id": "02_identificativo", "label": "descrizione checkbox 02"},

@@ -1,0 +1,60 @@
+[
+    {
+        "id": "00_identificativo",
+        "label": "descrizione text 00",
+        "validation": "mandatory"
+    },
+    {
+        "id": "01_identificativo",
+        "label": "descrizione text 01",
+        "validation": "visible if 01_identificativo > 10"
+    },
+    {
+        "id": "02_identificativo",
+        "label": "descrizione checkbox 02"
+    },
+    {
+        "id": "02_identificativo",
+        "label": "descrizione checkbox 02"
+    },
+    {
+        "id": "03_identificativo",
+        "label": "descrizione checkbox 03"
+    },
+    {
+        "id": "gender",
+        "label": "Choose a gender",
+        "option": [
+            {
+                "value": "male",
+                "label": "description male"
+            },
+            {
+                "value": "female",
+                "label": "description female"
+            },
+            {
+                "value": "other",
+                "label": "description other"
+            }
+        ]
+    },
+    {
+        "id": "id_cars",
+        "label": "Choose a car:",
+        "option": [
+            {
+                "value": "volvo",
+                "label": "description volvo"
+            },
+            {
+                "value": "saab",
+                "label": "description saab"
+            },
+            {
+                "value": "fiat",
+                "label": "description fiat"
+            }
+        ]
+    }
+]

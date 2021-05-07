@@ -48,5 +48,4 @@ test('test SelectHtml component.', () => {
                 `;
 
     expect(pretty(select.buildPart())).toBe(pretty(expected));
-    // expect(pretty(expected)).toBe(pretty(select.buildPart()));
 });

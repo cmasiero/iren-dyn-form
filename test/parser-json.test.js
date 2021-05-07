@@ -1,5 +1,5 @@
 'use strict';
-const { getJson, getCss, getTemplateHtml, getOutputPath, DataSource } = require('../lib/resource');
+const { getJson, getTemplateHtml, getOutputPath, DataSource } = require('../lib/resource');
 const fs = require('fs');
 const parser = require('../app/parser-json.js');
 const pretty = require('pretty');
