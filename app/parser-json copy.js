@@ -16,15 +16,6 @@ const {
     getHtmlPartValidable
 } = require('../lib/part-html');
 
-const { 
-    MandatoryValidation,
-    HeadValidation,
-    TailValidation,
-    validation
-} = require('../lib/part-validation-script')
-
-const specialKey = ["config"];
-
 /**
  * It creates a jsdom object by the input css and html template.
  * @param {Object} jsonObj 
@@ -33,70 +24,21 @@ const specialKey = ["config"];
  */
 exports.execute = (jsonObj, htmlTemplate) => {
 
+    const specialKey = ["config"];
+    
     let dom = new JSDOM(htmlTemplate);
 
     /* Configuration area */
-    insertConfigPart(jsonObj, dom);
-
-    /* Html area */
-    insertHtmlPart(jsonObj, dom);
-
-    /* Validations script area*/
-    insertValidationScript(dom);
-
-    /* Submit area */
-    insertSubmitScript(dom);
-
-    return dom;
-
-}
-
-/**
- * 
- * @param {*} jsonObj 
- * @param {*} dom 
- */
-let insertConfigPart = (jsonObj, dom) => {
-
     if (jsonObj.config !== undefined) {
         let tagHead = dom.window.document.getElementsByTagName("head");
-
+        
         let linkStr = `<link rel="stylesheet" href="${jsonObj.config.css}"></link>`;
         let titleStr = `<title>${jsonObj.config.title}</title>`;
         tagHead[0].insertAdjacentHTML("beforeend", linkStr);
         tagHead[0].insertAdjacentHTML("beforeend", titleStr);
     }
 
-}
-
-/**
- * 
- * @param {*} jsonObj 
- * @param {*} dom 
- */
-let insertHtmlPart = (jsonObj, dom) => {
-
-    let htmlPart = (currentCol, colEl) => {
-
-        if (colEl.type === "description") {
-            let strongText = new StrongText(colEl);
-            currentCol.insertAdjacentHTML("beforeend", strongText.buildPart());
-        } else if (colEl.type === "text") {
-            let textHtml = new TextHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", textHtml.buildPart());
-        } else if (colEl.type === "checkbox") {
-            let checkboxHtml = new CheckboxHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", checkboxHtml.buildPart());
-        } else if (colEl.type === "radio") {
-            let radioHtml = new RadioHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", radioHtml.buildPart());
-        } else if (colEl.type === "select") {
-            let selectHtml = new SelectHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", selectHtml.buildPart());
-        }
-
-    };
-
+    
     /* Html area */
     let formElements = dom.window.document.getElementsByTagName("form");
     let formElement = formElements[0];
@@ -113,7 +55,7 @@ let insertHtmlPart = (jsonObj, dom) => {
                 console.log("comment %s", jsonObj[idTable].comment);
             }
             else if (key === "title") {
-                let el = { id: "id_title_".concat(idTable), value: jsonObj[idTable][key].value };
+                let el = {id: "id_title_".concat(idTable), value: jsonObj[idTable][key].value};
                 let titleHtml = new TitleHtml(el);
                 formElement.insertAdjacentHTML("beforeend", titleHtml.buildPart());
             } else {
@@ -121,13 +63,13 @@ let insertHtmlPart = (jsonObj, dom) => {
                 // All rows are inside a table.
                 if (tmpIdTable !== idTable) {
                     tmpIdTable = idTable;
-                    let tableHtml = new TableHtml({ id: idTable });
+                    let tableHtml = new TableHtml({id: idTable});
                     formElement.insertAdjacentHTML("beforeend", tableHtml.buildPart());
                 }
 
                 // new row
                 let idRow = "id_row_".concat(++idRowIndex);
-                let rowHtml = new RowHtml({ id: idRow });
+                let rowHtml = new RowHtml({id: idRow});
                 const currentTable = dom.window.document.getElementById(idTable);
                 currentTable.insertAdjacentHTML("beforeend", rowHtml.buildPart());
 
@@ -137,16 +79,16 @@ let insertHtmlPart = (jsonObj, dom) => {
                 columnKes.forEach(colEl => {
 
                     let idCol = "id_col_".concat(idRowIndex).concat("_").concat(++idColIndex);
-                    let colHtml = new ColHtml({ id: idCol });
+                    let colHtml = new ColHtml({id: idCol});
                     currentRow.insertAdjacentHTML("beforeend", colHtml.buildPart());
                     const currentCol = dom.window.document.getElementById(idCol);
-
+                    
                     if (colEl.group !== undefined) {
                         colEl.group.forEach(elGruop => {
-                            htmlPart(currentCol, elGruop);
+                            insertHtmlPart(currentCol, elGruop);
                         })
                     } else {
-                        htmlPart(currentCol, colEl);
+                        insertHtmlPart(currentCol, colEl);
                     }
 
                 })
@@ -157,8 +99,33 @@ let insertHtmlPart = (jsonObj, dom) => {
 
     });
 
+    /* build validations script */
+    insertValidationScript(dom);
+
+    return dom;
+
 }
 
+let insertHtmlPart = (currentCol, colEl) => {
+
+    if (colEl.type === "description") {
+        let strongText = new StrongText(colEl);
+        currentCol.insertAdjacentHTML("beforeend", strongText.buildPart());
+    } else if (colEl.type === "text") {
+        let textHtml = new TextHtml(colEl);
+        currentCol.insertAdjacentHTML("beforeend", textHtml.buildPart());
+    } else if (colEl.type === "checkbox") {
+        let checkboxHtml = new CheckboxHtml(colEl);
+        currentCol.insertAdjacentHTML("beforeend", checkboxHtml.buildPart());
+    } else if (colEl.type === "radio") {
+        let radioHtml = new RadioHtml(colEl);
+        currentCol.insertAdjacentHTML("beforeend", radioHtml.buildPart());
+    } else if (colEl.type === "select") {
+        let selectHtml = new SelectHtml(colEl);
+        currentCol.insertAdjacentHTML("beforeend", selectHtml.buildPart());
+    }
+
+}
 
 let insertValidationScript = (dom) => {
 
@@ -167,56 +134,25 @@ let insertValidationScript = (dom) => {
     let scriptStr = `<script type="text/javascript"></script>`;
     tagHead[0].insertAdjacentHTML("beforeend", scriptStr);
 
-
-    let mandatoryScript = new HeadValidation().buildPart();
-    
+    let mandatoryScript = ``;
     getHtmlPartValidable().forEach(partHtml => {
-
-        let mandatoryScriptTmp = validation.validationScript(partHtml);
-        mandatoryScript = mandatoryScript.concat(mandatoryScriptTmp);
-
+        if (partHtml.validation === "mandatory") {
+            let mandatoryScriptTmp = `
+            let result = true;
+            let a = document.getElementById('${partHtml.id}').value;
+            if (a === ''){ result = false; }
+                                   `;
+            mandatoryScript = mandatoryScript.concat(mandatoryScriptTmp);
+        }
     });
-
-    mandatoryScript = mandatoryScript.concat(new TailValidation().buildPart());
-
-
+    
     let tagScript = dom.window.document.getElementsByTagName("script");
+    console.log("************************* >>>> %s", mandatoryScript)
     tagScript[0].insertAdjacentHTML("beforeend", mandatoryScript);
 
-}
-
-
-let  insertSubmitScript = (dom) => {
-
-    let formElements = dom.window.document.getElementsByTagName("form");
-    let formElement = formElements[0];
-    formElement.setAttribute('onsubmit', 'postScheda()');
-
-    // console.log(JSON.stringify(getValidated()));
-    let buttonSend = `<input type="submit" value="Invia">`;
-    formElement.insertAdjacentHTML("afterbegin", buttonSend);
-
-
-    let valMessage = "";
-    validation.getValidated().forEach(validation => {
-        valMessage = valMessage.concat(validation.valMessage.concat("\\n"));
-    });
-    let sendScript = `function postScheda() { 
-                        let arrayMessage = validation();
-                        let message = ""
-                        arrayMessage.forEach(msg => {
-                            message = message.concat(msg).concat("\\n");                            
-                        });
-                        if (message !== ""){
-                            alert(message);
-                        }
-                      }
-                     `;
-    
-    let tagScript = dom.window.document.getElementsByTagName("script");
-    tagScript[0].insertAdjacentHTML("beforeend", sendScript);
 
 }
+
 
 
 

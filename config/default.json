@@ -13,19 +13,20 @@
         "row_00":
         [
             {"type": "description", "value": "Descrizione text e checkbox"},
-            {"type": "text", "id": "00_identificativo", "label": "descrizione text 00", "validation": "mandatory"},
-            {"type": "text", "id": "01_identificativo", "label": "descrizione text 01", "validation": "visible if 01_identificativo > 10"},
-            {"type": "checkbox", "id": "02_identificativo", "label": "descrizione checkbox 02"},
+            {"type": "text", "id": "00_id", "label": "descrizione text 00", "validation": "mandatory if 01_id == '10'", "valMessage": "Il campo è obbligatorio!"},
+            {"type": "text", "id": "01_id", "label": "descrizione text 01", "validation": "visible if 01_identificativo > 10"},
+            {"type": "text", "id": "02_id", "label": "descrizione text 02", "validation": "mandatory"},
+            {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 03"},
             {"group":
                 [
-                    {"type": "checkbox", "id": "02_identificativo", "label": "descrizione checkbox 02"},
-                    {"type": "checkbox", "id": "03_identificativo", "label": "descrizione checkbox 03"}
+                    {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 02"},
+                    {"type": "checkbox", "id": "04_id", "label": "descrizione checkbox 03"}
                 ]
             }
         ],
         "row_01":[
             {"type": "description", "value": "Please select your gender"},
-            {"type": "radio", "id": "gender", "label": "Choose a gender",
+            {"type": "radio", "id": "id_gender", "label": "Choose a gender", "validation": "mandatory",
                 "option":[
                     {"value":"male", "label":"description male"},
                     {"value":"female", "label":"description female"},

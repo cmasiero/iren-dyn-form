@@ -5,13 +5,16 @@ const { RadioHtml, SelectHtml } = require('../lib/part-html');
 
 test('test RadiotHtml component.', () => {
 
-    let option = [
-        {"value":"male", "label":"description male"},
-        {"value":"female", "label":"description female"},
-        {"value":"other", "label":"description other"}
-    ];
+    let objParam = {
+        id : "gender",
+        option : [
+            { "value": "male", "label": "description male" },
+            { "value": "female", "label": "description female" },
+            { "value": "other", "label": "description other" }
+        ]
+    }
 
-    let radio = new RadioHtml("gender",option);
+    let radio = new RadioHtml(objParam);
     // console.log(pretty(radio.buildPart()));
 
     let expected = `
@@ -30,12 +33,16 @@ test('test RadiotHtml component.', () => {
 
 test('test SelectHtml component.', () => {
 
-    let option = [
-        {"value":"volvo", "label":"description volvo"},
-        {"value":"saab", "label":"description saab"},
-        {"value":"fiat", "label":"description fiat"}
-    ];
-    let select = new SelectHtml("id_val","Choose something",option);
+    let objParam = {
+        id : "id_val",
+        label: "Choose something",
+        option: [
+            { "value": "volvo", "label": "description volvo" },
+            { "value": "saab", "label": "description saab" },
+            { "value": "fiat", "label": "description fiat" }
+        ]
+    }
+    let select = new SelectHtml(objParam);
     // console.log(pretty(select.buildPart()));
 
     let expected = `

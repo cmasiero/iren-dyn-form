@@ -8,16 +8,40 @@
     <link rel="stylesheet" href="/example/example.css">
     <title>Titolo scheda di test!</title>
     <script type="text/javascript">
-      let result = true;
-      let a = document.getElementById('00_identificativo').value;
-      if (a === '') {
-        result = false;
+      function validation() {
+        let result = [];
+        if (document.getElementById('01_id').value == '10') {
+          let v_00_id = document.getElementById('00_id').value;
+          if (v_00_id === '') {
+            result.push("Il campo è obbligatorio!");
+          }
+        }
+        let v_02_id = document.getElementById('02_id').value;
+        if (v_02_id === '') {
+          result.push("Il campo descrizione text 02 è obbligatorio!");
+        }
+        let v_id_gender = document.querySelector('input[name="id_gender"]:checked');
+        if (v_id_gender === null) {
+          result.push("Il campo Choose a gender è obbligatorio!");
+        }
+        return result;
+      }
+
+      function postScheda() {
+        let arrayMessage = validation();
+        let message = ""
+        arrayMessage.forEach(msg => {
+          message = message.concat(msg).concat("\n");
+        });
+        if (message !== "") {
+          alert(message);
+        }
       }
     </script>
   </head>
 
   <body>
-    <form>
+    <form onsubmit="postScheda()"><input type="submit" value="Invia">
 
       <div class="table-title" id="id_title_00">
         Titolo 1
@@ -26,33 +50,37 @@
         <div class="div-table-row" id="id_row_0">
           <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox</strong></div>
           <div class="div-table-col" id="id_col_0_1">
-            <label for="00_identificativo">descrizione text 00</label>
-            <input type="text" id="00_identificativo">
+            <label for="00_id">descrizione text 00</label>
+            <input type="text" id="00_id">
           </div>
           <div class="div-table-col" id="id_col_0_2">
-            <label for="01_identificativo">descrizione text 01</label>
-            <input type="text" id="01_identificativo">
+            <label for="01_id">descrizione text 01</label>
+            <input type="text" id="01_id">
           </div>
           <div class="div-table-col" id="id_col_0_3">
-            <input type="checkbox" id="02_identificativo" name="02_identificativo">
-            <label for="02_identificativo">descrizione checkbox 02</label>
+            <label for="02_id">descrizione text 02</label>
+            <input type="text" id="02_id">
           </div>
           <div class="div-table-col" id="id_col_0_4">
-            <input type="checkbox" id="02_identificativo" name="02_identificativo">
-            <label for="02_identificativo">descrizione checkbox 02</label>
+            <input type="checkbox" id="03_id" name="03_id">
+            <label for="03_id">descrizione checkbox 03</label>
+          </div>
+          <div class="div-table-col" id="id_col_0_5">
+            <input type="checkbox" id="03_id" name="03_id">
+            <label for="03_id">descrizione checkbox 02</label>
 
-            <input type="checkbox" id="03_identificativo" name="03_identificativo">
-            <label for="03_identificativo">descrizione checkbox 03</label>
+            <input type="checkbox" id="04_id" name="04_id">
+            <label for="04_id">descrizione checkbox 03</label>
           </div>
         </div>
         <div class="div-table-row" id="id_row_1">
           <div class="div-table-col" id="id_col_1_0"><strong>Please select your gender</strong></div>
           <div class="div-table-col" id="id_col_1_1">
-            <input type="radio" id="male" name="gender" value="male">
+            <input type="radio" id="male" name="id_gender" value="male">
             <label for="male">description male</label>
-            <input type="radio" id="female" name="gender" value="female">
+            <input type="radio" id="female" name="id_gender" value="female">
             <label for="female">description female</label>
-            <input type="radio" id="other" name="gender" value="other">
+            <input type="radio" id="other" name="id_gender" value="other">
             <label for="other">description other</label>
           </div>
         </div>
