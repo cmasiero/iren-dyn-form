@@ -21,7 +21,7 @@ const {
     HeadValidation,
     TailValidation,
     validation
-} = require('../lib/part-validation-script')
+} = require('../lib/part-script')
 
 const specialKey = ["config"];
 
@@ -52,7 +52,11 @@ exports.execute = (jsonObj, htmlTemplate) => {
 }
 
 /**
- * 
+ * Configuration parts means: "config": {
+ *                                "css" : "/example/example.css",
+ *                                        "title": "Card title for test!"
+ *                            }
+ * in jsonObj into html output.                                     
  * @param {*} jsonObj 
  * @param {*} dom 
  */
@@ -70,7 +74,13 @@ let insertConfigPart = (jsonObj, dom) => {
 }
 
 /**
- * 
+ * Html parts means "00":{
+ *                      "comment": "Titled area, it will not written in html!",
+ *                      "title":{
+ *                          "value": "Titolo 1"
+ *                       },
+ *                       [cut]
+ *       
  * @param {*} jsonObj 
  * @param {*} dom 
  */
@@ -159,7 +169,10 @@ let insertHtmlPart = (jsonObj, dom) => {
 
 }
 
-
+/**
+ * Validation scripts are inside <script> tags in html page.
+ * @param {*} dom 
+ */
 let insertValidationScript = (dom) => {
 
     /* insert script tag inside head tag */
@@ -172,7 +185,7 @@ let insertValidationScript = (dom) => {
     
     getHtmlPartValidable().forEach(partHtml => {
 
-        let mandatoryScriptTmp = validation.validationScript(partHtml);
+        let mandatoryScriptTmp = validation.mandatoryScript(partHtml);
         mandatoryScript = mandatoryScript.concat(mandatoryScriptTmp);
 
     });
@@ -185,7 +198,11 @@ let insertValidationScript = (dom) => {
 
 }
 
-
+/**
+ * Submit scripts are inside <script> tags in html page, 
+ * they do the check of inserted values then send data to the server.
+ * @param {*} dom 
+ */
 let  insertSubmitScript = (dom) => {
 
     let formElements = dom.window.document.getElementsByTagName("form");

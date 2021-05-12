@@ -24,6 +24,10 @@
         if (v_id_gender === null) {
           result.push("Il campo Choose a gender è obbligatorio!");
         }
+        let v_id_cars = document.getElementById('id_cars').value;
+        if (v_id_cars === '') {
+          result.push("Il campo Choose a car: è obbligatorio!");
+        }
         return result;
       }
 
@@ -51,25 +55,25 @@
           <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox</strong></div>
           <div class="div-table-col" id="id_col_0_1">
             <label for="00_id">descrizione text 00</label>
-            <input type="text" id="00_id">
+            <input type="text" id="00_id" value="">
           </div>
           <div class="div-table-col" id="id_col_0_2">
             <label for="01_id">descrizione text 01</label>
-            <input type="text" id="01_id">
+            <input type="text" id="01_id" value="">
           </div>
           <div class="div-table-col" id="id_col_0_3">
             <label for="02_id">descrizione text 02</label>
-            <input type="text" id="02_id">
+            <input type="text" id="02_id" value="hard coded">
           </div>
           <div class="div-table-col" id="id_col_0_4">
-            <input type="checkbox" id="03_id" name="03_id">
+            <input type="checkbox" id="03_id" name="03_id" value="" checked="">
             <label for="03_id">descrizione checkbox 03</label>
           </div>
           <div class="div-table-col" id="id_col_0_5">
-            <input type="checkbox" id="03_id" name="03_id">
+            <input type="checkbox" id="03_id" name="03_id" value="">
             <label for="03_id">descrizione checkbox 02</label>
 
-            <input type="checkbox" id="04_id" name="04_id">
+            <input type="checkbox" id="04_id" name="04_id" value="">
             <label for="04_id">descrizione checkbox 03</label>
           </div>
         </div>
@@ -91,9 +95,10 @@
           <div class="div-table-col" id="id_col_2_1">
             <label for="id_cars">Choose a car:</label>
             <select name="id_cars" id="id_cars">
+              <option value=""></option>
               <option value="volvo">description volvo</option>
               <option value="saab">description saab</option>
-              <option value="fiat">description fiat</option>
+              <option value="fiat" selected="selected">description fiat</option>
             </select>
           </div>
         </div>

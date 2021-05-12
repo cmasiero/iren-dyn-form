@@ -3,7 +3,7 @@
 const pretty = require('pretty');
 const { 
     MandatoryValidation, HeadValidation, TailValidation, validation 
-} = require('../lib/part-validation-script');
+} = require('../lib/part-script');
 
 test('test MandatoryValidation class.', () => {
 
@@ -15,7 +15,7 @@ test('test MandatoryValidation class.', () => {
     };
         
     // validation: "mandatory if id01 == id02 && ( id03 != '0' )", 
-    let scriptResult = validation.validationScript(objParam);
+    let scriptResult = validation.mandatoryScript(objParam);
     
     // console.log(pretty(scriptResult));
 
