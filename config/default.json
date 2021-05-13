@@ -10,12 +10,12 @@
         "title":{
             "value": "Titolo 1"
         },
-        "row_00":
+        "riga00":
         [
-            {"type": "description", "value": "Descrizione text e checkbox"},
-            {"type": "text", "id": "00_id", "label": "descrizione text 00", "validation": "mandatory if 01_id == '10'", "valMessage": "Il campo è obbligatorio!"},
-            {"type": "text", "id": "01_id", "label": "descrizione text 01", "validation": "visible if 01_identificativo > 10"},
-            {"type": "text", "id": "02_id", "label": "descrizione text 02", "value": "hard coded", "validation": "mandatory"},
+            {"type": "description", "value": "Descrizione text e checkbox 3"},
+            {"type": "text", "id": "00_id", "label": "descrizione text 00", "rule": "mandatory if 01_id == '10'", "valMessage": "Il campo è obbligatorio!"},
+            {"type": "text", "id": "01_id", "label": "descrizione text 01", "rule": "visible if 02_id == 'hard_coded'"},
+            {"type": "text", "id": "02_id", "label": "descrizione text 02", "value": "hard_coded", "rule": "mandatory"},
             {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 03", "checked": "true"},
             {"group":
                 [
@@ -23,32 +23,7 @@
                     {"type": "checkbox", "id": "04_id", "label": "descrizione checkbox 03"}
                 ]
             }
-        ],
-        "row_01":[
-            {"type": "description", "value": "Please select your gender"},
-            {"type": "radio", "id": "id_gender", "label": "Choose a gender", "validation": "mandatory",
-                "option":[
-                    {"value":"male", "label":"description male", "checked": "false"},
-                    {"value":"female", "label":"description female"},
-                    {"value":"other", "label":"description other"}
-                ]
-            }
         ]
-    },
-    "01":{
-        "comment": "Area SENZA titolo,  non viene visualizzata in html!",
-        "row_00":[
-            {"type": "description", "value": "Descrizione combo box"},
-            {"type": "select", "id": "id_cars", "label": "Choose a car:", "validation": "mandatory",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"volvo", "label":"description volvo"},
-                    {"value":"saab", "label":"description saab"},
-                    {"value":"fiat", "label":"description fiat", "selected":"true"}
-                ]
-            }
-        ]
-
     }
 
 }

@@ -7,105 +7,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/example/example.css">
     <title>Titolo scheda di test!</title>
-    <script type="text/javascript">
-      function validation() {
-        let result = [];
-        if (document.getElementById('01_id').value == '10') {
-          let v_00_id = document.getElementById('00_id').value;
-          if (v_00_id === '') {
-            result.push("Il campo è obbligatorio!");
-          }
-        }
-        let v_02_id = document.getElementById('02_id').value;
-        if (v_02_id === '') {
-          result.push("Il campo descrizione text 02 è obbligatorio!");
-        }
-        let v_id_gender = document.querySelector('input[name="id_gender"]:checked');
-        if (v_id_gender === null) {
-          result.push("Il campo Choose a gender è obbligatorio!");
-        }
-        let v_id_cars = document.getElementById('id_cars').value;
-        if (v_id_cars === '') {
-          result.push("Il campo Choose a car: è obbligatorio!");
-        }
-        return result;
-      }
-
-      function postScheda() {
-        let arrayMessage = validation();
-        let message = ""
-        arrayMessage.forEach(msg => {
-          message = message.concat(msg).concat("\n");
-        });
-        if (message !== "") {
-          alert(message);
-        }
-      }
-    </script>
   </head>
 
   <body>
-    <form onsubmit="postScheda()"><input type="submit" value="Invia">
-
-      <div class="table-title" id="id_title_00">
-        Titolo 1
-      </div>
-      <div class="div-table" id="00">
-        <div class="div-table-row" id="id_row_0">
-          <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox</strong></div>
-          <div class="div-table-col" id="id_col_0_1">
-            <label for="00_id">descrizione text 00</label>
-            <input type="text" id="00_id" value="">
-          </div>
-          <div class="div-table-col" id="id_col_0_2">
-            <label for="01_id">descrizione text 01</label>
-            <input type="text" id="01_id" value="">
-          </div>
-          <div class="div-table-col" id="id_col_0_3">
-            <label for="02_id">descrizione text 02</label>
-            <input type="text" id="02_id" value="hard coded">
-          </div>
-          <div class="div-table-col" id="id_col_0_4">
-            <input type="checkbox" id="03_id" name="03_id" value="" checked="">
-            <label for="03_id">descrizione checkbox 03</label>
-          </div>
-          <div class="div-table-col" id="id_col_0_5">
-            <input type="checkbox" id="03_id" name="03_id" value="">
-            <label for="03_id">descrizione checkbox 02</label>
-
-            <input type="checkbox" id="04_id" name="04_id" value="">
-            <label for="04_id">descrizione checkbox 03</label>
-          </div>
-        </div>
-        <div class="div-table-row" id="id_row_1">
-          <div class="div-table-col" id="id_col_1_0"><strong>Please select your gender</strong></div>
-          <div class="div-table-col" id="id_col_1_1">
-            <input type="radio" id="male" name="id_gender" value="male">
-            <label for="male">description male</label>
-            <input type="radio" id="female" name="id_gender" value="female">
-            <label for="female">description female</label>
-            <input type="radio" id="other" name="id_gender" value="other">
-            <label for="other">description other</label>
-          </div>
-        </div>
-      </div>
-      <div class="div-table" id="01">
-        <div class="div-table-row" id="id_row_2">
-          <div class="div-table-col" id="id_col_2_0"><strong>Descrizione combo box</strong></div>
-          <div class="div-table-col" id="id_col_2_1">
-            <label for="id_cars">Choose a car:</label>
-            <select name="id_cars" id="id_cars">
-              <option value=""></option>
-              <option value="volvo">description volvo</option>
-              <option value="saab">description saab</option>
-              <option value="fiat" selected="selected">description fiat</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </form>
 
 
   </body>
+  <form onsubmit="postScheda()"><input type="submit" value="Invia">
+    <div class="table-title" id="id_title_00">
+      Titolo 1
+    </div>
+    <div class="div-table" id="00">
+      <div class="div-table-row" id="id_row_0">
+        <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox 3</strong></div>
+        <div class="div-table-col" id="id_col_0_1">
+          <label for="00_id">descrizione text 00</label>
+          <input type="text" id="00_id" value="">
+        </div>
+        <div class="div-table-col" id="id_col_0_2">
+          <label for="01_id">descrizione text 01</label>
+          <input type="text" id="01_id" value="">
+        </div>
+        <div class="div-table-col" id="id_col_0_3">
+          <label for="02_id">descrizione text 02</label>
+          <input type="text" id="02_id" value="hard_coded">
+        </div>
+        <div class="div-table-col" id="id_col_0_4">
+          <input type="checkbox" id="03_id" name="03_id" value="" checked="">
+          <label for="03_id">descrizione checkbox 03</label>
+        </div>
+        <div class="div-table-col" id="id_col_0_5">
+          <input type="checkbox" id="03_id" name="03_id" value="">
+          <label for="03_id">descrizione checkbox 02</label>
+
+          <input type="checkbox" id="04_id" name="04_id" value="">
+          <label for="04_id">descrizione checkbox 03</label>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script type="text/javascript">
+    (function() {
+      console.log("doc ready");
+      visibility();
+      let form = document.querySelector('form');
+      form.addEventListener('change', function() {
+        visibility();
+      });
+    })();
+
+    function visibility() {
+      console.log("[visibility]");
+      if (document.getElementById('02_id').value == 'hard_coded') {
+
+        document.getElementById('01_id').style.display = "inline";
+        document.getElementById('01_id').previousElementSibling.style.display = "inline";
+      } else {
+        document.getElementById('01_id').style.display = "none";
+        document.getElementById('01_id').previousElementSibling.style.display = "none";
+      }
+    }
+
+    function validation() {
+      let result = [];
+      if (document.getElementById('01_id').value == '10') {
+        let v_00_id = document.getElementById('00_id').value;
+        if (v_00_id === '') {
+          result.push("Il campo è obbligatorio!");
+        }
+      }
+      let v_02_id = document.getElementById('02_id').value;
+      if (v_02_id === '') {
+        result.push("Il campo descrizione text 02 è obbligatorio!");
+      }
+      return result;
+    }
+
+    function postScheda() {
+      let arrayMessage = validation();
+      let message = ""
+      arrayMessage.forEach(msg => {
+        message = message.concat(msg).concat("\n");
+      });
+      if (message !== "") {
+        alert(message);
+      } else {
+        alert("DEBUG: FORM VALIDO, VERRA INVIATO AL SERVER!");
+      }
+    }
+  </script>
 
 </html>

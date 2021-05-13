@@ -13,14 +13,16 @@ const {
     RadioHtml,
     SelectHtml,
     CheckboxHtml,
-    getHtmlPartValidable
+    getHtmlWithRule
 } = require('../lib/part-html');
 
 const { 
-    MandatoryValidation,
     HeadValidation,
     TailValidation,
-    validation
+    DocReady,
+    HeadVisibility,
+    TailVisibility,
+    resultScript
 } = require('../lib/part-script')
 
 const specialKey = ["config"];
@@ -41,8 +43,11 @@ exports.execute = (jsonObj, htmlTemplate) => {
     /* Html area */
     insertHtmlPart(jsonObj, dom);
 
+    /* Visibility script area */
+    insertScriptVisible(dom);
+
     /* Validations script area*/
-    insertValidationScript(dom);
+    insertScriptMandatory(dom);
 
     /* Submit area */
     insertSubmitScript(dom);
@@ -108,6 +113,9 @@ let insertHtmlPart = (jsonObj, dom) => {
     };
 
     /* Html area */
+    let tagBody = dom.window.document.getElementsByTagName("body");
+    tagBody[0].insertAdjacentHTML("afterend", "<form>");
+
     let formElements = dom.window.document.getElementsByTagName("form");
     let formElement = formElements[0];
     let keyNames = Object.keys(jsonObj);
@@ -170,22 +178,55 @@ let insertHtmlPart = (jsonObj, dom) => {
 }
 
 /**
- * Validation scripts are inside <script> tags in html page.
+ * ScriptPart are inside <script> tags in html page.
  * @param {*} dom 
  */
-let insertValidationScript = (dom) => {
+let insertScriptVisible = (dom) => {
 
     /* insert script tag inside head tag */
-    let tagHead = dom.window.document.getElementsByTagName("head");
+    let tagForm = dom.window.document.getElementsByTagName("form");
     let scriptStr = `<script type="text/javascript"></script>`;
-    tagHead[0].insertAdjacentHTML("beforeend", scriptStr);
+    tagForm[0].insertAdjacentHTML("afterend", scriptStr);
+
+    let tagScript = dom.window.document.getElementsByTagName("script");
+    tagScript[0].insertAdjacentHTML("beforeend", new DocReady().buildPart());
+
+
+    // output is visibility method implementation.
+    tagScript[0].insertAdjacentHTML("beforeend", new HeadVisibility().buildPart());
+
+    let visibilityContent = "";
+
+    getHtmlWithRule().forEach(partHtml => {
+        let tmp = resultScript.scriptRule(partHtml, "visible");
+        visibilityContent = visibilityContent.concat(tmp);
+    });
+
+    tagScript[0].insertAdjacentHTML("beforeend", visibilityContent);
+
+    tagScript[0].insertAdjacentHTML("beforeend", new TailVisibility().buildPart());
+    
+    
+
+}
+
+/**
+ * ScriptPart are inside <script> tags in html page.
+ * @param {*} dom 
+ */
+let insertScriptMandatory = (dom) => {
+
+    /* insert script tag inside head tag */
+    let tagForm = dom.window.document.getElementsByTagName("form");
+    // let scriptStr = `<script type="text/javascript"></script>`;
+    // tagForm[0].insertAdjacentHTML("afterend", scriptStr);
 
 
     let mandatoryScript = new HeadValidation().buildPart();
     
-    getHtmlPartValidable().forEach(partHtml => {
+    getHtmlWithRule().forEach(partHtml => {
 
-        let mandatoryScriptTmp = validation.mandatoryScript(partHtml);
+        let mandatoryScriptTmp = resultScript.scriptRule(partHtml, "mandatory");
         mandatoryScript = mandatoryScript.concat(mandatoryScriptTmp);
 
     });
@@ -209,14 +250,14 @@ let  insertSubmitScript = (dom) => {
     let formElement = formElements[0];
     formElement.setAttribute('onsubmit', 'postScheda()');
 
-    // console.log(JSON.stringify(getValidated()));
+    // console.log(JSON.stringify(getMandatories()));
     let buttonSend = `<input type="submit" value="Invia">`;
     formElement.insertAdjacentHTML("afterbegin", buttonSend);
 
 
     let valMessage = "";
-    validation.getValidated().forEach(validation => {
-        valMessage = valMessage.concat(validation.valMessage.concat("\\n"));
+    resultScript.getMandatories().forEach(mandatory => {
+        valMessage = valMessage.concat(mandatory.valMessage.concat("\\n"));
     });
     let sendScript = `function postScheda() { 
                         let arrayMessage = validation();
@@ -226,7 +267,7 @@ let  insertSubmitScript = (dom) => {
                         });
                         if (message !== ""){
                             alert(message);
-                        }
+                        } else { alert("DEBUG: FORM VALIDO, VERRA INVIATO AL SERVER!"); }
                       }
                      `;
     
