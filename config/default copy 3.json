@@ -17,7 +17,7 @@
             {"type": "text", "id": "00_id", "label": "descrizione text 00", "rule": "mandatory if 01_id == '10'|visible if 02_id == 'hard coded'", "valMessage": "Il campo è obbligatorio!"},
             {"type": "text", "id": "01_id", "label": "descrizione text 01"},
             {"type": "text", "id": "02_id", "label": "descrizione text 02", "value": "hard_coded", "rule": "mandatory"},
-            {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 03", "checked": "true", "rule": "visible if 02_id == 'hard coded'"},
+            {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 03", "checked": "true"},
             {"group":
                 [
                     {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 02"},
@@ -27,7 +27,7 @@
         ],
         "row_01":[
             {"type": "description", "value": "Please select your gender"},
-            {"type": "radio", "id": "id_gender", "label": "Choose a gender", "rule": "visible if 02_id == 'hard coded'",
+            {"type": "radio", "id": "id_gender", "label": "Choose a gender", "rule": "mandatory",
                 "option":[
                     {"value":"male", "label":"description male", "checked": "false"},
                     {"value":"female", "label":"description female"},
@@ -40,7 +40,7 @@
         "comment": "Area SENZA titolo,  non viene visualizzata in html!",
         "row_00":[
             {"type": "description", "value": "Descrizione combo box"},
-            {"type": "select", "id": "id_cars", "label": "Choose a car:", "rule": "mandatory|visible if 02_id == 'hard coded'",
+            {"type": "select", "id": "id_cars", "label": "Choose a car:", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"volvo", "label":"description volvo"},

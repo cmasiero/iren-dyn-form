@@ -22,6 +22,7 @@ const {
     DocReady,
     HeadVisibility,
     TailVisibility,
+    VisibilityParent,
     resultScript
 } = require('../lib/part-script')
 
@@ -192,6 +193,9 @@ let insertScriptVisible = (dom) => {
     tagScript[0].insertAdjacentHTML("beforeend", new DocReady().buildPart());
 
 
+    tagScript[0].insertAdjacentHTML("beforeend", new VisibilityParent().buildPart());
+
+
     // output is visibility method implementation.
     tagScript[0].insertAdjacentHTML("beforeend", new HeadVisibility().buildPart());
 
@@ -205,8 +209,6 @@ let insertScriptVisible = (dom) => {
     tagScript[0].insertAdjacentHTML("beforeend", visibilityContent);
 
     tagScript[0].insertAdjacentHTML("beforeend", new TailVisibility().buildPart());
-    
-    
 
 }
 

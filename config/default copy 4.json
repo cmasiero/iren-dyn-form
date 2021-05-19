@@ -1,0 +1,29 @@
+
+{
+
+    "config": {
+        "css" : "/example/example.css",
+        "title": "Titolo scheda di test!",
+        "send": "post|http://nomehosty/prenditu"
+    },
+    "00":{
+        "comment": "Area con un titolo, non viene visualizzata in html!",
+        "title":{
+            "value": "Titolo 1"
+        },
+        "row_00":
+        [
+            {"type": "description", "value": "Descrizione text e checkbox"},
+            {"type": "text", "id": "00_id", "label": "descrizione text 00", "rule": "mandatory"},
+            {"type": "text", "id": "01_id", "label": "descrizione text 01"},
+            {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 03", "checked": "true"},
+            {"group":
+                [
+                    {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 02"},
+                    {"type": "checkbox", "id": "04_id", "label": "descrizione checkbox 03"}
+                ]
+            }
+        ]
+    }
+
+}

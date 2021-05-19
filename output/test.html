@@ -19,7 +19,7 @@
     </div>
     <div class="div-table" id="00">
       <div class="div-table-row" id="id_row_0">
-        <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox 3</strong></div>
+        <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox</strong></div>
         <div class="div-table-col" id="id_col_0_1">
           <label for="00_id">descrizione text 00</label>
           <input type="text" id="00_id" value="">
@@ -44,6 +44,31 @@
           <label for="04_id">descrizione checkbox 03</label>
         </div>
       </div>
+      <div class="div-table-row" id="id_row_1">
+        <div class="div-table-col" id="id_col_1_0"><strong>Please select your gender</strong></div>
+        <div class="div-table-col" id="id_col_1_1">
+          <input type="radio" id="male" name="id_gender" value="male">
+          <label for="male">description male</label>
+          <input type="radio" id="female" name="id_gender" value="female">
+          <label for="female">description female</label>
+          <input type="radio" id="other" name="id_gender" value="other">
+          <label for="other">description other</label>
+        </div>
+      </div>
+    </div>
+    <div class="div-table" id="01">
+      <div class="div-table-row" id="id_row_2">
+        <div class="div-table-col" id="id_col_2_0"><strong>Descrizione combo box</strong></div>
+        <div class="div-table-col" id="id_col_2_1">
+          <label for="id_cars">Choose a car:</label>
+          <select name="id_cars" id="id_cars">
+            <option value=""></option>
+            <option value="volvo">description volvo</option>
+            <option value="saab">description saab</option>
+            <option value="fiat" selected="selected">description fiat</option>
+          </select>
+        </div>
+      </div>
     </div>
   </form>
   <script type="text/javascript">
@@ -56,26 +81,102 @@
       });
     })();
 
+    function visibilityParent(element) {
+      let col = element.parentNode;
+      let children = col.childNodes;
+
+      let displayCol = false;
+      for (let i = 0; i < children.length; i++) {
+        if (children[i].style !== undefined && children[i].style.display !== 'none') {
+          displayCol = true;
+          break;
+        }
+      }
+      col.style.display = displayCol ? "inline" : "none";
+    }
+
     function visibility() {
       console.log("[visibility]");
-      if (document.getElementById('02_id').value == 'hard_coded') {
-
-        document.getElementById('01_id').style.display = "inline";
-        document.getElementById('01_id').previousElementSibling.style.display = "inline";
+      if (document.getElementById('02_id').value == 'hard coded') {
+        let node = document.getElementById('00_id');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        } else {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
       } else {
-        document.getElementById('01_id').style.display = "none";
-        document.getElementById('01_id').previousElementSibling.style.display = "none";
+        let node = document.getElementById('00_id');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        } else {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('02_id').value == 'hard coded') {
+        let node = document.getElementById('03_id');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        } else {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('03_id');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        } else {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('02_id').value == 'hard coded') {
+        let node = document.getElementsByName('id_gender');
+        node.forEach(n => {
+          n.style.display = "inline";
+          n.nextElementSibling.style.display = "inline";
+          if (node[node.length - 1] === n) {
+            visibilityParent(n);
+          }
+        });
+      } else {
+        let node = document.getElementsByName('id_gender');
+        node.forEach(n => {
+          n.style.display = "none";
+          n.nextElementSibling.style.display = "none";
+          if (node[node.length - 1] === n) {
+            visibilityParent(n);
+          }
+        });
+      }
+      if (document.getElementById('02_id').value == 'hard coded') {
+        let node = document.getElementById('id_cars');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        } else {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_cars');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        } else {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
       }
     }
 
     function validation() {
       let result = [];
-      if (document.getElementById('01_id').value == '10') {
-        let v_00_id = document.getElementById('00_id').value;
-        if (v_00_id === '') {
-          result.push("Il campo è obbligatorio!");
-        }
-      }
       let v_02_id = document.getElementById('02_id').value;
       if (v_02_id === '') {
         result.push("Il campo descrizione text 02 è obbligatorio!");
