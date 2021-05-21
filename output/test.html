@@ -6,66 +6,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/example/example.css">
-    <title>Titolo scheda di test!</title>
+    <title>Scheda Raccolta dati U4</title>
   </head>
 
   <body>
 
 
   </body>
-  <form onsubmit="postScheda()"><input type="submit" value="Invia">
+  <form onsubmit="postScheda()"><input type="button" value="Invia" onclick="postScheda()">
     <div class="table-title" id="id_title_00">
-      Titolo 1
+      Dati Generali
     </div>
     <div class="div-table" id="00">
       <div class="div-table-row" id="id_row_0">
-        <div class="div-table-col" id="id_col_0_0"><strong>Descrizione text e checkbox</strong></div>
+        <div class="div-table-col" id="id_col_0_0"><strong>Dati Generali</strong></div>
         <div class="div-table-col" id="id_col_0_1">
-          <label for="00_id">descrizione text 00</label>
-          <input type="text" id="00_id" value="">
+          <label for="id_codice_cabina">CODICE CABINA</label>
+          <input type="text" id="id_codice_cabina" value="">
         </div>
         <div class="div-table-col" id="id_col_0_2">
-          <label for="01_id">descrizione text 01</label>
-          <input type="text" id="01_id" value="">
+          <label for="id_data">DATA</label>
+          <input type="text" id="id_data" value="">
         </div>
         <div class="div-table-col" id="id_col_0_3">
-          <label for="02_id">descrizione text 02</label>
-          <input type="text" id="02_id" value="hard_coded">
+          <label for="id_nome_cognome">NOME COGNOME</label>
+          <input type="text" id="id_nome_cognome" value="">
         </div>
         <div class="div-table-col" id="id_col_0_4">
-          <input type="checkbox" id="03_id" name="03_id" value="" checked="">
-          <label for="03_id">descrizione checkbox 03</label>
+          <label for="id_codice_attivita_ofsc">CODICE ATTIVITA' OFSC</label>
+          <input type="text" id="id_codice_attivita_ofsc" value="">
         </div>
         <div class="div-table-col" id="id_col_0_5">
-          <input type="checkbox" id="03_id" name="03_id" value="">
-          <label for="03_id">descrizione checkbox 02</label>
-
-          <input type="checkbox" id="04_id" name="04_id" value="">
-          <label for="04_id">descrizione checkbox 03</label>
-        </div>
-      </div>
-      <div class="div-table-row" id="id_row_1">
-        <div class="div-table-col" id="id_col_1_0"><strong>Please select your gender</strong></div>
-        <div class="div-table-col" id="id_col_1_1">
-          <input type="radio" id="male" name="id_gender" value="male">
-          <label for="male">description male</label>
-          <input type="radio" id="female" name="id_gender" value="female">
-          <label for="female">description female</label>
-          <input type="radio" id="other" name="id_gender" value="other">
-          <label for="other">description other</label>
+          <label for="id_ordine_di_manutenzione_sap_pm">ORDINE DI MANUTENZIONE SAP PM</label>
+          <input type="text" id="id_ordine_di_manutenzione_sap_pm" value="">
         </div>
       </div>
     </div>
+    <div class="table-title" id="id_title_01">
+      Cabine Secondarie
+    </div>
     <div class="div-table" id="01">
-      <div class="div-table-row" id="id_row_2">
-        <div class="div-table-col" id="id_col_2_0"><strong>Descrizione combo box</strong></div>
-        <div class="div-table-col" id="id_col_2_1">
-          <label for="id_cars">Choose a car:</label>
-          <select name="id_cars" id="id_cars">
+      <div class="div-table-row" id="id_row_1">
+        <div class="div-table-col" id="id_col_1_0"><strong>area 1</strong></div>
+        <div class="div-table-col" id="id_col_1_1">
+          <label for="id_tipologia_di_attivita">TIPOLOGIA DI ATTIVITA'</label>
+          <select name="id_tipologia_di_attivita" id="id_tipologia_di_attivita">
             <option value=""></option>
-            <option value="volvo">description volvo</option>
-            <option value="saab">description saab</option>
-            <option value="fiat" selected="selected">description fiat</option>
+            <option value="MESSA IN SERVIZIO">messa in servizio</option>
+            <option value="CENSIMENTO">censimento</option>
+            <option value="OPERE EDILI">opere edili</option>
+            <option value="DISMISSIONE">dismissione</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_2">
+        <div class="div-table-col" id="id_col_2_0"><strong>area 2</strong></div>
+        <div class="div-table-col" id="id_col_2_1">
+          <label for="id_codice_identificativo_cabina">CODICE IDENTIFICATIVO DELLA CABINA</label>
+          <input type="text" id="id_codice_identificativo_cabina" value="">
+        </div>
+        <div class="div-table-col" id="id_col_2_2">
+          <label for="id_dimensione_locale_cabina">DIMENSIONE LOCALE CABINA</label>
+          <input type="text" id="id_dimensione_locale_cabina" value="">
+        </div>
+        <div class="div-table-col" id="id_col_2_3">
+          <label for="id_livello_tensione">LIVELLO TENSIONE (kV)</label>
+          <select name="id_livello_tensione" id="id_livello_tensione">
+            <option value=""></option>
+            <option value="5.4">5,4</option>
+            <option value="6.3">6,3</option>
+            <option value="15">15</option>
+            <option value="22">22</option>
+            <option value="27">27</option>
           </select>
         </div>
       </div>
@@ -97,8 +109,8 @@
 
     function visibility() {
       console.log("[visibility]");
-      if (document.getElementById('02_id').value == 'hard coded') {
-        let node = document.getElementById('00_id');
+      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO' || document.getElementById('id_tipologia_di_attivita').value == 'OPERE EDILI') {
+        let node = document.getElementById('id_dimensione_locale_cabina');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
           node.previousElementSibling.style.display = "inline";
@@ -107,7 +119,7 @@
         }
         visibilityParent(node);
       } else {
-        let node = document.getElementById('00_id');
+        let node = document.getElementById('id_dimensione_locale_cabina');
         node.style.display = "none";
         if (node.previousElementSibling !== null) {
           node.previousElementSibling.style.display = "none";
@@ -116,8 +128,8 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('02_id').value == 'hard coded') {
-        let node = document.getElementById('03_id');
+      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('id_livello_tensione');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
           node.previousElementSibling.style.display = "inline";
@@ -126,45 +138,7 @@
         }
         visibilityParent(node);
       } else {
-        let node = document.getElementById('03_id');
-        node.style.display = "none";
-        if (node.previousElementSibling !== null) {
-          node.previousElementSibling.style.display = "none";
-        } else {
-          node.nextElementSibling.style.display = "none";
-        }
-        visibilityParent(node);
-      }
-      if (document.getElementById('02_id').value == 'hard coded') {
-        let node = document.getElementsByName('id_gender');
-        node.forEach(n => {
-          n.style.display = "inline";
-          n.nextElementSibling.style.display = "inline";
-          if (node[node.length - 1] === n) {
-            visibilityParent(n);
-          }
-        });
-      } else {
-        let node = document.getElementsByName('id_gender');
-        node.forEach(n => {
-          n.style.display = "none";
-          n.nextElementSibling.style.display = "none";
-          if (node[node.length - 1] === n) {
-            visibilityParent(n);
-          }
-        });
-      }
-      if (document.getElementById('02_id').value == 'hard coded') {
-        let node = document.getElementById('id_cars');
-        node.style.display = "inline";
-        if (node.previousElementSibling !== null) {
-          node.previousElementSibling.style.display = "inline";
-        } else {
-          node.nextElementSibling.style.display = "inline";
-        }
-        visibilityParent(node);
-      } else {
-        let node = document.getElementById('id_cars');
+        let node = document.getElementById('id_livello_tensione');
         node.style.display = "none";
         if (node.previousElementSibling !== null) {
           node.previousElementSibling.style.display = "none";
@@ -177,9 +151,37 @@
 
     function validation() {
       let result = [];
-      let v_02_id = document.getElementById('02_id').value;
-      if (v_02_id === '') {
-        result.push("Il campo descrizione text 02 è obbligatorio!");
+      let v_id_codice_cabina = document.getElementById('id_codice_cabina').value;
+      if (v_id_codice_cabina === '') {
+        result.push("Il campo CODICE CABINA è obbligatorio!");
+      }
+      let v_id_data = document.getElementById('id_data').value;
+      if (v_id_data === '') {
+        result.push("Il campo DATA è obbligatorio!");
+      }
+      let v_id_nome_cognome = document.getElementById('id_nome_cognome').value;
+      if (v_id_nome_cognome === '') {
+        result.push("Il campo NOME COGNOME è obbligatorio!");
+      }
+      let v_id_tipologia_di_attivita = document.getElementById('id_tipologia_di_attivita').value;
+      if (v_id_tipologia_di_attivita === '') {
+        result.push("Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio!");
+      }
+      let v_id_codice_identificativo_cabina = document.getElementById('id_codice_identificativo_cabina').value;
+      if (v_id_codice_identificativo_cabina === '') {
+        result.push("Il campo CODICE IDENTIFICATIVO DELLA CABINA è obbligatorio!");
+      }
+      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+        let v_id_dimensione_locale_cabina = document.getElementById('id_dimensione_locale_cabina').value;
+        if (v_id_dimensione_locale_cabina === '') {
+          result.push("Il campo DIMENSIONE LOCALE CABINA è obbligatorio!");
+        }
+      }
+      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+        let v_id_livello_tensione = document.getElementById('id_livello_tensione').value;
+        if (v_id_livello_tensione === '') {
+          result.push("Il campo LIVELLO TENSIONE (kV) è obbligatorio!");
+        }
       }
       return result;
     }

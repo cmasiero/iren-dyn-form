@@ -3,53 +3,58 @@
 
     "config": {
         "css" : "/example/example.css",
-        "title": "Titolo scheda di test!",
+        "title": "Scheda Raccolta dati U4",
         "send": "post|http://nomehosty/prenditu"
     },
     "00":{
-        "comment": "Area con un titolo, non viene visualizzata in html!",
+        "comment": "Non viene visualizzata in html!",
         "title":{
-            "value": "Titolo 1"
+            "value": "Dati Generali"
         },
         "row_00":
         [
-            {"type": "description", "value": "Descrizione text e checkbox"},
-            {"type": "text", "id": "00_id", "label": "descrizione text 00", "rule": "mandatory if 01_id == '10'|visible if 02_id == 'hard coded'", "valMessage": "Il campo è obbligatorio!"},
-            {"type": "text", "id": "01_id", "label": "descrizione text 01"},
-            {"type": "text", "id": "02_id", "label": "descrizione text 02", "value": "hard_coded", "rule": "mandatory"},
-            {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 03", "checked": "true", "rule": "visible if 02_id == 'hard coded'"},
-            {"group":
-                [
-                    {"type": "checkbox", "id": "03_id", "label": "descrizione checkbox 02"},
-                    {"type": "checkbox", "id": "04_id", "label": "descrizione checkbox 03"}
-                ]
-            }
-        ],
-        "row_01":[
-            {"type": "description", "value": "Please select your gender"},
-            {"type": "radio", "id": "id_gender", "label": "Choose a gender", "rule": "visible if 02_id == 'hard coded'",
-                "option":[
-                    {"value":"male", "label":"description male", "checked": "false"},
-                    {"value":"female", "label":"description female"},
-                    {"value":"other", "label":"description other"}
-                ]
-            }
+            {"type": "description", "value": "Dati Generali"},
+            {"type": "text", "id": "id_codice_cabina", "label": "CODICE CABINA", "rule": "mandatory" },
+            {"type": "text", "id": "id_data", "label": "DATA", "rule": "mandatory" },
+            {"type": "text", "id": "id_nome_cognome", "label": "NOME COGNOME", "rule": "mandatory" },
+            {"type": "text", "id": "id_codice_attivita_ofsc", "label": "CODICE ATTIVITA' OFSC" },
+            {"type": "text", "id": "id_ordine_di_manutenzione_sap_pm", "label": "ORDINE DI MANUTENZIONE SAP PM" }
         ]
     },
     "01":{
-        "comment": "Area SENZA titolo,  non viene visualizzata in html!",
-        "row_00":[
-            {"type": "description", "value": "Descrizione combo box"},
-            {"type": "select", "id": "id_cars", "label": "Choose a car:", "rule": "mandatory|visible if 02_id == 'hard coded'",
+        "comment": "Non viene visualizzata in html!",
+        "title":{
+            "value": "Cabine Secondarie"
+        },
+        "row_00":
+        [
+            {"type": "description", "value": "area 1"},
+            {"type": "select", "id": "id_tipologia_di_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"volvo", "label":"description volvo"},
-                    {"value":"saab", "label":"description saab"},
-                    {"value":"fiat", "label":"description fiat", "selected":"true"}
+                    {"value":"MESSA IN SERVIZIO", "label":"messa in servizio"},
+                    {"value":"CENSIMENTO", "label":"censimento"},
+                    {"value":"OPERE EDILI", "label":"opere edili"},
+                    {"value":"DISMISSIONE", "label":"dismissione"}
                 ]
             }
+        ],
+        "row_01":
+        [
+            {"type": "description", "value": "area 2"},
+            {"type": "text", "id": "id_codice_identificativo_cabina", "label": "CODICE IDENTIFICATIVO DELLA CABINA", "rule": "mandatory"},
+            {"type": "text", "id": "id_dimensione_locale_cabina", "label": "DIMENSIONE LOCALE CABINA", 
+                "rule": "mandatory if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO' || id_tipologia_di_attivita == 'OPERE EDILI'"},
+            {"type": "select", "id": "id_livello_tensione", "label": "LIVELLO TENSIONE (kV)", "rule": "mandatory if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"5.4", "label":"5,4"},
+                    {"value":"6.3", "label":"6,3"},
+                    {"value":"15", "label":"15"},
+                    {"value":"22", "label":"22"},
+                    {"value":"27", "label":"27"}
+                    ]
+                }
         ]
-
     }
-
 }

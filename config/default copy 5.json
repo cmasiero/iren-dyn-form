@@ -1,0 +1,57 @@
+
+{
+
+    "config": {
+        "css" : "/example/example.css",
+        "title": "Titolo scheda di test!",
+        "send": "post|http://nomehosty/prenditu"
+    },
+    "00":{
+        "comment": "Area con un titolo, non viene visualizzata in html!",
+        "title":{
+            "value": "Titolo 1"
+        },
+        "row_00":
+        [
+            {"type": "description", "value": "Descrizione text e checkbox"},
+            {"type": "text", "id": "00_id", "label": "text 00*", "rule": "mandatory|visible if 01_id == '1'", "valMessage": "Il campo è obbligatorio!"},
+            {"type": "text", "id": "01_id", "label": "text 01"},
+            {"type": "text", "id": "02_id", "label": "text 02", "value": "hard_coded", "rule": "visible if 03_id == true"},
+            {"type": "checkbox", "id": "03_id", "label": "checkbox 03", "value": "valore 03", "checked": "true", "rule": ""},
+            {"group":
+                [
+                    {"type": "checkbox", "id": "05_id", "label": "checkbox 05", "value": "valore", "checked": "true"},
+                    {"type": "checkbox", "id": "06_id", "label": "checkbox 06", "rule": ""}
+                ]
+            }
+        ],
+        "row_01":[
+            {"type": "description", "value": "Please select your gender"},
+            {"type": "radio", "id": "id_gender", "label": "Choose a gender", "rule": "mandatory",
+                "option":[
+                    {"value":"male", "label":"description male"},
+                    {"value":"female", "label":"description female"},
+                    {"value":"other", "label":"description other"}
+                ]
+            }
+        ]
+    },
+    "01":{
+        "comment": "Area SENZA titolo,  non viene visualizzata in html!",
+        
+        "row_00":[
+            {"type": "description", "value": "Descrizione combo box"},
+            {"type": "checkbox", "id": "10_id", "label": "checkbox 10", "value": "valore 10", "rule": "mandatory|visible if id_cars == 'saab'"},
+            {"type": "select", "id": "id_cars", "label": "Choose a car:", "rule": "",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"volvo", "label":"description volvo"},
+                    {"value":"saab", "label":"description saab"},
+                    {"value":"fiat", "label":"description fiat", "selected":"true"}
+                ]
+            }
+        ]
+
+    }
+
+}

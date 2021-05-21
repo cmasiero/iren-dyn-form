@@ -252,8 +252,8 @@ let  insertSubmitScript = (dom) => {
     let formElement = formElements[0];
     formElement.setAttribute('onsubmit', 'postScheda()');
 
-    // console.log(JSON.stringify(getMandatories()));
-    let buttonSend = `<input type="submit" value="Invia">`;
+    // let buttonSend = `<input type="submit" value="Invia">`;
+    let buttonSend = `<input type="button" value="Invia" onclick="postScheda()">`;
     formElement.insertAdjacentHTML("afterbegin", buttonSend);
 
 
