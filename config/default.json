@@ -26,9 +26,13 @@
         "title":{
             "value": "Cabine Secondarie"
         },
+        "reusableRule" : [
+            {"rule": "mandatory if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO' || id_tipologia_di_attivita == 'OPERE EDILI'", 
+                "name": "rule_tipo_accesso"},
+            {"rule": "mandatory", "name": "rule_test"}
+        ],
         "row_00":
         [
-            {"type": "description", "value": "area 1"},
             {"type": "select", "id": "id_tipologia_di_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -41,7 +45,7 @@
         ],
         "row_01":
         [
-            {"type": "description", "value": "area 2"},
+            
             {"type": "text", "id": "id_codice_identificativo_cabina", "label": "CODICE IDENTIFICATIVO DELLA CABINA", "rule": "mandatory"},
             {"type": "text", "id": "id_dimensione_locale_cabina", "label": "DIMENSIONE LOCALE CABINA", 
                 "rule": "mandatory if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO' || id_tipologia_di_attivita == 'OPERE EDILI'"},
@@ -54,7 +58,24 @@
                     {"value":"22", "label":"22"},
                     {"value":"27", "label":"27"}
                     ]
-                }
+            },
+            {"type":"text", "id": "id_indirizzo", "label": "INDIRIZZO", "rule":"mandatory if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'"}
+            
+        ],
+        "row_03": [
+            {"type": "description", "value": "Tipo accesso"},
+            {"group":
+                [
+                    {"type": "checkbox", "id": "id_botola", "label": "BOTOLA", "rule": "rule_tipo_accesso"},
+                    {"type": "checkbox", "id": "id_chiave", "label": "CHIAVE", "rule": "rule_tipo_accesso"},
+                    {"type": "checkbox", "id": "id_illuminazione_pubblica", "label": "ILLUMINAZIONE PUBBLICA", "rule": "rule_tipo_accesso"},
+                    {"type": "checkbox", "id": "id_da_cortile", "label": "DA CORTILE", "rule": "rule_tipo_accesso"},
+                    {"type": "checkbox", "id": "id_normale_int_fabbricato", "label": "NORMALE (DA INT. FABBRICATO)", "rule": "rule_tipo_accesso"},
+                    {"type": "checkbox", "id": "id_passaggio_riservato", "label": "PASSAGGIO RISERVATO", "rule": "rule_tipo_accesso"},
+                    {"type": "checkbox", "id": "id_stradale", "label": "STRADALE", "rule": "rule_tipo_accesso"},
+                    {"type": "checkbox", "id": "id_botola_solo_materiali", "label": "BOTOLA SOLO PER MATERIALI", "rule": "rule_tipo_accesso"}
+                ]
+            }
         ]
     }
 }

@@ -3,8 +3,52 @@
     border-left: 1px solid black;
     border-right: 1px solid black;
 } */
+
+form {
+    display: block;
+    margin-top: 100px;
+}
+
+.buttonMenu{
+    position: fixed;
+    height: 60px;
+    width: 60px;
+    border-color:black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buttonMenuToggle{
+    background-color:grey;
+    height: 72px;
+    width: 72px;
+    top: 12px;
+    left: 15px;
+    border-radius: 50%;
+}
+
+.buttonMenuSend{
+    background-color: green;
+    top: 19px;
+    left: 90px;
+    border-radius: 50%;
+    display: none;
+}
+
+.buttonMenuClear{
+    background-color:red;
+    top: 19px;
+    left: 153px;
+    border-radius: 50%;
+    display: none;
+}
+
+
 .div-table {
-    display: table, inline;         
+    /* display: table, inline;          */
+    /* display: inline;          */
+    display: none;         
     width: auto;
     background-color: white; 
     border-spacing: 5px; /* cellspacing:poor IE support for  this */

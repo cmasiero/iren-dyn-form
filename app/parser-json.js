@@ -13,7 +13,8 @@ const {
     RadioHtml,
     SelectHtml,
     CheckboxHtml,
-    getHtmlWithRule
+    getHtmlWithRule,
+    generatedManager
 } = require('../lib/part-html');
 
 const { 
@@ -24,7 +25,10 @@ const {
     TailVisibility,
     VisibilityParent,
     resultScript
-} = require('../lib/part-script')
+} = require('../lib/part-script');
+
+const { reusableRuleManager } = require('../lib/rule');
+
 
 const specialKey = ["config"];
 
@@ -38,8 +42,12 @@ exports.execute = (jsonObj, htmlTemplate) => {
 
     let dom = new JSDOM(htmlTemplate);
 
+    // reusableRuleManager.initialize(jsonObj);
+
     /* Configuration area */
     insertConfigPart(jsonObj, dom);
+
+    insertMenuPart(dom);
 
     /* Html area */
     insertHtmlPart(jsonObj, dom);
@@ -51,7 +59,11 @@ exports.execute = (jsonObj, htmlTemplate) => {
     insertScriptMandatory(dom);
 
     /* Submit area */
-    insertSubmitScript(dom);
+    // insertSubmitScript(dom);
+
+    insertScriptHideShowTable(dom);
+
+    insertScriptMenu(dom);
 
     return dom;
 
@@ -76,6 +88,25 @@ let insertConfigPart = (jsonObj, dom) => {
         tagHead[0].insertAdjacentHTML("beforeend", linkStr);
         tagHead[0].insertAdjacentHTML("beforeend", titleStr);
     }
+
+}
+
+let insertMenuPart = (dom) => {
+    
+    let menu = `
+                <input type="button" id="buttonToggle" class="buttonMenu buttonMenuToggle" value="Menu">
+                <input type="button" id="buttonSend" class="buttonMenu buttonMenuSend" value="Invia">
+                <input type="button" id="buttonClear" class="buttonMenu buttonMenuClear" value="Pulisci"></input>
+               `;
+
+    /* Html area */
+    let tagBody = dom.window.document.getElementsByTagName("body");
+    tagBody[0].insertAdjacentHTML("afterend", "<form>");
+
+    let formElements = dom.window.document.getElementsByTagName("form");
+    let formElement = formElements[0];
+
+    formElement.insertAdjacentHTML("beforeend", menu);
 
 }
 
@@ -113,15 +144,16 @@ let insertHtmlPart = (jsonObj, dom) => {
 
     };
 
-    /* Html area */
-    let tagBody = dom.window.document.getElementsByTagName("body");
-    tagBody[0].insertAdjacentHTML("afterend", "<form>");
+    // /* Html area */
+    // let tagBody = dom.window.document.getElementsByTagName("body");
+    // tagBody[0].insertAdjacentHTML("afterend", "<form>");
 
     let formElements = dom.window.document.getElementsByTagName("form");
     let formElement = formElements[0];
     let keyNames = Object.keys(jsonObj);
     let tmpIdTable = "";
     let idRowIndex = -1;
+    let titleStrTmp = ""; 
     keyNames.filter(idTable => !specialKey.includes(idTable)).forEach(idTable => {
 
         // New id table
@@ -132,10 +164,17 @@ let insertHtmlPart = (jsonObj, dom) => {
                 console.log("comment %s", jsonObj[idTable].comment);
             }
             else if (key === "title") {
+                titleStrTmp = jsonObj[idTable][key].value;
                 let el = { id: "id_title_".concat(idTable), value: jsonObj[idTable][key].value };
                 let titleHtml = new TitleHtml(el);
                 formElement.insertAdjacentHTML("beforeend", titleHtml.buildPart());
-            } else {
+            }
+            else if (key === "reusableRule"){
+                // console.log(jsonObj[idTable][key]);
+                reusableRuleManager.add(jsonObj[idTable][key]);
+                // console.log(reusableRuleManager.get());
+            } 
+            else {
                 /* Otherwise are rows */
                 // All rows are inside a table.
                 if (tmpIdTable !== idTable) {
@@ -162,9 +201,11 @@ let insertHtmlPart = (jsonObj, dom) => {
 
                     if (colEl.group !== undefined) {
                         colEl.group.forEach(elGruop => {
+                            colEl.title = titleStrTmp;
                             htmlPart(currentCol, elGruop);
                         })
                     } else {
+                        colEl.title = titleStrTmp;
                         htmlPart(currentCol, colEl);
                     }
 
@@ -241,27 +282,54 @@ let insertScriptMandatory = (dom) => {
 
 }
 
-/**
- * Submit scripts are inside <script> tags in html page, 
- * they do the check of inserted values then send data to the server.
- * @param {*} dom 
- */
-let  insertSubmitScript = (dom) => {
+let insertScriptHideShowTable = (dom) => {
 
-    let formElements = dom.window.document.getElementsByTagName("form");
-    let formElement = formElements[0];
-    formElement.setAttribute('onsubmit', 'postScheda()');
+    let clickTitleScript = ``;
+    generatedManager.getByClassName("TitleHtml").forEach( titleHtml => {
+        
+        clickTitleScript = clickTitleScript + `document.getElementById('${titleHtml.id}').addEventListener('click', function(event) {
+                                                  let title = document.getElementById('${titleHtml.id}');
+                                                  title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%'; 
+                                                  let table = title.nextElementSibling;
+                                                  table.style.display = table.style.display == 'none' || table.style.display =='' ? 'block' : 'none';
+                                               });
+                                              `;
 
-    // let buttonSend = `<input type="submit" value="Invia">`;
-    let buttonSend = `<input type="button" value="Invia" onclick="postScheda()">`;
-    formElement.insertAdjacentHTML("afterbegin", buttonSend);
-
-
-    let valMessage = "";
-    resultScript.getMandatories().forEach(mandatory => {
-        valMessage = valMessage.concat(mandatory.valMessage.concat("\\n"));
     });
-    let sendScript = `function postScheda() { 
+
+    // console.log(clickTitleScript);
+    let tagScript = dom.window.document.getElementsByTagName("script");
+    tagScript[0].insertAdjacentHTML("beforeend", clickTitleScript);
+
+}
+
+
+
+let insertScriptMenu = (dom) => {
+    
+    let scriptMenu = `
+                      let toggleMenu = false;
+                      document.getElementById("buttonToggle").addEventListener("click", () => {
+                        let el0 = document.getElementById("buttonToggle");
+                        let el1 = document.getElementById("buttonSend");
+                        let el2 = document.getElementById("buttonClear");
+                        toggleMenu = !toggleMenu;
+                        if (toggleMenu) {
+                          el0.style['background-color'] = "#cccc00";
+                          el1.style.display = "block";
+                          el2.style.display = "block";
+                        } else {
+                          el0.style['background-color'] = "grey";
+                          el1.style.display = "none";
+                          el2.style.display = "none";
+                        }
+                      });
+                     `;
+
+
+    
+    let scriptSend = `
+                     document.getElementById("buttonSend").addEventListener("click", () => {
                         let arrayMessage = validation();
                         let message = ""
                         arrayMessage.forEach(msg => {
@@ -270,13 +338,54 @@ let  insertSubmitScript = (dom) => {
                         if (message !== ""){
                             alert(message);
                         } else { alert("DEBUG: FORM VALIDO, VERRA INVIATO AL SERVER!"); }
-                      }
+                     });
                      `;
     
+    
+
     let tagScript = dom.window.document.getElementsByTagName("script");
-    tagScript[0].insertAdjacentHTML("beforeend", sendScript);
+    tagScript[0].insertAdjacentHTML("beforeend", scriptMenu);
+    tagScript[0].insertAdjacentHTML("beforeend", scriptSend);
 
 }
+
+
+/**
+ * Submit scripts are inside <script> tags in html page, 
+ * they do the check of inserted values then send data to the server.
+ * @param {*} dom 
+ */
+// let  insertSubmitScript = (dom) => {
+
+//     let formElements = dom.window.document.getElementsByTagName("form");
+//     let formElement = formElements[0];
+//     formElement.setAttribute('onsubmit', 'postScheda()');
+
+//     // let buttonSend = `<input type="submit" value="Invia">`;
+//     let buttonSend = `<input type="button" value="Invia" onclick="postScheda()">`;
+//     formElement.insertAdjacentHTML("afterbegin", buttonSend);
+
+
+//     let valMessage = "";
+//     resultScript.getMandatories().forEach(mandatory => {
+//         valMessage = valMessage.concat(mandatory.valMessage.concat("\\n"));
+//     });
+//     let sendScript = `function postScheda() { 
+//                         let arrayMessage = validation();
+//                         let message = ""
+//                         arrayMessage.forEach(msg => {
+//                             message = message.concat(msg).concat("\\n");                            
+//                         });
+//                         if (message !== ""){
+//                             alert(message);
+//                         } else { alert("DEBUG: FORM VALIDO, VERRA INVIATO AL SERVER!"); }
+//                       }
+//                      `;
+    
+//     let tagScript = dom.window.document.getElementsByTagName("script");
+//     tagScript[0].insertAdjacentHTML("beforeend", sendScript);
+
+// }
 
 
 
