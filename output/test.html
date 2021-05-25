@@ -114,6 +114,81 @@
           <label for="id_botola_solo_materiali">BOTOLA SOLO PER MATERIALI</label>
         </div>
       </div>
+      <div class="div-table-row" id="id_row_4">
+        <div class="div-table-col" id="id_col_4_0">
+          <label for="id_posizione_botola">POSIZIONE BOTOLA</label>
+          <select name="id_posizione_botola" id="id_posizione_botola">
+            <option value=""></option>
+            <option value="FRONTE PASSO CARRAIO">fronte passo carraio</option>
+            <option value="FRONTE ATTIVITA COMMERCIALI">fronte attivita' commerciali</option>
+            <option value="SU MARCIAPIEDE">su marciapiede</option>
+            <option value="SU STRADA">su strada</option>
+            <option value="SU AREA VERDE">su area verde</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_4_1">
+          <label for="id_profondita_botola">PROFONDITA' BOTOLA (metri)</label>
+          <input type="text" id="id_profondita_botola" value="">
+        </div>
+        <div class="div-table-col" id="id_col_4_2">
+          <label for="id_tipo_di_botola">TIPO DI BOTOLA</label>
+          <select name="id_tipo_di_botola" id="id_tipo_di_botola">
+            <option value=""></option>
+            <option value="BOTOLA TIPO 6.3 KV (2 BATTENTI CON RIPARO)">Botola tipo 6,3 kV (2 battenti con riparo)</option>
+            <option value="BOTOLA TIPO 6.3 KV (2 BATTENTI SENZA RIPARO)">Botola tipo 6,3 kV (2 battenti senza riparo)</option>
+            <option value="BOTOLA TIPO 6.3 KV (3 BATTENTI)">Botola tipo 6,3 kV (3 battenti)</option>
+            <option value="BOTOLA TIPO 6.3 KV (3 BATTENTI CARRABILE)">Botola tipo 6,3 kV (3 battenti carrabile)</option>
+            <option value="BOTOLA TIPO 22 KV (EDTO 2 BATTENTI)">Botola tipo 22 kV (EDTO 2 battenti)</option>
+            <option value="BOTOLA TIPO 22 KV(2 BATTENTI)">Botola tipo 22 kV(2 battenti)</option>
+            <option value="BOTOLA TIPO 22 KV (2 BATTENTI AREATA)">Botola tipo 22 kV (2 battenti areata)</option>
+            <option value="BOTOLA TIPO 22 KV (3 BATTENTI AREATA)">Botola tipo 22 kV (3 battenti areata)</option>
+            <option value="BOTOLA TIPO 22 KV (3 BATTENTI CARRABILE)">Botola tipo 22 kV (3 battenti carrabile)</option>
+            <option value="GENERICA PARMA">Generica Parma</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_4_3">
+          <label for="id_indirizzo_della_botola">INDIRIZZO DELLA BOTOLA</label>
+          <input type="text" id="id_indirizzo_della_botola" value="">
+        </div>
+        <div class="div-table-col" id="id_col_4_4">
+          <label for="id_dimensioni_botola">DIMENSIONI BOTOLA (axb) (centimetri)</label>
+          <input type="text" id="id_dimensioni_botola" value="">
+        </div>
+        <div class="div-table-col" id="id_col_4_5">
+          <label for="id_tipo_scala">TIPO DI SCALA</label>
+          <select name="id_tipo_scala" id="id_tipo_scala">
+            <option value=""></option>
+            <option value="A PIOLI VERTICALE">a pioli verticale</option>
+            <option value="A PIOLI VERTICALE CON GABBIA">a pioli verticale con gabbia</option>
+            <option value="A PIOLI INCLINATA">a pioli inclinata</option>
+            <option value="A GRADINI">a gradini</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_4_6">
+          <label for="id_presenza_porta_secondaria">PRESENZA PORTA SECONDARIA</label>
+          <select name="id_presenza_porta_secondaria" id="id_presenza_porta_secondaria">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_4_7">
+          <label for="id_presenza_sbraccio_scala">PRESENZA SBRACCIO SCALA</label>
+          <select name="id_presenza_sbraccio_scala" id="id_presenza_sbraccio_scala">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_4_8">
+          <label for="id_presenza_pianerottoli_rompitratta">PRESENZA PIANEROTTOLI ROMPITRATTA</label>
+          <select name="id_presenza_pianerottoli_rompitratta" id="id_presenza_pianerottoli_rompitratta">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+      </div>
     </div>
   </form>
   <script type="text/javascript">
@@ -395,94 +470,355 @@
         visibilityParent(node);
 
       }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_posizione_botola');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_posizione_botola');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_profondita_botola');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_profondita_botola');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_tipo_di_botola');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_tipo_di_botola');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_indirizzo_della_botola');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_indirizzo_della_botola');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_dimensioni_botola');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_dimensioni_botola');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_tipo_scala');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_tipo_scala');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_presenza_porta_secondaria');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_presenza_porta_secondaria');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_presenza_sbraccio_scala');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_presenza_sbraccio_scala');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let node = document.getElementById('id_presenza_pianerottoli_rompitratta');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('id_presenza_pianerottoli_rompitratta');
+        node.style.display = "none";
+
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+
+      }
     }
 
     function validation() {
       let result = [];
       let v_id_codice_cabina = document.getElementById('id_codice_cabina').value;
       if (v_id_codice_cabina === '') {
-        result.push("Il campo CODICE CABINA è obbligatorio! (Dati Generali)");
+        result.indexOf("Il campo CODICE CABINA è obbligatorio! (Dati Generali)") === -1 ? result.push("Il campo CODICE CABINA è obbligatorio! (Dati Generali)") : console.log("'Il campo CODICE CABINA è obbligatorio! (Dati Generali)' already exists");
       }
       let v_id_data = document.getElementById('id_data').value;
       if (v_id_data === '') {
-        result.push("Il campo DATA è obbligatorio! (Dati Generali)");
+        result.indexOf("Il campo DATA è obbligatorio! (Dati Generali)") === -1 ? result.push("Il campo DATA è obbligatorio! (Dati Generali)") : console.log("'Il campo DATA è obbligatorio! (Dati Generali)' already exists");
       }
       let v_id_nome_cognome = document.getElementById('id_nome_cognome').value;
       if (v_id_nome_cognome === '') {
-        result.push("Il campo NOME COGNOME è obbligatorio! (Dati Generali)");
+        result.indexOf("Il campo NOME COGNOME è obbligatorio! (Dati Generali)") === -1 ? result.push("Il campo NOME COGNOME è obbligatorio! (Dati Generali)") : console.log("'Il campo NOME COGNOME è obbligatorio! (Dati Generali)' already exists");
       }
       let v_id_tipologia_di_attivita = document.getElementById('id_tipologia_di_attivita').value;
       if (v_id_tipologia_di_attivita === '') {
-        result.push("Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio! (Cabine Secondarie)");
+        result.indexOf("Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio! (Cabine Secondarie)' already exists");
       }
       let v_id_codice_identificativo_cabina = document.getElementById('id_codice_identificativo_cabina').value;
       if (v_id_codice_identificativo_cabina === '') {
-        result.push("Il campo CODICE IDENTIFICATIVO DELLA CABINA è obbligatorio! (Cabine Secondarie)");
+        result.indexOf("Il campo CODICE IDENTIFICATIVO DELLA CABINA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo CODICE IDENTIFICATIVO DELLA CABINA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo CODICE IDENTIFICATIVO DELLA CABINA è obbligatorio! (Cabine Secondarie)' already exists");
       }
-      if (document.getElementById('id_botola').checked == 'false' && document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
         let v_id_dimensione_locale_cabina = document.getElementById('id_dimensione_locale_cabina').value;
         if (v_id_dimensione_locale_cabina === '') {
-          result.push("Il campo DIMENSIONE LOCALE CABINA è obbligatorio! (Cabine Secondarie)");
+          result.indexOf("Il campo DIMENSIONE LOCALE CABINA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo DIMENSIONE LOCALE CABINA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo DIMENSIONE LOCALE CABINA è obbligatorio! (Cabine Secondarie)' already exists");
         }
       }
       if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
         let v_id_livello_tensione = document.getElementById('id_livello_tensione').value;
         if (v_id_livello_tensione === '') {
-          result.push("Il campo LIVELLO TENSIONE (kV) è obbligatorio! (Cabine Secondarie)");
+          result.indexOf("Il campo LIVELLO TENSIONE (kV) è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo LIVELLO TENSIONE (kV) è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo LIVELLO TENSIONE (kV) è obbligatorio! (Cabine Secondarie)' already exists");
         }
       }
       if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
         let v_id_indirizzo = document.getElementById('id_indirizzo').value;
         if (v_id_indirizzo === '') {
-          result.push("Il campo INDIRIZZO è obbligatorio! (Cabine Secondarie)");
+          result.indexOf("Il campo INDIRIZZO è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo INDIRIZZO è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo INDIRIZZO è obbligatorio! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_botola = document.getElementById("id_botola").checked;
         if (v_id_botola === false) {
-          result.push("Il campo BOTOLA è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_chiave = document.getElementById("id_chiave").checked;
         if (v_id_chiave === false) {
-          result.push("Il campo CHIAVE è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_illuminazione_pubblica = document.getElementById("id_illuminazione_pubblica").checked;
         if (v_id_illuminazione_pubblica === false) {
-          result.push("Il campo ILLUMINAZIONE PUBBLICA è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_da_cortile = document.getElementById("id_da_cortile").checked;
         if (v_id_da_cortile === false) {
-          result.push("Il campo DA CORTILE è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_normale_int_fabbricato = document.getElementById("id_normale_int_fabbricato").checked;
         if (v_id_normale_int_fabbricato === false) {
-          result.push("Il campo NORMALE (DA INT. FABBRICATO) è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_passaggio_riservato = document.getElementById("id_passaggio_riservato").checked;
         if (v_id_passaggio_riservato === false) {
-          result.push("Il campo PASSAGGIO RISERVATO è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_stradale = document.getElementById("id_stradale").checked;
         if (v_id_stradale === false) {
-          result.push("Il campo STRADALE è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
         }
       }
-      if (document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') {
+      if ((document.getElementById('id_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('id_tipologia_di_attivita').value == 'CENSIMENTO') && (document.getElementById('id_botola').checked == false && document.getElementById('id_chiave').checked == false && document.getElementById('id_illuminazione_pubblica').checked == false && document.getElementById('id_da_cortile').checked == false && document.getElementById('id_normale_int_fabbricato').checked == false && document.getElementById('id_passaggio_riservato').checked == false && document.getElementById('id_stradale').checked == false && document.getElementById('id_botola_solo_materiali').checked == false)) {
         let v_id_botola_solo_materiali = document.getElementById("id_botola_solo_materiali").checked;
         if (v_id_botola_solo_materiali === false) {
-          result.push("Il campo BOTOLA SOLO PER MATERIALI è obbligatorio! (undefined)");
+          result.indexOf("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") === -1 ? result.push("Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)") : console.log("'Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_posizione_botola = document.getElementById('id_posizione_botola').value;
+        if (v_id_posizione_botola === '') {
+          result.indexOf("Il campo POSIZIONE BOTOLA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo POSIZIONE BOTOLA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo POSIZIONE BOTOLA è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_profondita_botola = document.getElementById('id_profondita_botola').value;
+        if (v_id_profondita_botola === '') {
+          result.indexOf("Il campo PROFONDITA' BOTOLA (metri) è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo PROFONDITA' BOTOLA (metri) è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo PROFONDITA' BOTOLA (metri) è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_tipo_di_botola = document.getElementById('id_tipo_di_botola').value;
+        if (v_id_tipo_di_botola === '') {
+          result.indexOf("Il campo TIPO DI BOTOLA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo TIPO DI BOTOLA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo TIPO DI BOTOLA è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_indirizzo_della_botola = document.getElementById('id_indirizzo_della_botola').value;
+        if (v_id_indirizzo_della_botola === '') {
+          result.indexOf("Il campo INDIRIZZO DELLA BOTOLA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo INDIRIZZO DELLA BOTOLA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo INDIRIZZO DELLA BOTOLA è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_dimensioni_botola = document.getElementById('id_dimensioni_botola').value;
+        if (v_id_dimensioni_botola === '') {
+          result.indexOf("Il campo DIMENSIONI BOTOLA (axb) (centimetri) è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo DIMENSIONI BOTOLA (axb) (centimetri) è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo DIMENSIONI BOTOLA (axb) (centimetri) è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_tipo_scala = document.getElementById('id_tipo_scala').value;
+        if (v_id_tipo_scala === '') {
+          result.indexOf("Il campo TIPO DI SCALA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo TIPO DI SCALA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo TIPO DI SCALA è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_presenza_porta_secondaria = document.getElementById('id_presenza_porta_secondaria').value;
+        if (v_id_presenza_porta_secondaria === '') {
+          result.indexOf("Il campo PRESENZA PORTA SECONDARIA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo PRESENZA PORTA SECONDARIA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo PRESENZA PORTA SECONDARIA è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_presenza_sbraccio_scala = document.getElementById('id_presenza_sbraccio_scala').value;
+        if (v_id_presenza_sbraccio_scala === '') {
+          result.indexOf("Il campo PRESENZA SBRACCIO SCALA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo PRESENZA SBRACCIO SCALA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo PRESENZA SBRACCIO SCALA è obbligatorio! (Cabine Secondarie)' already exists");
+        }
+      }
+      if (document.getElementById('id_botola').checked == true) {
+        let v_id_presenza_pianerottoli_rompitratta = document.getElementById('id_presenza_pianerottoli_rompitratta').value;
+        if (v_id_presenza_pianerottoli_rompitratta === '') {
+          result.indexOf("Il campo PRESENZA PIANEROTTOLI ROMPITRATTA è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo PRESENZA PIANEROTTOLI ROMPITRATTA è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo PRESENZA PIANEROTTOLI ROMPITRATTA è obbligatorio! (Cabine Secondarie)' already exists");
         }
       }
       return result;

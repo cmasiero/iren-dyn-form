@@ -27,8 +27,11 @@
             "value": "Cabine Secondarie"
         },
         "reusableRule" : [
-            {"rule": "mandatory if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO' || id_tipologia_di_attivita == 'OPERE EDILI'", 
-                "name": "rule_tipo_accesso"},
+            {
+                "name": "rule_tipo_accesso",
+                "rule": "mandatory if ( id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO' ) && ( id_botola == false && id_chiave == false && id_illuminazione_pubblica == false && id_da_cortile == false && id_normale_int_fabbricato == false && id_passaggio_riservato  == false && id_stradale  == false && id_botola_solo_materiali == false )#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO' || id_tipologia_di_attivita == 'OPERE EDILI'",
+                "valMessage": "Tipo accesso è obbligatorio, selezionare almeno un valore! (Cabine Secondarie)"
+            },
             {"rule": "mandatory", "name": "rule_test"}
         ],
         "row_00":
@@ -45,7 +48,6 @@
         ],
         "row_01":
         [
-            
             {"type": "text", "id": "id_codice_identificativo_cabina", "label": "CODICE IDENTIFICATIVO DELLA CABINA", "rule": "mandatory"},
             {"type": "text", "id": "id_dimensione_locale_cabina", "label": "DIMENSIONE LOCALE CABINA", 
                 "rule": "mandatory if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO'#visible if id_tipologia_di_attivita == 'MESSA IN SERVIZIO' || id_tipologia_di_attivita == 'CENSIMENTO' || id_tipologia_di_attivita == 'OPERE EDILI'"},
@@ -76,6 +78,67 @@
                     {"type": "checkbox", "id": "id_botola_solo_materiali", "label": "BOTOLA SOLO PER MATERIALI", "rule": "rule_tipo_accesso"}
                 ]
             }
+        ],
+        "row_04": [
+            {"type": "select", "id": "id_posizione_botola", "label": "POSIZIONE BOTOLA", "rule": "mandatory if id_botola == true#visible if id_botola == true",
+                "option": [
+                    {"value":"", "label":""},
+                    {"value":"FRONTE PASSO CARRAIO", "label":"fronte passo carraio"},
+                    {"value":"FRONTE ATTIVITA COMMERCIALI", "label":"fronte attivita' commerciali"},
+                    {"value":"SU MARCIAPIEDE", "label":"su marciapiede"},
+                    {"value":"SU STRADA", "label":"su strada"},
+                    {"value":"SU AREA VERDE", "label":"su area verde"}
+                ]
+            },
+            {"type": "text", "id": "id_profondita_botola", "label": "PROFONDITA' BOTOLA (metri)", "rule": "mandatory if id_botola == true#visible if id_botola == true"},
+            {"type": "select", "id": "id_tipo_di_botola", "label": "TIPO DI BOTOLA", "rule": "mandatory if id_botola == true#visible if id_botola == true",
+                "option": [
+                    {"value":"", "label":""},
+                    {"value":"BOTOLA TIPO 6.3 KV (2 BATTENTI CON RIPARO)", "label":"Botola tipo 6,3 kV (2 battenti con riparo)"},
+                    {"value":"BOTOLA TIPO 6.3 KV (2 BATTENTI SENZA RIPARO)", "label":"Botola tipo 6,3 kV (2 battenti senza riparo)"},
+                    {"value":"BOTOLA TIPO 6.3 KV (3 BATTENTI)", "label":"Botola tipo 6,3 kV (3 battenti)"},
+                    {"value":"BOTOLA TIPO 6.3 KV (3 BATTENTI CARRABILE)", "label":"Botola tipo 6,3 kV (3 battenti carrabile)"},
+                    {"value":"BOTOLA TIPO 22 KV (EDTO 2 BATTENTI)", "label":"Botola tipo 22 kV (EDTO 2 battenti)"},
+                    {"value":"BOTOLA TIPO 22 KV(2 BATTENTI)", "label":"Botola tipo 22 kV(2 battenti)"},
+                    {"value":"BOTOLA TIPO 22 KV (2 BATTENTI AREATA)", "label":"Botola tipo 22 kV (2 battenti areata)"},
+                    {"value":"BOTOLA TIPO 22 KV (3 BATTENTI AREATA)", "label":"Botola tipo 22 kV (3 battenti areata)"},
+                    {"value":"BOTOLA TIPO 22 KV (3 BATTENTI CARRABILE)", "label":"Botola tipo 22 kV (3 battenti carrabile)"},
+                    {"value":"GENERICA PARMA", "label":"Generica Parma"}
+                ]
+            },
+            {"type": "text", "id": "id_indirizzo_della_botola", "label": "INDIRIZZO DELLA BOTOLA", "rule": "mandatory if id_botola == true#visible if id_botola == true"},
+            {"type": "text", "id": "id_dimensioni_botola", "label": "DIMENSIONI BOTOLA (axb) (centimetri)", "rule": "mandatory if id_botola == true#visible if id_botola == true"},
+            {"type": "select", "id": "id_tipo_scala", "label": "TIPO DI SCALA", "rule": "mandatory if id_botola == true#visible if id_botola == true",
+                "option": [
+                    {"value":"", "label":""},
+                    {"value":"A PIOLI VERTICALE", "label":"a pioli verticale"},
+                    {"value":"A PIOLI VERTICALE CON GABBIA", "label":"a pioli verticale con gabbia"},
+                    {"value":"A PIOLI INCLINATA", "label":"a pioli inclinata"},
+                    {"value":"A GRADINI", "label":"a gradini"}
+                ]
+            },
+            {"type": "select", "id": "id_presenza_porta_secondaria", "label": "PRESENZA PORTA SECONDARIA", "rule": "mandatory if id_botola == true#visible if id_botola == true",
+                "option": [
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "id_presenza_sbraccio_scala", "label": "PRESENZA SBRACCIO SCALA", "rule": "mandatory if id_botola == true#visible if id_botola == true",
+                "option": [
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "id_presenza_pianerottoli_rompitratta", "label": "PRESENZA PIANEROTTOLI ROMPITRATTA", "rule": "mandatory if id_botola == true#visible if id_botola == true",
+                "option": [
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
+            
         ]
     }
 }
