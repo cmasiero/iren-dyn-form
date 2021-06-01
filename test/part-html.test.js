@@ -1,12 +1,13 @@
 "use strict"
 
 const pretty = require('pretty');
-const { RadioHtml, SelectHtml } = require('../lib/part-html');
+const { buildHtmlPart } = require('../lib/part-html');
 
 test('test RadiotHtml component.', () => {
 
     let objParam = {
         id : "gender",
+        type : "radio",
         option : [
             { "value": "male", "label": "description male" },
             { "value": "female", "label": "description female" },
@@ -14,8 +15,7 @@ test('test RadiotHtml component.', () => {
         ]
     }
 
-    let radio = new RadioHtml(objParam);
-    // console.log(pretty(radio.buildPart()));
+    let radio = buildHtmlPart(objParam);
 
     let expected = `
     <input type="radio" id="male" name="gender" value="male">
@@ -35,6 +35,7 @@ test('test SelectHtml component.', () => {
 
     let objParam = {
         id : "id_val",
+        type : "select",
         label: "Choose something",
         option: [
             { "value": "volvo", "label": "description volvo" },
@@ -42,7 +43,7 @@ test('test SelectHtml component.', () => {
             { "value": "fiat", "label": "description fiat" }
         ]
     }
-    let select = new SelectHtml(objParam);
+    let select = buildHtmlPart(objParam);
     // console.log(pretty(select.buildPart()));
 
     let expected = `

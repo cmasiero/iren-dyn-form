@@ -32,7 +32,10 @@ test('test MandatoryRule class.', () => {
 
     let expected = `if ( document.getElementById('id01').value == document.getElementById('id02').value && ( document.getElementById('id03').value != 'valueStatic' ) ){
                     let v_00_id = document.getElementById('00_id').value;
-                    if (v_00_id === ''){ result.push("Il campo è obbligatorio!"); }
+                    if (v_00_id === ''){
+                    document.getElementById('00_id').parentElement.style.border = '1px solid red';
+                    result.indexOf("Il campo è obbligatorio! (undefined)") === -1 ? result.push("Il campo è obbligatorio! (undefined)") : console.log("'Il campo è obbligatorio! (undefined)' already exists");       
+                    }
                     }
                    `;
 
@@ -58,28 +61,31 @@ test('test VisibleRule class.', () => {
         
     let scriptResult = resultScript.scriptRule(partHtml,"visible");
     
-    console.log(pretty(scriptResult));
+    // console.log(pretty(scriptResult));
 
-    let expected = `if ( document.getElementById('02_id').value == 'hard_coded' ){
-                    let node = document.getElementById('01_id');
-                    node.style.display = "inline";
-                    if (node.previousElementSibling !== null){
-                    node.previousElementSibling.style.display = "inline";
-                    } else {
-                    node.nextElementSibling.style.display = "inline";
-                    }
-                    visibilityParent(node);
-                    } else {
-                    let node = document.getElementById('01_id');
-                    node.style.display = "none";
-                    if (node.previousElementSibling !== null){
-                        node.previousElementSibling.style.display = "none";
-                    } else {
-                        node.nextElementSibling.style.display = "none";
-                    }
-                    visibilityParent(node);
-                    }
-                   `;
+    let expected = `
+    if ( document.getElementById('02_id').value == 'hard_coded' ){
+        let node = document.getElementById('01_id');
+        node.style.display = \"inline\";
+        if (node.previousElementSibling !== null) {
+        node.previousElementSibling.style.display = \"inline\";
+        }
+        if (node.nextElementSibling !== null) {
+        node.nextElementSibling.style.display = \"inline\";
+        }
+        visibilityParent(node);
+        } else {
+        let node = document.getElementById('01_id');
+        node.style.display = \"none\";
+        if (node.previousElementSibling !== null) {
+        node.previousElementSibling.style.display = \"none\";
+        }
+        if (node.nextElementSibling !== null) {
+        node.nextElementSibling.style.display = \"none\";
+        }
+        visibilityParent(node);
+        }
+    `;
 
     expect(pretty(scriptResult)).toBe(pretty(expected));
     
@@ -105,27 +111,31 @@ test('test scriptRule method visible.', () => {
     let scriptResult = resultScript.scriptRule(partHtml,"visible");
     
     // console.log(pretty(scriptResult));
+    // console.log(scriptResult);
 
-    let expected = `if ( document.getElementById('02_id').value == 'hard coded' ){
-                    let node = document.getElementById('01_id');
-                    node.style.display = "inline";
-                    if (node.previousElementSibling !== null){
-                    node.previousElementSibling.style.display = "inline";
-                    } else {
-                    node.nextElementSibling.style.display = "inline";
-                    }
-                    visibilityParent(node);
-                    } else {
-                    let node = document.getElementById('01_id');
-                    node.style.display = "none";
-                    if (node.previousElementSibling !== null){
-                    node.previousElementSibling.style.display = "none";
-                    } else {
-                    node.nextElementSibling.style.display = "none";
-                    }
-                    visibilityParent(node);
-                    }
-                   `;
+    let expected = `
+    if ( document.getElementById('02_id').value == 'hard coded' ){
+        let node = document.getElementById('01_id');
+        node.style.display = \"inline\";
+        if (node.previousElementSibling !== null) {
+            node.previousElementSibling.style.display = \"inline\";
+        }
+        if (node.nextElementSibling !== null) {
+            node.nextElementSibling.style.display = \"inline\";
+        }
+        visibilityParent(node);
+    } else {
+        let node = document.getElementById('01_id');
+        node.style.display = \"none\";
+        if (node.previousElementSibling !== null) {
+            node.previousElementSibling.style.display = \"none\";
+        }
+        if (node.nextElementSibling !== null) {
+            node.nextElementSibling.style.display = \"none\";
+        }
+        visibilityParent(node);
+    }
+    `;
 
     expect(pretty(scriptResult)).toBe(pretty(expected));
     

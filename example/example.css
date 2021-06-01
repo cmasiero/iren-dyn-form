@@ -85,7 +85,7 @@ form {
     background-color: white;
 }
 .div-table-col {
-    float: left; /* fix for  buggy browsers */
+    float: left;  /* fix for  buggy browsers */
     display: table-column;         
     width: auto;         
     margin: 3px;
@@ -93,7 +93,6 @@ form {
     border-radius: 10px;
     border: 1px solid  lightblue;
     padding: 20px;
-
 }
 .div-table-col-desc {
     font-weight: bold;

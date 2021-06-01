@@ -8,13 +8,11 @@ const {
     TableHtml,
     RowHtml,
     ColHtml,
-    StrongText,
-    TextHtml,
-    RadioHtml,
-    SelectHtml,
-    CheckboxHtml,
     getHtmlWithRule,
-    generatedManager
+    getHtmlWithPattern,
+    getHtmlClientInit,
+    generatedManager,
+    buildHtmlPart
 } = require('../lib/part-html');
 
 const { 
@@ -24,10 +22,12 @@ const {
     HeadVisibility,
     TailVisibility,
     VisibilityParent,
+    HeadInit,
+    TailInit,
     resultScript
 } = require('../lib/part-script');
 
-const { reusableRuleManager } = require('../lib/rule');
+const { reusableRuleDao, reusablePatternDao } = require('../lib/reusable-dao');
 
 
 const specialKey = ["config"];
@@ -42,7 +42,7 @@ exports.execute = (jsonObj, htmlTemplate) => {
 
     let dom = new JSDOM(htmlTemplate);
 
-    // reusableRuleManager.initialize(jsonObj);
+    // reusableRuleDao.initialize(jsonObj);
 
     /* Configuration area */
     insertConfigPart(jsonObj, dom);
@@ -51,6 +51,9 @@ exports.execute = (jsonObj, htmlTemplate) => {
 
     /* Html area */
     insertHtmlPart(jsonObj, dom);
+
+    /* Init area */
+    insertDocReady(dom)
 
     /* Visibility script area */
     insertScriptVisible(dom);
@@ -123,31 +126,8 @@ let insertMenuPart = (dom) => {
  */
 let insertHtmlPart = (jsonObj, dom) => {
 
-    let htmlPart = (currentCol, colEl) => {
 
-        if (colEl.type === "description") {
-            let strongText = new StrongText(colEl);
-            currentCol.insertAdjacentHTML("beforeend", strongText.buildPart());
-        } else if (colEl.type === "text") {
-            let textHtml = new TextHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", textHtml.buildPart());
-        } else if (colEl.type === "checkbox") {
-            let checkboxHtml = new CheckboxHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", checkboxHtml.buildPart());
-        } else if (colEl.type === "radio") {
-            let radioHtml = new RadioHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", radioHtml.buildPart());
-        } else if (colEl.type === "select") {
-            let selectHtml = new SelectHtml(colEl);
-            currentCol.insertAdjacentHTML("beforeend", selectHtml.buildPart());
-        }
-
-    };
-
-    // /* Html area */
-    // let tagBody = dom.window.document.getElementsByTagName("body");
-    // tagBody[0].insertAdjacentHTML("afterend", "<form>");
-
+    /* Html area */
     let formElements = dom.window.document.getElementsByTagName("form");
     let formElement = formElements[0];
     let keyNames = Object.keys(jsonObj);
@@ -170,9 +150,10 @@ let insertHtmlPart = (jsonObj, dom) => {
                 formElement.insertAdjacentHTML("beforeend", titleHtml.buildPart());
             }
             else if (key === "reusableRule"){
-                // console.log(jsonObj[idTable][key]);
-                reusableRuleManager.add(jsonObj[idTable][key]);
-                // console.log(reusableRuleManager.get());
+                reusableRuleDao.add(jsonObj[idTable][key]);
+            }
+            else if (key === "reusablePattern"){
+                reusablePatternDao.add(jsonObj[idTable][key]);
             } 
             else {
                 /* Otherwise are rows */
@@ -200,13 +181,17 @@ let insertHtmlPart = (jsonObj, dom) => {
                     const currentCol = dom.window.document.getElementById(idCol);
 
                     if (colEl.group !== undefined) {
-                        colEl.group.forEach(elGruop => {
-                            colEl.title = titleStrTmp;
-                            htmlPart(currentCol, elGruop);
+                        colEl.group.forEach(elGroup => {
+                            elGroup.title = titleStrTmp;
+                            // htmlPart(currentCol, elGroup);
+                            let htmlPart = buildHtmlPart(elGroup);
+                            currentCol.insertAdjacentHTML("beforeend", htmlPart.buildPart());
                         })
                     } else {
                         colEl.title = titleStrTmp;
-                        htmlPart(currentCol, colEl);
+                        //htmlPart(currentCol, colEl);
+                        let htmlPart = buildHtmlPart(colEl);
+                        currentCol.insertAdjacentHTML("beforeend", htmlPart.buildPart());
                     }
 
                 })
@@ -219,12 +204,7 @@ let insertHtmlPart = (jsonObj, dom) => {
 
 }
 
-/**
- * ScriptPart are inside <script> tags in html page.
- * @param {*} dom 
- */
-let insertScriptVisible = (dom) => {
-
+let insertDocReady = (dom) => {
     /* insert script tag inside head tag */
     let tagForm = dom.window.document.getElementsByTagName("form");
     let scriptStr = `<script type="text/javascript"></script>`;
@@ -233,9 +213,25 @@ let insertScriptVisible = (dom) => {
     let tagScript = dom.window.document.getElementsByTagName("script");
     tagScript[0].insertAdjacentHTML("beforeend", new DocReady().buildPart());
 
+    let initContent = new HeadInit().buildPart();
+    getHtmlClientInit().forEach(partHtml => {
+        let tmp = resultScript.scriptInit(partHtml);
+        initContent = initContent.concat(tmp);
+    });
+    initContent = initContent.concat(new TailInit().buildPart());
+    tagScript[0].insertAdjacentHTML("beforeend", initContent);
+    
+}
 
+
+/**
+ * ScriptPart are inside <script> tags in html page.
+ * @param {*} dom 
+ */
+let insertScriptVisible = (dom) => {
+
+    let tagScript = dom.window.document.getElementsByTagName("script");
     tagScript[0].insertAdjacentHTML("beforeend", new VisibilityParent().buildPart());
-
 
     // output is visibility method implementation.
     tagScript[0].insertAdjacentHTML("beforeend", new HeadVisibility().buildPart());
@@ -269,9 +265,16 @@ let insertScriptMandatory = (dom) => {
     
     getHtmlWithRule().forEach(partHtml => {
 
+        // console.log(partHtml);
         let mandatoryScriptTmp = resultScript.scriptRule(partHtml, "mandatory");
         mandatoryScript = mandatoryScript.concat(mandatoryScriptTmp);
 
+    });
+
+    getHtmlWithPattern().forEach(partHtml => {
+        let patternScriptTmp = resultScript.scriptPattern(partHtml);
+        mandatoryScript = mandatoryScript.concat(patternScriptTmp);
+        // console.log(tmp);
     });
 
     mandatoryScript = mandatoryScript.concat(new TailValidation().buildPart());
@@ -303,8 +306,6 @@ let insertScriptHideShowTable = (dom) => {
 
 }
 
-
-
 let insertScriptMenu = (dom) => {
     
     let scriptMenu = `
@@ -330,6 +331,13 @@ let insertScriptMenu = (dom) => {
     
     let scriptSend = `
                      document.getElementById("buttonSend").addEventListener("click", () => {
+
+                        // Reset all border cols to default color.
+                        let elCol = document.getElementsByClassName('div-table-col');
+                        for (var i = 0; i < elCol.length; i++) {
+                            elCol[i].style.border = config.css_default_border_col;
+                        }
+
                         let arrayMessage = validation();
                         let message = ""
                         arrayMessage.forEach(msg => {
@@ -341,11 +349,24 @@ let insertScriptMenu = (dom) => {
                      });
                      `;
     
+    let scriptClean =   `
+                        document.getElementById("buttonClear").addEventListener("click", () => {
+                            if (confirm('Ripristino, cancella tutti i campi! Sei sicuro?')) {
+                                document.forms[0].reset();
+                                initialize();
+                                visibility();
+                            } else {
+                                alert ('Nessuna azione eseguita!');
+                            }
+                           
+                        });
+                        `;
     
 
     let tagScript = dom.window.document.getElementsByTagName("script");
     tagScript[0].insertAdjacentHTML("beforeend", scriptMenu);
     tagScript[0].insertAdjacentHTML("beforeend", scriptSend);
+    tagScript[0].insertAdjacentHTML("beforeend", scriptClean);
 
 }
 
