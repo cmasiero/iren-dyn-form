@@ -284,5 +284,21 @@
             {"type": "textarea", "rows": "2", "cols": "40", "id": "cs_note", "label": "NOTE"},
             {"type": "text", "id": "cs_foto", "label": "FOTO - da fare!"}
         ]
+    },
+    "02": {
+        "title":{
+            "value": "Scomparti"
+        },
+        "row_00": [
+            {"type": "select", "id": "sc_tipologia_di_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"NUOVA POSA", "label":"nuova posa"},
+                    {"value":"SOSTITUZIONE", "label":"sostituzione"},
+                    {"value":"RECUPERO", "label":"recupero"},
+                    {"value":"CENSIMENTO", "label":"censimento"}
+                ]
+            }
+        ]
     }
 }

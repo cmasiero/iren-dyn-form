@@ -332,6 +332,124 @@
         </div>
       </div>
     </div>
+    <div class="table-title" id="id_title_02">
+      Scomparti
+    </div>
+    <div class="div-table" id="02">
+      <div class="div-table-row" id="id_row_8">
+        <div class="div-table-col" id="id_col_8_0">
+          <label for="sc_tipologia_di_attivita">TIPOLOGIA DI ATTIVITA'</label>
+          <select name="sc_tipologia_di_attivita" id="sc_tipologia_di_attivita">
+            <option value=""></option>
+            <option value="NUOVA POSA">nuova posa</option>
+            <option value="SOSTITUZIONE">sostituzione</option>
+            <option value="RECUPERO">recupero</option>
+            <option value="CENSIMENTO">censimento</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_9">
+        <div class="div-table-col" id="id_col_9_0">
+          <label for="sc_codice_dello_scomparto_rimosso">CODICE DELLO SCOMPARTO RIMOSSO</label>
+          <input type="text" id="sc_codice_dello_scomparto_rimosso" value="">
+        </div>
+        <div class="div-table-col" id="id_col_9_1">
+          <label for="sc_stato_dello_scomparto_rimosso">STATO DELLO SCOMPARTO RIMOSSO</label>
+          <select name="sc_stato_dello_scomparto_rimosso" id="sc_stato_dello_scomparto_rimosso">
+            <option value=""></option>
+            <option value="RIENTRATO A MAGAZZINO">rientrato a magazzino</option>
+            <option value="DA ROTTAMARE">da rottamare</option>
+            <option value="IN ATTESA DI REVISIONE">in attesa di revisione</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_10">
+        <div class="div-table-col" id="id_col_10_0">
+          <label for="sc_nuova_apparecchiatura_presenta_etichetta_rossa">LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA</label>
+          <select name="sc_nuova_apparecchiatura_presenta_etichetta_rossa" id="sc_nuova_apparecchiatura_presenta_etichetta_rossa">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_10_1">
+          <label for="sc_tipologia_nuovo_scomparto_installato">TIPOLOGIA NUOVO SCOMPARTO INSTALLATO</label>
+          <select name="sc_tipologia_nuovo_scomparto_installato" id="sc_tipologia_nuovo_scomparto_installato">
+            <option value=""></option>
+            <option value="LINEA">linea</option>
+            <option value="PROTEZIONE TRASFORMATORE">protezione trasformatore</option>
+            <option value="CONGIUNTORE">congiuntore</option>
+            <option value="RISALITA">risalita</option>
+            <option value="UTENTE">utente</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_10_2">
+          <label for="sc_produttore_marca">PRODUTTORE (MARCA)</label>
+          <input type="text" id="sc_produttore_marca" value="">
+        </div>
+        <div class="div-table-col" id="id_col_10_3">
+          <label for="sc_definizione_tipo_modello">DEFINIZIONE TIPO (MODELLO)</label>
+          <input type="text" id="sc_definizione_tipo_modello" value="">
+        </div>
+        <div class="div-table-col" id="id_col_10_4">
+          <label for="sc_numero_serie_definito_produttore_matricola">NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)</label>
+          <input type="text" id="sc_numero_serie_definito_produttore_matricola" value="">
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_11">
+        <div class="div-table-col" id="id_col_11_0">
+          <label for="sc_anno_mese_costruzione">ANNO E MESE DI COSTRUZIONE (aaaa/mm)</label>
+          <input type="text" size="7" maxlength="7" id="sc_anno_mese_costruzione" value="">
+        </div>
+        <div class="div-table-col" id="id_col_11_1">
+          <label for="sc_tipo_automazione">TIPO DI AUTOMAZIONE</label>
+          <select name="sc_tipo_automazione" id="sc_tipo_automazione">
+            <option value=""></option>
+            <option value="ASSENTE">assente</option>
+            <option value="MOTORIZZATO">motorizzato</option>
+            <option value="ICS SMART">ics smart</option>
+            <option value="MOTORIZZATO CON KIT ESTERNO">motorizzato con kit esterno</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_11_2">
+          <label for="sc_tipo_isolamento">TIPO DI ISOLAMENTO</label>
+          <select name="sc_tipo_isolamento" id="sc_tipo_isolamento">
+            <option value=""></option>
+            <option value="ARIA-ARIA">aria/aria</option>
+            <option value="ARIA-GAS">aria/gas</option>
+            <option value="GAS-GAS">gas/gas</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_11_3">
+          <label for="sc_blocchi_sicurezza">BLOCCHI DI SICUREZZA</label>
+          <select name="sc_blocchi_sicurezza" id="sc_blocchi_sicurezza">
+            <option value=""></option>
+            <option value="INTERBLOCCO IMS-ST">interblocco ims-st</option>
+            <option value="INTERBLOCCHI A CHIAVE">interblocchi a chiave</option>
+            <option value="INTERBLOCCHI ASSENTI">interblocchi assenti</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_11_4">
+          <label for="sc_tipo_comando">TIPO DI COMANDO</label>
+          <select name="sc_tipo_comando" id="sc_tipo_comando">
+            <option value=""></option>
+            <option value="COMANDO A LEVA DIRETTO">comando a leva diretto</option>
+            <option value="COMANDO A LEVA RINVIATO">comando a leva rinviato</option>
+            <option value="FIORETTO">fioretto</option>
+            <option value="COMANDO A DISTANZA">comando a distanza</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_11_5">
+          <label for="sc_tipo_terminali">TIPO DI TERMINALI</label>
+          <select name="sc_tipo_terminali" id="sc_tipo_terminali">
+            <option value=""></option>
+            <option value="NORMALE">normale</option>
+            <option value="CONNESSIONI_TIPO">connessioni tipo</option>
+            <option value="SPINA">spina</option>
+          </select>
+        </div>
+      </div>
+    </div>
   </form>
   <script type="text/javascript">
     let config = {
@@ -1177,6 +1295,258 @@
         }
         visibilityParent(node);
       }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'RECUPERO') {
+        let node = document.getElementById('sc_codice_dello_scomparto_rimosso');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_codice_dello_scomparto_rimosso');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'RECUPERO') {
+        let node = document.getElementById('sc_stato_dello_scomparto_rimosso');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_stato_dello_scomparto_rimosso');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_tipologia_nuovo_scomparto_installato');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_tipologia_nuovo_scomparto_installato');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_produttore_marca');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_produttore_marca');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_definizione_tipo_modello');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_definizione_tipo_modello');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_numero_serie_definito_produttore_matricola');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_numero_serie_definito_produttore_matricola');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' || document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_anno_mese_costruzione');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_anno_mese_costruzione');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' || document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_tipo_automazione');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_tipo_automazione');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' || document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_tipo_isolamento');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_tipo_isolamento');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' || document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_blocchi_sicurezza');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_blocchi_sicurezza');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' || document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let node = document.getElementById('sc_tipo_comando');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('sc_tipo_comando');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
     }
 
     function validation() {
@@ -1460,6 +1830,101 @@
           result.indexOf("Il campo DATA DI CESSAZIONE è obbligatorio! (Cabine Secondarie)") === -1 ? result.push("Il campo DATA DI CESSAZIONE è obbligatorio! (Cabine Secondarie)") : console.log("'Il campo DATA DI CESSAZIONE è obbligatorio! (Cabine Secondarie)' already exists");
         }
       }
+      let v_sc_tipologia_di_attivita = document.getElementById('sc_tipologia_di_attivita').value;
+      if (v_sc_tipologia_di_attivita === '') {
+        document.getElementById('sc_tipologia_di_attivita').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio! (Scomparti)") : console.log("'Il campo TIPOLOGIA DI ATTIVITA' è obbligatorio! (Scomparti)' already exists");
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'RECUPERO') {
+        let v_sc_codice_dello_scomparto_rimosso = document.getElementById('sc_codice_dello_scomparto_rimosso').value;
+        if (v_sc_codice_dello_scomparto_rimosso === '') {
+          document.getElementById('sc_codice_dello_scomparto_rimosso').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo CODICE DELLO SCOMPARTO RIMOSSO è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo CODICE DELLO SCOMPARTO RIMOSSO è obbligatorio! (Scomparti)") : console.log("'Il campo CODICE DELLO SCOMPARTO RIMOSSO è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'RECUPERO') {
+        let v_sc_stato_dello_scomparto_rimosso = document.getElementById('sc_stato_dello_scomparto_rimosso').value;
+        if (v_sc_stato_dello_scomparto_rimosso === '') {
+          document.getElementById('sc_stato_dello_scomparto_rimosso').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo STATO DELLO SCOMPARTO RIMOSSO è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo STATO DELLO SCOMPARTO RIMOSSO è obbligatorio! (Scomparti)") : console.log("'Il campo STATO DELLO SCOMPARTO RIMOSSO è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let v_sc_nuova_apparecchiatura_presenta_etichetta_rossa = document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value;
+        if (v_sc_nuova_apparecchiatura_presenta_etichetta_rossa === '') {
+          document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA è obbligatorio! (Scomparti)") : console.log("'Il campo LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let v_sc_tipologia_nuovo_scomparto_installato = document.getElementById('sc_tipologia_nuovo_scomparto_installato').value;
+        if (v_sc_tipologia_nuovo_scomparto_installato === '') {
+          document.getElementById('sc_tipologia_nuovo_scomparto_installato').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPOLOGIA NUOVO SCOMPARTO INSTALLATO è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo TIPOLOGIA NUOVO SCOMPARTO INSTALLATO è obbligatorio! (Scomparti)") : console.log("'Il campo TIPOLOGIA NUOVO SCOMPARTO INSTALLATO è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let v_sc_produttore_marca = document.getElementById('sc_produttore_marca').value;
+        if (v_sc_produttore_marca === '') {
+          document.getElementById('sc_produttore_marca').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo PRODUTTORE (MARCA) è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo PRODUTTORE (MARCA) è obbligatorio! (Scomparti)") : console.log("'Il campo PRODUTTORE (MARCA) è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let v_sc_definizione_tipo_modello = document.getElementById('sc_definizione_tipo_modello').value;
+        if (v_sc_definizione_tipo_modello === '') {
+          document.getElementById('sc_definizione_tipo_modello').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo DEFINIZIONE TIPO (MODELLO) è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo DEFINIZIONE TIPO (MODELLO) è obbligatorio! (Scomparti)") : console.log("'Il campo DEFINIZIONE TIPO (MODELLO) è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA') {
+        let v_sc_numero_serie_definito_produttore_matricola = document.getElementById('sc_numero_serie_definito_produttore_matricola').value;
+        if (v_sc_numero_serie_definito_produttore_matricola === '') {
+          document.getElementById('sc_numero_serie_definito_produttore_matricola').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA) è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA) è obbligatorio! (Scomparti)") : console.log("'Il campo NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA) è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+        let v_sc_anno_mese_costruzione = document.getElementById('sc_anno_mese_costruzione').value;
+        if (v_sc_anno_mese_costruzione === '') {
+          document.getElementById('sc_anno_mese_costruzione').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo ANNO E MESE DI COSTRUZIONE (aaaa/mm) è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo ANNO E MESE DI COSTRUZIONE (aaaa/mm) è obbligatorio! (Scomparti)") : console.log("'Il campo ANNO E MESE DI COSTRUZIONE (aaaa/mm) è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+        let v_sc_tipo_automazione = document.getElementById('sc_tipo_automazione').value;
+        if (v_sc_tipo_automazione === '') {
+          document.getElementById('sc_tipo_automazione').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO DI AUTOMAZIONE è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo TIPO DI AUTOMAZIONE è obbligatorio! (Scomparti)") : console.log("'Il campo TIPO DI AUTOMAZIONE è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+        let v_sc_tipo_isolamento = document.getElementById('sc_tipo_isolamento').value;
+        if (v_sc_tipo_isolamento === '') {
+          document.getElementById('sc_tipo_isolamento').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO DI ISOLAMENTO è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo TIPO DI ISOLAMENTO è obbligatorio! (Scomparti)") : console.log("'Il campo TIPO DI ISOLAMENTO è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+        let v_sc_blocchi_sicurezza = document.getElementById('sc_blocchi_sicurezza').value;
+        if (v_sc_blocchi_sicurezza === '') {
+          document.getElementById('sc_blocchi_sicurezza').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo BLOCCHI DI SICUREZZA è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo BLOCCHI DI SICUREZZA è obbligatorio! (Scomparti)") : console.log("'Il campo BLOCCHI DI SICUREZZA è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+        let v_sc_tipo_comando = document.getElementById('sc_tipo_comando').value;
+        if (v_sc_tipo_comando === '') {
+          document.getElementById('sc_tipo_comando').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO DI COMANDO è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo TIPO DI COMANDO è obbligatorio! (Scomparti)") : console.log("'Il campo TIPO DI COMANDO è obbligatorio! (Scomparti)' already exists");
+        }
+      }
+      let v_sc_tipo_terminali = document.getElementById('sc_tipo_terminali').value;
+      if (v_sc_tipo_terminali === '') {
+        document.getElementById('sc_tipo_terminali').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo TIPO DI TERMINALI è obbligatorio! (Scomparti)") === -1 ? result.push("Il campo TIPO DI TERMINALI è obbligatorio! (Scomparti)") : console.log("'Il campo TIPO DI TERMINALI è obbligatorio! (Scomparti)' already exists");
+      }
+
       // Pattern mandatory for dg_codice_attivita_ofsc
       let vPat_dg_codice_attivita_ofsc = document.getElementById('dg_codice_attivita_ofsc').value;
       if (vPat_dg_codice_attivita_ofsc.trim() !== '' && vPat_dg_codice_attivita_ofsc.match(/^[0-9]{1,7}$/) === null) {
@@ -1508,6 +1973,13 @@
         document.getElementById('cs_dimensioni_botola_b').parentElement.style.border = '1px solid red';
         result.push("DIMENSIONI BOTOLA 'b' deve essere di al massimo 2 caratteri numerici! (Cabine Secondarie)");
       };
+
+      // Pattern mandatory for sc_anno_mese_costruzione
+      let vPat_sc_anno_mese_costruzione = document.getElementById('sc_anno_mese_costruzione').value;
+      if (vPat_sc_anno_mese_costruzione.trim() !== '' && vPat_sc_anno_mese_costruzione.match(/^\d{4}\/\d{2}$/) === null) {
+        document.getElementById('sc_anno_mese_costruzione').parentElement.style.border = '1px solid red';
+        result.push("Il campo ANNO E MESE DI COSTRUZIONE (aaaa/mm) non è editato nel formato corretto (/^\d{4}\/\d{2}$/)! (Scomparti)");
+      };
       return result;
     }
     document.getElementById('id_title_00').addEventListener('click', function(event) {
@@ -1518,6 +1990,12 @@
     });
     document.getElementById('id_title_01').addEventListener('click', function(event) {
       let title = document.getElementById('id_title_01');
+      title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
+      let table = title.nextElementSibling;
+      table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
+    });
+    document.getElementById('id_title_02').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_02');
       title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
       let table = title.nextElementSibling;
       table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
@@ -1565,6 +2043,11 @@
         document.forms[0].reset();
         initialize();
         visibility();
+        // Reset all border cols to default color.
+        let elCol = document.getElementsByClassName('div-table-col');
+        for (var i = 0; i < elCol.length; i++) {
+          elCol[i].style.border = config.css_default_border_col;
+        }
       } else {
         alert('Nessuna azione eseguita!');
       }

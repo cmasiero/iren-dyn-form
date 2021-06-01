@@ -39,4 +39,5 @@ if (document.getElementById('02_id').value == 'hard coded') {
         node.nextElementSibling.style.display = \"none\";
     }
     visibilityParent(node);
+    
 }

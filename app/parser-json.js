@@ -355,6 +355,11 @@ let insertScriptMenu = (dom) => {
                                 document.forms[0].reset();
                                 initialize();
                                 visibility();
+                                // Reset all border cols to default color.
+                                let elCol = document.getElementsByClassName('div-table-col');
+                                for (var i = 0; i < elCol.length; i++) {
+                                    elCol[i].style.border = config.css_default_border_col;
+                                }
                             } else {
                                 alert ('Nessuna azione eseguita!');
                             }
