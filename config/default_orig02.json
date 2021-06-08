@@ -94,6 +94,7 @@
             
         ],
         "row_03": [
+            {"type": "description", "value": "Tipo accesso"},
             {"group":
                 [
                     {"type": "checkbox", "id": "cs_botola", "label": "BOTOLA", "rule": "rule_tipo_accesso"},
@@ -299,15 +300,11 @@
             },
             {
                 "name": "rule_nuovaposa_sostituzione_rossa",
-                "rule": "mandatory if sc_nuova_apparecchiatura_presenta_etichetta_rossa == 'SI' && ( sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'NUOVA POSA' )#visible if sc_nuova_apparecchiatura_presenta_etichetta_rossa == 'SI' && ( sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'NUOVA POSA' )"
+                "rule": "mandatory if sc_nuova_apparecchiatura_presenta_etichetta_rossa == 'SI'#visible if sc_nuova_apparecchiatura_presenta_etichetta_rossa == 'SI' || sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'NUOVA POSA'"
             },
             {
                 "name": "rule_censimento",
                 "rule": "mandatory if sc_tipologia_di_attivita == 'CENSIMENTO'#visible if sc_tipologia_di_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule_censimento_facoltativo",
-                "rule": "visible if sc_tipologia_di_attivita == 'CENSIMENTO'"
             }
 
         ],
@@ -339,7 +336,7 @@
                 ]
             }
         ],
-        "row_02": [
+        "row_03": [
             {"type": "select", "id": "sc_nuova_apparecchiatura_presenta_etichetta_rossa", "label": "LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA", "rule": "rule_nuovaposa_sostituzione",
                 "option":[
                     {"value":"", "label":""},
@@ -361,7 +358,7 @@
             {"type": "text", "id": "sc_definizione_tipo_modello", "label":"DEFINIZIONE TIPO (MODELLO)", "rule": "rule_nuovaposa_sostituzione"},
             {"type": "text", "id": "sc_numero_serie_definito_produttore_matricola", "label":"NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_nuovaposa_sostituzione"}
         ],
-        "row_03": [
+        "row_04": [
             {"type": "text", "size":"7", "maxlength":"7","id": "sc_anno_mese_costruzione", "label":"ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_nuovaposa_sostituzione_rossa", "pattern": "aaaamm"},
             {"type": "select", "id": "sc_tipo_automazione", "label": "TIPO DI AUTOMAZIONE", "rule": "rule_nuovaposa_sostituzione_rossa",
                 "option":[
@@ -481,8 +478,8 @@
             },
             {"type": "text", "id": "sc_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_nuovaposa_sostituzione_rossa"}
         ],
-        "row_04": [
-            {"type": "select", "id": "sc_tipologia_scomparto", "label": "TIPOLOGIA SCOMPARTO", "rule": "rule_censimento",
+        "row_05": [
+            {"type": "select", "id": "sc_tipologia_scomparto", "label": "TIPOLOGIA SCOMPARTO", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"LINEA", "label":"linea"},
@@ -492,79 +489,7 @@
                     {"value":"UTENTE", "label":"utente"}
                     
                 ]
-            },
-            {"type": "text", "id": "sc_censimento_produttore_marca", "label": "PRODUTTORE (MARCA)", "rule": "rule_censimento"},
-            {"type": "text", "id": "sc_censimento_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_censimento"},
-            {"type": "text", "id": "sc_censimento_numero_serie_definito_produttore_matricola", "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_censimento"},
-            {"type": "text", "size":"7", "maxlength":"7", "id": "sc_censimento_anno_mese_costruzione", "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_censimento", "pattern": "aaaamm"},
-            {"type": "select", "id": "sc_censimento_tipo_automazione", "label": "TIPO DI AUTOMAZIONE", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"ASSENTE", "label":"assente"},
-                    {"value":"MOTORIZZATO", "label":"motorizzato"},
-                    {"value":"ICS SMART", "label":"ics smart"},
-                    {"value":"MOTORIZZATO CON KIT ESTERNO", "label":"motorizzato con kit esterno"}
-                ]
-            },
-            {"type": "select", "id": "sc_censimento_tipo_isolamento", "label": "TIPO DI ISOLAMENTO", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"ARIA_ARIA", "label":"aria/aria"},
-                    {"value":"ARIA_GAS", "label":"aria/gas"},
-                    {"value":"GAS_GAS", "label":""}
-                ]
-            },
-            {"type": "select", "id": "sc_censimento_blocchi_sicurezza", "label": "BLOCCHI DI SICUREZZA", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"INTERBLOCCO IMS-ST", "label":"interblocco ims-st"},
-                    {"value":"INTERBLOCCHI A CHIAVE", "label":"interblocchi a chiave"},
-                    {"value":"INTERBLOCCHI ASSENTI", "label":"interblocchi assenti"}
-                    
-                ]
-            },
-            {"type": "select", "id": "sc_censimento_tipo_comando", "label": "TIPO DI COMANDO", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"COMANDO A LEVA DIRETTO", "label":"comando a leva diretto"},
-                    {"value":"COMANDO A LEVA RINVIATO", "label":"comando a leva rinviato"},
-                    {"value":"FIORETTO", "label":"fioretto"},
-                    {"value":"COMANDO A DISTANZA", "label":"comando a distanza"}
-                ]
-            },
-            {"type": "select", "id": "sc_censimento_tipo_terminali", "label": "TIPO DI TERMINALI", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"NORMALE", "label":"normale"},
-                    {"value":"CONNESSIONI_TIPO", "label":"connessioni_tipo"},
-                    {"value":"SPINA", "label":"spina"}
-                ]
-            },
-            {"type": "select", "id": "sc_censimento_corrente_nominale_dee", "label": "CORRENTE NOMINALE DEE", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"400,00", "label":"400,00"},
-                    {"value":"630,00", "label":"630,00"}
-                ]
-            },
-            {"type": "select", "id": "sc_censimento_tipo_installazione", "label": "TIPO DI INSTALLAZIONE", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"A PAVIMENTO", "label":"a pavimento"},
-                    {"value":"A PARETE", "label":"a parete"},
-                    {"value":"VERTICALE SU PALO", "label":"verticale su palo"},
-                    {"value":"ORIZZONTALE SU PALO", "label":"orizzontale su palo"}
-                ]
-            },
-            {"type": "select", "id": "sc_censimento_tipologia_gas_isolante", "label": "TIPOLOGIA DI GAS ISOLANTE", "rule": "rule_censimento_facoltativo",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"SF6", "label":"sf6"}
-                ]
-            },
-            {"type": "text", "id": "sc_censimento_quantita_gas_isolante", "label": "QUANTITA' DI GAS ISOLANTE (kg)", "rule": "rule_censimento_facoltativo"}
-
-            
+            }
             
         ]
     }

@@ -134,6 +134,7 @@ let insertHtmlPart = (jsonObj, dom) => {
     let tmpIdTable = "";
     let idRowIndex = -1;
     let titleStrTmp = ""; 
+    let ruleCardTmp = "";
     keyNames.filter(idTable => !specialKey.includes(idTable)).forEach(idTable => {
 
         // New id table
@@ -142,6 +143,9 @@ let insertHtmlPart = (jsonObj, dom) => {
 
             if (key === "comment") {
                 console.log("comment %s", jsonObj[idTable].comment);
+            }
+            else if (key === "ruleCard"){
+                ruleCardTmp = jsonObj[idTable].ruleCard;
             }
             else if (key === "title") {
                 titleStrTmp = jsonObj[idTable][key].value;
@@ -183,13 +187,13 @@ let insertHtmlPart = (jsonObj, dom) => {
                     if (colEl.group !== undefined) {
                         colEl.group.forEach(elGroup => {
                             elGroup.title = titleStrTmp;
-                            // htmlPart(currentCol, elGroup);
+                            elGroup.ruleCard = ruleCardTmp;
                             let htmlPart = buildHtmlPart(elGroup);
                             currentCol.insertAdjacentHTML("beforeend", htmlPart.buildPart());
                         })
                     } else {
                         colEl.title = titleStrTmp;
-                        //htmlPart(currentCol, colEl);
+                        colEl.ruleCard = ruleCardTmp;
                         let htmlPart = buildHtmlPart(colEl);
                         currentCol.insertAdjacentHTML("beforeend", htmlPart.buildPart());
                     }
@@ -201,6 +205,10 @@ let insertHtmlPart = (jsonObj, dom) => {
         })
 
     });
+
+    // Id validation of html elements.
+    generatedManager.checkUniqueId();
+
 
 }
 
