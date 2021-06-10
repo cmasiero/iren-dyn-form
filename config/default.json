@@ -982,7 +982,23 @@
         "reusableRule" : [
             {
                 "name": "rule_qbt_posa_sostituzione_censimento",
-                "rule": ""
+                "rule": "mandatory if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+            },
+            {
+                "name": "rule_qbt_posa_sostituzione_censimento_facoltativo",
+                "rule": "visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+            },
+            {
+                "name": "rule_qbt_tipo_funzionale_01",
+                "rule": "mandatory if qbt_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+            },
+            {
+                "name": "rule_qbt_tipo_funzionale_02",
+                "rule": "mandatory if qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+            },
+            {
+                "name": "rule_qbt_tipo_funzionale_03",
+                "rule": "mandatory if qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
             }
         ],
         "row_00": [
@@ -1006,8 +1022,124 @@
                     {"value":"Q0C - Parma", "label":"Q0C - Parma"}
                 ]
             }
-            
-
+        ],
+        "row_01":[
+            {"type": "select", "id": "qbt_tipologia_quadro_bt_installato", "label": "TIPOLOGIA QUADRO BT INSTALLATO", "rule": "rule_qbt_posa_sostituzione_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"WEBER", "label":"weber"},
+                    {"value":"ROMANO", "label":"romano"},
+                    {"value":"FIAMESA", "label":"fiamesa"},
+                    {"value":"ELECA", "label":"eleca"},
+                    {"value":"BTICINO", "label":"bticino"},
+                    {"value":"ABB", "label":"abb"},
+                    {"value":"[Parma]", "label":"[Parma]"}
+                ]
+            },
+            {"type": "text", "id": "qbt_revisione_quadro_bt", "label": "REVISIONE QUADRO BT", "rule": "rule_qbt_posa_sostituzione_censimento_facoltativo"},
+            {"type": "select", "id": "qbt_tipo_collegamento", "label": "TIPO DI COLLEGAMENTO", "rule": "rule_qbt_posa_sostituzione_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SU QUADRO", "label":"su quadro"},
+                    {"value":"SU SBARRE", "label":"su sbarre"}
+                ]
+            },
+            {"type": "select", "id": "qbt_presenza_cassetta_arrivo_trafo", "label": "PRESENZA CASSETTA ARRIVO TRAFO", "rule": "rule_qbt_posa_sostituzione_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "qbt_modello_2_4_moduli", "label": "MODELLO 2 O 4 MODULI", "rule": "rule_qbt_posa_sostituzione_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"MODELLO 2 MODULI", "label":"modello 2 moduli"},
+                    {"value":"MODELLO 4 MODULI", "label":"modello 4 moduli"}
+                ]
+            },
+            {"type": "text", "size": "2", "maxlength": "2", "id": "qbt_numero_moduli", "label": "NUMERO DI MODULI", "rule": "rule_qbt_posa_sostituzione_censimento", "pattern": "1_to_2_digit"},
+            {"type": "select", "id": "qbt_presenza_congiuntore_interruttore_generale", "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE", "rule": "rule_qbt_posa_sostituzione_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
+        ],
+        "row_02":[
+            {"type": "select", "id": "qbt_tipo_funzionale", "label": "TIPO FUNZIONALE", "rule": "rule_qbt_tipo_funzionale_01",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"INTERRUTTORE GENERALE", "label":"interruttore generale"},
+                    {"value":"CONGIUNTORE", "label":"congiuntore"},
+                    {"value":"ENTRAMBI", "label":"entrambi"}
+                ]
+            }
+        ],
+        "row_03":[
+            {"type": "text", "id": "qbt_modello_interruttore_generale", "label": "MODELLO INTERRUTTORE GENERALE", "rule": "rule_qbt_tipo_funzionale_02"},
+            {"type": "text", "id": "qbt_marca_interruttore_generale", "label": "MARCA INTERRUTTORE GENERALE", "rule": "rule_qbt_tipo_funzionale_02"},
+            {"type": "select", "id": "qbt_tipo_interruttore_generale", "label": "TIPO INTERRUTTORE GENERALE", "rule": "rule_qbt_tipo_funzionale_02",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"INTERRUTTORE AUTOMATICO", "label":"interruttore automatico"},
+                    {"value":"IMS", "label":"ims"}
+                    
+                ]
+            },
+            {"type": "text", "id": "qbt_portata_interruttore_generale", "label": "PORTATA INTERRUTTORE GENERALE", "rule": "rule_qbt_tipo_funzionale_02"},
+            {"type": "select", "id": "qbt_potere_interruzione_interruttore_generale", "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE", "rule": "rule_qbt_tipo_funzionale_02",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"16.00", "label":"16,00"},
+                    {"value":"25.00", "label":"25,00"}
+                ]
+            },
+            {"type": "select", "id": "qbt_interruttore_generale_tarabile", "label": "INTERRUTTORE GENERALE TARABILE", "rule": "rule_qbt_tipo_funzionale_02",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
+        ],
+        "row_04":[
+            {"type": "text", "id": "qbt_modello_congiuntore", "label": "MODELLO CONGIUNTORE", "rule": "rule_qbt_tipo_funzionale_03"},
+            {"type": "text", "id": "qbt_marca_congiuntore", "label": "MARCA CONGIUNTORE", "rule": "rule_qbt_tipo_funzionale_03"},
+            {"type": "select", "id": "qbt_tipo_congiuntore", "label": "TIPO CONGIUNTORE", "rule": "rule_qbt_tipo_funzionale_03",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"INTERRUTTORE AUTOMATICO", "label":"interruttore automatico"},
+                    {"value":"IMS", "label":"ims"}
+                ]
+            },
+            {"type": "text", "id": "qbt_portata_congiuntore", "label": "PORTATA_CONGIUNTORE", "rule": "rule_qbt_tipo_funzionale_03"},
+            {"type": "select", "id": "qbt_potere_interruzione_congiuntore", "label": "POTERE DI INTERRUZIONE CONGIUNTORE", "rule": "rule_qbt_tipo_funzionale_03",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"16.00", "label":"16,00"},
+                    {"value":"25.00", "label":"25,00"}
+                ]
+            },
+            {"type": "select", "id": "qbt_congiuntore_tarabile", "label": "CONGIUNTORE TARABILE", "rule": "rule_qbt_tipo_funzionale_03",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
+        ],
+        "row_05": [
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "qbt_note", "label": "NOTE"},
+            {"type": "text", "id": "qbt_foto", "label": "FOTO - da fare!"},
+            {"type": "select", "id": "qbt_ulteriore_derivazione_gestire", "label": "ULTERIORE QUADRO DA GESTIRE", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
         ]
     }
 }
