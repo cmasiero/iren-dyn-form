@@ -1,0 +1,7 @@
+{
+    "config": {
+        "css": "/example/example.css",
+        "title": "Scheda Raccolta dati U4",
+        "send": "post|http://nomehost/prenditu"
+    }
+}

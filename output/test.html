@@ -17,10 +17,10 @@
     <input type="button" id="buttonToggle" class="buttonMenu buttonMenuToggle" value="Menu">
     <input type="button" id="buttonSend" class="buttonMenu buttonMenuSend" value="Invia">
     <input type="button" id="buttonClear" class="buttonMenu buttonMenuClear" value="Pulisci">
-    <div class="table-title" id="id_title_00">
+    <div class="table-title" id="id_title_dati_generali">
       Dati Generali
     </div>
-    <div class="div-table" id="00">
+    <div class="div-table" id="dati_generali">
       <div class="div-table-row" id="id_row_0">
         <div class="div-table-col" id="id_col_0_0">
           <label for="dg_codice_cabina">CODICE CABINA</label>
@@ -44,10 +44,10 @@
         </div>
       </div>
     </div>
-    <div class="table-title" id="id_title_01">
+    <div class="table-title" id="id_title_cabine_secondarie">
       Cabine Secondarie
     </div>
-    <div class="div-table" id="01">
+    <div class="div-table" id="cabine_secondarie">
       <div class="div-table-row" id="id_row_1">
         <div class="div-table-col" id="id_col_1_0">
           <label for="cs_tipologia_di_attivita">TIPOLOGIA DI ATTIVITA'</label>
@@ -331,10 +331,10 @@
         </div>
       </div>
     </div>
-    <div class="table-title" id="id_title_02">
+    <div class="table-title" id="id_title_scomparti">
       Scomparti
     </div>
-    <div class="div-table" id="02">
+    <div class="div-table" id="scomparti">
       <div class="div-table-row" id="id_row_8">
         <div class="div-table-col" id="id_col_8_0">
           <label for="sc_tipologia_di_attivita">TIPOLOGIA DI ATTIVITA'</label>
@@ -727,10 +727,10 @@
         </div>
       </div>
     </div>
-    <div class="table-title" id="id_title_03">
+    <div class="table-title" id="id_title_trasformatori_mt_bt">
       Trasformatori MT-BT
     </div>
-    <div class="div-table" id="03">
+    <div class="div-table" id="trasformatori_mt_bt">
       <div class="div-table-row" id="id_row_14">
         <div class="div-table-col" id="id_col_14_0">
           <label for="tr_tipologia_attivita">TIPOLOGIA DI ATTIVITA'</label>
@@ -1060,10 +1060,10 @@
         </div>
       </div>
     </div>
-    <div class="table-title" id="id_title_04">
+    <div class="table-title" id="id_title_derivazioni_bt">
       Derivazioni BT
     </div>
-    <div class="div-table" id="04">
+    <div class="div-table" id="derivazioni_bt">
       <div class="div-table-row" id="id_row_26">
         <div class="div-table-col" id="id_col_26_0">
           <label for="dbt_tipologia_attivita">TIPOLOGIA ATTIVITA'</label>
@@ -1144,10 +1144,10 @@
         </div>
       </div>
     </div>
-    <div class="table-title" id="id_title_05">
+    <div class="table-title" id="id_title_quadro_bt">
       Quadro BT
     </div>
-    <div class="div-table" id="05">
+    <div class="div-table" id="quadro_bt">
       <div class="div-table-row" id="id_row_29">
         <div class="div-table-col" id="id_col_29_0">
           <label for="qbt_tipologia_attivita">TIPOLOGIA ATTIVITA'</label>
@@ -2325,7 +2325,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_anno_mese_costruzione');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2346,7 +2346,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_tipo_automazione');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2367,7 +2367,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_tipo_isolamento');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2388,7 +2388,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_blocchi_sicurezza');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2409,7 +2409,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_tipo_comando');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2430,7 +2430,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_corrente_nominale_dee');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2451,7 +2451,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_tipologia_gas_isolante');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2472,7 +2472,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_quantita_gas_isolante');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2493,7 +2493,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_organo_manovra');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2514,7 +2514,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_presenza_sez_messa_terra');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2535,7 +2535,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_caratteristica_involucro');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2556,7 +2556,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_presenza_scaldiglie');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -2577,7 +2577,7 @@
         }
         visibilityParent(node);
       }
-      if (document.getElementById('sc_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI' && (document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
+      if ((document.getElementById('sc_tipologia_di_attivita').value == 'SOSTITUZIONE' || document.getElementById('sc_tipologia_di_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('sc_tensione_massima_isolamento');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3186,7 +3186,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_anno_mese_costruzione');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3207,7 +3207,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_peso_complessivo');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3270,7 +3270,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_tipo_connessione_bt');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3291,7 +3291,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_tipo_connessione_mt');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3333,7 +3333,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_compensatore');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3354,7 +3354,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_tipo_isolamento');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3375,7 +3375,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_peso_olio');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3396,7 +3396,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_presenza_pcb_more_50_ppm');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3417,7 +3417,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_potenza_nominale');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3438,7 +3438,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_tensione_corto_circuito');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -3459,7 +3459,7 @@
         }
         visibilityParent(node);
       }
-      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA') && document.getElementById('tr_nuova_apparecchiatura_presenta_etichetta_rossa').value == 'SI') {
+      if ((document.getElementById('tr_tipologia_attivita').value == 'SOSTITUZIONE' || document.getElementById('tr_tipologia_attivita').value == 'NUOVA POSA')) {
         let node = document.getElementById('tr_tensione_nominale_secondaria');
         node.style.display = "inline";
         if (node.previousElementSibling !== null) {
@@ -5723,38 +5723,38 @@
       };
       return result;
     }
-    document.getElementById('id_title_00').addEventListener('click', function(event) {
-      let title = document.getElementById('id_title_00');
+    document.getElementById('id_title_dati_generali').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_dati_generali');
       title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
       let table = title.nextElementSibling;
       table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
     });
-    document.getElementById('id_title_01').addEventListener('click', function(event) {
-      let title = document.getElementById('id_title_01');
+    document.getElementById('id_title_cabine_secondarie').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_cabine_secondarie');
       title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
       let table = title.nextElementSibling;
       table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
     });
-    document.getElementById('id_title_02').addEventListener('click', function(event) {
-      let title = document.getElementById('id_title_02');
+    document.getElementById('id_title_scomparti').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_scomparti');
       title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
       let table = title.nextElementSibling;
       table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
     });
-    document.getElementById('id_title_03').addEventListener('click', function(event) {
-      let title = document.getElementById('id_title_03');
+    document.getElementById('id_title_trasformatori_mt_bt').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_trasformatori_mt_bt');
       title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
       let table = title.nextElementSibling;
       table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
     });
-    document.getElementById('id_title_04').addEventListener('click', function(event) {
-      let title = document.getElementById('id_title_04');
+    document.getElementById('id_title_derivazioni_bt').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_derivazioni_bt');
       title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
       let table = title.nextElementSibling;
       table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
     });
-    document.getElementById('id_title_05').addEventListener('click', function(event) {
-      let title = document.getElementById('id_title_05');
+    document.getElementById('id_title_quadro_bt').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_quadro_bt');
       title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
       let table = title.nextElementSibling;
       table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';

@@ -24,7 +24,7 @@ test('Return css file from filesystem as File.', () => {
 
 test('Return html file from filesystemas String.', () => {
 
-    let htmlFile = fs.readFileSync("template/version5.html").toString();
+    let htmlFile = fs.readFileSync("config/version5.html").toString();
     let htmlFileTest = getTemplateHtml(DataSource.FILESYSTEM); 
 
     expect(htmlFile).toStrictEqual(htmlFileTest);

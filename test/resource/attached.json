@@ -1,0 +1,31 @@
+{
+    "config": {
+        "css": "/example/example.css",
+        "title": "Scheda Raccolta dati U4",
+        "send": "post|http://nomehost/prenditu"
+    },
+    "part_01": {
+        "comment": "Part 01",
+        "title": {
+            "value": "Title Part 01"
+        },
+        "row_00":[
+            {"type": "text", "id": "id_00_01", "label": "00 01", "rule": "mandatory" }
+        ],
+        "row_01":[
+            {"type": "text", "id": "id_00_02", "label": "00 02", "rule": "mandatory" }
+        ]
+    },
+    "part_02": {
+        "comment": "Part 02",
+        "title": {
+            "value": "Title Part 02"
+        },
+        "row_a":[
+            {"type": "text", "id": "id_a_01", "label": "a 01", "rule": "mandatory" }
+        ],
+        "row_b":[
+            {"type": "text", "id": "id_b_02", "label": "b 02", "rule": "mandatory" }
+        ]
+    }
+}

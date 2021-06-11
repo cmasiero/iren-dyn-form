@@ -1,0 +1,14 @@
+{
+    "part_02": {
+        "comment": "Part 02",
+        "title": {
+            "value": "Title Part 02"
+        },
+        "row_a":[
+            {"type": "text", "id": "id_a_01", "label": "a 01", "rule": "mandatory" }
+        ],
+        "row_b":[
+            {"type": "text", "id": "id_b_02", "label": "b 02", "rule": "mandatory" }
+        ]
+    }
+}
