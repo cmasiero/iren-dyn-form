@@ -42,8 +42,6 @@ exports.execute = (jsonObj, htmlTemplate) => {
 
     let dom = new JSDOM(htmlTemplate);
 
-    // reusableRuleDao.initialize(jsonObj);
-
     /* Configuration area */
     insertConfigPart(jsonObj, dom);
 
@@ -61,11 +59,11 @@ exports.execute = (jsonObj, htmlTemplate) => {
     /* Validations script area*/
     insertScriptMandatory(dom);
 
-    /* Submit area */
-    // insertSubmitScript(dom);
 
+    /* hide show tables */
     insertScriptHideShowTable(dom);
 
+    /* Menu */
     insertScriptMenu(dom);
 
     return dom;
@@ -84,6 +82,7 @@ exports.execute = (jsonObj, htmlTemplate) => {
 let insertConfigPart = (jsonObj, dom) => {
 
     if (jsonObj.config !== undefined) {
+        
         let tagHead = dom.window.document.getElementsByTagName("head");
 
         let linkStr = `<link rel="stylesheet" href="${jsonObj.config.css}"></link>`;
@@ -231,7 +230,6 @@ let insertDocReady = (dom) => {
     
 }
 
-
 /**
  * ScriptPart are inside <script> tags in html page.
  * @param {*} dom 
@@ -293,6 +291,10 @@ let insertScriptMandatory = (dom) => {
 
 }
 
+/**
+ * Hide show tables.
+ * @param {} dom 
+ */
 let insertScriptHideShowTable = (dom) => {
 
     let clickTitleScript = ``;
@@ -314,6 +316,12 @@ let insertScriptHideShowTable = (dom) => {
 
 }
 
+/**
+ * insertScriptMenu is inside <script> tags in html page, 
+ * It does: check of inserted values then send data to the server.
+ *          clear data in the form.
+ * @param {*} dom 
+ */
 let insertScriptMenu = (dom) => {
     
     let scriptMenu = `
@@ -382,45 +390,3 @@ let insertScriptMenu = (dom) => {
     tagScript[0].insertAdjacentHTML("beforeend", scriptClean);
 
 }
-
-
-/**
- * Submit scripts are inside <script> tags in html page, 
- * they do the check of inserted values then send data to the server.
- * @param {*} dom 
- */
-// let  insertSubmitScript = (dom) => {
-
-//     let formElements = dom.window.document.getElementsByTagName("form");
-//     let formElement = formElements[0];
-//     formElement.setAttribute('onsubmit', 'postScheda()');
-
-//     // let buttonSend = `<input type="submit" value="Invia">`;
-//     let buttonSend = `<input type="button" value="Invia" onclick="postScheda()">`;
-//     formElement.insertAdjacentHTML("afterbegin", buttonSend);
-
-
-//     let valMessage = "";
-//     resultScript.getMandatories().forEach(mandatory => {
-//         valMessage = valMessage.concat(mandatory.valMessage.concat("\\n"));
-//     });
-//     let sendScript = `function postScheda() { 
-//                         let arrayMessage = validation();
-//                         let message = ""
-//                         arrayMessage.forEach(msg => {
-//                             message = message.concat(msg).concat("\\n");                            
-//                         });
-//                         if (message !== ""){
-//                             alert(message);
-//                         } else { alert("DEBUG: FORM VALIDO, VERRA INVIATO AL SERVER!"); }
-//                       }
-//                      `;
-    
-//     let tagScript = dom.window.document.getElementsByTagName("script");
-//     tagScript[0].insertAdjacentHTML("beforeend", sendScript);
-
-// }
-
-
-
-

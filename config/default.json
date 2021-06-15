@@ -1,7 +1,8 @@
 
 {
     "config": {
-        "css" : "/example/example.css",
+        "filename": "test.html",
+        "css" : "example.css",
         "title": "Scheda Raccolta dati U4",
         "send": "post|http://nomehost/prenditu"
     },
@@ -71,15 +72,21 @@
         ],
         "row_00":
         [
-            {"type": "select", "id": "cs_tipologia_di_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"MESSA IN SERVIZIO", "label":"messa in servizio"},
-                    {"value":"CENSIMENTO", "label":"censimento"},
-                    {"value":"OPERE EDILI", "label":"opere edili"},
-                    {"value":"DISMISSIONE", "label":"dismissione"}
+            {
+                "group": [
+                    {"type": "select", "id": "cs_tipologia_di_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
+                        "option":[
+                            {"value":"", "label":""},
+                            {"value":"MESSA IN SERVIZIO", "label":"messa in servizio"},
+                            {"value":"CENSIMENTO", "label":"censimento"},
+                            {"value":"OPERE EDILI", "label":"opere edili"},
+                            {"value":"DISMISSIONE", "label":"dismissione"}
+                        ]
+                    },
+                    {"type": "hint", "id": "cs_campi_oggetto_variazione", "value": "Compilare solamente i campi oggetto di variazione", "rule": "visible if cs_tipologia_di_attivita == 'OPERE EDILI'"}
                 ]
             }
+            
         ],
         "row_01":
         [
@@ -117,14 +124,20 @@
             }
         ],
         "row_04": [
-            {"type": "select", "id": "cs_posizione_botola", "label": "POSIZIONE BOTOLA", "rule": "rule_botola",
-                "option": [
-                    {"value":"", "label":""},
-                    {"value":"FRONTE PASSO CARRAIO", "label":"fronte passo carraio"},
-                    {"value":"FRONTE ATTIVITA COMMERCIALI", "label":"fronte attivita' commerciali"},
-                    {"value":"SU MARCIAPIEDE", "label":"su marciapiede"},
-                    {"value":"SU STRADA", "label":"su strada"},
-                    {"value":"SU AREA VERDE", "label":"su area verde"}
+
+            {"group": 
+                [
+                    {"type": "select", "id": "cs_posizione_botola", "label": "POSIZIONE BOTOLA", "rule": "rule_botola",
+                        "option": [
+                            {"value":"", "label":""},
+                            {"value":"FRONTE PASSO CARRAIO", "label":"fronte passo carraio"},
+                            {"value":"FRONTE ATTIVITA COMMERCIALI", "label":"fronte attivita' commerciali"},
+                            {"value":"SU MARCIAPIEDE", "label":"su marciapiede"},
+                            {"value":"SU STRADA", "label":"su strada"},
+                            {"value":"SU AREA VERDE", "label":"su area verde"}
+                        ]
+                    },
+                    {"type": "hint", "id": "cs_posizione_botola_sfavorevole", "rule": "rule_botola", "value": "In caso di situazioni combinate, scegliere la posizione più sfavorevole (fronte passo carraio o fronte attività commerciali, se presenti)"}
                 ]
             },
             {"type": "text", "id": "cs_profondita_botola", "label": "PROFONDITA' BOTOLA (metri)", "rule": "rule_botola"},

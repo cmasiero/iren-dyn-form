@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="example.css">
+    <link rel="stylesheet" href="example_tip.css">
     <title>Scheda Raccolta dati U4</title>
   </head>
 
@@ -50,7 +50,12 @@
     <div class="div-table" id="cabine_secondarie">
       <div class="div-table-row" id="id_row_1">
         <div class="div-table-col" id="id_col_1_0">
-          <label for="cs_tipologia_di_attivita">TIPOLOGIA DI ATTIVITA'</label>
+          
+          
+          <label for="cs_tipologia_di_attivita" class="tooltip">
+            TIPOLOGIA DI ATTIVITA'
+            <span class="tooltiptext">Compilare solamente i campi oggetto di variazione, ciaociaociao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao </span>
+          </label>
           <select name="cs_tipologia_di_attivita" id="cs_tipologia_di_attivita">
             <option value=""></option>
             <option value="MESSA IN SERVIZIO">messa in servizio</option>
@@ -58,8 +63,6 @@
             <option value="OPERE EDILI">opere edili</option>
             <option value="DISMISSIONE">dismissione</option>
           </select>
-          <label for="hint_cs_campi_oggetto_variazione"></label>
-          <span id="hint_cs_campi_oggetto_variazione" class="hint-span">Compilare solamente i campi oggetto di variazione</span>
         </div>
       </div>
       <div class="div-table-row" id="id_row_2">
@@ -118,7 +121,10 @@
       </div>
       <div class="div-table-row" id="id_row_4">
         <div class="div-table-col" id="id_col_4_0">
-          <label for="cs_posizione_botola">POSIZIONE BOTOLA</label>
+          <label for="cs_posizione_botola" class="tooltip">
+            POSIZIONE BOTOLA
+            <span class="tooltiptext">In caso di situazioni combinate, scegliere la posizione più sfavorevole (fronte passo carraio o fronte attività commerciali, se presenti)</span>
+          </label>
           <select name="cs_posizione_botola" id="cs_posizione_botola">
             <option value=""></option>
             <option value="FRONTE PASSO CARRAIO">fronte passo carraio</option>
@@ -127,8 +133,6 @@
             <option value="SU STRADA">su strada</option>
             <option value="SU AREA VERDE">su area verde</option>
           </select>
-          <label for="hint_cs_posizione_botola_sfavorevole"></label>
-          <span id="hint_cs_posizione_botola_sfavorevole" class="hint-span">In caso di situazioni combinate, scegliere la posizione più sfavorevole (fronte passo carraio o fronte attività commerciali, se presenti)</span>
         </div>
         <div class="div-table-col" id="id_col_4_1">
           <label for="cs_profondita_botola">PROFONDITA' BOTOLA (metri)</label>
@@ -1384,27 +1388,6 @@
 
     function visibility() {
       console.log("[visibility]");
-      if (document.getElementById('cs_tipologia_di_attivita').value == 'OPERE EDILI') {
-        let node = document.getElementById('hint_cs_campi_oggetto_variazione');
-        node.style.display = "inline";
-        if (node.previousElementSibling !== null) {
-          node.previousElementSibling.style.display = "inline";
-        }
-        if (node.nextElementSibling !== null) {
-          node.nextElementSibling.style.display = "inline";
-        }
-        visibilityParent(node);
-      } else {
-        let node = document.getElementById('hint_cs_campi_oggetto_variazione');
-        node.style.display = "none";
-        if (node.previousElementSibling !== null) {
-          node.previousElementSibling.style.display = "none";
-        }
-        if (node.nextElementSibling !== null) {
-          node.nextElementSibling.style.display = "none";
-        }
-        visibilityParent(node);
-      }
       if (document.getElementById('cs_tipologia_di_attivita').value == 'MESSA IN SERVIZIO' || document.getElementById('cs_tipologia_di_attivita').value == 'CENSIMENTO' || document.getElementById('cs_tipologia_di_attivita').value == 'OPERE EDILI') {
         let node = document.getElementById('cs_dimensione_locale_cabina_a');
         node.style.display = "inline";
@@ -1690,27 +1673,6 @@
         visibilityParent(node);
       } else {
         let node = document.getElementById('cs_posizione_botola');
-        node.style.display = "none";
-        if (node.previousElementSibling !== null) {
-          node.previousElementSibling.style.display = "none";
-        }
-        if (node.nextElementSibling !== null) {
-          node.nextElementSibling.style.display = "none";
-        }
-        visibilityParent(node);
-      }
-      if (document.getElementById('cs_botola').checked == true) {
-        let node = document.getElementById('hint_cs_posizione_botola_sfavorevole');
-        node.style.display = "inline";
-        if (node.previousElementSibling !== null) {
-          node.previousElementSibling.style.display = "inline";
-        }
-        if (node.nextElementSibling !== null) {
-          node.nextElementSibling.style.display = "inline";
-        }
-        visibilityParent(node);
-      } else {
-        let node = document.getElementById('hint_cs_posizione_botola_sfavorevole');
         node.style.display = "none";
         if (node.previousElementSibling !== null) {
           node.previousElementSibling.style.display = "none";
