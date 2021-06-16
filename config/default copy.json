@@ -1047,7 +1047,7 @@
                     {"value":"[Parma]", "label":"[Parma]"}
                 ]
             },
-            {"type": "date", "id": "qbt_revisione_quadro_bt", "label": "REVISIONE QUADRO BT", "rule": "rule_qbt_posa_sostituzione_censimento_facoltativo" },
+            {"type": "text", "id": "qbt_revisione_quadro_bt", "label": "REVISIONE QUADRO BT", "rule": "rule_qbt_posa_sostituzione_censimento_facoltativo"},
             {"type": "select", "id": "qbt_tipo_collegamento", "label": "TIPO DI COLLEGAMENTO", "rule": "rule_qbt_posa_sostituzione_censimento",
                 "option":[
                     {"value":"", "label":""},

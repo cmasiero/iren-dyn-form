@@ -51,7 +51,7 @@ form {
     display: none;         
     width: auto;
     background-color: white; 
-    border-spacing: 5px; /* cellspacing:poor IE support for  this */
+    border-spacing: 1px; /* cellspacing:poor IE support for  this */
     border-radius: 15px;
     border: 2px solid rgb(86, 186, 219);
     padding: 10px;

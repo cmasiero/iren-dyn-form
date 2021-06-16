@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="example.css">
+    <title>Scheda Raccolta dati U4</title>
+  </head>
+
+  <body>
+
+
+  </body>
+  <form>
+    <input type="button" id="buttonToggle" class="buttonMenu buttonMenuToggle" value="Menu">
+    <input type="button" id="buttonSend" class="buttonMenu buttonMenuSend" value="Invia">
+    <input type="button" id="buttonClear" class="buttonMenu buttonMenuClear" value="Pulisci">
+    <div class="table-title" id="id_title_dati_generali">
+      Dati Generali
+    </div>
+    <div class="div-table" id="dati_generali">
+      <div class="div-table-row" id="id_row_0">
+        <div class="div-table-col" id="id_col_0_0">
+          <label for="dg_codice_cabina">CODICE CABINA</label>
+          <input type="text" id="dg_codice_cabina" value="">
+        </div>
+        <div class="div-table-col" id="id_col_0_1">
+          <label for="dg_data">DATA</label>
+          <input type="date" id="dg_data" value="">
+        </div>
+        <div class="div-table-col" id="id_col_0_2">
+          <label for="dg_nome_cognome">NOME COGNOME</label>
+          <input type="text" size="60" id="dg_nome_cognome" value="">
+        </div>
+        <div class="div-table-col" id="id_col_0_3">
+          <label for="dg_codice_attivita_ofsc">CODICE ATTIVITA' OFSC</label>
+          <input type="text" size="7" maxlength="7" id="dg_codice_attivita_ofsc" value="">
+        </div>
+        <div class="div-table-col" id="id_col_0_4">
+          <label for="dg_ordine_di_manutenzione_sap_pm">ORDINE DI MANUTENZIONE SAP PM</label>
+          <input type="text" size="8" maxlength="8" id="dg_ordine_di_manutenzione_sap_pm" value="">
+        </div>
+      </div>
+    </div>
+    <div class="table-title" id="id_title_derivazioni_bt">
+      Derivazioni BT
+    </div>
+    <div class="div-table" id="derivazioni_bt">
+      <div class="div-table-row" id="id_row_1">
+        <div class="div-table-col" id="id_col_1_0">
+          <label for="dbt_tipologia_attivita">TIPOLOGIA ATTIVITA'</label>
+          <select name="dbt_tipologia_attivita" id="dbt_tipologia_attivita">
+            <option value=""></option>
+            <option value="NUOVA POSA">nuova posa</option>
+            <option value="SOSTITUZIONE INTERRUTTORE">sostituzione interruttore</option>
+            <option value="ELIMINAZIONE">eliminazione</option>
+            <option value="CENSIMENTO">censimento</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_1_1">
+          <label for="dbt_codice_derivazione_interessata">CODICE DELLA DERIVAZIONE INTERESSATA (es. Torino D3A, Parma A01)</label>
+          <input type="text" id="dbt_codice_derivazione_interessata" value="">
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_2">
+        <div class="div-table-col" id="id_col_2_0">
+          <label for="dbt_produttore_interruttore_installato">PRODUTTORE DELL'INTERRUTTORE INSTALLATO</label>
+          <input type="text" id="dbt_produttore_interruttore_installato" value="">
+        </div>
+        <div class="div-table-col" id="id_col_2_1">
+          <label for="dbt_definizione_tipo_modello">DEFINIZIONE TIPO (MODELLO)</label>
+          <input type="text" id="dbt_definizione_tipo_modello" value="">
+        </div>
+        <div class="div-table-col" id="id_col_2_2">
+          <label for="dbt_tipo_interruttore">TIPO DI INTERRUTTORE</label>
+          <select name="dbt_tipo_interruttore" id="dbt_tipo_interruttore">
+            <option value=""></option>
+            <option value="FUSIBILI A MANIGLIA">fusibili a maniglia</option>
+            <option value="INTERRUTTORE AUTOMATICO">interruttore automatico</option>
+            <option value="IMS CON FUSIBILI">ims con fusibili</option>
+            <option value="INTERRUTTORI MOTORIZZATO">interruttori motorizzato</option>
+            <option value="[Senza input]">[Senza input]</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_2_3">
+          <label for="dbt_corrente_nominale_portata_fusibile">CORRENTE NOMINALE (PORTATA FUSIBILE)</label>
+          <input type="text" id="dbt_corrente_nominale_portata_fusibile" value="">
+        </div>
+        <div class="div-table-col" id="id_col_2_4">
+          <label for="dbt_portata_interruttore">PORTATA INTERRUTTORE</label>
+          <input type="text" id="dbt_portata_interruttore" value="">
+        </div>
+        <div class="div-table-col" id="id_col_2_5">
+          <label for="dbt_potere_interruzione">POTERE DI INTERRUZIONE</label>
+          <select name="dbt_potere_interruzione" id="dbt_potere_interruzione">
+            <option value=""></option>
+            <option value="16.00">16,00</option>
+            <option value="25.00">25,00</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_2_6">
+          <label for="dbt_interruttore_tarabile">INTERRUTTORE TARABILE</label>
+          <select name="dbt_interruttore_tarabile" id="dbt_interruttore_tarabile">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_3">
+        <div class="div-table-col" id="id_col_3_0">
+          <label for="dbt_note">NOTE</label>
+          <textarea rows="2" cols="40" id="dbt_note" value=""></textarea>
+        </div>
+        <div class="div-table-col" id="id_col_3_1">
+          <label for="dbt_foto">FOTO - da fare!</label>
+          <input type="text" id="dbt_foto" value="">
+        </div>
+        <div class="div-table-col" id="id_col_3_2">
+          <label for="dbt_ulteriore_derivazione_gestire">ULTERIORE DERIVAZIONE DA GESTIRE</label>
+          <select name="dbt_ulteriore_derivazione_gestire" id="dbt_ulteriore_derivazione_gestire">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="table-title" id="id_title_quadro_bt">
+      Quadro BT
+    </div>
+    <div class="div-table" id="quadro_bt">
+      <div class="div-table-row" id="id_row_4">
+        <div class="div-table-col" id="id_col_4_0">
+          <label for="qbt_tipologia_attivita">TIPOLOGIA ATTIVITA'</label>
+          <select name="qbt_tipologia_attivita" id="qbt_tipologia_attivita">
+            <option value=""></option>
+            <option value="NUOVA POSA">nuova posa</option>
+            <option value="SOSTITUZIONE QUADRO">sostituzione quadro</option>
+            <option value="ELIMINAZIONE">eliminazione</option>
+            <option value="CENSIMENTO">censimento</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_4_1">
+          <label for="qbt_codice_del_quadro_interessato">CODICE DEL QUADRO INTERESSATO</label>
+          <select name="qbt_codice_del_quadro_interessato" id="qbt_codice_del_quadro_interessato">
+            <option value=""></option>
+            <option value="Q01 - Torino">Q01 - Torino</option>
+            <option value="Q02 - Torino">Q02 - Torino</option>
+            <option value="Q03 - Torino">Q03 - Torino</option>
+            <option value="Q0A - Parma">Q0A - Parma</option>
+            <option value="Q0B - Parma">Q0B - Parma</option>
+            <option value="Q0C - Parma">Q0C - Parma</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_5">
+        <div class="div-table-col" id="id_col_5_0">
+          <label for="qbt_tipologia_quadro_bt_installato">TIPOLOGIA QUADRO BT INSTALLATO</label>
+          <select name="qbt_tipologia_quadro_bt_installato" id="qbt_tipologia_quadro_bt_installato">
+            <option value=""></option>
+            <option value="WEBER">weber</option>
+            <option value="ROMANO">romano</option>
+            <option value="FIAMESA">fiamesa</option>
+            <option value="ELECA">eleca</option>
+            <option value="BTICINO">bticino</option>
+            <option value="ABB">abb</option>
+            <option value="[Parma]">[Parma]</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_5_1">
+          <label for="qbt_revisione_quadro_bt">REVISIONE QUADRO BT</label>
+          <input type="date" id="qbt_revisione_quadro_bt" value="">
+        </div>
+        <div class="div-table-col" id="id_col_5_2">
+          <label for="qbt_tipo_collegamento">TIPO DI COLLEGAMENTO</label>
+          <select name="qbt_tipo_collegamento" id="qbt_tipo_collegamento">
+            <option value=""></option>
+            <option value="SU QUADRO">su quadro</option>
+            <option value="SU SBARRE">su sbarre</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_5_3">
+          <label for="qbt_presenza_cassetta_arrivo_trafo">PRESENZA CASSETTA ARRIVO TRAFO</label>
+          <select name="qbt_presenza_cassetta_arrivo_trafo" id="qbt_presenza_cassetta_arrivo_trafo">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_5_4">
+          <label for="qbt_modello_2_4_moduli">MODELLO 2 O 4 MODULI</label>
+          <select name="qbt_modello_2_4_moduli" id="qbt_modello_2_4_moduli">
+            <option value=""></option>
+            <option value="MODELLO 2 MODULI">modello 2 moduli</option>
+            <option value="MODELLO 4 MODULI">modello 4 moduli</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_5_5">
+          <label for="qbt_numero_moduli">NUMERO DI MODULI</label>
+          <input type="text" size="2" maxlength="2" id="qbt_numero_moduli" value="">
+        </div>
+        <div class="div-table-col" id="id_col_5_6">
+          <label for="qbt_presenza_congiuntore_interruttore_generale">PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE</label>
+          <select name="qbt_presenza_congiuntore_interruttore_generale" id="qbt_presenza_congiuntore_interruttore_generale">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_6">
+        <div class="div-table-col" id="id_col_6_0">
+          <label for="qbt_tipo_funzionale">TIPO FUNZIONALE</label>
+          <select name="qbt_tipo_funzionale" id="qbt_tipo_funzionale">
+            <option value=""></option>
+            <option value="INTERRUTTORE GENERALE">interruttore generale</option>
+            <option value="CONGIUNTORE">congiuntore</option>
+            <option value="ENTRAMBI">entrambi</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_7">
+        <div class="div-table-col" id="id_col_7_0">
+          <label for="qbt_modello_interruttore_generale">MODELLO INTERRUTTORE GENERALE</label>
+          <input type="text" id="qbt_modello_interruttore_generale" value="">
+        </div>
+        <div class="div-table-col" id="id_col_7_1">
+          <label for="qbt_marca_interruttore_generale">MARCA INTERRUTTORE GENERALE</label>
+          <input type="text" id="qbt_marca_interruttore_generale" value="">
+        </div>
+        <div class="div-table-col" id="id_col_7_2">
+          <label for="qbt_tipo_interruttore_generale">TIPO INTERRUTTORE GENERALE</label>
+          <select name="qbt_tipo_interruttore_generale" id="qbt_tipo_interruttore_generale">
+            <option value=""></option>
+            <option value="INTERRUTTORE AUTOMATICO">interruttore automatico</option>
+            <option value="IMS">ims</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_7_3">
+          <label for="qbt_portata_interruttore_generale">PORTATA INTERRUTTORE GENERALE</label>
+          <input type="text" id="qbt_portata_interruttore_generale" value="">
+        </div>
+        <div class="div-table-col" id="id_col_7_4">
+          <label for="qbt_potere_interruzione_interruttore_generale">POTERE DI INTERRUZIONE INTERRUTTORE GENERALE</label>
+          <select name="qbt_potere_interruzione_interruttore_generale" id="qbt_potere_interruzione_interruttore_generale">
+            <option value=""></option>
+            <option value="16.00">16,00</option>
+            <option value="25.00">25,00</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_7_5">
+          <label for="qbt_interruttore_generale_tarabile">INTERRUTTORE GENERALE TARABILE</label>
+          <select name="qbt_interruttore_generale_tarabile" id="qbt_interruttore_generale_tarabile">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_8">
+        <div class="div-table-col" id="id_col_8_0">
+          <label for="qbt_modello_congiuntore">MODELLO CONGIUNTORE</label>
+          <input type="text" id="qbt_modello_congiuntore" value="">
+        </div>
+        <div class="div-table-col" id="id_col_8_1">
+          <label for="qbt_marca_congiuntore">MARCA CONGIUNTORE</label>
+          <input type="text" id="qbt_marca_congiuntore" value="">
+        </div>
+        <div class="div-table-col" id="id_col_8_2">
+          <label for="qbt_tipo_congiuntore">TIPO CONGIUNTORE</label>
+          <select name="qbt_tipo_congiuntore" id="qbt_tipo_congiuntore">
+            <option value=""></option>
+            <option value="INTERRUTTORE AUTOMATICO">interruttore automatico</option>
+            <option value="IMS">ims</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_8_3">
+          <label for="qbt_portata_congiuntore">PORTATA_CONGIUNTORE</label>
+          <input type="text" id="qbt_portata_congiuntore" value="">
+        </div>
+        <div class="div-table-col" id="id_col_8_4">
+          <label for="qbt_potere_interruzione_congiuntore">POTERE DI INTERRUZIONE CONGIUNTORE</label>
+          <select name="qbt_potere_interruzione_congiuntore" id="qbt_potere_interruzione_congiuntore">
+            <option value=""></option>
+            <option value="16.00">16,00</option>
+            <option value="25.00">25,00</option>
+          </select>
+        </div>
+        <div class="div-table-col" id="id_col_8_5">
+          <label for="qbt_congiuntore_tarabile">CONGIUNTORE TARABILE</label>
+          <select name="qbt_congiuntore_tarabile" id="qbt_congiuntore_tarabile">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+      </div>
+      <div class="div-table-row" id="id_row_9">
+        <div class="div-table-col" id="id_col_9_0">
+          <label for="qbt_note">NOTE</label>
+          <textarea rows="2" cols="40" id="qbt_note" value=""></textarea>
+        </div>
+        <div class="div-table-col" id="id_col_9_1">
+          <label for="qbt_foto">FOTO - da fare!</label>
+          <input type="text" id="qbt_foto" value="">
+        </div>
+        <div class="div-table-col" id="id_col_9_2">
+          <label for="qbt_ulteriore_derivazione_gestire">ULTERIORE QUADRO DA GESTIRE</label>
+          <select name="qbt_ulteriore_derivazione_gestire" id="qbt_ulteriore_derivazione_gestire">
+            <option value=""></option>
+            <option value="SI">si</option>
+            <option value="NO">no</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script type="text/javascript">
+    let config = {
+      css_default_border_col: ''
+    };
+    (function() {
+      console.log("doc ready");
+
+      let elem = document.querySelector('.div-table-col');
+      let style = getComputedStyle(elem);
+      config.css_default_border_col = style.border;
+
+      initialize();
+      visibility();
+      let form = document.querySelector('form');
+      form.addEventListener('change', function() {
+        visibility();
+      });
+    })();
+
+    function initialize() {
+      console.log("[initialize]");
+      let dt_dg_data = new Date();
+      let d_dg_data = dt_dg_data.getDate() < 10 ? "0" + dt_dg_data.getDate() : dt_dg_data.getDate();
+      let m1_dg_data = dt_dg_data.getMonth() + 1;
+      let m_dg_data = m1_dg_data < 10 ? "0" + m1_dg_data : m1_dg_data;
+      let dateInit_dg_data = dt_dg_data.getFullYear() + "-" + m_dg_data + "-" + d_dg_data;
+      //console.log(dateInit_dg_data);
+      document.getElementById("dg_data").value = dateInit_dg_data;
+    }
+
+    function visibilityParent(element) {
+      let col = element.parentNode;
+      let children = col.childNodes;
+
+      let displayCol = false;
+      for (let i = 0; i < children.length; i++) {
+        if (children[i].style !== undefined && children[i].style.display !== 'none') {
+          displayCol = true;
+          break;
+        }
+      }
+      col.style.display = displayCol ? "inline" : "none";
+    }
+
+    function visibility() {
+      console.log("[visibility]");
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('dbt_produttore_interruttore_installato');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('dbt_produttore_interruttore_installato');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('dbt_definizione_tipo_modello');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('dbt_definizione_tipo_modello');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('dbt_tipo_interruttore');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('dbt_tipo_interruttore');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('dbt_corrente_nominale_portata_fusibile');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('dbt_corrente_nominale_portata_fusibile');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('dbt_portata_interruttore');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('dbt_portata_interruttore');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('dbt_potere_interruzione');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('dbt_potere_interruzione');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('dbt_interruttore_tarabile');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('dbt_interruttore_tarabile');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_tipologia_quadro_bt_installato');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_tipologia_quadro_bt_installato');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_revisione_quadro_bt');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_revisione_quadro_bt');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_tipo_collegamento');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_tipo_collegamento');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_presenza_cassetta_arrivo_trafo');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_presenza_cassetta_arrivo_trafo');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_modello_2_4_moduli');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_modello_2_4_moduli');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_numero_moduli');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_numero_moduli');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_presenza_congiuntore_interruttore_generale');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_presenza_congiuntore_interruttore_generale');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_tipo_funzionale');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_tipo_funzionale');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_modello_interruttore_generale');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_modello_interruttore_generale');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_marca_interruttore_generale');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_marca_interruttore_generale');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_tipo_interruttore_generale');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_tipo_interruttore_generale');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_portata_interruttore_generale');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_portata_interruttore_generale');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_potere_interruzione_interruttore_generale');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_potere_interruzione_interruttore_generale');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_interruttore_generale_tarabile');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_interruttore_generale_tarabile');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_modello_congiuntore');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_modello_congiuntore');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_marca_congiuntore');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_marca_congiuntore');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_tipo_congiuntore');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_tipo_congiuntore');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_portata_congiuntore');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_portata_congiuntore');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_potere_interruzione_congiuntore');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_potere_interruzione_congiuntore');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let node = document.getElementById('qbt_congiuntore_tarabile');
+        node.style.display = "inline";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "inline";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "inline";
+        }
+        visibilityParent(node);
+      } else {
+        let node = document.getElementById('qbt_congiuntore_tarabile');
+        node.style.display = "none";
+        if (node.previousElementSibling !== null) {
+          node.previousElementSibling.style.display = "none";
+        }
+        if (node.nextElementSibling !== null) {
+          node.nextElementSibling.style.display = "none";
+        }
+        visibilityParent(node);
+      }
+    }
+
+    function validation() {
+      let result = [];
+      let v_dg_codice_cabina = document.getElementById('dg_codice_cabina').value;
+      if (v_dg_codice_cabina === '') {
+        document.getElementById('dg_codice_cabina').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo CODICE CABINA è obbligatorio! (Dati Generali)") === -1 ? result.push("Il campo CODICE CABINA è obbligatorio! (Dati Generali)") : console.log("'Il campo CODICE CABINA è obbligatorio! (Dati Generali)' already exists");
+      }
+      let v_dg_data = document.getElementById('dg_data').value;
+      if (v_dg_data === '') {
+        document.getElementById('dg_data').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo DATA è obbligatorio! (Dati Generali)") === -1 ? result.push("Il campo DATA è obbligatorio! (Dati Generali)") : console.log("'Il campo DATA è obbligatorio! (Dati Generali)' already exists");
+      }
+      let v_dg_nome_cognome = document.getElementById('dg_nome_cognome').value;
+      if (v_dg_nome_cognome === '') {
+        document.getElementById('dg_nome_cognome').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo NOME COGNOME è obbligatorio! (Dati Generali)") === -1 ? result.push("Il campo NOME COGNOME è obbligatorio! (Dati Generali)") : console.log("'Il campo NOME COGNOME è obbligatorio! (Dati Generali)' already exists");
+      }
+      let v_dbt_tipologia_attivita = document.getElementById('dbt_tipologia_attivita').value;
+      if (v_dbt_tipologia_attivita === '') {
+        document.getElementById('dbt_tipologia_attivita').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo TIPOLOGIA ATTIVITA' è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo TIPOLOGIA ATTIVITA' è obbligatorio! (Derivazioni BT)") : console.log("'Il campo TIPOLOGIA ATTIVITA' è obbligatorio! (Derivazioni BT)' already exists");
+      }
+      let v_dbt_codice_derivazione_interessata = document.getElementById('dbt_codice_derivazione_interessata').value;
+      if (v_dbt_codice_derivazione_interessata === '') {
+        document.getElementById('dbt_codice_derivazione_interessata').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo CODICE DELLA DERIVAZIONE INTERESSATA (es. Torino D3A, Parma A01) è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo CODICE DELLA DERIVAZIONE INTERESSATA (es. Torino D3A, Parma A01) è obbligatorio! (Derivazioni BT)") : console.log("'Il campo CODICE DELLA DERIVAZIONE INTERESSATA (es. Torino D3A, Parma A01) è obbligatorio! (Derivazioni BT)' already exists");
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_dbt_produttore_interruttore_installato = document.getElementById('dbt_produttore_interruttore_installato').value;
+        if (v_dbt_produttore_interruttore_installato === '') {
+          document.getElementById('dbt_produttore_interruttore_installato').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo PRODUTTORE DELL'INTERRUTTORE INSTALLATO è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo PRODUTTORE DELL'INTERRUTTORE INSTALLATO è obbligatorio! (Derivazioni BT)") : console.log("'Il campo PRODUTTORE DELL'INTERRUTTORE INSTALLATO è obbligatorio! (Derivazioni BT)' already exists");
+        }
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_dbt_definizione_tipo_modello = document.getElementById('dbt_definizione_tipo_modello').value;
+        if (v_dbt_definizione_tipo_modello === '') {
+          document.getElementById('dbt_definizione_tipo_modello').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo DEFINIZIONE TIPO (MODELLO) è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo DEFINIZIONE TIPO (MODELLO) è obbligatorio! (Derivazioni BT)") : console.log("'Il campo DEFINIZIONE TIPO (MODELLO) è obbligatorio! (Derivazioni BT)' already exists");
+        }
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_dbt_tipo_interruttore = document.getElementById('dbt_tipo_interruttore').value;
+        if (v_dbt_tipo_interruttore === '') {
+          document.getElementById('dbt_tipo_interruttore').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO DI INTERRUTTORE è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo TIPO DI INTERRUTTORE è obbligatorio! (Derivazioni BT)") : console.log("'Il campo TIPO DI INTERRUTTORE è obbligatorio! (Derivazioni BT)' already exists");
+        }
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_dbt_corrente_nominale_portata_fusibile = document.getElementById('dbt_corrente_nominale_portata_fusibile').value;
+        if (v_dbt_corrente_nominale_portata_fusibile === '') {
+          document.getElementById('dbt_corrente_nominale_portata_fusibile').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo CORRENTE NOMINALE (PORTATA FUSIBILE) è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo CORRENTE NOMINALE (PORTATA FUSIBILE) è obbligatorio! (Derivazioni BT)") : console.log("'Il campo CORRENTE NOMINALE (PORTATA FUSIBILE) è obbligatorio! (Derivazioni BT)' already exists");
+        }
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_dbt_portata_interruttore = document.getElementById('dbt_portata_interruttore').value;
+        if (v_dbt_portata_interruttore === '') {
+          document.getElementById('dbt_portata_interruttore').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo PORTATA INTERRUTTORE è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo PORTATA INTERRUTTORE è obbligatorio! (Derivazioni BT)") : console.log("'Il campo PORTATA INTERRUTTORE è obbligatorio! (Derivazioni BT)' already exists");
+        }
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_dbt_potere_interruzione = document.getElementById('dbt_potere_interruzione').value;
+        if (v_dbt_potere_interruzione === '') {
+          document.getElementById('dbt_potere_interruzione').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo POTERE DI INTERRUZIONE è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo POTERE DI INTERRUZIONE è obbligatorio! (Derivazioni BT)") : console.log("'Il campo POTERE DI INTERRUZIONE è obbligatorio! (Derivazioni BT)' already exists");
+        }
+      }
+      if (document.getElementById('dbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('dbt_tipologia_attivita').value == 'SOSTITUZIONE INTERRUTTORE' || document.getElementById('dbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_dbt_interruttore_tarabile = document.getElementById('dbt_interruttore_tarabile').value;
+        if (v_dbt_interruttore_tarabile === '') {
+          document.getElementById('dbt_interruttore_tarabile').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo INTERRUTTORE TARABILE è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo INTERRUTTORE TARABILE è obbligatorio! (Derivazioni BT)") : console.log("'Il campo INTERRUTTORE TARABILE è obbligatorio! (Derivazioni BT)' already exists");
+        }
+      }
+      let v_dbt_ulteriore_derivazione_gestire = document.getElementById('dbt_ulteriore_derivazione_gestire').value;
+      if (v_dbt_ulteriore_derivazione_gestire === '') {
+        document.getElementById('dbt_ulteriore_derivazione_gestire').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo ULTERIORE DERIVAZIONE DA GESTIRE è obbligatorio! (Derivazioni BT)") === -1 ? result.push("Il campo ULTERIORE DERIVAZIONE DA GESTIRE è obbligatorio! (Derivazioni BT)") : console.log("'Il campo ULTERIORE DERIVAZIONE DA GESTIRE è obbligatorio! (Derivazioni BT)' already exists");
+      }
+      let v_qbt_tipologia_attivita = document.getElementById('qbt_tipologia_attivita').value;
+      if (v_qbt_tipologia_attivita === '') {
+        document.getElementById('qbt_tipologia_attivita').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo TIPOLOGIA ATTIVITA' è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo TIPOLOGIA ATTIVITA' è obbligatorio! (Quadro BT)") : console.log("'Il campo TIPOLOGIA ATTIVITA' è obbligatorio! (Quadro BT)' already exists");
+      }
+      let v_qbt_codice_del_quadro_interessato = document.getElementById('qbt_codice_del_quadro_interessato').value;
+      if (v_qbt_codice_del_quadro_interessato === '') {
+        document.getElementById('qbt_codice_del_quadro_interessato').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo CODICE DEL QUADRO INTERESSATO è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo CODICE DEL QUADRO INTERESSATO è obbligatorio! (Quadro BT)") : console.log("'Il campo CODICE DEL QUADRO INTERESSATO è obbligatorio! (Quadro BT)' already exists");
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_qbt_tipologia_quadro_bt_installato = document.getElementById('qbt_tipologia_quadro_bt_installato').value;
+        if (v_qbt_tipologia_quadro_bt_installato === '') {
+          document.getElementById('qbt_tipologia_quadro_bt_installato').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPOLOGIA QUADRO BT INSTALLATO è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo TIPOLOGIA QUADRO BT INSTALLATO è obbligatorio! (Quadro BT)") : console.log("'Il campo TIPOLOGIA QUADRO BT INSTALLATO è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_qbt_tipo_collegamento = document.getElementById('qbt_tipo_collegamento').value;
+        if (v_qbt_tipo_collegamento === '') {
+          document.getElementById('qbt_tipo_collegamento').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO DI COLLEGAMENTO è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo TIPO DI COLLEGAMENTO è obbligatorio! (Quadro BT)") : console.log("'Il campo TIPO DI COLLEGAMENTO è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_qbt_presenza_cassetta_arrivo_trafo = document.getElementById('qbt_presenza_cassetta_arrivo_trafo').value;
+        if (v_qbt_presenza_cassetta_arrivo_trafo === '') {
+          document.getElementById('qbt_presenza_cassetta_arrivo_trafo').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo PRESENZA CASSETTA ARRIVO TRAFO è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo PRESENZA CASSETTA ARRIVO TRAFO è obbligatorio! (Quadro BT)") : console.log("'Il campo PRESENZA CASSETTA ARRIVO TRAFO è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_qbt_modello_2_4_moduli = document.getElementById('qbt_modello_2_4_moduli').value;
+        if (v_qbt_modello_2_4_moduli === '') {
+          document.getElementById('qbt_modello_2_4_moduli').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo MODELLO 2 O 4 MODULI è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo MODELLO 2 O 4 MODULI è obbligatorio! (Quadro BT)") : console.log("'Il campo MODELLO 2 O 4 MODULI è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_qbt_numero_moduli = document.getElementById('qbt_numero_moduli').value;
+        if (v_qbt_numero_moduli === '') {
+          document.getElementById('qbt_numero_moduli').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo NUMERO DI MODULI è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo NUMERO DI MODULI è obbligatorio! (Quadro BT)") : console.log("'Il campo NUMERO DI MODULI è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipologia_attivita').value == 'NUOVA POSA' || document.getElementById('qbt_tipologia_attivita').value == 'SOSTITUZIONE QUADRO' || document.getElementById('qbt_tipologia_attivita').value == 'CENSIMENTO') {
+        let v_qbt_presenza_congiuntore_interruttore_generale = document.getElementById('qbt_presenza_congiuntore_interruttore_generale').value;
+        if (v_qbt_presenza_congiuntore_interruttore_generale === '') {
+          document.getElementById('qbt_presenza_congiuntore_interruttore_generale').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") : console.log("'Il campo PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_presenza_congiuntore_interruttore_generale').value == 'SI') {
+        let v_qbt_tipo_funzionale = document.getElementById('qbt_tipo_funzionale').value;
+        if (v_qbt_tipo_funzionale === '') {
+          document.getElementById('qbt_tipo_funzionale').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO FUNZIONALE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo TIPO FUNZIONALE è obbligatorio! (Quadro BT)") : console.log("'Il campo TIPO FUNZIONALE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'INTERRUTTORE GENERALE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_modello_interruttore_generale = document.getElementById('qbt_modello_interruttore_generale').value;
+        if (v_qbt_modello_interruttore_generale === '') {
+          document.getElementById('qbt_modello_interruttore_generale').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo MODELLO INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo MODELLO INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") : console.log("'Il campo MODELLO INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'INTERRUTTORE GENERALE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_marca_interruttore_generale = document.getElementById('qbt_marca_interruttore_generale').value;
+        if (v_qbt_marca_interruttore_generale === '') {
+          document.getElementById('qbt_marca_interruttore_generale').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo MARCA INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo MARCA INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") : console.log("'Il campo MARCA INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'INTERRUTTORE GENERALE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_tipo_interruttore_generale = document.getElementById('qbt_tipo_interruttore_generale').value;
+        if (v_qbt_tipo_interruttore_generale === '') {
+          document.getElementById('qbt_tipo_interruttore_generale').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo TIPO INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") : console.log("'Il campo TIPO INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'INTERRUTTORE GENERALE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_portata_interruttore_generale = document.getElementById('qbt_portata_interruttore_generale').value;
+        if (v_qbt_portata_interruttore_generale === '') {
+          document.getElementById('qbt_portata_interruttore_generale').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo PORTATA INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo PORTATA INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") : console.log("'Il campo PORTATA INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'INTERRUTTORE GENERALE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_potere_interruzione_interruttore_generale = document.getElementById('qbt_potere_interruzione_interruttore_generale').value;
+        if (v_qbt_potere_interruzione_interruttore_generale === '') {
+          document.getElementById('qbt_potere_interruzione_interruttore_generale').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo POTERE DI INTERRUZIONE INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo POTERE DI INTERRUZIONE INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)") : console.log("'Il campo POTERE DI INTERRUZIONE INTERRUTTORE GENERALE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'INTERRUTTORE GENERALE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_interruttore_generale_tarabile = document.getElementById('qbt_interruttore_generale_tarabile').value;
+        if (v_qbt_interruttore_generale_tarabile === '') {
+          document.getElementById('qbt_interruttore_generale_tarabile').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo INTERRUTTORE GENERALE TARABILE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo INTERRUTTORE GENERALE TARABILE è obbligatorio! (Quadro BT)") : console.log("'Il campo INTERRUTTORE GENERALE TARABILE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'CONGIUNTORE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_modello_congiuntore = document.getElementById('qbt_modello_congiuntore').value;
+        if (v_qbt_modello_congiuntore === '') {
+          document.getElementById('qbt_modello_congiuntore').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo MODELLO CONGIUNTORE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo MODELLO CONGIUNTORE è obbligatorio! (Quadro BT)") : console.log("'Il campo MODELLO CONGIUNTORE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'CONGIUNTORE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_marca_congiuntore = document.getElementById('qbt_marca_congiuntore').value;
+        if (v_qbt_marca_congiuntore === '') {
+          document.getElementById('qbt_marca_congiuntore').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo MARCA CONGIUNTORE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo MARCA CONGIUNTORE è obbligatorio! (Quadro BT)") : console.log("'Il campo MARCA CONGIUNTORE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'CONGIUNTORE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_tipo_congiuntore = document.getElementById('qbt_tipo_congiuntore').value;
+        if (v_qbt_tipo_congiuntore === '') {
+          document.getElementById('qbt_tipo_congiuntore').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo TIPO CONGIUNTORE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo TIPO CONGIUNTORE è obbligatorio! (Quadro BT)") : console.log("'Il campo TIPO CONGIUNTORE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'CONGIUNTORE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_portata_congiuntore = document.getElementById('qbt_portata_congiuntore').value;
+        if (v_qbt_portata_congiuntore === '') {
+          document.getElementById('qbt_portata_congiuntore').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo PORTATA_CONGIUNTORE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo PORTATA_CONGIUNTORE è obbligatorio! (Quadro BT)") : console.log("'Il campo PORTATA_CONGIUNTORE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'CONGIUNTORE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_potere_interruzione_congiuntore = document.getElementById('qbt_potere_interruzione_congiuntore').value;
+        if (v_qbt_potere_interruzione_congiuntore === '') {
+          document.getElementById('qbt_potere_interruzione_congiuntore').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo POTERE DI INTERRUZIONE CONGIUNTORE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo POTERE DI INTERRUZIONE CONGIUNTORE è obbligatorio! (Quadro BT)") : console.log("'Il campo POTERE DI INTERRUZIONE CONGIUNTORE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      if (document.getElementById('qbt_tipo_funzionale').value == 'CONGIUNTORE' || document.getElementById('qbt_tipo_funzionale').value == 'ENTRAMBI') {
+        let v_qbt_congiuntore_tarabile = document.getElementById('qbt_congiuntore_tarabile').value;
+        if (v_qbt_congiuntore_tarabile === '') {
+          document.getElementById('qbt_congiuntore_tarabile').parentElement.style.border = '1px solid red';
+          result.indexOf("Il campo CONGIUNTORE TARABILE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo CONGIUNTORE TARABILE è obbligatorio! (Quadro BT)") : console.log("'Il campo CONGIUNTORE TARABILE è obbligatorio! (Quadro BT)' already exists");
+        }
+      }
+      let v_qbt_ulteriore_derivazione_gestire = document.getElementById('qbt_ulteriore_derivazione_gestire').value;
+      if (v_qbt_ulteriore_derivazione_gestire === '') {
+        document.getElementById('qbt_ulteriore_derivazione_gestire').parentElement.style.border = '1px solid red';
+        result.indexOf("Il campo ULTERIORE QUADRO DA GESTIRE è obbligatorio! (Quadro BT)") === -1 ? result.push("Il campo ULTERIORE QUADRO DA GESTIRE è obbligatorio! (Quadro BT)") : console.log("'Il campo ULTERIORE QUADRO DA GESTIRE è obbligatorio! (Quadro BT)' already exists");
+      }
+
+      // Pattern mandatory for dg_codice_attivita_ofsc
+      let vPat_dg_codice_attivita_ofsc = document.getElementById('dg_codice_attivita_ofsc').value;
+      if (vPat_dg_codice_attivita_ofsc.trim() !== '' && vPat_dg_codice_attivita_ofsc.match(/^[0-9]{1,7}$/) === null) {
+        document.getElementById('dg_codice_attivita_ofsc').parentElement.style.border = '1px solid red';
+        result.push("CODICE ATTIVITA' OFSC deve essere di al massimo 7 caratteri numerici! (Dati Generali)");
+      };
+
+      // Pattern mandatory for dg_ordine_di_manutenzione_sap_pm
+      let vPat_dg_ordine_di_manutenzione_sap_pm = document.getElementById('dg_ordine_di_manutenzione_sap_pm').value;
+      if (vPat_dg_ordine_di_manutenzione_sap_pm.trim() !== '' && vPat_dg_ordine_di_manutenzione_sap_pm.match(/^[0-9]{1,8}$/) === null) {
+        document.getElementById('dg_ordine_di_manutenzione_sap_pm').parentElement.style.border = '1px solid red';
+        result.push("ORDINE DI MANUTENZIONE SAP PM deve essere di al massimo 8 caratteri numerici! (Dati Generali)");
+      };
+
+      // Pattern mandatory for qbt_numero_moduli
+      let vPat_qbt_numero_moduli = document.getElementById('qbt_numero_moduli').value;
+      if (vPat_qbt_numero_moduli.trim() !== '' && vPat_qbt_numero_moduli.match(/^[0-9]{1,2}$/) === null) {
+        document.getElementById('qbt_numero_moduli').parentElement.style.border = '1px solid red';
+        result.push("Il campo NUMERO DI MODULI non è editato nel formato corretto (/^[0-9]{1,2}$/)! (Quadro BT)");
+      };
+      return result;
+    }
+    document.getElementById('id_title_dati_generali').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_dati_generali');
+      title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
+      let table = title.nextElementSibling;
+      table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
+    });
+    document.getElementById('id_title_derivazioni_bt').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_derivazioni_bt');
+      title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
+      let table = title.nextElementSibling;
+      table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
+    });
+    document.getElementById('id_title_quadro_bt').addEventListener('click', function(event) {
+      let title = document.getElementById('id_title_quadro_bt');
+      title.style.width = title.style.width == '30%' || title.style.width == '' ? '100%' : '30%';
+      let table = title.nextElementSibling;
+      table.style.display = table.style.display == 'none' || table.style.display == '' ? 'block' : 'none';
+    });
+
+    let toggleMenu = false;
+    document.getElementById("buttonToggle").addEventListener("click", () => {
+      let el0 = document.getElementById("buttonToggle");
+      let el1 = document.getElementById("buttonSend");
+      let el2 = document.getElementById("buttonClear");
+      toggleMenu = !toggleMenu;
+      if (toggleMenu) {
+        el0.style['background-color'] = "#cccc00";
+        el1.style.display = "block";
+        el2.style.display = "block";
+      } else {
+        el0.style['background-color'] = "grey";
+        el1.style.display = "none";
+        el2.style.display = "none";
+      }
+    });
+
+    document.getElementById("buttonSend").addEventListener("click", () => {
+
+      // Reset all border cols to default color.
+      let elCol = document.getElementsByClassName('div-table-col');
+      for (var i = 0; i < elCol.length; i++) {
+        elCol[i].style.border = config.css_default_border_col;
+      }
+
+      let arrayMessage = validation();
+      let message = ""
+      arrayMessage.forEach(msg => {
+        message = message.concat(msg).concat("\n");
+      });
+      if (message !== "") {
+        alert(message);
+      } else {
+        alert("DEBUG: FORM VALIDO, VERRA INVIATO AL SERVER!");
+      }
+    });
+
+    document.getElementById("buttonClear").addEventListener("click", () => {
+      if (confirm('Ripristino, cancella tutti i campi! Sei sicuro?')) {
+        document.forms[0].reset();
+        initialize();
+        visibility();
+        // Reset all border cols to default color.
+        let elCol = document.getElementsByClassName('div-table-col');
+        for (var i = 0; i < elCol.length; i++) {
+          elCol[i].style.border = config.css_default_border_col;
+        }
+      } else {
+        alert('Nessuna azione eseguita!');
+      }
+
+    });
+  </script>
+
+</html>

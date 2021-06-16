@@ -1,0 +1,349 @@
+{
+    "scomparti": {
+        "title":{
+            "value": "Scomparti"
+        },
+        "reusableRule" : [
+            {
+                "name": "rule_sostituzione_recupero",
+                "rule": "mandatory if sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'RECUPERO'#visible if sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'RECUPERO'"
+            },
+            {
+                "name": "rule_nuovaposa_sostituzione",
+                "rule": "mandatory if sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'NUOVA POSA'#visible if sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'NUOVA POSA'"
+            },
+            {
+                "name": "rule_nuovaposa_sostituzione_rossa",
+                "rule": "mandatory if sc_nuova_apparecchiatura_presenta_etichetta_rossa == 'SI' && ( sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'NUOVA POSA' )#visible if ( sc_tipologia_di_attivita == 'SOSTITUZIONE' || sc_tipologia_di_attivita == 'NUOVA POSA' )"
+            },
+            {
+                "name": "rule_censimento",
+                "rule": "mandatory if sc_tipologia_di_attivita == 'CENSIMENTO'#visible if sc_tipologia_di_attivita == 'CENSIMENTO'"
+            },
+            {
+                "name": "rule_censimento_facoltativo",
+                "rule": "visible if sc_tipologia_di_attivita == 'CENSIMENTO'"
+            }
+    
+        ],
+        "row_00": [
+            {"type": "select", "id": "sc_tipologia_di_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"NUOVA POSA", "label":"nuova posa"},
+                    {"value":"SOSTITUZIONE", "label":"sostituzione"},
+                    {"value":"RECUPERO", "label":"recupero"},
+                    {"value":"CENSIMENTO", "label":"censimento"}
+                ]
+            }
+        ],
+        "row_01": [
+            {"type": "text", "id": "sc_codice_dello_scomparto_rimosso", "label":"CODICE DELLO SCOMPARTO RIMOSSO", "rule": "rule_sostituzione_recupero"},
+            {"type": "select", "id": "sc_stato_dello_scomparto_rimosso", "label": "STATO DELLO SCOMPARTO RIMOSSO", "rule": "rule_sostituzione_recupero",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"RIENTRATO A MAGAZZINO", "label":"rientrato a magazzino"},
+                    {"value":"DA ROTTAMARE", "label":"da rottamare"},
+                    {"value":"IN ATTESA DI REVISIONE", "label":"in attesa di revisione"}
+                ]
+            }
+        ],
+        "row_02": [
+            {"type": "select", "id": "sc_nuova_apparecchiatura_presenta_etichetta_rossa", "label": "LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA", "rule": "rule_nuovaposa_sostituzione",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_tipologia_nuovo_scomparto_installato", "label": "TIPOLOGIA NUOVO SCOMPARTO INSTALLATO", "rule": "rule_nuovaposa_sostituzione",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"LINEA", "label":"linea"},
+                    {"value":"PROTEZIONE TRASFORMATORE", "label":"protezione trasformatore"},
+                    {"value":"CONGIUNTORE", "label":"congiuntore"},
+                    {"value":"RISALITA", "label":"risalita"},
+                    {"value":"UTENTE", "label":"utente"}
+                ]
+            },
+            {"type": "text", "id": "sc_produttore_marca", "label":"PRODUTTORE (MARCA)", "rule": "rule_nuovaposa_sostituzione"},
+            {"type": "text", "id": "sc_definizione_tipo_modello", "label":"DEFINIZIONE TIPO (MODELLO)", "rule": "rule_nuovaposa_sostituzione"},
+            {"type": "text", "id": "sc_numero_serie_definito_produttore_matricola", "label":"NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_nuovaposa_sostituzione"}
+        ],
+        "row_03": [
+            {"type": "text", "size":"7", "maxlength":"7","id": "sc_anno_mese_costruzione", "label":"ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_nuovaposa_sostituzione_rossa", "pattern": "aaaamm"},
+            {"type": "select", "id": "sc_tipo_automazione", "label": "TIPO DI AUTOMAZIONE", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"ASSENTE", "label":"assente"},
+                    {"value":"MOTORIZZATO", "label":"motorizzato"},
+                    {"value":"ICS SMART", "label":"ics smart"},
+                    {"value":"MOTORIZZATO CON KIT ESTERNO", "label":"motorizzato con kit esterno"}
+                    
+                ]
+            },
+            {"type": "select", "id": "sc_tipo_isolamento", "label": "TIPO DI ISOLAMENTO", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"ARIA-ARIA", "label":"aria/aria"},
+                    {"value":"ARIA-GAS", "label":"aria/gas"},
+                    {"value":"GAS-GAS", "label":"gas/gas"}
+                ]
+            },
+            {"type": "select", "id": "sc_blocchi_sicurezza", "label": "BLOCCHI DI SICUREZZA", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"INTERBLOCCO IMS-ST", "label":"interblocco ims-st"},
+                    {"value":"INTERBLOCCHI A CHIAVE", "label":"interblocchi a chiave"},
+                    {"value":"INTERBLOCCHI ASSENTI", "label":"interblocchi assenti"}
+                ]
+            },
+            {"type": "select", "id": "sc_tipo_comando", "label": "TIPO DI COMANDO", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"COMANDO A LEVA DIRETTO", "label":"comando a leva diretto"},
+                    {"value":"COMANDO A LEVA RINVIATO", "label":"comando a leva rinviato"},
+                    {"value":"FIORETTO", "label":"fioretto"},
+                    {"value":"COMANDO A DISTANZA", "label":"comando a distanza"}
+                ]
+            },
+            {"type": "select", "id": "sc_tipo_terminali", "label": "TIPO DI TERMINALI", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"NORMALE", "label":"normale"},
+                    {"value":"CONNESSIONI_TIPO", "label":"connessioni tipo"},
+                    {"value":"SPINA", "label":"spina"}
+                ]
+            },
+            {"type": "select", "id": "sc_corrente_nominale_dee", "label": "CORRENTE NOMINALE DEE", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"400", "label":"400"},
+                    {"value":"630", "label":"630"}
+                ]
+            },
+            {"type": "select", "id": "sc_tipo_installazione", "label": "TIPO DI INSTALLAZIONE", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"A PAVIMENTO", "label":"a pavimento"},
+                    {"value":"A PARETE", "label":"a parete"},
+                    {"value":"VERTICALE SU PALO", "label":"verticale su palo"},
+                    {"value":"ORIZZONTALE SU PALO", "label":"orizzontale su palo"}
+                    
+                ]
+            },
+            {"type": "select", "id": "sc_tipologia_gas_isolante", "label": "TIPOLOGIA DI GAS ISOLANTE", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SF6", "label":"sf6"}
+                ]
+            },
+            {"type": "text", "id": "sc_quantita_gas_isolante", "label": "QUANTITA' DI GAS ISOLANTE (kg)", "rule": "rule_nuovaposa_sostituzione_rossa"},
+            {"type": "select", "id": "sc_organo_manovra", "label": "ORGANO DI MANOVRA", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SEZIONATORE A VUOTO", "label":"sezionatore a vuoto"},
+                    {"value":"IMS", "label":"ims"},
+                    {"value":"IMS CON FUSIBILI", "label":"ims con fusibili"},
+                    {"value":"IMS PLUS IMS CON FUSIBILI", "label":"ims+ims con fusibili"},
+                    {"value":"ICS", "label":"ics"},
+                    {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"}
+                ]
+            },
+            {"type": "select", "id": "sc_presenza_sez_messa_terra", "label": "PRESENZA SEZ DI MESSA A TERRA", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_caratteristica_involucro", "label": "CARATTERISTICA DELL' INVOLUCRO", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SCOMPARTO NORMALE", "label":"scomparto normale"},
+                    {"value":"SCOMPARTO RIDOTTO", "label":"scomparto ridotto"},
+                    {"value":"QUADRO COMPATTO", "label":"quadro compatto"},
+                    {"value":"IN CELLA", "label":"in cella"},
+                    {"value":"LIBERO", "label":"libero"}
+                ]
+            },
+            {"type": "select", "id": "sc_sincr_tra_poli_sez_fase_mov", "label": "SINCR TRA POLI SEZ FASE DI MOV", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_presenza_scaldiglie", "label": "PRESENZA SCALDIGLIE", "rule": "rule_nuovaposa_sostituzione_rossa",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_presenza_tv_tetto", "label": "PRESENZA TV A TETTO", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "text", "id": "sc_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_nuovaposa_sostituzione_rossa"}
+        ],
+        "row_04": [
+            {"type": "select", "id": "sc_tipologia_scomparto", "label": "TIPOLOGIA SCOMPARTO", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"LINEA", "label":"linea"},
+                    {"value":"PROTEZIONE TRASFORMATORE", "label":"protezione trasformatore"},
+                    {"value":"CONGIUNTORE", "label":"congiuntore"},
+                    {"value":"RISALITA", "label":"risalita"},
+                    {"value":"UTENTE", "label":"utente"}
+                    
+                ]
+            },
+            {"type": "text", "id": "sc_censimento_produttore_marca", "label": "PRODUTTORE (MARCA)", "rule": "rule_censimento"},
+            {"type": "text", "id": "sc_censimento_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_censimento"},
+            {"type": "text", "id": "sc_censimento_numero_serie_definito_produttore_matricola", "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_censimento"},
+            {"type": "text", "size":"7", "maxlength":"7", "id": "sc_censimento_anno_mese_costruzione", "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_censimento", "pattern": "aaaamm"},
+            {"type": "select", "id": "sc_censimento_tipo_automazione", "label": "TIPO DI AUTOMAZIONE", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"ASSENTE", "label":"assente"},
+                    {"value":"MOTORIZZATO", "label":"motorizzato"},
+                    {"value":"ICS SMART", "label":"ics smart"},
+                    {"value":"MOTORIZZATO CON KIT ESTERNO", "label":"motorizzato con kit esterno"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_tipo_isolamento", "label": "TIPO DI ISOLAMENTO", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"ARIA_ARIA", "label":"aria/aria"},
+                    {"value":"ARIA_GAS", "label":"aria/gas"},
+                    {"value":"GAS_GAS", "label":""}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_blocchi_sicurezza", "label": "BLOCCHI DI SICUREZZA", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"INTERBLOCCO IMS-ST", "label":"interblocco ims-st"},
+                    {"value":"INTERBLOCCHI A CHIAVE", "label":"interblocchi a chiave"},
+                    {"value":"INTERBLOCCHI ASSENTI", "label":"interblocchi assenti"}
+                    
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_tipo_comando", "label": "TIPO DI COMANDO", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"COMANDO A LEVA DIRETTO", "label":"comando a leva diretto"},
+                    {"value":"COMANDO A LEVA RINVIATO", "label":"comando a leva rinviato"},
+                    {"value":"FIORETTO", "label":"fioretto"},
+                    {"value":"COMANDO A DISTANZA", "label":"comando a distanza"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_tipo_terminali", "label": "TIPO DI TERMINALI", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"NORMALE", "label":"normale"},
+                    {"value":"CONNESSIONI_TIPO", "label":"connessioni_tipo"},
+                    {"value":"SPINA", "label":"spina"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_corrente_nominale_dee", "label": "CORRENTE NOMINALE DEE", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"400,00", "label":"400,00"},
+                    {"value":"630,00", "label":"630,00"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_tipo_installazione", "label": "TIPO DI INSTALLAZIONE", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"A PAVIMENTO", "label":"a pavimento"},
+                    {"value":"A PARETE", "label":"a parete"},
+                    {"value":"VERTICALE SU PALO", "label":"verticale su palo"},
+                    {"value":"ORIZZONTALE SU PALO", "label":"orizzontale su palo"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_tipologia_gas_isolante", "label": "TIPOLOGIA DI GAS ISOLANTE", "rule": "rule_censimento_facoltativo",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SF6", "label":"sf6"}
+                ]
+            },
+            {"type": "text", "id": "sc_censimento_quantita_gas_isolante", "label": "QUANTITA' DI GAS ISOLANTE (kg)", "rule": "rule_censimento_facoltativo"},
+            {"type": "select", "id": "sc_censimento_organo_manovra", "label": "ORGANO DI MANOVRA", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SEZIONATORE A VUOTO", "label":"sezionatore a vuoto"},
+                    {"value":"IMS", "label":"ims"},
+                    {"value":"IMS CON FUSIBILI", "label":"ims con fusibili"},
+                    {"value":"IMS_PLUS_IMS CON FUSIBILI", "label":"ims+ims con fusibili"},
+                    {"value":"ICS", "label":"ICS"},
+                    {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_presenza_sez_messa_terra", "label": "PRESENZA SEZ DI MESSA A TERRA", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_caratteristica_involucro", "label": "CARATTERISTICA DELL' INVOLUCRO", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SCOMPARTO NORMALE", "label":"scomparto normale"},
+                    {"value":"SCOMPARTO RIDOTTO", "label":"scomparto ridotto"},
+                    {"value":"QUADRO COMPATTO", "label":"quadro compatto"},
+                    {"value":"IN CELLA", "label":"in cella"},
+                    {"value":"LIBERO", "label":"libero"}
+                    
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_sincr_tra_poli_sez_fase_mov", "label": "SINCR TRA POLI SEZ FASE DI MOV", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_presenza_scaldiglie", "label": "PRESENZA SCALDIGLIE", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_censimento_presenza_tv_tetto", "label": "PRESENZA TV A TETTO", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "select", "id": "sc_", "label": "", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "text", "id": "sc_censimento_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_censimento"}
+    
+            
+            
+        ],
+        "row_05": [
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "sc_note", "label": "NOTE"},
+            {"type": "text", "id": "sc_foto", "label": "FOTO - da fare!"},
+            {"type": "select", "id": "sc_ulteriore_scomparto_gestire", "label": "ULTERIORE SCOMPARTO DA GESTIRE", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
+        ]
+    }
+}

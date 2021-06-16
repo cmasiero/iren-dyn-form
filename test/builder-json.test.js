@@ -15,7 +15,9 @@ test('build json parts', () => {
     let file01 = fs.readFileSync("test/resource/part_01.json");
     let file02 = fs.readFileSync("test/resource/part_02.json");
 
-    let resultObj = joinJsonFile(fileCf, file01, file02);
+    // let resultObj = joinJsonFile(JSON.parse(fileCf), JSON.parse(file01), JSON.parse(file02));
+    let resultObj = joinJsonFile([JSON.parse(fileCf), JSON.parse(file01), JSON.parse(file02)]);
+
 
     // console.log(JSON.stringify(attachedObj));
     // console.log(JSON.stringify(resultObj));

@@ -1,7 +1,7 @@
 'use strict';
 const { getCss, getJson, getTemplateHtml, getOutputPath, DataSource } = require('../lib/resource');
 const fs = require('fs');
-const parser = require('../app/parser-json.js');
+const parser = require('../lib/parser-json.js');
 const pretty = require('pretty');
 
 let jsonObj = getJson(DataSource.FILESYSTEM);
