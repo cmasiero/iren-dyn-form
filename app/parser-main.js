@@ -4,13 +4,18 @@ const fs = require('fs');
 const parser = require('../lib/parser-json.js');
 const pretty = require('pretty');
 
+console.log("[parser-main] START");
+
 let jsonObj = getJson(DataSource.FILESYSTEM);
 let htmlTemplate = getTemplateHtml(DataSource.FILESYSTEM);
 
 let dom = parser.execute(jsonObj, htmlTemplate);
 try {
-  fs.writeFileSync(getOutputPath(DataSource.FILESYSTEM) + '/' + jsonObj.config.css , getCss(DataSource.FILESYSTEM));
-  fs.writeFileSync(getOutputPath(DataSource.FILESYSTEM) + '/'  + jsonObj.config.filename, pretty(dom.serialize()));
+  let outputPath = getOutputPath(DataSource.FILESYSTEM);
+  fs.writeFileSync( outputPath + '/' + jsonObj.config.css , getCss(DataSource.FILESYSTEM));
+  fs.writeFileSync( outputPath + '/'  + jsonObj.config.filename, pretty(dom.serialize()));
 } catch (err) {
   console.error(err)
 }
+
+console.log("[parser-main] END");
