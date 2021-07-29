@@ -1,18 +1,20 @@
 'use strict';
-const { getCss, getJson, getTemplateHtml, getOutputPath, DataSource } = require('../lib/resource');
+const resource = require('../lib/resource');
 const fs = require('fs');
 const parser = require('../lib/parser-json.js');
 const pretty = require('pretty');
 
 console.log("[parser-main] START");
 
-let jsonObj = getJson(DataSource.FILESYSTEM);
-let htmlTemplate = getTemplateHtml(DataSource.FILESYSTEM);
+let dt = resource.DataSource.FILESYSTEM;
+
+let jsonObj = resource.getJson(dt);
+let htmlTemplate = resource.getTemplateHtml(dt);
 
 let dom = parser.execute(jsonObj, htmlTemplate);
 try {
-  let outputPath = getOutputPath(DataSource.FILESYSTEM);
-  fs.writeFileSync( outputPath + '/' + jsonObj.config.css , getCss(DataSource.FILESYSTEM));
+  let outputPath = resource.getOutputPath(dt);
+  fs.writeFileSync( outputPath + '/' + jsonObj.config.css , resource.getCss(dt));
   fs.writeFileSync( outputPath + '/'  + jsonObj.config.filename, pretty(dom.serialize()));
 } catch (err) {
   console.error(err)
