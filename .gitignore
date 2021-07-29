@@ -108,3 +108,4 @@ dist
 *.txt
 output
 test/output
+trash
