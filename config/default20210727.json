@@ -4,7 +4,13 @@
         "filename": "test.html",
         "css" : "example.css",
         "title": "Scheda Raccolta dati U4",
-        "send": "post|http://nomehost/prenditu",
+        "send": "post|http://nomehost/prenditu"
+    },
+    "dati_generali":{
+        "comment": "Non viene visualizzata in html!",
+        "title":{
+            "value": "Dati Generali"
+        },
         "reusablePattern" : [
             {
                 "name": "aaaamm",
@@ -42,13 +48,7 @@
                 "name": "1_to_8_digit",
                 "pattern": "/^[0-9]{1,8}$/"
             }
-        ]
-    },
-    "dati_generali":{
-        "comment": "Non viene visualizzata in html!",
-        "title":{
-            "value": "Dati Generali"
-        },
+        ],
         "row_00":
         [
             {"type": "text", "id": "dg_codice_cabina", "label": "CODICE CABINA", "rule": "mandatory" },

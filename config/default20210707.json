@@ -4,15 +4,17 @@
         "filename": "test.html",
         "css" : "example.css",
         "title": "Scheda Raccolta dati U4",
-        "send": "post|http://nomehost/prenditu",
+        "send": "post|http://nomehost/prenditu"
+    },
+    "dati_generali":{
+        "comment": "Non viene visualizzata in html!",
+        "title":{
+            "value": "Dati Generali"
+        },
         "reusablePattern" : [
             {
                 "name": "aaaamm",
                 "pattern": "/^\\d{4}\\/\\d{2}$/"
-            },
-            {
-                "name": "3_char",
-                "pattern": "/^[a-zA-Z0-9]{3}$/"
             },
             {
                 "name": "4_digit",
@@ -31,10 +33,6 @@
                 "pattern": "/^[0-9]{1,4}$/"
             },
             {
-                "name": "1_to_4_comma_1_digit",
-                "pattern": "/^\\d{1,2}(\\,\\d{1})?$/"
-            },
-            {
                 "name": "1_to_7_digit",
                 "pattern": "/^[0-9]{1,7}$/"
             },
@@ -42,13 +40,7 @@
                 "name": "1_to_8_digit",
                 "pattern": "/^[0-9]{1,8}$/"
             }
-        ]
-    },
-    "dati_generali":{
-        "comment": "Non viene visualizzata in html!",
-        "title":{
-            "value": "Dati Generali"
-        },
+        ],
         "row_00":
         [
             {"type": "text", "id": "dg_codice_cabina", "label": "CODICE CABINA", "rule": "mandatory" },
@@ -99,16 +91,16 @@
         "row_01":
         [
             {"group": [
-                {"type": "text", "size":"4", "maxlength":"4", "id": "cs_dimensione_locale_cabina_a", "label": "DIMENSIONE LOCALE CABINA [metri] (a x b x h) (es: 23,5 - 10)", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'a' è obbligatorio", "pattern": "1_to_4_comma_1_digit", "patMessage": "DIMENSIONE LOCALE CABINA 'a' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"},
-                {"type": "text", "size":"4", "maxlength":"4", "id": "cs_dimensione_locale_cabina_b", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'b' è obbligatorio", "pattern": "1_to_4_comma_1_digit", "patMessage": "DIMENSIONE LOCALE CABINA 'b' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"},
-                {"type": "text", "size":"4", "maxlength":"4", "id": "cs_dimensione_locale_cabina_h", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'h' è obbligatorio", "pattern": "1_to_4_comma_1_digit", "patMessage": "DIMENSIONE LOCALE CABINA 'h' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"}
+                {"type": "text", "size":"3", "maxlength":"3", "id": "cs_dimensione_locale_cabina_a", "label": "DIMENSIONE LOCALE CABINA (metri) (a x b x h)", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'a' è obbligatorio", "pattern": "1_to_3_digit", "patMessage": "DIMENSIONE LOCALE CABINA 'a' deve contenere da 1 a 3 caratteri numerici!"},
+                {"type": "text", "size":"3", "maxlength":"3", "id": "cs_dimensione_locale_cabina_b", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'b' è obbligatorio", "pattern": "1_to_3_digit", "patMessage": "DIMENSIONE LOCALE CABINA 'b' deve contenere da 1 a 3 caratteri numerici!"},
+                {"type": "text", "size":"4", "maxlength":"4", "id": "cs_dimensione_locale_cabina_h", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'h' è obbligatorio", "pattern": "/^\\d{1,2}\\.\\d{0,1}$/", "patMessage": "DIMENSIONE LOCALE CABINA 'h' deve contenere da 1 a 3 caratteri numerici con decimale!"}
             ]},
             
             {"type": "select", "id": "cs_livello_tensione", "label": "LIVELLO TENSIONE (kV)", "rule": "mandatory if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'#visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"5,4", "label":"5,4"},
-                    {"value":"6,3", "label":"6,3"},
+                    {"value":"5.4", "label":"5,4"},
+                    {"value":"6.3", "label":"6,3"},
                     {"value":"15", "label":"15"},
                     {"value":"22", "label":"22"},
                     {"value":"27", "label":"27"}
@@ -166,7 +158,7 @@
             },
             {"type": "text", "size": "60", "id": "cs_indirizzo_della_botola", "label": "INDIRIZZO DELLA BOTOLA", "rule": "rule_botola"},
             {"group": [
-                {"type": "text", "size": "2", "maxlength": "2", "id": "cs_dimensioni_botola_a", "label": "DIMENSIONI BOTOLA (axb) (metri)", "rule": "rule_botola", "valMessage":"DIMENSIONI BOTOLA 'a' è obbligatorio!", "pattern": "1_to_2_digit", "patMessage": "DIMENSIONI BOTOLA 'a' deve essere di al massimo 2 caratteri numerici!"},
+                {"type": "text", "size": "2", "maxlength": "2", "id": "cs_dimensioni_botola_a", "label": "DIMENSIONI BOTOLA (axb) (centimetri)", "rule": "rule_botola", "valMessage":"DIMENSIONI BOTOLA 'a' è obbligatorio!", "pattern": "1_to_2_digit", "patMessage": "DIMENSIONI BOTOLA 'a' deve essere di al massimo 2 caratteri numerici!"},
                 {"type": "text", "size": "2", "maxlength": "2", "id": "cs_dimensioni_botola_b", "rule": "rule_botola", "valMessage":"DIMENSIONI BOTOLA 'b' è obbligatorio!", "pattern": "1_to_2_digit", "patMessage": "DIMENSIONI BOTOLA 'b' deve essere di al massimo 2 caratteri numerici!"}
             ]},
             {"type": "select", "id": "cs_tipo_scala", "label": "TIPO DI SCALA", "rule": "rule_botola",
@@ -203,10 +195,10 @@
         ],
         "row_05": [
             { "group": [
-                {"type": "text", "size": "3", "maxlength": "3", "id": "cs_dimesioni_porta_a", "label": "DIMENSIONI PORTA (axb) (metri)", "rule": "rule_001", "valMessage":"Il campo DIMENSIONI PORTA (a) è obbligatorio!"},
+                {"type": "text", "size": "3", "maxlength": "3", "id": "cs_dimesioni_porta_a", "label": "DIMENSIONI PORTA (axb) (centimetri)", "rule": "rule_001", "valMessage":"Il campo DIMENSIONI PORTA (a) è obbligatorio!"},
                 {"type": "text", "size": "3", "maxlength": "3", "id": "cs_dimesioni_porta_b", "rule": "rule_001", "valMessage":"Il campo DIMENSIONI PORTA (b) è obbligatorio!"}
             ]},
-            {"type": "textarea", "rows": "2", "cols": "40", "maxlength": "30", "id": "cs_posizionamento_chiave", "label": "POSIZIONAMENTO CHIAVE (indicare ubicazione nottolino)", "rule": "visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"},
+            {"type": "text", "size": "30", "maxlength": "30", "id": "cs_posizionamento_chiave", "label": "POSIZIONAMENTO CHIAVE (indicare ubicazione nottolino)", "rule": "visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"},
             {"type": "select", "id": "cs_tipo_porta", "label": "TIPO PORTA", "rule": "rule_001",
                 "option": [
                     {"value":"", "label":""},
@@ -270,7 +262,7 @@
                     {"value":"SCOMPARTI ISOLATI IN ARIA", "label":"scomparti isolati in aria"},
                     {"value":"SCOMPARTI ISOLATI IN ARIA-GAS", "label":"scomparti isolati in aria-gas"},
                     {"value":"CABINA A GIORNO SEZ SEMPLICI", "label":"cabina a giorno sez semplici"},
-                    {"value":"APPARECCHIATURE 6,3 kV CON IMS", "label":"apparecchiature 6,3 kv con ims"},
+                    {"value":"APPARECCHIATURE 6.3 kV CON IMS", "label":"apparecchiature 6,3 kv con ims"},
                     {"value":"CABINA A GIORNO CON IMS", "label":"cabina a giorno con ims"}
                 ]
             },
@@ -295,9 +287,7 @@
                     {"value":"", "label":""},
                     {"value":"RILEVAMENTO FUMI", "label":"rilevamento fumi"},
                     {"value":"RILEV APERTURA PORTA-BOTOLA", "label":"rilev apertura porta-botola"},
-                    {"value":"RILEVAMENTO TEMP-UMIDITA", "label":"rilevamento temp-umidita'"},
-                    {"value":"RILEVAMENTO PRESENZA", "label":"rilevamento presenza"},
-                    {"value":"RILEVAMENTO ALLAGAMENTO", "label":"rilevamento allagamento"}
+                    {"value":"RILEVAMENTO TEMP-UMIDITA", "label":"rilevamento temp-umidita'"}
                 ]
             }
         ],
@@ -340,19 +330,10 @@
             {
                 "name": "rule_censimento_facoltativo",
                 "rule": "visible if sc_tipologia_di_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule_censimento_normale_ridotto_quadro_compatto",
-                "rule": "mandatory if sc_censimento_caratteristica_involucro == 'SCOMPARTO NORMALE' ||  sc_censimento_caratteristica_involucro == 'SCOMPARTO RIDOTTO' || sc_censimento_caratteristica_involucro ==  'QUADRO COMPATTO'#visible if sc_tipologia_di_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule_censimento_normale_ridotto",
-                "rule": "mandatory if sc_censimento_caratteristica_involucro == 'SCOMPARTO NORMALE' ||  sc_censimento_caratteristica_involucro == 'SCOMPARTO RIDOTTO'#visible if sc_tipologia_di_attivita == 'CENSIMENTO'"
             }
 
         ],
         "row_00": [
-            {"type": "text", "size": "4", "maxlength": "4", "id": "sc_identificativo_scomparto", "label":"IDENTIFICATIVO SCOMPARTO (es. MT01-MT02...)", "rule": "mandatory"},
             {"type": "select", "id": "sc_tipologia_di_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -411,9 +392,9 @@
             {"type": "select", "id": "sc_tipo_isolamento", "label": "TIPO DI ISOLAMENTO", "rule": "rule_nuovaposa_sostituzione_rossa",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"ARIA/ARIA", "label":"aria/aria"},
-                    {"value":"ARIA/GAS", "label":"aria/gas"},
-                    {"value":"GAS/GAS", "label":"gas/gas"}
+                    {"value":"ARIA-ARIA", "label":"aria/aria"},
+                    {"value":"ARIA-GAS", "label":"aria/gas"},
+                    {"value":"GAS-GAS", "label":"gas/gas"}
                 ]
             },
             {"type": "select", "id": "sc_blocchi_sicurezza", "label": "BLOCCHI DI SICUREZZA", "rule": "rule_nuovaposa_sostituzione_rossa",
@@ -433,11 +414,11 @@
                     {"value":"COMANDO A DISTANZA", "label":"comando a distanza"}
                 ]
             },
-            {"type": "select", "id": "sc_tipo_terminali", "label": "TIPO DI TERMINALI", "rule": "rule_nuovaposa_sostituzione",
+            {"type": "select", "id": "sc_tipo_terminali", "label": "TIPO DI TERMINALI", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"NORMALE", "label":"normale"},
-                    {"value":"PIPA", "label":"pipa"},
+                    {"value":"CONNESSIONI_TIPO", "label":"connessioni tipo"},
                     {"value":"SPINA", "label":"spina"}
                 ]
             },
@@ -445,17 +426,17 @@
                 "option":[
                     {"value":"", "label":""},
                     {"value":"400", "label":"400"},
-                    {"value":"630", "label":"630"},
-                    {"value":"NON NOTO/ALTRO", "label":"[Non noto/Altro]"}
+                    {"value":"630", "label":"630"}
                 ]
             },
-            {"type": "select", "id": "sc_tipo_installazione", "label": "TIPO DI INSTALLAZIONE", "rule": "rule_nuovaposa_sostituzione",
+            {"type": "select", "id": "sc_tipo_installazione", "label": "TIPO DI INSTALLAZIONE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"A PAVIMENTO", "label":"a pavimento"},
                     {"value":"A PARETE", "label":"a parete"},
                     {"value":"VERTICALE SU PALO", "label":"verticale su palo"},
                     {"value":"ORIZZONTALE SU PALO", "label":"orizzontale su palo"}
+                    
                 ]
             },
             {"type": "select", "id": "sc_tipologia_gas_isolante", "label": "TIPOLOGIA DI GAS ISOLANTE", "rule": "rule_nuovaposa_sostituzione_rossa",
@@ -493,7 +474,7 @@
                     {"value":"LIBERO", "label":"libero"}
                 ]
             },
-            {"type": "select", "id": "sc_sincr_tra_poli_sez_fase_mov", "label": "SINCR TRA POLI SEZ FASE DI MOV", "rule": "rule_nuovaposa_sostituzione",
+            {"type": "select", "id": "sc_sincr_tra_poli_sez_fase_mov", "label": "SINCR TRA POLI SEZ FASE DI MOV", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
@@ -507,25 +488,14 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "select", "id": "sc_presenza_tv_tetto", "label": "PRESENZA TV A TETTO", "rule": "rule_nuovaposa_sostituzione",
+            {"type": "select", "id": "sc_presenza_tv_tetto", "label": "PRESENZA TV A TETTO", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "text", "id": "sc_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_nuovaposa_sostituzione_rossa"},
-            {"type": "select", "id": "sc_censimento_caratteristica_involucro", "label": "CARATTERISTICA DELL' INVOLUCRO", "rule": "rule_censimento",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"SCOMPARTO NORMALE", "label":"scomparto normale"},
-                    {"value":"SCOMPARTO RIDOTTO", "label":"scomparto ridotto"},
-                    {"value":"QUADRO COMPATTO", "label":"quadro compatto"},
-                    {"value":"IN CELLA", "label":"in cella"},
-                    {"value":"LIBERO", "label":"libero"}
-                    
-                ]
-            }
+            {"type": "text", "id": "sc_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_nuovaposa_sostituzione_rossa"}
         ],
         "row_04": [
             {"type": "select", "id": "sc_tipologia_scomparto", "label": "TIPOLOGIA SCOMPARTO", "rule": "rule_censimento",
@@ -539,10 +509,10 @@
                     
                 ]
             },
-            {"type": "text", "id": "sc_censimento_produttore_marca", "label": "PRODUTTORE (MARCA)", "rule": "rule_censimento_normale_ridotto_quadro_compatto"},
-            {"type": "text", "id": "sc_censimento_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_censimento_normale_ridotto_quadro_compatto"},
-            {"type": "text", "id": "sc_censimento_numero_serie_definito_produttore_matricola", "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_censimento_normale_ridotto_quadro_compatto"},
-            {"type": "text", "size":"7", "maxlength":"7", "id": "sc_censimento_anno_mese_costruzione", "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_censimento_normale_ridotto_quadro_compatto", "pattern": "aaaamm"},
+            {"type": "text", "id": "sc_censimento_produttore_marca", "label": "PRODUTTORE (MARCA)", "rule": "rule_censimento"},
+            {"type": "text", "id": "sc_censimento_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_censimento"},
+            {"type": "text", "id": "sc_censimento_numero_serie_definito_produttore_matricola", "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_censimento"},
+            {"type": "text", "size":"7", "maxlength":"7", "id": "sc_censimento_anno_mese_costruzione", "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_censimento", "pattern": "aaaamm"},
             {"type": "select", "id": "sc_censimento_tipo_automazione", "label": "TIPO DI AUTOMAZIONE", "rule": "rule_censimento",
                 "option":[
                     {"value":"", "label":""},
@@ -555,9 +525,9 @@
             {"type": "select", "id": "sc_censimento_tipo_isolamento", "label": "TIPO DI ISOLAMENTO", "rule": "rule_censimento",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"ARIA/ARIA", "label":"aria/aria"},
-                    {"value":"ARIA/GAS", "label":"aria/gas"},
-                    {"value":"GAS/GAS", "label":"gas/gas"}
+                    {"value":"ARIA_ARIA", "label":"aria/aria"},
+                    {"value":"ARIA_GAS", "label":"aria/gas"},
+                    {"value":"GAS_GAS", "label":""}
                 ]
             },
             {"type": "select", "id": "sc_censimento_blocchi_sicurezza", "label": "BLOCCHI DI SICUREZZA", "rule": "rule_censimento",
@@ -582,7 +552,7 @@
                 "option":[
                     {"value":"", "label":""},
                     {"value":"NORMALE", "label":"normale"},
-                    {"value":"PIPA", "label":"pipa"},
+                    {"value":"CONNESSIONI_TIPO", "label":"connessioni_tipo"},
                     {"value":"SPINA", "label":"spina"}
                 ]
             },
@@ -590,8 +560,7 @@
                 "option":[
                     {"value":"", "label":""},
                     {"value":"400,00", "label":"400,00"},
-                    {"value":"630,00", "label":"630,00"},
-                    {"value":"NON NOTO/ALTRO", "label":"[Non noto/Altro]"}
+                    {"value":"630,00", "label":"630,00"}
                 ]
             },
             {"type": "select", "id": "sc_censimento_tipo_installazione", "label": "TIPO DI INSTALLAZIONE", "rule": "rule_censimento",
@@ -628,6 +597,17 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
+            {"type": "select", "id": "sc_censimento_caratteristica_involucro", "label": "CARATTERISTICA DELL' INVOLUCRO", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SCOMPARTO NORMALE", "label":"scomparto normale"},
+                    {"value":"SCOMPARTO RIDOTTO", "label":"scomparto ridotto"},
+                    {"value":"QUADRO COMPATTO", "label":"quadro compatto"},
+                    {"value":"IN CELLA", "label":"in cella"},
+                    {"value":"LIBERO", "label":"libero"}
+                    
+                ]
+            },
             {"type": "select", "id": "sc_censimento_sincr_tra_poli_sez_fase_mov", "label": "SINCR TRA POLI SEZ FASE DI MOV", "rule": "rule_censimento",
                 "option":[
                     {"value":"", "label":""},
@@ -635,21 +615,31 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "select", "id": "sc_censimento_presenza_scaldiglie", "label": "PRESENZA SCALDIGLIE", "rule": "rule_censimento_normale_ridotto",
+            {"type": "select", "id": "sc_censimento_presenza_scaldiglie", "label": "PRESENZA SCALDIGLIE", "rule": "rule_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "select", "id": "sc_censimento_presenza_tv_tetto", "label": "PRESENZA TV A TETTO", "rule": "rule_censimento_normale_ridotto",
+            {"type": "select", "id": "sc_censimento_presenza_tv_tetto", "label": "PRESENZA TV A TETTO", "rule": "rule_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "text", "id": "sc_censimento_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_censimento_normale_ridotto_quadro_compatto"}
+            {"type": "select", "id": "sc_", "label": "", "rule": "rule_censimento",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            },
+            {"type": "text", "id": "sc_censimento_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_censimento"}
+
+            
+            
         ],
         "row_05": [
             {"type": "textarea", "rows": "2", "cols": "40", "id": "sc_note", "label": "NOTE"},
@@ -673,10 +663,6 @@
                 "rule": "mandatory if tr_tipologia_attivita == 'SOSTITUZIONE' || tr_tipologia_attivita == 'RECUPERO'#visible if tr_tipologia_attivita == 'SOSTITUZIONE' || tr_tipologia_attivita == 'RECUPERO'"
             },
             {
-                "name": "rule_tr_nuova_posa_sostituzione_elective",
-                "rule": "visible if tr_tipologia_attivita == 'SOSTITUZIONE' || tr_tipologia_attivita == 'NUOVA POSA'"
-            },
-            {
                 "name": "rule_tr_nuova_posa_sostituzione",
                 "rule": "mandatory if tr_tipologia_attivita == 'SOSTITUZIONE' || tr_tipologia_attivita == 'NUOVA POSA'#visible if tr_tipologia_attivita == 'SOSTITUZIONE' || tr_tipologia_attivita == 'NUOVA POSA'"
             },
@@ -687,20 +673,9 @@
             {
                 "name": "rule_tr_censimento",
                 "rule": "mandatory if tr_tipologia_attivita == 'CENSIMENTO'#visible if tr_tipologia_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule_tr_censimento_elective",
-                "rule": "visible if tr_tipologia_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule_tr_censimento_targa_si",
-                "rule": "mandatory if tr_tipologia_attivita == 'CENSIMENTO' && tr_possibile_rilevare_dati_targa == 'SI'#visible if tr_tipologia_attivita == 'CENSIMENTO'"
             }
-            
         ],
         "row_00": [
-            {"type": "text", "size": "3", "maxlength": "3", "id": "tr_identificativo_trasformatore", "label": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… )",
-                "value": "TO", "pattern": "3_char", "rule": "mandatory", "patMessage": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… ) deve essere di 3 caratteri!" },
             {"type": "select", "id": "tr_tipologia_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -756,23 +731,14 @@
             }
         ],
         "row_05": [
-            {"type": "select", "id": "tr_presenza_cella_griglia_segregaz_trasformatore", "label": "PRESENZA CELLA/GRIGLIA SEGREGAZ TRASFORMATORE", "rule": "rule_tr_nuova_posa_sostituzione",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"SI", "label":"si"},
-                    {"value":"NO", "label":"no"}
-                ]
-            },
-            {"type": "text", "size":"4", "maxlength":"4", "id": "tr_anno_revisione_trasformatore", "label": "ANNO DI REVISIONE DEL TRASFORMATORE (aaaa)", 
-                "rule": "rule_tr_nuova_posa_sostituzione_elective", "pattern": "4_digit", "patMessage": "ANNO DI REVISIONE DEL TRASFORMATORE (aaaa) deve essere di 4 numeri (es 2021)!"}
+            {"type": "text", "size":"4", "maxlength":"4", "id": "tr_anno_revisione_trasformatore", "label": "ANNO DI REVISIONE DEL TRASFORMATORE (aaaa)", "rule": "mandatory", "pattern": "4_digit"}
         ],
         "row_06": [
             {"type": "select", "id": "tr_tipo_connessione_bt", "label": "TIPO DI CONNESSIONE BT", "rule": "rule_tr_nuova_posa_sostituzione_si",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"ISOLATORE CON BANDIERA", "label":"isolatore con bandiera"},
-                    {"value":"ISOLATORE CON MORSETTI DIREKT", "label":"isolatore con morsetti direkt"},
-                    {"value":"NON NOTO/ALTRO", "label":"[Non noto/Altro]"}
+                    {"value":"ISOLATORE CON MORSETTI DIREKT", "label":"isolatore con morsetti direkt"}
                 ]
             },
             {"type": "select", "id": "tr_tipo_connessione_mt", "label": "TIPO DI CONNESSIONE MT", "rule": "rule_tr_nuova_posa_sostituzione_si",
@@ -821,19 +787,18 @@
             {"type": "select", "id": "tr_tensione_corto_circuito", "label": "TENSIONE DI CORTO CIRCUITO", "rule": "rule_tr_nuova_posa_sostituzione_si",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"2,5", "label":"2,5"},
-                    {"value":"3,00", "label":"3,00"},
-                    {"value":"4,00", "label":"4,00"},
-                    {"value":"5,00", "label":"5,00"},
-                    {"value":"6,00", "label":"6,00"}
+                    {"value":"2.5", "label":"2,5"},
+                    {"value":"3.00", "label":"3,00"},
+                    {"value":"4.00", "label":"4,00"},
+                    {"value":"6.00", "label":"6,00"}
                 ]
             },
             {"type": "select", "id": "tr_tensione_nominale_secondaria", "label": "TENSIONE NOMINALE SECONDARIA", "rule": "rule_tr_nuova_posa_sostituzione_si",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"400/230", "label":"400/230"},
-                    {"value":"380/220", "label":"380/220"},
-                    {"value":"420/240", "label":"420/240"}
+                    {"value":"400_230", "label":"400/230"},
+                    {"value":"380_220", "label":"380/220"},
+                    {"value":"420_240", "label":"420/240"}
                 ]
             }
         ],
@@ -848,17 +813,10 @@
         ],
         "row_10":[
             {"type": "text", "id": "tr_censimento_produttore_trasformatore", "label": "PRODUTTORE DEL TRASFORMATORE", "rule": "rule_tr_censimento"},
-            {"type": "select", "id": "tr_possibile_rilevare_dati_targa", "label": "E' POSSIBILE RILEVARE DATI DI TARGA?",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"SI", "label":"si"},
-                    {"value":"NO", "label":"no"}
-                ]
-            },
-            {"type": "text", "id": "tr_censimento_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_tr_censimento_targa_si"},
-            {"type": "text", "id": "tr_censimento_numero_serie_definto_produttore_matricola", "label": "NUMERO DI SERIE DEFINTO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_tr_censimento_targa_si"},
-            {"type": "text", "size": "7", "maxlength": "7", "id": "tr_censimento_anno_mese_costruzione", "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_tr_censimento_targa_si", "pattern": "aaaamm"},
-            {"type": "text", "size": "4", "maxlength": "4", "id": "tr_censimento_peso_complessivo", "label": "PESO COMPLESSIVO (kg)", "rule": "rule_tr_censimento_targa_si", "pattern": "1_to_4_digit"},
+            {"type": "text", "id": "tr_censimento_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_tr_censimento"},
+            {"type": "text", "id": "tr_censimento_numero_serie_definto_produttore_matricola", "label": "NUMERO DI SERIE DEFINTO DAL PRODUTTORE (MATRICOLA)", "rule": "rule_tr_censimento"},
+            {"type": "text", "size": "7", "maxlength": "7", "id": "tr_censimento_anno_mese_costruzione", "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)", "rule": "rule_tr_censimento", "pattern": "aaaamm"},
+            {"type": "text", "size": "4", "maxlength": "4", "id": "tr_censimento_peso_complessivo", "label": "PESO COMPLESSIVO (kg)", "rule": "rule_tr_censimento", "pattern": "4_digit"},
             {"type": "select", "id": "tr_censimento_presenza_vasca", "label": "PRESENZA VASCA", "rule": "rule_tr_censimento",
                 "option":[
                     {"value":"", "label":""},
@@ -873,21 +831,19 @@
                     {"value":"VASCA APPOGGIATA SUL PAVIMENTO", "label":"vasca appoggiata sul pavimento"}
                 ]
             },
-            {"type": "select", "id": "tr_censimento_presenza_cella_griglia_segregaz_trasformatore", "label": "PRESENZA CELLA/GRIGLIA SEGREGAZ TRASFORMATORE", "rule": "rule_tr_censimento",
+            {"type": "select", "id": "tr_presenza_cella_griglia_segregaz_trasformatore", "label": "PRESENZA CELLA/GRIGLIA SEGREGAZ TRASFORMATORE", "rule": "rule_tr_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "text", "size": "4", "maxlength": "4", "id": "tr_censimento_anno_revisione_trasformatore", "label": "ANNO DI REVISIONE DEL TRASFORMATORE (aaaa)", 
-                "rule": "rule_tr_censimento_elective", "pattern": "4_digit"},
+            {"type": "text", "size": "4", "maxlength": "4", "id": "tr_censimento_anno_revisione_trasformatore", "label": "ANNO DI REVISIONE DEL TRASFORMATORE (aaaa)", "rule": "rule_tr_censimento", "pattern": "4_digit"},
             {"type": "select", "id": "tr_censimento_tipo_connessione_bt", "label": "TIPO DI CONNESSIONE BT", "rule": "rule_tr_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"ISOLATORE CON BANDIERA", "label":"isolatore con bandiera"},
-                    {"value":"ISOLATORE CON MORSETTI DIREKT", "label":"isolatore con morsetti direkt"},
-                    {"value":"NON NOTO/ALTRO", "label":"[Non noto/Altro]"}
+                    {"value":"ISOLATORE CON MORSETTI DIREKT", "label":"isolatore con morsetti direkt"}
                 ]
             },
             {"type": "select", "id": "tr_censimento_tipo_connessione_mt", "label": "TIPO DI CONNESSIONE MT", "rule": "rule_tr_censimento",
@@ -919,7 +875,7 @@
                     {"value":"IN RESINA", "label":"in resina"}
                 ]
             },
-            {"type": "text", "size": "3", "maxlength": "3", "id": "tr_censimento_peso_olio", "label": "PESO OLIO (kg)", "rule": "rule_tr_censimento_targa_si", "pattern": "1_to_3_digit"},
+            {"type": "text", "size": "3", "maxlength": "3", "id": "tr_censimento_peso_olio", "label": "PESO OLIO (kg)", "rule": "rule_tr_censimento", "pattern": "1_to_3_digit"},
             {"type": "select", "id": "tr_censimento_presenza_pcb_more_50_ppm", "label": "PRESENZA PCB >50 PPM", "rule": "rule_tr_censimento",
                 "option":[
                     {"value":"", "label":""},
@@ -927,23 +883,22 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "text", "id": "tr_censimento_potenza_nominale", "label": "POTENZA NOMINALE", "rule": "rule_tr_censimento_targa_si"},
-            {"type": "select", "id": "tr_censimento_tensione_corto_circuito", "label": "TENSIONE DI CORTO CIRCUITO", "rule": "rule_tr_censimento_targa_si",
+            {"type": "text", "id": "tr_censimento_potenza_nominale", "label": "POTENZA NOMINALE", "rule": "rule_tr_censimento"},
+            {"type": "select", "id": "tr_censimento_tensione_corto_circuito", "label": "TENSIONE DI CORTO CIRCUITO", "rule": "rule_tr_censimento",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"2,50", "label":"2,50"},
-                    {"value":"3,00", "label":"3,00"},
-                    {"value":"4,00", "label":"4,00"},
-                    {"value":"5,00", "label":"5,00"},
-                    {"value":"6,00", "label":"6,00"}
+                    {"value":"2.50", "label":"2,50"},
+                    {"value":"3.00", "label":"3,00"},
+                    {"value":"4.00", "label":"4,00"},
+                    {"value":"6.00", "label":"6,00"}
                 ]
             },
             {"type": "select", "id": "tr_censimento_tensione_nominale_secondaria", "label": "TENSIONE NOMINALE SECONDARIA", "rule": "rule_tr_censimento",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"400/230", "label":"400/230"},
-                    {"value":"380/220", "label":"380/220"},
-                    {"value":"420/240", "label":"420/240"}
+                    {"value":"400_230", "label":"400/230"},
+                    {"value":"380_220", "label":"380/220"},
+                    {"value":"420_240", "label":"420/240"}
                 ]
             },
             {"type": "select", "id": "tr_censimento_presenza_doppia_tensione", "label": "PRESENZA DOPPIA TENSIONE", "rule": "rule_tr_censimento",
@@ -974,10 +929,6 @@
             {
                 "name": "rule_dbt_posa_sostituzione_censimento",
                 "rule": "mandatory if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'#visible if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule_dbt_posa_sostituzione_censimento_maniglia_altro",
-                "rule": "mandatory if ( dbt_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO' )#visible if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'"
             }
         ],
         "row_00": [
@@ -993,6 +944,8 @@
             {"type": "text", "id": "dbt_codice_derivazione_interessata", "label": "CODICE DELLA DERIVAZIONE INTERESSATA (es. Torino D3A, Parma A01)", "rule": "mandatory"}
         ],
         "row_01": [
+            {"type": "text", "id": "dbt_produttore_interruttore_installato", "label": "PRODUTTORE DELL'INTERRUTTORE INSTALLATO", "rule": "rule_qbt_posa_sostituzione_censimento"},
+            {"type": "text", "id": "dbt_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_dbt_posa_sostituzione_censimento"},
             {"type": "select", "id": "dbt_tipo_interruttore", "label": "TIPO DI INTERRUTTORE", "rule": "rule_dbt_posa_sostituzione_censimento",
                 "option":[
                     {"value":"", "label":""},
@@ -1000,21 +953,19 @@
                     {"value":"INTERRUTTORE AUTOMATICO", "label":"interruttore automatico"},
                     {"value":"IMS CON FUSIBILI", "label":"ims con fusibili"},
                     {"value":"INTERRUTTORI MOTORIZZATO", "label":"interruttori motorizzato"},
-                    {"value":"NON NOTO/ALTRO", "label":"[Non noto/Altro]"}
+                    {"value":"[Senza input]", "label":"[Senza input]"}
                 ]
             },
-            {"type": "text", "id": "dbt_produttore_interruttore_installato", "label": "PRODUTTORE DELL'INTERRUTTORE INSTALLATO", "rule": "rule_dbt_posa_sostituzione_censimento_maniglia_altro"},
-            {"type": "text", "id": "dbt_definizione_tipo_modello", "label": "DEFINIZIONE TIPO (MODELLO)", "rule": "rule_dbt_posa_sostituzione_censimento_maniglia_altro"},
-            {"type": "text", "id": "dbt_corrente_nominale_portata_fusibile", "label": "CORRENTE NOMINALE (PORTATA FUSIBILE)", "rule": "rule_dbt_posa_sostituzione_censimento_maniglia_altro"},
-            {"type": "text", "id": "dbt_portata_interruttore", "label": "PORTATA INTERRUTTORE", "rule": "rule_dbt_posa_sostituzione_censimento_maniglia_altro"},
-            {"type": "select", "id": "dbt_potere_interruzione", "label": "POTERE DI INTERRUZIONE", "rule": "rule_dbt_posa_sostituzione_censimento_maniglia_altro",
+            {"type": "text", "id": "dbt_corrente_nominale_portata_fusibile", "label": "CORRENTE NOMINALE (PORTATA FUSIBILE)", "rule": "rule_dbt_posa_sostituzione_censimento"},
+            {"type": "text", "id": "dbt_portata_interruttore", "label": "PORTATA INTERRUTTORE", "rule": "rule_dbt_posa_sostituzione_censimento"},
+            {"type": "select", "id": "dbt_potere_interruzione", "label": "POTERE DI INTERRUZIONE", "rule": "rule_dbt_posa_sostituzione_censimento",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"16,00", "label":"16,00"},
-                    {"value":"25,00", "label":"25,00"}
+                    {"value":"16.00", "label":"16,00"},
+                    {"value":"25.00", "label":"25,00"}
                 ]
             },
-            {"type": "select", "id": "dbt_interruttore_tarabile", "label": "INTERRUTTORE TARABILE", "rule": "rule_dbt_posa_sostituzione_censimento_maniglia_altro",
+            {"type": "select", "id": "dbt_interruttore_tarabile", "label": "INTERRUTTORE TARABILE", "rule": "rule_dbt_posa_sostituzione_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
@@ -1084,7 +1035,7 @@
             }
         ],
         "row_01":[
-            {"type": "select", "id": "qbt_tipologia_quadro_bt_installato", "label": "TIPOLOGIA QUADRO BT INSTALLATO", "rule": "rule_qbt_posa_sostituzione_censimento_facoltativo",
+            {"type": "select", "id": "qbt_tipologia_quadro_bt_installato", "label": "TIPOLOGIA QUADRO BT INSTALLATO", "rule": "rule_qbt_posa_sostituzione_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"WEBER", "label":"weber"},
@@ -1101,8 +1052,7 @@
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SU QUADRO", "label":"su quadro"},
-                    {"value":"SU SBARRE", "label":"su sbarre"},
-                    {"value":"NESSUNO", "label":"nessuno"}
+                    {"value":"SU SBARRE", "label":"su sbarre"}
                 ]
             },
             {"type": "select", "id": "qbt_presenza_cassetta_arrivo_trafo", "label": "PRESENZA CASSETTA ARRIVO TRAFO", "rule": "rule_qbt_posa_sostituzione_censimento",
@@ -1112,14 +1062,14 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "select", "id": "qbt_modello_2_4_moduli", "label": "MODELLO 2 O 4 MODULI", "rule": "rule_qbt_posa_sostituzione_censimento_facoltativo",
+            {"type": "select", "id": "qbt_modello_2_4_moduli", "label": "MODELLO 2 O 4 MODULI", "rule": "rule_qbt_posa_sostituzione_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"MODELLO 2 MODULI", "label":"modello 2 moduli"},
-                    {"value":"MODELLO 4 MODULI", "label":"modello 4 moduli"},
-                    {"value":"ENTRAMBI", "label":"entrambi"}
+                    {"value":"MODELLO 4 MODULI", "label":"modello 4 moduli"}
                 ]
             },
+            {"type": "text", "size": "2", "maxlength": "2", "id": "qbt_numero_moduli", "label": "NUMERO DI MODULI", "rule": "rule_qbt_posa_sostituzione_censimento", "pattern": "1_to_2_digit"},
             {"type": "select", "id": "qbt_presenza_congiuntore_interruttore_generale", "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE", "rule": "rule_qbt_posa_sostituzione_censimento",
                 "option":[
                     {"value":"", "label":""},
@@ -1153,8 +1103,8 @@
             {"type": "select", "id": "qbt_potere_interruzione_interruttore_generale", "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE", "rule": "rule_qbt_tipo_funzionale_02",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"16,00", "label":"16,00"},
-                    {"value":"25,00", "label":"25,00"}
+                    {"value":"16.00", "label":"16,00"},
+                    {"value":"25.00", "label":"25,00"}
                 ]
             },
             {"type": "select", "id": "qbt_interruttore_generale_tarabile", "label": "INTERRUTTORE GENERALE TARABILE", "rule": "rule_qbt_tipo_funzionale_02",
@@ -1179,8 +1129,8 @@
             {"type": "select", "id": "qbt_potere_interruzione_congiuntore", "label": "POTERE DI INTERRUZIONE CONGIUNTORE", "rule": "rule_qbt_tipo_funzionale_03",
                 "option":[
                     {"value":"", "label":""},
-                    {"value":"16,00", "label":"16,00"},
-                    {"value":"25,00", "label":"25,00"}
+                    {"value":"16.00", "label":"16,00"},
+                    {"value":"25.00", "label":"25,00"}
                 ]
             },
             {"type": "select", "id": "qbt_congiuntore_tarabile", "label": "CONGIUNTORE TARABILE", "rule": "rule_qbt_tipo_funzionale_03",

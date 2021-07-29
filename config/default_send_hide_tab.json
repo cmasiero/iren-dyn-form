@@ -1,0 +1,63 @@
+
+{
+    "config": {
+        "filename": "test.html",
+        "css" : "example.css",
+        "title": "Scheda Raccolta dati U4",
+        "send": "post|http://nomehost/prenditu"
+    },
+    "tabella_0":{
+        "comment": "foo",
+        "title":{
+            "value": "Tabella 0"
+        },
+        "row_00":
+        [
+            {"type": "text", "join": "caratteristicaSAP_00", "id": "text0", "label": "TEXT0", "rule": "mandatory" },
+            {"type": "text", "id": "caratteristicaSAP_00", "label": "TEXT1", "rule": "visible if text0 == 'ciao'" },
+            {"type": "date", "join": "caratteristicaSAP_00", "id": "date0", "label": "DATE0", "init": "today", "rule": "mandatory" },
+            {"type": "select", "join": "caratteristicaSAP_00", "id": "select0", "label": "SELECT0", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SELECT0_VAL0", "valuemap": "000", "label":"select0_val0"},
+                    {"value":"SELECT0_VAL1", "valuemap": "001", "label":"select0_val1"}
+                ]
+            },
+            {"type": "select", "id": "select1", "label": "SELECT1",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SELECT1_VAL0", "label":"select1_val0"},
+                    {"value":"SELECT1_VAL1", "label":"select1_val1"}
+                ]
+            },
+            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "checkbox0", "label": "CHECKBOX0", "checked": "true"},
+            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "checkbox1", "label": "CHECKBOX1"},
+            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "id_botola", "label": "la botola", "checked": "true", "value": "Botola", "valuemap": "B"},
+
+
+            {"type": "textarea", "join": "caratteristicaSAP_02", "id": "textarea0", "label": "TEXTAREA0", "rows": "2", "cols": "40"}
+        ]
+    },
+    "tabella_1":{
+        "rule": "visible if text0 == 'ciao'",
+        "comment": "foo",
+        "title":{
+            "value": "Tabella 1"
+        },
+        "row_00":
+        [
+            {"type": "text", "id": "text1_id0", "label": "TEXT1_ID0", "rule": "mandatory" }
+        ]
+    },
+    "tabella_2":{
+        "comment": "foo",
+        "title":{
+            "value": "Tabella 2"
+        },
+        "row_00":
+        [
+            {"type": "text", "id": "text2_id0", "label": "TEXT2_ID0" }
+        ]
+    }
+}
+    
