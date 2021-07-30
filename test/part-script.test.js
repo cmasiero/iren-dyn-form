@@ -30,13 +30,17 @@ test('test MandatoryRule class.', () => {
     
     // console.log(pretty(scriptResult));
 
-    let expected = `if ( document.getElementById('id01').value == document.getElementById('id02').value && ( document.getElementById('id03').value != 'valueStatic' ) ){
+    let expected = `// Fields are evaluated if under a visible title.
+                    // Search for title visibility:
+                    let title_display_00_id = document.getElementById("00_id").closest(".div-table").previousElementSibling.style.display;
+                    if (title_display_00_id != 'none') {
+                    if ( document.getElementById('id01').value == document.getElementById('id02').value && ( document.getElementById('id03').value != 'valueStatic' ) ){
                     let v_00_id = document.getElementById('00_id').value;
                     if (v_00_id === ''){
                     document.getElementById('00_id').parentElement.style.border = '1px solid red';
                     result.indexOf("Il campo è obbligatorio! (undefined)") === -1 ? result.push("Il campo è obbligatorio! (undefined)") : console.log("'Il campo è obbligatorio! (undefined)' already exists");       
                     }
-                    }
+                    }}
                    `;
 
     expect(pretty(scriptResult)).toBe(pretty(expected));
