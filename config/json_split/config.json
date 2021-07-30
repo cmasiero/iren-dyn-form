@@ -1,9 +1,9 @@
 {
   "config": {
-    "filename": "test.html",
-    "css": "example.css",
+    "filename": "allcards.html",
+    "css": "main.css",
     "title": "Scheda Raccolta dati U4",
-    "send": "post|http://nomehost/prenditu",
+    "send": "http://localhost:3000/resource",
     "reusablePattern": [
       {
         "name": "aaaamm",
