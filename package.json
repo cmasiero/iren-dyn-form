@@ -7,7 +7,11 @@
     "jest": "^26.6.3"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "all-json-html": "node ./app/split-json-main.js && node ./app/parser-builder-main.js && node ./app/parser-main.js",
+    "json-split": "node ./app/split-json-main.js",
+    "html-builder": "node ./app/parser-builder-main.js",
+    "html-single": "node ./app/parser-main.js"
   },
   "dependencies": {
     "jsdom": "^16.5.3",
