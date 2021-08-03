@@ -70,7 +70,7 @@
             "label": "DIMENSIONE LOCALE CABINA [metri] (a x b x h) (es: 23,5 - 10)",
             "rule": "rule_001",
             "valMessage": "DIMENSIONE LOCALE CABINA 'a' è obbligatorio",
-            "pattern": "1_to_4_comma_1_digit",
+            "pattern": "1_to_2_comma_1_digit",
             "patMessage": "DIMENSIONE LOCALE CABINA 'a' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"
           },
           {
@@ -80,7 +80,7 @@
             "id": "cs_dimensione_locale_cabina_b",
             "rule": "rule_001",
             "valMessage": "DIMENSIONE LOCALE CABINA 'b' è obbligatorio",
-            "pattern": "1_to_4_comma_1_digit",
+            "pattern": "1_to_2_comma_1_digit",
             "patMessage": "DIMENSIONE LOCALE CABINA 'b' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"
           },
           {
@@ -90,7 +90,7 @@
             "id": "cs_dimensione_locale_cabina_h",
             "rule": "rule_001",
             "valMessage": "DIMENSIONE LOCALE CABINA 'h' è obbligatorio",
-            "pattern": "1_to_4_comma_1_digit",
+            "pattern": "1_to_2_comma_1_digit",
             "patMessage": "DIMENSIONE LOCALE CABINA 'h' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"
           }
         ]

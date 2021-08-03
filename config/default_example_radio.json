@@ -57,8 +57,22 @@
         "title":{
             "value": "Dati Generali"
         },
+        "reusableRule" : [
+            {
+                "name": "rule_",
+                "rule": "",
+                "valMessage": ""
+            }
+        ],
         "row_00":
         [
+            {"type": "radio", "join": "unito", "id": "radioid", "rule": "visible if dg_provincia == 'PARMA'",
+                "option" : [
+                    { "value": "male", "label": "description male" , "valuemap": "mappone"},
+                    { "value": "female", "label": "description female" },
+                    { "value": "other", "label": "description other" }
+                ]
+            },
             {"type": "select", "id": "dg_provincia", "label": "PROVINCIA", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},

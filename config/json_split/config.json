@@ -14,6 +14,14 @@
         "pattern": "/^[a-zA-Z0-9]{3}$/"
       },
       {
+        "name": "6_char",
+        "pattern": "/^[a-zA-Z0-9]{6}$/"
+      },
+      {
+        "name": "1_to_6_char",
+        "pattern": "/^[a-zA-Z0-9]{1,6}$/"
+      },
+      {
         "name": "4_digit",
         "pattern": "/^[0-9]{4}$/"
       },
@@ -30,7 +38,7 @@
         "pattern": "/^[0-9]{1,4}$/"
       },
       {
-        "name": "1_to_4_comma_1_digit",
+        "name": "1_to_2_comma_1_digit",
         "pattern": "/^\\d{1,2}(\\,\\d{1})?$/"
       },
       {

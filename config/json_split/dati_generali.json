@@ -6,10 +6,89 @@
     },
     "row_00": [
       {
-        "type": "text",
-        "id": "dg_codice_cabina",
-        "label": "CODICE CABINA",
-        "rule": "mandatory"
+        "type": "select",
+        "id": "dg_provincia",
+        "label": "PROVINCIA",
+        "rule": "mandatory",
+        "option": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "TORINO",
+            "label": "torino"
+          },
+          {
+            "value": "PARMA",
+            "label": "parma"
+          },
+          {
+            "value": "CHIOMONTE",
+            "label": "chiomonte"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "dg_livello_tensione",
+        "label": "LIVELLO DI TENSIONE (kV)",
+        "rule": "mandatory",
+        "option": [
+          {
+            "value": "",
+            "label": ""
+          },
+          {
+            "value": "5,4",
+            "label": "5,4"
+          },
+          {
+            "value": "6,3",
+            "label": "6,3"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "22",
+            "label": "22"
+          },
+          {
+            "value": "27",
+            "label": "27"
+          }
+        ]
+      },
+      {
+        "group": [
+          {
+            "type": "text",
+            "id": "dg_codice_cabina__parma",
+            "size": "6",
+            "maxlength": "6",
+            "label": "CODICE CABINA",
+            "rule": "mandatory if dg_provincia == 'PARMA' || dg_provincia == ''#visible if dg_provincia == 'PARMA' || dg_provincia == ''",
+            "pattern": "6_char",
+            "patMessage": "CODICE CABINA (Parma) deve essere di 6 caratteri, non sono ammessi caratteri speciali!"
+          },
+          {
+            "type": "text",
+            "id": "dg_codice_cabina__torino_chiomonte",
+            "size": "6",
+            "maxlength": "6",
+            "label": "CODICE CABINA",
+            "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'",
+            "pattern": "1_to_6_char",
+            "patMessage": "CODICE CABINA (Torino, Chiomonte) deve essere di al massimo 6 caratteri, non sono ammessi caratteri speciali!"
+          },
+          {
+            "type": "hint",
+            "id": "dg_codice_cabina_hint",
+            "value": "Per Parma si ricorda che i codici cabina sono es. 200125 es.295099"
+          }
+        ]
       },
       {
         "type": "date",
