@@ -40,7 +40,7 @@
         "maxlength": "3",
         "id": "tr_identificativo_trasformatore",
         "label": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… )",
-        "value": "TO",
+        "value": "T0",
         "pattern": "3_char",
         "rule": "mandatory",
         "patMessage": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… ) deve essere di 3 caratteri!"
@@ -319,8 +319,8 @@
     "row_08": [
       {
         "type": "select",
-        "id": "tr_compensatore",
-        "label": "COMPENSATORE",
+        "id": "tr_conservatore",
+        "label": "CONSERVATORE",
         "rule": "rule_tr_nuova_posa_sostituzione_si",
         "option": [
           {
@@ -482,6 +482,7 @@
         "type": "select",
         "id": "tr_possibile_rilevare_dati_targa",
         "label": "E' POSSIBILE RILEVARE DATI DI TARGA?",
+        "rule": "rule_tr_censimento",
         "option": [
           {
             "value": "",
@@ -825,11 +826,6 @@
         "label": "NOTE"
       },
       {
-        "type": "text",
-        "id": "tr_foto",
-        "label": "FOTO - da fare!"
-      },
-      {
         "type": "select",
         "id": "tr_ulteriore_trasformatore_gestire",
         "label": "ULTERIORE TRASFORMATORE DA GESTIRE",
@@ -848,6 +844,32 @@
             "label": "no"
           }
         ]
+      }
+    ],
+    "row_12": [
+      {
+        "type": "file",
+        "id": "tr_foto_01",
+        "accept": "image/*",
+        "label": "foto 1"
+      },
+      {
+        "type": "file",
+        "id": "tr_foto_02",
+        "accept": "image/*",
+        "label": "foto 2"
+      },
+      {
+        "type": "file",
+        "id": "tr_foto_03",
+        "accept": "image/*",
+        "label": "foto 3"
+      },
+      {
+        "type": "file",
+        "id": "tr_foto_04",
+        "accept": "image/*",
+        "label": "foto 4"
       }
     ]
   }

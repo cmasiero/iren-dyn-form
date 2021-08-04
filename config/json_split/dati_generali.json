@@ -86,6 +86,7 @@
           {
             "type": "hint",
             "id": "dg_codice_cabina_hint",
+            "rule": "visible if dg_provincia == 'PARMA'",
             "value": "Per Parma si ricorda che i codici cabina sono es. 200125 es.295099"
           }
         ]

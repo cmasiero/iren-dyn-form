@@ -6,23 +6,23 @@
     "reusableRule": [
       {
         "name": "rule_qbt_posa_sostituzione_censimento",
-        "rule": "mandatory if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+        "rule": "mandatory if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
       },
       {
         "name": "rule_qbt_posa_sostituzione_censimento_facoltativo",
-        "rule": "visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+        "rule": "visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
       },
       {
         "name": "rule_qbt_tipo_funzionale_01",
-        "rule": "mandatory if qbt_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+        "rule": "mandatory if qbt_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
       },
       {
         "name": "rule_qbt_tipo_funzionale_02",
-        "rule": "mandatory if qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+        "rule": "mandatory if qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
       },
       {
         "name": "rule_qbt_tipo_funzionale_03",
-        "rule": "mandatory if qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+        "rule": "mandatory if qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
       }
     ],
     "row_00": [
@@ -41,8 +41,8 @@
             "label": "nuova posa"
           },
           {
-            "value": "SOSTITUZIONE QUADRO",
-            "label": "sostituzione quadro"
+            "value": "SOSTITUZIONE",
+            "label": "sostituzione"
           },
           {
             "value": "ELIMINAZIONE",
@@ -422,11 +422,6 @@
         "label": "NOTE"
       },
       {
-        "type": "text",
-        "id": "qbt_foto",
-        "label": "FOTO - da fare!"
-      },
-      {
         "type": "select",
         "id": "qbt_ulteriore_derivazione_gestire",
         "label": "ULTERIORE QUADRO DA GESTIRE",
@@ -445,6 +440,32 @@
             "label": "no"
           }
         ]
+      }
+    ],
+    "row_06": [
+      {
+        "type": "file",
+        "id": "qbt_foto_01",
+        "accept": "image/*",
+        "label": "foto 1"
+      },
+      {
+        "type": "file",
+        "id": "qbt_foto_02",
+        "accept": "image/*",
+        "label": "foto 2"
+      },
+      {
+        "type": "file",
+        "id": "qbt_foto_03",
+        "accept": "image/*",
+        "label": "foto 3"
+      },
+      {
+        "type": "file",
+        "id": "qbt_foto_04",
+        "accept": "image/*",
+        "label": "foto 4"
       }
     ]
   }

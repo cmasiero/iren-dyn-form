@@ -420,6 +420,10 @@
           {
             "value": "SEZIONATORE CON FUSIBILE",
             "label": "sezionatore con fusibile"
+          },
+          {
+            "value": "IMS + SEZ. A VUOTO",
+            "label": "ims + sez. a vuoto"
           }
         ]
       },
@@ -869,6 +873,10 @@
           {
             "value": "SEZIONATORE CON FUSIBILE",
             "label": "sezionatore con fusibile"
+          },
+          {
+            "value": "IMS + SEZ. A VUOTO",
+            "label": "ims + sez. a vuoto"
           }
         ]
       },
@@ -968,11 +976,6 @@
         "label": "NOTE"
       },
       {
-        "type": "text",
-        "id": "sc_foto",
-        "label": "FOTO - da fare!"
-      },
-      {
         "type": "select",
         "id": "sc_ulteriore_scomparto_gestire",
         "label": "ULTERIORE SCOMPARTO DA GESTIRE",
@@ -991,6 +994,32 @@
             "label": "no"
           }
         ]
+      }
+    ],
+    "row_06": [
+      {
+        "type": "file",
+        "id": "sc_foto_01",
+        "accept": "image/*",
+        "label": "foto 1"
+      },
+      {
+        "type": "file",
+        "id": "sc_foto_02",
+        "accept": "image/*",
+        "label": "foto 2"
+      },
+      {
+        "type": "file",
+        "id": "sc_foto_03",
+        "accept": "image/*",
+        "label": "foto 3"
+      },
+      {
+        "type": "file",
+        "id": "sc_foto_04",
+        "accept": "image/*",
+        "label": "foto 4"
       }
     ]
   }

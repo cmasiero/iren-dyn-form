@@ -304,7 +304,7 @@
             "size": "2",
             "maxlength": "2",
             "id": "cs_dimensioni_botola_a",
-            "label": "DIMENSIONI BOTOLA (axb) (metri)",
+            "label": "DIMENSIONI BOTOLA (axb) (centimetri)",
             "rule": "rule_botola",
             "valMessage": "DIMENSIONI BOTOLA 'a' è obbligatorio!",
             "pattern": "1_to_2_digit",
@@ -419,7 +419,7 @@
             "size": "3",
             "maxlength": "3",
             "id": "cs_dimesioni_porta_a",
-            "label": "DIMENSIONI PORTA (axb) (metri)",
+            "label": "DIMENSIONI PORTA (axb) (centimetri)",
             "rule": "rule_001",
             "valMessage": "Il campo DIMENSIONI PORTA (a) è obbligatorio!"
           },
@@ -770,11 +770,32 @@
         "cols": "40",
         "id": "cs_note",
         "label": "NOTE"
+      }
+    ],
+    "row_08": [
+      {
+        "type": "file",
+        "id": "cs_foto_01",
+        "accept": "image/*",
+        "label": "foto 1"
       },
       {
-        "type": "text",
-        "id": "cs_foto",
-        "label": "FOTO - da fare!"
+        "type": "file",
+        "id": "cs_foto_02",
+        "accept": "image/*",
+        "label": "foto 2"
+      },
+      {
+        "type": "file",
+        "id": "cs_foto_03",
+        "accept": "image/*",
+        "label": "foto 3"
+      },
+      {
+        "type": "file",
+        "id": "cs_foto_04",
+        "accept": "image/*",
+        "label": "foto 4"
       }
     ]
   }

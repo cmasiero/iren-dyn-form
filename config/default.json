@@ -19,6 +19,14 @@
                 "pattern": "/^[a-zA-Z0-9]{6}$/"
             },
             {
+                "name": "1_char_than_2_digit",
+                "pattern": "/^[a-zA-Z]{1}\\d{2}$/"
+            },
+            {
+                "name": "D3_than_1_char",
+                "pattern": "/^D3[a-zA-Z]{1}$/"
+            },
+            {
                 "name": "1_to_6_char",
                 "pattern": "/^[a-zA-Z0-9]{1,6}$/"
             },
@@ -85,7 +93,7 @@
                     {"type": "text", "id": "dg_codice_cabina__torino_chiomonte", "size":"6", "maxlength": "6", "label": "CODICE CABINA", 
                         "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'",  
                         "pattern": "1_to_6_char", "patMessage": "CODICE CABINA (Torino, Chiomonte) deve essere di al massimo 6 caratteri, non sono ammessi caratteri speciali!"},
-                    {"type": "hint", "id": "dg_codice_cabina_hint", "value": "Per Parma si ricorda che i codici cabina sono es. 200125 es.295099"}
+                    {"type": "hint", "id": "dg_codice_cabina_hint", "rule": "visible if dg_provincia == 'PARMA'" ,"value": "Per Parma si ricorda che i codici cabina sono es. 200125 es.295099"}
             ]
             },
             {"type": "date", "id": "dg_data", "label": "DATA", "init": "today", "rule": "mandatory" },
@@ -202,7 +210,7 @@
             },
             {"type": "text", "size": "60", "id": "cs_indirizzo_della_botola", "label": "INDIRIZZO DELLA BOTOLA", "rule": "rule_botola"},
             {"group": [
-                {"type": "text", "size": "2", "maxlength": "2", "id": "cs_dimensioni_botola_a", "label": "DIMENSIONI BOTOLA (axb) (metri)", "rule": "rule_botola", "valMessage":"DIMENSIONI BOTOLA 'a' è obbligatorio!", "pattern": "1_to_2_digit", "patMessage": "DIMENSIONI BOTOLA 'a' deve essere di al massimo 2 caratteri numerici!"},
+                {"type": "text", "size": "2", "maxlength": "2", "id": "cs_dimensioni_botola_a", "label": "DIMENSIONI BOTOLA (axb) (centimetri)", "rule": "rule_botola", "valMessage":"DIMENSIONI BOTOLA 'a' è obbligatorio!", "pattern": "1_to_2_digit", "patMessage": "DIMENSIONI BOTOLA 'a' deve essere di al massimo 2 caratteri numerici!"},
                 {"type": "text", "size": "2", "maxlength": "2", "id": "cs_dimensioni_botola_b", "rule": "rule_botola", "valMessage":"DIMENSIONI BOTOLA 'b' è obbligatorio!", "pattern": "1_to_2_digit", "patMessage": "DIMENSIONI BOTOLA 'b' deve essere di al massimo 2 caratteri numerici!"}
             ]},
             {"type": "select", "id": "cs_tipo_scala", "label": "TIPO DI SCALA", "rule": "rule_botola",
@@ -239,7 +247,7 @@
         ],
         "row_05": [
             { "group": [
-                {"type": "text", "size": "3", "maxlength": "3", "id": "cs_dimesioni_porta_a", "label": "DIMENSIONI PORTA (axb) (metri)", "rule": "rule_001", "valMessage":"Il campo DIMENSIONI PORTA (a) è obbligatorio!"},
+                {"type": "text", "size": "3", "maxlength": "3", "id": "cs_dimesioni_porta_a", "label": "DIMENSIONI PORTA (axb) (centimetri)", "rule": "rule_001", "valMessage":"Il campo DIMENSIONI PORTA (a) è obbligatorio!"},
                 {"type": "text", "size": "3", "maxlength": "3", "id": "cs_dimesioni_porta_b", "rule": "rule_001", "valMessage":"Il campo DIMENSIONI PORTA (b) è obbligatorio!"}
             ]},
             {"type": "textarea", "rows": "2", "cols": "40", "maxlength": "30", "id": "cs_posizionamento_chiave", "label": "POSIZIONAMENTO CHIAVE (indicare ubicazione nottolino)", "rule": "visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"},
@@ -348,8 +356,13 @@
             {"type": "date", "id": "cs_data_cessazione", "label": "DATA DI CESSAZIONE", "rule": "mandatory if cs_tipologia_di_attivita == 'DISMISSIONE'#visible if cs_tipologia_di_attivita == 'DISMISSIONE'"}
         ],
         "row_07": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "cs_note", "label": "NOTE"},
-            {"type": "text", "id": "cs_foto", "label": "FOTO - da fare!"}
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "cs_note", "label": "NOTE"}
+        ],
+        "row_08": [
+            {"type": "file", "id": "cs_foto_01", "accept": "image/*", "label": "foto 1"},
+            {"type": "file", "id": "cs_foto_02", "accept": "image/*", "label": "foto 2"},
+            {"type": "file", "id": "cs_foto_03", "accept": "image/*", "label": "foto 3"},
+            {"type": "file", "id": "cs_foto_04", "accept": "image/*", "label": "foto 4"}
         ]
     },
     "scomparti": {
@@ -509,7 +522,8 @@
                     {"value":"IMS CON FUSIBILI", "label":"ims con fusibili"},
                     {"value":"IMS PLUS IMS CON FUSIBILI", "label":"ims+ims con fusibili"},
                     {"value":"ICS", "label":"ics"},
-                    {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"}
+                    {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"},
+                    {"value":"IMS + SEZ. A VUOTO", "label":"ims + sez. a vuoto"}
                 ]
             },
             {"type": "select", "id": "sc_presenza_sez_messa_terra", "label": "PRESENZA SEZ DI MESSA A TERRA", "rule": "rule_nuovaposa_sostituzione_rossa",
@@ -654,7 +668,8 @@
                     {"value":"IMS CON FUSIBILI", "label":"ims con fusibili"},
                     {"value":"IMS_PLUS_IMS CON FUSIBILI", "label":"ims+ims con fusibili"},
                     {"value":"ICS", "label":"ICS"},
-                    {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"}
+                    {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"},
+                    {"value":"IMS + SEZ. A VUOTO", "label":"ims + sez. a vuoto"}
                 ]
             },
             {"type": "select", "id": "sc_censimento_presenza_sez_messa_terra", "label": "PRESENZA SEZ DI MESSA A TERRA", "rule": "rule_censimento",
@@ -689,7 +704,6 @@
         ],
         "row_05": [
             {"type": "textarea", "rows": "2", "cols": "40", "id": "sc_note", "label": "NOTE"},
-            {"type": "text", "id": "sc_foto", "label": "FOTO - da fare!"},
             {"type": "select", "id": "sc_ulteriore_scomparto_gestire", "label": "ULTERIORE SCOMPARTO DA GESTIRE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -697,6 +711,12 @@
                     {"value":"NO", "label":"no"}
                 ]
             }
+        ],
+        "row_06": [
+            {"type": "file", "id": "sc_foto_01", "accept": "image/*", "label": "foto 1"},
+            {"type": "file", "id": "sc_foto_02", "accept": "image/*", "label": "foto 2"},
+            {"type": "file", "id": "sc_foto_03", "accept": "image/*", "label": "foto 3"},
+            {"type": "file", "id": "sc_foto_04", "accept": "image/*", "label": "foto 4"}
         ]
     },
     "trasformatori_mt_bt": {
@@ -736,7 +756,7 @@
         ],
         "row_00": [
             {"type": "text", "size": "3", "maxlength": "3", "id": "tr_identificativo_trasformatore", "label": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… )",
-                "value": "TO", "pattern": "3_char", "rule": "mandatory", "patMessage": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… ) deve essere di 3 caratteri!" },
+                "value": "T0", "pattern": "3_char", "rule": "mandatory", "patMessage": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… ) deve essere di 3 caratteri!" },
             {"type": "select", "id": "tr_tipologia_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -831,7 +851,7 @@
             }
         ],
         "row_08":[
-            {"type": "select", "id": "tr_compensatore", "label": "COMPENSATORE", "rule": "rule_tr_nuova_posa_sostituzione_si",
+            {"type": "select", "id": "tr_conservatore", "label": "CONSERVATORE", "rule": "rule_tr_nuova_posa_sostituzione_si",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
@@ -884,7 +904,7 @@
         ],
         "row_10":[
             {"type": "text", "id": "tr_censimento_produttore_trasformatore", "label": "PRODUTTORE DEL TRASFORMATORE", "rule": "rule_tr_censimento"},
-            {"type": "select", "id": "tr_possibile_rilevare_dati_targa", "label": "E' POSSIBILE RILEVARE DATI DI TARGA?",
+            {"type": "select", "id": "tr_possibile_rilevare_dati_targa", "label": "E' POSSIBILE RILEVARE DATI DI TARGA?", "rule": "rule_tr_censimento",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SI", "label":"si"},
@@ -992,7 +1012,6 @@
         ],
         "row_11":[
             {"type": "textarea", "rows": "2", "cols": "40", "id": "tr_note", "label": "NOTE"},
-            {"type": "text", "id": "tr_foto", "label": "FOTO - da fare!"},
             {"type": "select", "id": "tr_ulteriore_trasformatore_gestire", "label": "ULTERIORE TRASFORMATORE DA GESTIRE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -1000,6 +1019,12 @@
                     {"value":"NO", "label":"no"}
                 ]
             }
+        ],
+        "row_12": [
+            {"type": "file", "id": "tr_foto_01", "accept": "image/*", "label": "foto 1"},
+            {"type": "file", "id": "tr_foto_02", "accept": "image/*", "label": "foto 2"},
+            {"type": "file", "id": "tr_foto_03", "accept": "image/*", "label": "foto 3"},
+            {"type": "file", "id": "tr_foto_04", "accept": "image/*", "label": "foto 4"}
         ]
     },
     "derivazioni_bt": {
@@ -1014,6 +1039,14 @@
             {
                 "name": "rule_dbt_posa_sostituzione_censimento_maniglia_altro",
                 "rule": "mandatory if ( dbt_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO' )#visible if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'"
+            },
+            {
+                "name": "rule_dbt_parma",
+                "rule": "mandatory if dg_provincia == 'PARMA' || dg_provincia == ''#visible if dg_provincia == 'PARMA' || dg_provincia == ''"
+            },
+            {
+                "name": "rule_dbt_torino_chiomonte",
+                "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'"
             }
         ],
         "row_00": [
@@ -1026,7 +1059,22 @@
                     {"value":"CENSIMENTO", "label":"censimento"}
                 ]
             },
-            {"type": "text", "id": "dbt_codice_derivazione_interessata", "label": "CODICE DELLA DERIVAZIONE INTERESSATA (es. Torino D3A, Parma A01)", "rule": "mandatory"}
+            {"type": "text", "size": "3", "maxlength": "3", 
+                "id": "dbt_codice_derivazione_interessata__parma", 
+                "value": "",
+                "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
+                "rule": "rule_dbt_parma",
+                "pattern": "1_char_than_2_digit",
+                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'"
+            },
+            {"type": "text", "size": "3", "maxlength": "3", 
+                "id": "dbt_codice_derivazione_interessata__torino_chiomonte",
+                "value": "",
+                "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
+                "rule": "rule_dbt_torino_chiomonte",
+                "pattern": "D3_than_1_char",
+                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
+            }   
         ],
         "row_01": [
             {"type": "select", "id": "dbt_tipo_interruttore", "label": "TIPO DI INTERRUTTORE", "rule": "rule_dbt_posa_sostituzione_censimento",
@@ -1061,7 +1109,6 @@
         ],
         "row_02": [
             {"type": "textarea", "rows": "2", "cols": "40", "id": "dbt_note", "label": "NOTE"},
-            {"type": "text", "id": "dbt_foto", "label": "FOTO - da fare!"},
             {"type": "select", "id": "dbt_ulteriore_derivazione_gestire", "label": "ULTERIORE DERIVAZIONE DA GESTIRE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -1069,6 +1116,12 @@
                     {"value":"NO", "label":"no"}
                 ]
             }
+        ],
+        "row_03": [
+            {"type": "file", "id": "dbt_foto_01", "accept": "image/*", "label": "foto 1"},
+            {"type": "file", "id": "dbt_foto_02", "accept": "image/*", "label": "foto 2"},
+            {"type": "file", "id": "dbt_foto_03", "accept": "image/*", "label": "foto 3"},
+            {"type": "file", "id": "dbt_foto_04", "accept": "image/*", "label": "foto 4"}
         ]
     },
     "quadro_bt": {
@@ -1078,23 +1131,23 @@
         "reusableRule" : [
             {
                 "name": "rule_qbt_posa_sostituzione_censimento",
-                "rule": "mandatory if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
             },
             {
                 "name": "rule_qbt_posa_sostituzione_censimento_facoltativo",
-                "rule": "visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
             },
             {
                 "name": "rule_qbt_tipo_funzionale_01",
-                "rule": "mandatory if qbt_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if qbt_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
             },
             {
                 "name": "rule_qbt_tipo_funzionale_02",
-                "rule": "mandatory if qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
             },
             {
                 "name": "rule_qbt_tipo_funzionale_03",
-                "rule": "mandatory if qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE QUADRO' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
             }
         ],
         "row_00": [
@@ -1102,7 +1155,7 @@
                 "option":[
                     {"value":"", "label":""},
                     {"value":"NUOVA POSA", "label":"nuova posa"} ,
-                    {"value":"SOSTITUZIONE QUADRO", "label":"sostituzione quadro"},
+                    {"value":"SOSTITUZIONE", "label":"sostituzione"},
                     {"value":"ELIMINAZIONE", "label":"eliminazione"},
                     {"value":"CENSIMENTO", "label":"censimento"}
                 ]
@@ -1229,7 +1282,6 @@
         ],
         "row_05": [
             {"type": "textarea", "rows": "2", "cols": "40", "id": "qbt_note", "label": "NOTE"},
-            {"type": "text", "id": "qbt_foto", "label": "FOTO - da fare!"},
             {"type": "select", "id": "qbt_ulteriore_derivazione_gestire", "label": "ULTERIORE QUADRO DA GESTIRE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -1237,6 +1289,12 @@
                     {"value":"NO", "label":"no"}
                 ]
             }
+        ],
+        "row_06": [
+            {"type": "file", "id": "qbt_foto_01", "accept": "image/*", "label": "foto 1"},
+            {"type": "file", "id": "qbt_foto_02", "accept": "image/*", "label": "foto 2"},
+            {"type": "file", "id": "qbt_foto_03", "accept": "image/*", "label": "foto 3"},
+            {"type": "file", "id": "qbt_foto_04", "accept": "image/*", "label": "foto 4"}
         ]
     }
 }

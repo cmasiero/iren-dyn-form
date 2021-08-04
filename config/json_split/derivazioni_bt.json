@@ -11,6 +11,14 @@
       {
         "name": "rule_dbt_posa_sostituzione_censimento_maniglia_altro",
         "rule": "mandatory if ( dbt_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO' )#visible if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'"
+      },
+      {
+        "name": "rule_dbt_parma",
+        "rule": "mandatory if dg_provincia == 'PARMA' || dg_provincia == ''#visible if dg_provincia == 'PARMA' || dg_provincia == ''"
+      },
+      {
+        "name": "rule_dbt_torino_chiomonte",
+        "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'"
       }
     ],
     "row_00": [
@@ -44,9 +52,25 @@
       },
       {
         "type": "text",
-        "id": "dbt_codice_derivazione_interessata",
-        "label": "CODICE DELLA DERIVAZIONE INTERESSATA (es. Torino D3A, Parma A01)",
-        "rule": "mandatory"
+        "size": "3",
+        "maxlength": "3",
+        "id": "dbt_codice_derivazione_interessata__parma",
+        "value": "",
+        "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
+        "rule": "rule_dbt_parma",
+        "pattern": "1_char_than_2_digit",
+        "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'"
+      },
+      {
+        "type": "text",
+        "size": "3",
+        "maxlength": "3",
+        "id": "dbt_codice_derivazione_interessata__torino_chiomonte",
+        "value": "",
+        "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
+        "rule": "rule_dbt_torino_chiomonte",
+        "pattern": "D3_than_1_char",
+        "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
       }
     ],
     "row_01": [
@@ -156,11 +180,6 @@
         "label": "NOTE"
       },
       {
-        "type": "text",
-        "id": "dbt_foto",
-        "label": "FOTO - da fare!"
-      },
-      {
         "type": "select",
         "id": "dbt_ulteriore_derivazione_gestire",
         "label": "ULTERIORE DERIVAZIONE DA GESTIRE",
@@ -179,6 +198,32 @@
             "label": "no"
           }
         ]
+      }
+    ],
+    "row_03": [
+      {
+        "type": "file",
+        "id": "dbt_foto_01",
+        "accept": "image/*",
+        "label": "foto 1"
+      },
+      {
+        "type": "file",
+        "id": "dbt_foto_02",
+        "accept": "image/*",
+        "label": "foto 2"
+      },
+      {
+        "type": "file",
+        "id": "dbt_foto_03",
+        "accept": "image/*",
+        "label": "foto 3"
+      },
+      {
+        "type": "file",
+        "id": "dbt_foto_04",
+        "accept": "image/*",
+        "label": "foto 4"
       }
     ]
   }
