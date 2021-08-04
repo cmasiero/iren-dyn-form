@@ -27,11 +27,11 @@ const confArray = [
         files: ["config.json", "trasformatori_mt_bt.json"]
     }
     ,
-    {
-        outname: "derivazioni_bt.html",
-        files: ["config.json", "derivazioni_bt.json"]
-    }
-    ,
+    // {
+    //     outname: "derivazioni_bt.html",
+    //     files: ["config.json", "derivazioni_bt.json"]
+    // }
+    // ,
     {
         outname: "quadro_bt.html",
         files: ["config.json", "quadro_bt.json"]
