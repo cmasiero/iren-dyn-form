@@ -27,6 +27,10 @@
                 "pattern": "/^D3[a-zA-Z]{1}$/"
             },
             {
+                "name": "T0_than_1_char",
+                "pattern": "/^T0[a-zA-Z]{1}$/"
+            },
+            {
                 "name": "1_to_6_char",
                 "pattern": "/^[a-zA-Z0-9]{1,6}$/"
             },
@@ -756,7 +760,7 @@
         ],
         "row_00": [
             {"type": "text", "size": "3", "maxlength": "3", "id": "tr_identificativo_trasformatore", "label": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… )",
-                "value": "T0", "pattern": "3_char", "rule": "mandatory", "patMessage": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… ) deve essere di 3 caratteri!" },
+                "value": "T0", "pattern": "T0_than_1_char", "rule": "mandatory", "patMessage": "IDENTIFICATIVO TRASFORMATORE (es.Torino: T01-T02 …Parma: T0A-T0B… ) deve essere composta da 'T0' poi una lettera, es 'T0X'!" },
             {"type": "select", "id": "tr_tipologia_attivita", "label": "TIPOLOGIA DI ATTIVITA'", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},

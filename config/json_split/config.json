@@ -26,6 +26,10 @@
         "pattern": "/^D3[a-zA-Z]{1}$/"
       },
       {
+        "name": "T0_than_1_char",
+        "pattern": "/^T0[a-zA-Z]{1}$/"
+      },
+      {
         "name": "1_to_6_char",
         "pattern": "/^[a-zA-Z0-9]{1,6}$/"
       },
