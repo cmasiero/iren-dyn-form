@@ -44,10 +44,10 @@ const confArray = [
     //     outname: "dati_generali_trasformatori_mt_bt.html",
     //     files: ["config.json", "dati_generali.json", "trasformatori_mt_bt.json"]
     // },
-    // {
-    //     outname: "dati_generali_derivazioni_bt.html",
-    //     files: ["config.json", "dati_generali.json", "derivazioni_bt.json"]
-    // },
+    {
+        outname: "dati_generali_derivazioni_bt.html",
+        files: ["config.json", "dati_generali.json", "derivazioni_bt.json"]
+    },
     // {
     //     outname: "dati_generali_bt_quadro_bt.html",
     //     files: ["config.json", "dati_generali.json", "quadro_bt.json"]
