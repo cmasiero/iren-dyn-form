@@ -108,4 +108,5 @@ dist
 *.txt
 output
 test/output
+server4test/out
 trash
