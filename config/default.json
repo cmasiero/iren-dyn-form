@@ -4,7 +4,8 @@
         "filename": "allcards.html",
         "css" : "main.css",
         "title": "Scheda Raccolta dati U4",
-        "send": "http://localhost:3000/resource",
+        "sendJson": "http://localhost:5000/resource",
+        "sendFile": "http://localhost:5000/upload",
         "reusablePattern" : [
             {
                 "name": "aaaamm",
