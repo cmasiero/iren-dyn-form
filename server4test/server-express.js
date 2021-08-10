@@ -45,7 +45,7 @@ app.post('/upload', (req, res, next) => {
   req.on('end', function () {
     req.rawBody = data;
     fs.writeFile(outPathFile + req.query.filename, data, "binary", function (err) {
-      console.error(err);
+      if (error) {console.error(err);}
     });
     next();
   });
