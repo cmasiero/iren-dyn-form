@@ -4,10 +4,12 @@ const util = require('util');
 
 const app = express();
 
-
+/*** Path configuration *********************************************************/
 const outPathJson = 'server4test/out/';
 const outPathFile = outPathJson;
+/********************************************************************************/
 
+/* CORS options ***/
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -15,22 +17,42 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Max-Age': 2592000"); // 30 days
   next();
 });
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use(errorHandler);
 
 app.post('/resource', (req, res) => {
   if (req.is('application/json')) {
-    console.log("[server-express] ");
+    console.log("[server-express] resource");
+
+    /* check for valid path, if fail throw errorHandler! */
+    let pathFileCheck = outPathJson + 'check'.concat(new Date().getTime()).concat('.txt');
+    try {
+      fs.writeFileSync(pathFileCheck, 'ck');
+    } catch (err) {
+      throw new Error(util.format('Path: %s does not exist!', outPathJson));
+    }
 
     // save json on out.
     let filepath = outPathJson + req.body.uuid + '.json';
     let filecontent = JSON.stringify(req.body, null, 2);
     fs.writeFile(filepath, filecontent, 'utf8', (err) => {
-      console.log(util.format('[server-express] file %s SAVED!', filepath));
+      if (err) {
+        console.error(err);
+      } else {
+        // console.log(util.format('[server-express] json file %s SAVED!', filepath));
+        console.log('[server-express] json file %s SAVED!', filepath);
+      }
     });
 
-    fs.writeFileSync(outPathJson + "checkPathJson.json", '{"check": "true"}');
+    /* delete check */
+    fs.unlink(pathFileCheck, function (err) {
+      if (err) throw err;
+      console.log('File check %s deleted!', pathFileCheck);
+    });
+
     res.json(req.body);
   }
 
@@ -38,19 +60,41 @@ app.post('/resource', (req, res) => {
 
 app.post('/upload', (req, res, next) => {
 
+  console.log("[server-express] upload");
+
+  /* check for valid path, if fail throw errorHandler! */
+  let pathFileCheck = outPathFile + 'check'.concat(new Date().getTime()).concat('.txt');
+  try {
+    fs.writeFileSync(pathFileCheck, 'ck');
+  } catch (err) {
+    throw new Error(util.format('Path: %s does not exist!', outPathFile));
+  }
+
+
   let data = new Buffer.from('', "binary");
   req.on('data', function (chunk) {
     data = Buffer.concat([data, chunk]);
   });
   req.on('end', function () {
     req.rawBody = data;
-    fs.writeFile(outPathFile + req.query.filename, data, "binary", function (err) {
-      if (error) {console.error(err);}
+    let filepath = outPathFile + req.query.filename;
+    fs.writeFile(filepath, data, "binary", (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        // console.log(util.format('[server-express] binary file %s SAVED!', filepath));
+        console.log('[server-express] binary file %s SAVED!', filepath);
+      }
     });
     next();
   });
 
-  fs.writeFileSync(outPathFile + "checkPathFile.json", '{"check": "true"}');
+  /* delete check */
+  fs.unlink(pathFileCheck, function (err) {
+    if (err) throw err;
+    console.log('File check %s deleted!', pathFileCheck);
+  });
+
   res.json('{"result":"success"}');
 
 });
