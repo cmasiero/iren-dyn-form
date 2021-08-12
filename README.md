@@ -1,6 +1,12 @@
 # **iren-dyn-form**
 Dynamic html form from json
 
+# Clean splitted json file and output files
+Remove all files inside ./config/json_split a ./output
+
+**npm run clean-output**
+
+
 # build all: 
 Create json splitted in config/json_split and html files in output/
 
