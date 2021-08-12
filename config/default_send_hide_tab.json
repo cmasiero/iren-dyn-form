@@ -1,62 +1,98 @@
 
 {
     "config": {
-        "filename": "test.html",
+        "filename": "alltest.html",
         "css" : "example.css",
         "title": "Scheda Raccolta dati U4",
         "send": "post|http://nomehost/prenditu"
     },
-    "tabella_0":{
+    "mele":{
         "comment": "foo",
         "title":{
-            "value": "Tabella 0"
+            "value": "Mele"
         },
         "row_00":
         [
-            {"type": "text", "join": "caratteristicaSAP_00", "id": "text0", "label": "TEXT0", "rule": "mandatory" },
-            {"type": "text", "id": "caratteristicaSAP_00", "label": "TEXT1", "rule": "visible if text0 == 'ciao'" },
-            {"type": "date", "join": "caratteristicaSAP_00", "id": "date0", "label": "DATE0", "init": "today", "rule": "mandatory" },
-            {"type": "select", "join": "caratteristicaSAP_00", "id": "select0", "label": "SELECT0", "rule": "mandatory",
+            {"type": "text", "join": "caratteristicaSAP_00", "id": "me_text0", "label": "TEXT0", "rule": "mandatory" },
+            {"type": "text", "join": "caratteristicaSAP_00", "id": "me_text1", "label": "TEXT1", "rule": "visible if me_text0 == 'ciao'" },
+            {"type": "date", "join": "caratteristicaSAP_00", "id": "me_date0", "label": "DATE0", "init": "today", "rule": "mandatory" },
+            {"type": "select", "join": "caratteristicaSAP_00", "id": "me_select0", "label": "SELECT0", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SELECT0_VAL0", "valuemap": "000", "label":"select0_val0"},
                     {"value":"SELECT0_VAL1", "valuemap": "001", "label":"select0_val1"}
                 ]
             },
-            {"type": "select", "id": "select1", "label": "SELECT1",
+            {"type": "select", "id": "me_select1", "label": "SELECT1",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"SELECT1_VAL0", "label":"select1_val0"},
                     {"value":"SELECT1_VAL1", "label":"select1_val1"}
                 ]
             },
-            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "checkbox0", "label": "CHECKBOX0", "checked": "true"},
-            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "checkbox1", "label": "CHECKBOX1"},
-            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "id_botola", "label": "la botola", "checked": "true", "value": "Botola", "valuemap": "B"},
+            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "me_checkbox0", "label": "CHECKBOX0", "checked": "true"},
+            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "me_checkbox1", "label": "CHECKBOX1"},
+            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "me_botola", "label": "la botola", "checked": "true", "value": "Botola", "valuemap": "B"},
 
 
             {"type": "textarea", "join": "caratteristicaSAP_02", "id": "textarea0", "label": "TEXTAREA0", "rows": "2", "cols": "40"}
         ]
     },
-    "tabella_1":{
-        "rule": "visible if text0 == 'ciao'",
+    "pere":{
         "comment": "foo",
         "title":{
-            "value": "Tabella 1"
+            "value": "Pere"
         },
         "row_00":
         [
-            {"type": "text", "id": "text1_id0", "label": "TEXT1_ID0", "rule": "mandatory" }
+            {"type": "text", "id": "pe_text00", "label": "TEXT0", "rule": "mandatory" },
+            {"type": "select", "id": "pe_nuova_tabella", "label": "nuova tabella",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"NO", "label":"no"},
+                    {"value":"SI", "label":"si"}
+                ]
+            }
         ]
     },
-    "tabella_2":{
+    "pere_01":{
+        "rule": "visible if pe_nuova_tabella == 'SI'",
         "comment": "foo",
         "title":{
-            "value": "Tabella 2"
+            "value": "Pere 01"
         },
         "row_00":
         [
-            {"type": "text", "id": "text2_id0", "label": "TEXT2_ID0" }
+            {"type": "text", "id": "pe01_text00", "label": "TEXT0", "rule": "mandatory" },
+            {"type": "select", "id": "pe01_nuova_tabella", "label": "nuova tabella",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"NO", "label":"no"},
+                    {"value":"SI", "label":"si"}
+                ]
+            }
+        ]
+        
+    },
+    "pere_02":{
+        "rule": "visible if pe01_nuova_tabella == 'SI'",
+        "comment": "foo",
+        "title":{
+            "value": "Pere 02"
+        },
+        "row_00":
+        [
+            {"type": "text", "id": "pe02_text00", "label": "TEXT0", "rule": "mandatory" }
+        ]
+    },
+    "banane":{
+        "comment": "foo",
+        "title":{
+            "value": "Banane"
+        },
+        "row_00":
+        [
+            {"type": "text", "id": "ba_text00", "label": "TEXT00" }
         ]
     }
 }
