@@ -110,3 +110,4 @@ output
 test/output
 server4test/out
 trash
+config/json_split
