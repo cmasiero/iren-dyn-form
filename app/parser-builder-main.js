@@ -6,6 +6,24 @@ const resource = require('../lib/resource');
 const parser = require('../lib/parser-json.js');
 const pretty = require('pretty');
 
+// test configuration
+const confArray = [
+    {
+        outname: "banane.html",
+        files: ["config.json", "banane.json"]
+    },
+    {
+        outname: "mele.html",
+        files: ["config.json", "mele.json"]
+    },
+    {
+        outname: "pere.html",
+        files: ["config.json", "pere.json", "pere_01.json", "pere_02.json"]
+    }
+];
+
+/*
+// real configuration
 const confArray = [
     {
         outname: "dati_generali.html",
@@ -58,6 +76,7 @@ const confArray = [
     //     files: ["config.json", "dati_generali.json", "derivazioni_bt.json", "quadro_bt.json"]
     // }
 ];
+*/
 
 // logging purpose
 let log_filename_tag = `[${path.basename(__filename)}]`;
