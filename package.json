@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test": "jest",
+    "clean-output": "node ./app/clean-split-output.js",
     "all-json-html": "node ./app/split-json-main.js && node ./app/parser-builder-main.js && node ./app/parser-main.js",
     "json-split": "node ./app/split-json-main.js",
     "html-builder": "node ./app/parser-builder-main.js",
