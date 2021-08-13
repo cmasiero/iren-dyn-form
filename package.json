@@ -17,6 +17,7 @@
     "html-single": "node ./app/parser-main.js"
   },
   "dependencies": {
+    "image-size": "^1.0.0",
     "jsdom": "^16.5.3",
     "json-query": "^2.2.2",
     "pretty": "^2.0.0"
