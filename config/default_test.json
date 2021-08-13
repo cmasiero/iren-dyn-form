@@ -4,7 +4,8 @@
         "filename": "alltest.html",
         "css" : "example.css",
         "title": "Scheda Raccolta dati U4",
-        "send": "post|http://nomehost/prenditu"
+        "sendJson": "http://localhost:5000/resource",
+        "sendFile": "http://localhost:5000/upload"
     },
     "mele":{
         "comment": "foo",
@@ -93,6 +94,12 @@
         "row_00":
         [
             {"type": "text", "id": "ba_text00", "label": "TEXT00" }
+        ],
+        "row_01": [
+            {"type": "file", "id": "ba_foto_01", "accept": "image/*", "label": "foto 1"},
+            {"type": "file", "id": "ba_foto_02", "accept": "image/*", "label": "foto 2"},
+            {"type": "file", "id": "ba_foto_03", "accept": "image/*", "label": "foto 3"},
+            {"type": "file", "id": "ba_foto_04", "accept": "image/*", "label": "foto 4"}
         ]
     }
 }
