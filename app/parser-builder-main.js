@@ -7,6 +7,7 @@ const parser = require('../lib/parser-json.js');
 const pretty = require('pretty');
 
 // test configuration
+
 const confArray = [
     {
         outname: "banane.html",
@@ -22,8 +23,10 @@ const confArray = [
     }
 ];
 
-/*
+
+
 // real configuration
+/*
 const confArray = [
     {
         outname: "dati_generali.html",
