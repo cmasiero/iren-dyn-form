@@ -1,12 +1,16 @@
 const express = require('express');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 fs = require('fs');
 const util = require('util');
-
 const app = express();
+var sizeOf = require('image-size');
+
 
 /*** Path configuration *********************************************************/
 const outPathJson = 'server4test/out/';
 const outPathFile = outPathJson;
+const htmlPath = 'output/';
 /********************************************************************************/
 
 /* CORS options ***/
@@ -22,6 +26,10 @@ app.use(function (req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use(errorHandler);
+
+// public: path for json and images.
+app.use(express.static(htmlPath));
+app.use(express.static(outPathJson));
 
 app.post('/resource', (req, res) => {
   if (req.is('application/json')) {
@@ -98,6 +106,65 @@ app.post('/upload', (req, res, next) => {
   res.json('{"result":"success"}');
 
 });
+
+
+app.get('/card', (req, res) => {
+
+  res.setHeader('Content-Type', 'text/html');
+
+  let rawdata = fs.readFileSync(outPathJson.concat(req.query.uuid).concat('.json'));
+  let uuidObj = JSON.parse(rawdata);
+  // console.log(uuidObj);
+
+  JSDOM.fromFile(htmlPath.concat(uuidObj.filename))
+    .then((dom) => {
+
+      let doc = dom.window.document;
+      uuidObj.content.forEach(objContent => {
+        console.log(objContent);
+        if (objContent.type === 'text') {
+          doc.getElementById(objContent.id).setAttribute('value', objContent.value);
+        } else if (objContent.type === 'file') {
+          addImage(dom, objContent.id, objContent.value);
+        }
+      });
+
+      res.send(doc.documentElement.outerHTML);
+
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+});
+
+const addImage = (dom, id, filename) => {
+
+  let doc = dom.window.document;
+
+  let dimensions = sizeOf(outPathJson.concat(filename));
+  console.log(dimensions.width, dimensions.height);
+
+  let f = doc.getElementById(id);
+  let c = f.closest('div');
+  let ul = doc.createElement('img');
+  let iconSize = 42;
+  ul.setAttribute('id', 'image_id');
+  ul.setAttribute('src', filename);
+  ul.setAttribute('height', iconSize);
+  ul.setAttribute('width', iconSize);
+  ul.setAttribute('style', 'border: 1px solid red; border-radius: 10%; cursor: pointer;');
+  ul.setAttribute('title', 'Clicca per ingrandire!');
+  ul.setAttribute('onclick', `
+                            this.toggle = !this.toggle;
+                            if (toggle){ this.height = ${dimensions.height}; this.width = ${dimensions.width}; this.title = 'Clicca per iconizzare!' }
+                            else {this.height = ${iconSize}; this.width = ${iconSize}; this.title = 'Clicca per ingrandire!'}
+                            `
+
+  );
+  c.appendChild(ul)
+}
+
 
 function errorHandler(err, req, res, next) {
   if (res.headersSent) {
