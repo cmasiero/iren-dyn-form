@@ -114,22 +114,51 @@ app.get('/card', (req, res) => {
 
   let rawdata = fs.readFileSync(outPathJson.concat(req.query.uuid).concat('.json'));
   let uuidObj = JSON.parse(rawdata);
-  // console.log(uuidObj);
 
   JSDOM.fromFile(htmlPath.concat(uuidObj.filename))
     .then((dom) => {
-
       let doc = dom.window.document;
+
+      // disable menù!
+      doc.getElementById('buttonToggle').setAttribute('style', 'display: none;');
+
+      // set uuid
+      doc.getElementById('uuid').setAttribute('value', uuidObj.uuid);
+
       uuidObj.content.forEach(objContent => {
-        console.log(objContent);
-        if (objContent.type === 'text') {
+        if (objContent.type === 'text' || objContent.type === 'date') {
           doc.getElementById(objContent.id).setAttribute('value', objContent.value);
+        } else if (objContent.type === 'textarea') {
+          doc.getElementById(objContent.id).textContent = objContent.value;
+        } else if (objContent.type === 'select-one') {
+          let ops = doc.getElementById(objContent.id).options;
+          for (let i = 0; i < ops.length; i++) {
+            if (objContent.value === ops[i].value){
+              ops[i].setAttribute('selected', '');
+            }
+          }
+        } else if (objContent.type === 'checkbox') {
+          if (objContent.value === 'true'){
+            doc.getElementById(objContent.id).setAttribute('checked', '');
+          }
+        } else if (objContent.type === 'radio'){
+          let names = doc.getElementsByName(objContent.id);
+          for (let i = 0; i < names.length; i++) {
+            const el = names[i];
+            if (objContent.value === el.value){
+              el.setAttribute('checked','');
+            }
+          }
         } else if (objContent.type === 'file') {
           addImage(dom, objContent.id, objContent.value);
-        }
+        }  else {
+          console.log(objContent.type + " TODO")
+        } 
+        
       });
 
-      res.send(doc.documentElement.outerHTML);
+      // res.send(doc.documentElement.outerHTML);
+      res.send(dom.serialize());
 
     })
     .catch((err) => {

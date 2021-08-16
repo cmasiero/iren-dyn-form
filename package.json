@@ -12,9 +12,9 @@
     "test": "jest",
     "clean-output": "node ./app/clean-split-output.js",
     "all-json-html": "node ./app/split-json-main.js && node ./app/parser-builder-main.js && node ./app/parser-main.js",
-    "json-split": "node ./app/split-json-main.js",
+    "split-json": "node ./app/split-json-main.js",
     "html-builder": "node ./app/parser-builder-main.js",
-    "html-single": "node ./app/parser-main.js"
+    "html-main": "node ./app/parser-main.js"
   },
   "dependencies": {
     "image-size": "^1.0.0",

@@ -93,7 +93,30 @@
         },
         "row_00":
         [
-            {"type": "text", "id": "ba_text00", "label": "TEXT00" }
+            {"type": "text", "id": "ba_text00", "label": "TEXT00" },
+            {"type": "date", "id": "ba_data", "label": "DATA", "rule": "mandatory" },
+            {"type": "select", "id": "ba_sel00", "label": "tipo banane", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"ba00", "label":"ba00"},
+                    {"value":"ba01", "label":"ba01"}
+                    
+                ]
+            },
+            {"group":
+                [
+                    {"type": "checkbox", "id": "ba_check00", "label": "checkVal01"},
+                    {"type": "checkbox", "id": "ba_check01", "label": "checkVal02"}
+                ]
+            },
+            {"type": "radio", "id": "ba_radio",
+                "option" : [
+                    { "value": "radio value 00", "label": "radio 00"},
+                    { "value": "radio value 01", "label": "radio 01" },
+                    { "value": "radio value Other", "label": "radio other" }
+                ]
+            },
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "ba_note", "label": "NOTE"}
         ],
         "row_01": [
             {"type": "file", "id": "ba_foto_01", "accept": "image/*", "label": "foto 1"},

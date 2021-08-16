@@ -4,6 +4,45 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "split-json",
+            "program": "${workspaceRoot}/app/split-json-main.js",
+            "args": [
+                "--verbose",
+                "-i",
+                "--no-cache"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "html-builder",
+            "program": "${workspaceRoot}/app/parser-builder-main.js",
+            "args": [
+                "--verbose",
+                "-i",
+                "--no-cache"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "html-main",
+            "program": "${workspaceRoot}/app/parser-main.js",
+            "args": [
+                "--verbose",
+                "-i",
+                "--no-cache"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Jest single run all tests",
             "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
             "args": [

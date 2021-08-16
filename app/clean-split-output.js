@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * Directories to clean out.
+ */
 const directories = [
     './config/json_split',
     './output'
