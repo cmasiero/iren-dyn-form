@@ -94,7 +94,7 @@
         "row_00":
         [
             {"type": "text", "id": "ba_text00", "label": "TEXT00" },
-            {"type": "date", "id": "ba_data", "label": "DATA", "rule": "mandatory" },
+            {"type": "date", "id": "ba_data", "label": "DATA", "init": "today", "rule": "mandatory" },
             {"type": "select", "id": "ba_sel00", "label": "tipo banane", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
