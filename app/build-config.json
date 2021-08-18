@@ -1,0 +1,4 @@
+{
+    "_comment": "environment available are dev, test or prod",
+    "environment" : "test"
+}
