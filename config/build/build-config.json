@@ -1,0 +1,31 @@
+{
+  "_comment": "environment available are dev, test or prod",
+  "environment": "dev",
+  "dev": {
+    "path_json": "config/default_dev.json",
+    "path_css": "config/default.css",
+    "path_folder_json_split": "config/json_split",
+    "path_template_html": "config/version5.html",
+    "path_folder_output": "output",
+    "path_folder_output_test": "test/output",
+    "builder_config": "../config/build/builder-config-dev.js"
+  },
+  "test": {
+    "path_json": "config/default_test.json",
+    "path_css": "config/default.css",
+    "path_folder_json_split": "config/json_split",
+    "path_template_html": "config/version5.html",
+    "path_folder_output": "output",
+    "path_folder_output_test": "test/output",
+    "builder_config": "../config/build/builder-config-test.js"
+  },
+  "prod": {
+    "path_json": "config/default_prod.json",
+    "path_css": "config/default.css",
+    "path_folder_json_split": "config/json_split",
+    "path_template_html": "config/version5.html",
+    "path_folder_output": "output",
+    "path_folder_output_test": "test/output",
+    "builder_config": "../config/build/builder-config-prod.js"
+  }
+}

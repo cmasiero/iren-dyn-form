@@ -6,9 +6,10 @@ const resource = require('../lib/resource');
 const parser = require('../lib/parser-json.js');
 const pretty = require('pretty');
 
-// Load build type
-const {env} = require(`./env.js`); 
-const {confArray} = require(`./builder-config-${env}.js`);
+// Load building environment configuration.
+const {initializeEnv} = require(`../config/build/env.js`); 
+const env = initializeEnv();
+const {confArray} = require(env.builder_config);
 
 // logging purpose
 let log_filename_tag = `[${path.basename(__filename)}]`;

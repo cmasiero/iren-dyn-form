@@ -1,4 +1,9 @@
 'use strict';
+// First of all set env
+// Load building environment configuration.
+const {initializeEnv} = require(`../config/build/env.js`); 
+const env = initializeEnv('dev');
+
 const { getCss, getJson, getTemplateHtml, getOutputPathTest, DataSource } = require('../lib/resource');
 const fs = require('fs');
 const parser = require('../lib/parser-json');

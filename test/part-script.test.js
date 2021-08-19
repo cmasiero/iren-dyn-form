@@ -80,6 +80,12 @@ test('test VisibleRule class.', () => {
         visibilityParent(node);
         } else {
         let node = document.getElementById('01_id');
+        if (node.type === 'checkbox'){
+         node.checked = false
+         } else {
+         node.value = '';
+         }
+    
         node.style.display = \"none\";
         if (node.previousElementSibling !== null) {
         node.previousElementSibling.style.display = \"none\";
@@ -130,6 +136,12 @@ test('test scriptRule method visible.', () => {
         visibilityParent(node);
     } else {
         let node = document.getElementById('01_id');
+        if (node.type === 'checkbox'){
+         node.checked = false
+         } else {
+         node.value = '';
+        }
+        
         node.style.display = \"none\";
         if (node.previousElementSibling !== null) {
             node.previousElementSibling.style.display = \"none\";
