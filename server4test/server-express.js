@@ -116,7 +116,17 @@ app.get('/card', (req, res) => {
 
         switch (objContent.type) {
           case 'text':
-            doc.getElementById(objContent.id).setAttribute('value', objContent.value);
+
+            if (doc.getElementById(objContent.id)) {
+              doc.getElementById(objContent.id).setAttribute('value', objContent.value);
+            } else {
+              // workaround: id in json match 2 or more elements in html, set all!
+              // example: dg_codice_cabina match dg_codice_cabina__parma and dg_codice_cabina__torino_chiomonte
+              let arr = doc.querySelectorAll('[id^="'.concat(objContent.id).concat('"]'));
+              for (let i = 0; i < arr.length; i++) {
+                doc.getElementById(arr[i].id).setAttribute('value', objContent.value);
+              }
+            }
             break;
           case 'date':
             doc.getElementById(objContent.id).setAttribute('value', objContent.value);
