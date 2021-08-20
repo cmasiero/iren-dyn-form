@@ -10,11 +10,11 @@ exports.confArray = [
     },
     {
         outname: "scomparti.html",
-        files: ["config.json", "scomparti.json"]
+        files: ["config.json", "scomparti.json", "scomparti_01.json", "scomparti_02.json"]
     },
     {
         outname: "trasformatori_mt_bt.html",
-        files: ["config.json", "trasformatori_mt_bt.json"]
+        files: ["config.json", "trasformatori_mt_bt.json", "trasformatori_mt_bt_01.json", "trasformatori_mt_bt_02.json"]
     },
     // {
     //     outname: "derivazioni_bt.html",
@@ -23,7 +23,7 @@ exports.confArray = [
     // ,
     {
         outname: "quadro_bt.html",
-        files: ["config.json", "quadro_bt.json"]
+        files: ["config.json", "quadro_bt.json", "quadro_bt_01.json", "quadro_bt_02.json"]
     },
     // {
     //     outname: "dati_generali_cabine_secondarie.html",
@@ -39,7 +39,7 @@ exports.confArray = [
     // },
     {
         outname: "dati_generali_derivazioni_bt.html",
-        files: ["config.json", "dati_generali.json", "derivazioni_bt.json"]
+        files: ["config.json", "dati_generali.json", "derivazioni_bt.json", "derivazioni_bt_01.json", "derivazioni_bt_02.json"]
     },
     // {
     //     outname: "dati_generali_bt_quadro_bt.html",
