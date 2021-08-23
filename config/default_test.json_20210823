@@ -4,8 +4,8 @@
         "filename": "allcards.html",
         "css" : "main.css",
         "title": "Scheda Raccolta dati U4",
-        "sendJson": "http://srvnode.gruppoiren.it:5000/resource",
-        "sendFile": "http://srvnode.gruppoiren.it:5000/upload",
+        "sendJson": "http://localhost:5000/resource",
+        "sendFile": "http://localhost:5000/upload",
         "reusablePattern" : [
             {
                 "name": "aaaamm",
@@ -29,7 +29,7 @@
             },
             {
                 "name": "T0_than_1_char",
-                "pattern": "/^T0[a-zA-Z0-9]{1}$/"
+                "pattern": "/^T0[a-zA-Z]{1}$/"
             },
             {
                 "name": "1_to_6_char",
@@ -1418,7 +1418,14 @@
             {"type": "text", "id": "sc02_censimento_tensione_massima_isolamento", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule02_censimento_normale_ridotto_quadro_compatto"}
         ],
         "row_05": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "sc02_note", "label": "NOTE"}
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "sc02_note", "label": "NOTE"},
+            {"type": "select", "id": "sc02_ulteriore_scomparto_gestire", "label": "ULTERIORE SCOMPARTO DA GESTIRE", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
         ],
         "row_06": [
             {"type": "file", "id": "sc02_foto_01", "accept": "image/*", "label": "foto 1"},
@@ -2337,7 +2344,14 @@
             }
         ],
         "row_11":[
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "tr02_note", "label": "NOTE"}
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "tr02_note", "label": "NOTE"},
+            {"type": "select", "id": "tr02_ulteriore_trasformatore_gestire", "label": "ULTERIORE TRASFORMATORE DA GESTIRE", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
         ],
         "row_12": [
             {"type": "file", "id": "tr02_foto_01", "accept": "image/*", "label": "foto 1"},
@@ -2623,7 +2637,14 @@
             }
         ],
         "row_02": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "dbt02_note", "label": "NOTE"}
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "dbt02_note", "label": "NOTE"},
+            {"type": "select", "id": "dbt02_ulteriore_derivazione_gestire", "label": "ULTERIORE DERIVAZIONE DA GESTIRE", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
         ],
         "row_03": [
             {"type": "file", "id": "dbt02_foto_01", "accept": "image/*", "label": "foto 1"},
@@ -3137,7 +3158,14 @@
             }
         ],
         "row_05": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "qbt02_note", "label": "NOTE"}
+            {"type": "textarea", "rows": "2", "cols": "40", "id": "qbt02_note", "label": "NOTE"},
+            {"type": "select", "id": "qbt02_ulteriore_derivazione_gestire", "label": "ULTERIORE QUADRO DA GESTIRE", "rule": "mandatory",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"SI", "label":"si"},
+                    {"value":"NO", "label":"no"}
+                ]
+            }
         ],
         "row_06": [
             {"type": "file", "id": "qbt02_foto_01", "accept": "image/*", "label": "foto 1"},
