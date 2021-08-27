@@ -1,129 +1,268 @@
-
 {
     "config": {
-        "filename": "alltest.html",
-        "css" : "example.css",
+        "filename": "allcards.html",
+        "css": "example.css",
         "title": "Scheda Raccolta dati U4",
         "sendJson": "http://localhost:5000/resource",
-        "sendFile": "http://localhost:5000/upload"
+        "sendFile": "http://localhost:5000/upload",
+        "reusablePattern": [
+            {
+                "name": "3_char",
+                "pattern": "/^[a-zA-Z0-9]{3}$/"
+            },
+            {
+                "name": "6_char",
+                "pattern": "/^[a-zA-Z0-9]{6}$/"
+            }
+        ]
     },
-    "mele":{
+    "mele": {
         "comment": "foo",
-        "title":{
+        "title": {
             "value": "Mele"
         },
-        "row_00":
-        [
-            {"type": "text", "join": "caratteristicaSAP_00", "id": "me_text0", "label": "TEXT0", "rule": "mandatory" },
-            {"type": "text", "join": "caratteristicaSAP_00", "id": "me_text1", "label": "TEXT1", "rule": "visible if me_text0 == 'ciao'" },
-            {"type": "date", "join": "caratteristicaSAP_00", "id": "me_date0", "label": "DATE0", "init": "today", "rule": "mandatory" },
-            {"type": "select", "join": "caratteristicaSAP_00", "id": "me_select0", "label": "SELECT0", "rule": "mandatory",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"SELECT0_VAL0", "valuemap": "000", "label":"select0_val0"},
-                    {"value":"SELECT0_VAL1", "valuemap": "001", "label":"select0_val1"}
+        "row_00": [
+            {
+                "type": "text", "join": "caratteristicaSAP_00", "id": "me_text0", "label": "TEXT0", "rule": "mandatory",
+                "pattern": [
+                    "set if me_select0 == 'SELECT0_VAL0' : '/^[a-zA-Z0-9]{6}$/'",
+                    "set if me_select0 == 'SELECT0_VAL1' : '3_char'"
+                ],
+                "patMessage": [
+                    "TEXT0 deve essere di 6 caratteri!",
+                    "TEXT0 deve essere di 3 caratteri!"
                 ]
             },
-            {"type": "select", "id": "me_select1", "label": "SELECT1",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"SELECT1_VAL0", "label":"select1_val0"},
-                    {"value":"SELECT1_VAL1", "label":"select1_val1"}
+            {
+                "type": "text", "join": "caratteristicaSAP_00", "id": "me_text1", "label": "TEXT1", "rule": "visible if me_text0 == 'ciao'", "pattern": "3_char"
+            },
+            {
+                "type": "date", "join": "caratteristicaSAP_00", "id": "me_date0", "label": "DATE0", "init": "today", "rule": "mandatory"
+            },
+            {
+                "type": "select", "join": "caratteristicaSAP_00", "id": "me_select0", "label": "SELECT0", "rule": "mandatory",
+                "option": [
+                    {
+                        "value": "", "label": ""
+                    },
+                    {
+                        "value": "SELECT0_VAL0", "valuemap": "000", "label": "select0_val0"
+                    },
+                    {
+                        "value": "SELECT0_VAL1", "valuemap": "001", "label": "select0_val1"
+                    }
                 ]
             },
-            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "me_checkbox0", "label": "CHECKBOX0", "checked": "true"},
-            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "me_checkbox1", "label": "CHECKBOX1"},
-            {"type": "checkbox", "join": "caratteristicaSAP_01", "id": "me_botola", "label": "la botola", "checked": "true", "value": "Botola", "valuemap": "B"},
-
-
-            {"type": "textarea", "join": "caratteristicaSAP_02", "id": "textarea0", "label": "TEXTAREA0", "rows": "2", "cols": "40"}
+            {
+                "type": "select",
+                "id": "me_select1",
+                "label": "SELECT1",
+                "option": [
+                    {
+                        "value": "",
+                        "label": ""
+                    },
+                    {
+                        "value": "SELECT1_VAL0",
+                        "label": "select1_val0"
+                    },
+                    {
+                        "value": "SELECT1_VAL1",
+                        "label": "select1_val1"
+                    }
+                ]
+            },
+            {
+                "type": "checkbox",
+                "join": "caratteristicaSAP_01",
+                "id": "me_checkbox0",
+                "label": "CHECKBOX0",
+                "checked": "true"
+            },
+            {
+                "type": "checkbox",
+                "join": "caratteristicaSAP_01",
+                "id": "me_checkbox1",
+                "label": "CHECKBOX1"
+            },
+            {
+                "type": "checkbox",
+                "join": "caratteristicaSAP_01",
+                "id": "me_botola",
+                "label": "la botola",
+                "checked": "true",
+                "value": "Botola",
+                "valuemap": "B"
+            },
+            {
+                "type": "textarea",
+                "join": "caratteristicaSAP_02",
+                "id": "textarea0",
+                "label": "TEXTAREA0",
+                "rows": "2",
+                "cols": "40"
+            }
         ]
     },
-    "pere":{
+    "pere": {
         "comment": "foo",
-        "title":{
+        "title": {
             "value": "Pere"
         },
-        "row_00":
-        [
-            {"type": "text", "id": "pe_text00", "label": "TEXT0", "rule": "mandatory" },
-            {"type": "select", "id": "pe_nuova_tabella", "label": "nuova tabella",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"NO", "label":"no"},
-                    {"value":"SI", "label":"si"}
+        "row_00": [
+            {
+                "type": "text",
+                "id": "pe_text00",
+                "label": "TEXT0",
+                "rule": "mandatory"
+            },
+            {
+                "type": "select",
+                "id": "pe_nuova_tabella",
+                "label": "nuova tabella",
+                "option": [
+                    {
+                        "value": "",
+                        "label": ""
+                    },
+                    {
+                        "value": "NO",
+                        "label": "no"
+                    },
+                    {
+                        "value": "SI",
+                        "label": "si"
+                    }
                 ]
             }
         ]
     },
-    "pere_01":{
+    "pere_01": {
         "rule": "visible if pe_nuova_tabella == 'SI'",
         "comment": "foo",
-        "title":{
+        "title": {
             "value": "Pere 01"
         },
-        "row_00":
-        [
-            {"type": "text", "id": "pe01_text00", "label": "TEXT0", "rule": "mandatory" },
-            {"type": "select", "id": "pe01_nuova_tabella", "label": "nuova tabella",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"NO", "label":"no"},
-                    {"value":"SI", "label":"si"}
+        "row_00": [
+            {
+                "type": "text",
+                "id": "pe01_text00",
+                "label": "TEXT0",
+                "rule": "mandatory"
+            },
+            {
+                "type": "select",
+                "id": "pe01_nuova_tabella",
+                "label": "nuova tabella",
+                "option": [
+                    {
+                        "value": "",
+                        "label": ""
+                    },
+                    {
+                        "value": "NO",
+                        "label": "no"
+                    },
+                    {
+                        "value": "SI",
+                        "label": "si"
+                    }
                 ]
             }
         ]
-        
     },
-    "pere_02":{
+    "pere_02": {
         "rule": "visible if pe01_nuova_tabella == 'SI'",
         "comment": "foo",
-        "title":{
+        "title": {
             "value": "Pere 02"
         },
-        "row_00":
-        [
-            {"type": "text", "id": "pe02_text00", "label": "TEXT0", "rule": "mandatory" }
+        "row_00": [
+            {
+                "type": "text",
+                "id": "pe02_text00",
+                "label": "TEXT0",
+                "rule": "mandatory"
+            }
         ]
     },
-    "banane":{
+    "banane": {
         "comment": "foo",
-        "title":{
+        "title": {
             "value": "Banane"
         },
-        "row_00":
-        [
-            {"type": "text", "id": "ba_text00", "label": "TEXT00" },
-            {"type": "date", "id": "ba_data", "label": "DATA", "init": "today", "rule": "mandatory" },
-            {"type": "select", "id": "ba_sel00", "label": "tipo banane", "rule": "mandatory",
-                "option":[
-                    {"value":"", "label":""},
-                    {"value":"ba00", "label":"ba00"},
-                    {"value":"ba01", "label":"ba01"}
-                    
+        "row_00": [
+            {
+                "type": "text", "id": "ba_text00", "label": "TEXT00","pattern": [ "set if ba_select0 == 'ba00' : '/^[a-zA-Z0-9]{6}$/'"],
+                "patMessage": [ "TEXT0 deve essere di 6 caratteri!"]
+            },
+            {
+                "type": "date", "id": "ba_data", "label": "DATA", "init": "today", "rule": "mandatory"
+            },
+            {
+                "type": "select", "id": "ba_select0", "label": "tipo banane", "rule": "mandatory",
+                "option": [
+                    { "value": "", "label": ""},
+                    { "value": "ba00", "label": "ba00" },
+                    { "value": "ba01", "label": "ba01" }
                 ]
             },
-            {"group":
-                [
-                    {"type": "checkbox", "id": "ba_check00", "label": "checkVal01"},
-                    {"type": "checkbox", "id": "ba_check01", "label": "checkVal02"}
+            {
+                "group": [
+                    {
+                        "type": "checkbox", "id": "ba_check00", "label": "checkVal01"
+                    },
+                    {
+                        "type": "checkbox", "id": "ba_check01", "label": "checkVal02"
+                    }
                 ]
             },
-            {"type": "radio", "id": "ba_radio",
-                "option" : [
-                    { "value": "radio value 00", "label": "radio 00"},
-                    { "value": "radio value 01", "label": "radio 01" },
-                    { "value": "radio value Other", "label": "radio other" }
+            {
+                "type": "radio", "id": "ba_radio", "option": [
+                    {
+                        "value": "radio value 00", "label": "radio 00"
+                    },
+                    {
+                        "value": "radio value 01", "label": "radio 01"
+                    },
+                    {
+                        "value": "radio value Other", "label": "radio other"
+                    }
                 ]
             },
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "ba_note", "label": "NOTE"}
+            {
+                "type": "textarea",
+                "rows": "2",
+                "cols": "40",
+                "id": "ba_note",
+                "label": "NOTE"
+            }
         ],
         "row_01": [
-            {"type": "file", "id": "ba_foto_01", "accept": "image/*", "label": "foto 1"},
-            {"type": "file", "id": "ba_foto_02", "accept": "image/*", "label": "foto 2"},
-            {"type": "file", "id": "ba_foto_03", "accept": "image/*", "label": "foto 3"},
-            {"type": "file", "id": "ba_foto_04", "accept": "image/*", "label": "foto 4"}
+            {
+                "type": "file",
+                "id": "ba_foto_01",
+                "accept": "image/*",
+                "label": "foto 1"
+            },
+            {
+                "type": "file",
+                "id": "ba_foto_02",
+                "accept": "image/*",
+                "label": "foto 2"
+            },
+            {
+                "type": "file",
+                "id": "ba_foto_03",
+                "accept": "image/*",
+                "label": "foto 3"
+            },
+            {
+                "type": "file",
+                "id": "ba_foto_04",
+                "accept": "image/*",
+                "label": "foto 4"
+            }
         ]
     }
 }
-    

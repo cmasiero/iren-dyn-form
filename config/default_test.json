@@ -91,15 +91,15 @@
                 ]
             },
             {
-                "group": [
-                    {"type": "text", "id": "dg_codice_cabina__parma", "size":"6", "maxlength": "6", "label": "CODICE CABINA", 
-                        "rule": "mandatory if dg_provincia == 'PARMA' || dg_provincia == ''#visible if dg_provincia == 'PARMA' || dg_provincia == ''", 
-                        "pattern": "6_char", "patMessage": "CODICE CABINA (Parma) deve essere di 6 caratteri, non sono ammessi caratteri speciali!"},
-                    {"type": "text", "id": "dg_codice_cabina__torino_chiomonte", "size":"6", "maxlength": "6", "label": "CODICE CABINA", 
-                        "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'",  
-                        "pattern": "1_to_6_char", "patMessage": "CODICE CABINA (Torino, Chiomonte) deve essere di al massimo 6 caratteri, non sono ammessi caratteri speciali!"},
-                    {"type": "hint", "id": "dg_codice_cabina_hint", "rule": "visible if dg_provincia == 'PARMA'" ,"value": "Per Parma si ricorda che i codici cabina sono es. 200125 es.295099"}
-            ]
+                "type": "text", "id": "dg_codice_cabina", "size":"6", "maxlength": "6", "label": "CODICE CABINA", "rule": "mandatory",
+                "pattern": [
+                    "set if dg_provincia == 'PARMA' : '6_char'",
+                    "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : '1_to_6_char'"
+                ],
+                "patMessage": [
+                    "CODICE CABINA (Parma) deve essere di 6 caratteri, non sono ammessi caratteri speciali!",
+                    "CODICE CABINA (Torino, Chiomonte) deve essere di al massimo 6 caratteri, non sono ammessi caratteri speciali!"
+                ]
             },
             {"type": "date", "id": "dg_data", "label": "DATA", "init": "today", "rule": "mandatory" },
             {"type": "text", "id": "dg_nome_cognome", "label": "NOME COGNOME", "size":"60", "rule": "mandatory" },
@@ -2358,14 +2358,6 @@
             {
                 "name": "rule_dbt_posa_sostituzione_censimento_maniglia_altro",
                 "rule": "mandatory if ( dbt_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO' )#visible if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule_dbt_parma",
-                "rule": "mandatory if dg_provincia == 'PARMA' || dg_provincia == ''#visible if dg_provincia == 'PARMA' || dg_provincia == ''"
-            },
-            {
-                "name": "rule_dbt_torino_chiomonte",
-                "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'"
             }
         ],
         "row_00": [
@@ -2379,20 +2371,18 @@
                 ]
             },
             {"type": "text", "size": "3", "maxlength": "3", 
-                "id": "dbt_codice_derivazione_interessata__parma", 
+                "id": "dbt_codice_derivazione_interessata", 
                 "value": "",
                 "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-                "rule": "rule_dbt_parma",
-                "pattern": "1_char_than_2_digit",
-                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'"
-            },
-            {"type": "text", "size": "3", "maxlength": "3", 
-                "id": "dbt_codice_derivazione_interessata__torino_chiomonte",
-                "value": "",
-                "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-                "rule": "rule_dbt_torino_chiomonte",
-                "pattern": "D3_than_1_char",
-                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
+                "rule": "mandatory",
+                "pattern": [
+                    "set if dg_provincia == 'PARMA' : '1_char_than_2_digit'",
+                    "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
+                ],
+                "patMessage": [
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
+                ]
             }   
         ],
         "row_01": [
@@ -2456,14 +2446,6 @@
             {
                 "name": "rule01_dbt_posa_sostituzione_censimento_maniglia_altro",
                 "rule": "mandatory if ( dbt01_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt01_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt01_tipologia_attivita == 'NUOVA POSA' || dbt01_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt01_tipologia_attivita == 'CENSIMENTO' )#visible if dbt01_tipologia_attivita == 'NUOVA POSA' || dbt01_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt01_tipologia_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule01_dbt_parma",
-                "rule": "mandatory if dg_provincia == 'PARMA' || dg_provincia == ''#visible if dg_provincia == 'PARMA' || dg_provincia == ''"
-            },
-            {
-                "name": "rule01_dbt_torino_chiomonte",
-                "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'"
             }
         ],
         "row_00": [
@@ -2477,20 +2459,18 @@
                 ]
             },
             {"type": "text", "size": "3", "maxlength": "3", 
-                "id": "dbt01_codice_derivazione_interessata__parma", 
+                "id": "dbt01_codice_derivazione_interessata", 
                 "value": "",
                 "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-                "rule": "rule01_dbt_parma",
-                "pattern": "1_char_than_2_digit",
-                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'"
-            },
-            {"type": "text", "size": "3", "maxlength": "3", 
-                "id": "dbt01_codice_derivazione_interessata__torino_chiomonte",
-                "value": "",
-                "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-                "rule": "rule01_dbt_torino_chiomonte",
-                "pattern": "D3_than_1_char",
-                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
+                "rule": "mandatory",
+                "pattern": [
+                    "set if dg_provincia == 'PARMA' : '1_char_than_2_digit'",
+                    "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
+                ],
+                "patMessage": [
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
+                ]
             }   
         ],
         "row_01": [
@@ -2554,14 +2534,6 @@
             {
                 "name": "rule02_dbt_posa_sostituzione_censimento_maniglia_altro",
                 "rule": "mandatory if ( dbt02_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt02_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt02_tipologia_attivita == 'NUOVA POSA' || dbt02_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt02_tipologia_attivita == 'CENSIMENTO' )#visible if dbt02_tipologia_attivita == 'NUOVA POSA' || dbt02_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt02_tipologia_attivita == 'CENSIMENTO'"
-            },
-            {
-                "name": "rule02_dbt_parma",
-                "rule": "mandatory if dg_provincia == 'PARMA' || dg_provincia == ''#visible if dg_provincia == 'PARMA' || dg_provincia == ''"
-            },
-            {
-                "name": "rule02_dbt_torino_chiomonte",
-                "rule": "mandatory if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'#visible if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE'"
             }
         ],
         "row_00": [
@@ -2575,20 +2547,18 @@
                 ]
             },
             {"type": "text", "size": "3", "maxlength": "3", 
-                "id": "dbt02_codice_derivazione_interessata__parma", 
+                "id": "dbt02_codice_derivazione_interessata", 
                 "value": "",
                 "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-                "rule": "rule02_dbt_parma",
-                "pattern": "1_char_than_2_digit",
-                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'"
-            },
-            {"type": "text", "size": "3", "maxlength": "3", 
-                "id": "dbt02_codice_derivazione_interessata__torino_chiomonte",
-                "value": "",
-                "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-                "rule": "rule02_dbt_torino_chiomonte",
-                "pattern": "D3_than_1_char",
-                "patMessage": "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
+                "rule": "mandatory",
+                "pattern": [
+                    "set if dg_provincia == 'PARMA' : '1_char_than_2_digit'",
+                    "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
+                ],
+                "patMessage": [
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
+                ]
             }   
         ],
         "row_01": [

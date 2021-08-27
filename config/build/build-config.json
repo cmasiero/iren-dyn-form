@@ -1,6 +1,6 @@
 {
   "_comment": "environment available are dev, test or prod",
-  "environment": "dev",
+  "environment": "test",
   "dev": {
     "path_json": "config/default_dev.json",
     "path_css": "config/default.css",
