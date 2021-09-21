@@ -20,8 +20,13 @@ confArray.forEach(confObj => {
 
     // array of json objects 
     let fileObjs = confObj.files.map(filename => {
-        let fPart = resource.getJsonFromSplit(dt, filename);
-        return fPart;
+        try {
+            let fPart = resource.getJsonFromSplit(dt, filename);
+            return fPart;
+        } catch (err) {
+            err.message += ` - Is ${env.builder_config} correct?`
+            throw new Error(err);
+        }
     });
 
     // join files
