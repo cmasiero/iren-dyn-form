@@ -6,7 +6,6 @@ Remove all files inside ./config/json_split a ./output
 
 **npm run clean-output**
 
-
 # build all: 
 Create json splitted in config/json_split and html files in output/
 
