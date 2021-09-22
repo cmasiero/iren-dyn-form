@@ -1,10 +1,49 @@
 /**
  * test configuration
  */ 
-const scomparti = ["scomparti.json", "scomparti_01.json", "scomparti_02.json"];
-const trasformatori = ["trasformatori_mt_bt.json", "trasformatori_mt_bt_01.json", "trasformatori_mt_bt_02.json"];
-const quadri_bt = ["quadro_bt.json", "quadro_bt_01.json", "quadro_bt_02.json"];
-const derivazioni_bt = ["derivazioni_bt.json", "derivazioni_bt_01.json", "derivazioni_bt_02.json"];
+const scomparti = [
+    "scomparti.json",
+    "scomparti_01.json",
+    "scomparti_02.json",
+    "scomparti_03.json",
+    "scomparti_04.json",
+    "scomparti_05.json",
+    "scomparti_06.json",
+    "scomparti_07.json",
+    "scomparti_08.json",
+    "scomparti_09.json",
+    "scomparti_10.json",
+    "scomparti_11.json"
+];
+const trasformatori = [
+    "trasformatori_mt_bt.json", 
+    "trasformatori_mt_bt_01.json", 
+    "trasformatori_mt_bt_02.json",
+    "trasformatori_mt_bt_03.json"
+];
+
+const derivazioni_bt = [
+    "derivazioni_bt.json",
+    "derivazioni_bt_01.json",
+    "derivazioni_bt_02.json",
+    "derivazioni_bt_03.json",
+    "derivazioni_bt_04.json",
+    "derivazioni_bt_05.json",
+    "derivazioni_bt_06.json",
+    "derivazioni_bt_07.json",
+    "derivazioni_bt_08.json",
+    "derivazioni_bt_09.json",
+    "derivazioni_bt_10.json",
+    "derivazioni_bt_11.json"
+];
+
+const quadri_bt = [
+    "quadro_bt.json",
+    "quadro_bt_01.json",
+    "quadro_bt_02.json",
+    "quadro_bt_03.json"
+];
+
 
 exports.confArray = [
     {
