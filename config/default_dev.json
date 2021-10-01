@@ -19,7 +19,10 @@
     "mele": {
         "comment": "foo",
         "title": {
-            "value": "Mele"
+            "value": "Mele",
+            "hint": { 
+                "type": "hint", "id": "me_hintTitle", "ruleValue": "set if '1' == '1' : me_text0"
+              }
         },
         "row_00": [
             {
@@ -32,6 +35,9 @@
                     "TEXT0 deve essere di 6 caratteri!",
                     "TEXT0 deve essere di 3 caratteri!"
                 ]
+            },
+            {
+                "type": "text", "id": "me_text2", "label": "TEXT2", "ruleValue": "set if '1' == '1' : me_text0"
             },
             {
                 "type": "text", "join": "caratteristicaSAP_00", "id": "me_text1", "label": "TEXT1", "rule": "visible if me_text0 == 'ciao'", "pattern": "3_char"
@@ -189,12 +195,19 @@
     "banane": {
         "comment": "foo",
         "title": {
-            "value": "Banane"
+            "value": "Banane",
+            "hint": { "type": "hint", "id": "ba_hintTitle", 
+                      "rule": "visible if '1' == '1'",             
+                      "value": "testo",
+                      "ruleValue": "set if '1' == '1' : ba_text00"
+                    }
         },
         "row_00": [
             {
-                "type": "text", "id": "ba_text00", "label": "TEXT00","pattern": [ "set if ba_select0 == 'ba00' : '/^[a-zA-Z0-9]{6}$/'"],
-                "patMessage": [ "TEXT0 deve essere di 6 caratteri!"]
+                "type": "text", "id": "ba_text00", "label": "TEXT00","pattern": [ "set if ba_select0 == 'ba00' : '/^[a-zA-Z0-9]{6}$/'"], "patMessage": [ "TEXT0 deve essere di 6 caratteri!"]
+            },
+            {
+                "type": "hint", "id": "ba_hint00", "rule": "visible if ba_text00 == 'apri'", "value": "testo"
             },
             {
                 "type": "date", "id": "ba_data", "label": "DATA", "init": "today", "rule": "mandatory"
