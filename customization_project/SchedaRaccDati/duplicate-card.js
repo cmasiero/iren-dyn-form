@@ -126,20 +126,20 @@ const makeQuadroBt = (config) => {
 
 };
 
-// makeScomparti({
-//     source: path.join(__dirname, '../../config/json_split/scomparti.json'),
-//     destination: path.join(__dirname, 'out')
-// });
+makeScomparti({
+    source: path.join(__dirname, '../../config/json_split/scomparti.json'),
+    destination: path.join(__dirname, 'out')
+});
 
-// makeTrasformatoriMtBt({
-//     source: path.join(__dirname, '../../config/json_split/trasformatori_mt_bt.json'),
-//     destination: path.join(__dirname, 'out')
-// });
+makeTrasformatoriMtBt({
+    source: path.join(__dirname, '../../config/json_split/trasformatori_mt_bt.json'),
+    destination: path.join(__dirname, 'out')
+});
 
-// makeDerivazioniBt({
-//     source: path.join(__dirname, '../../config/json_split/derivazioni_bt.json'),
-//     destination: path.join(__dirname, 'out')
-// });
+makeDerivazioniBt({
+    source: path.join(__dirname, '../../config/json_split/derivazioni_bt.json'),
+    destination: path.join(__dirname, 'out')
+});
 
 makeQuadroBt({
     source: path.join(__dirname, '../../config/json_split/quadro_bt.json'),
