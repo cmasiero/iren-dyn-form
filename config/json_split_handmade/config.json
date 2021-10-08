@@ -1,8 +1,0 @@
-{
-    "config": {
-        "filename": "test2.html",
-        "css" : "example.css",
-        "title": "Scheda Raccolta dati U4",
-        "send": "post|http://nomehost/prenditu"
-    }
-}
