@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body { text-align: center;}
+        form { display: inline-block;}
+        input[type=button] { font-weight: bold; margin-top: 20px; border: 1px solid; cursor: pointer; }
+    </style>
+    <title>Menu</title>
+</head>
+
+<body>
+    <form style="align-content: center;">
+        <div style="margin-bottom: 20px;">Quali schede intendi compilare?</div>
+        <div class="div-table-row">
+            <div class="div-table-col">
+                <input type="checkbox" id="cs" name="card_selection">
+                <label for="cs">Cabine Secondarie</label>
+            </div>
+            <div class="div-table-col">
+                <input type="checkbox" id="sc" name="card_selection">
+                <label for="sc">Scomparti</label>
+            </div>
+            <div class="div-table-col">
+                <input type="checkbox" id="tr" name="card_selection">
+                <label for="tr">Trasformatori MT-BT</label>
+            </div>
+            <div class="div-table-col">
+                <input type="checkbox" id="dbt" name="card_selection">
+                <label for="dbt">Derivazioni BT</label>
+            </div>
+            <div class="div-table-col">
+                <input type="checkbox" id="qbt" name="card_selection">
+                <label for="qbt">Quadro BT</label>
+            </div>
+        </div>
+        
+        <input type="button" value="Vai alla scheda" id="goToCards"></input>
+
+    </form>
+</body>
+
+<script type="text/javascript">
+    (function () {
+        console.log("Doc ready!");
+        let bt = document.getElementById("goToCards");
+        bt.addEventListener('click', function () {
+            
+            let ck = document.getElementsByName("card_selection");
+            let filename = "co_dg_";
+            ck.forEach((c) => {
+                if (c.checked) filename += c.id + "_";
+            });
+            // Remove last underscore and add extension
+            filename = filename.slice(0,-1);
+            filename += ".html";
+
+            // go to file.
+            document.location.href = filename;
+
+        });
+    })();
+</script>
+
+
+</html>

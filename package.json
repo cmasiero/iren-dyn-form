@@ -14,7 +14,8 @@
     "all-json-html": "node ./app/split-json-main.js && node ./app/parser-builder-main.js && node ./app/parser-main.js",
     "split-json": "node ./app/split-json-main.js",
     "html-builder": "node ./app/parser-builder-main.js",
-    "html-main": "node ./app/parser-main.js"
+    "html-main": "node ./app/parser-main.js",
+    "extra-scheda-racc-dati": "node ./customization_project/SchedaRaccDati/app/menu-to-output.js"
   },
   "dependencies": {
     "image-size": "^1.0.0",

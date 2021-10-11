@@ -25,3 +25,7 @@ From multiple json files creted by **json-split** creates multiple html files. O
 From a single source file (eg: config/default.json) creates a single html file, it contains all cards. Output is in output/.
 
 **npm run html-main**
+
+# Build extra code for 'Scheda raccolta dati'
+
+**npm run extra-scheda-racc-dati**
