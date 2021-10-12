@@ -5,6 +5,19 @@
         "title": "Scheda Raccolta dati U4",
         "sendJson": "http://localhost:5000/resource",
         "sendFile": "http://localhost:5000/upload",
+        "menuExtra": [
+            {
+                "id": "back_to_menu",
+                "label": "torna",
+                "url": "menu.html",
+                "message": "Confermi di voler tornare alla pagina menu?"
+            },
+            {
+                "id": "test_extra",
+                "label": "test",
+                "url": "aaa.html"
+            }
+        ],
         "reusablePattern": [
             {
                 "name": "3_char",

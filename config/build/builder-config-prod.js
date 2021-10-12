@@ -1,7 +1,10 @@
-/** 
+
+const builder_util = require('./builder-util.js');
+
+/**
  * prod configuration
  */
- const scomparti = [
+const scomparti = [
     "scomparti.json",
     "scomparti_01.json",
     "scomparti_02.json",
@@ -16,12 +19,11 @@
     "scomparti_11.json"
 ];
 const trasformatori = [
-    "trasformatori_mt_bt.json", 
-    "trasformatori_mt_bt_01.json", 
+    "trasformatori_mt_bt.json",
+    "trasformatori_mt_bt_01.json",
     "trasformatori_mt_bt_02.json",
     "trasformatori_mt_bt_03.json"
 ];
-
 const derivazioni_bt = [
     "derivazioni_bt.json",
     "derivazioni_bt_01.json",
@@ -36,7 +38,6 @@ const derivazioni_bt = [
     "derivazioni_bt_10.json",
     "derivazioni_bt_11.json"
 ];
-
 const quadri_bt = [
     "quadro_bt.json",
     "quadro_bt_01.json",
@@ -44,56 +45,23 @@ const quadri_bt = [
     "quadro_bt_03.json"
 ];
 
+const firstElDefault = {
+    tag: "co_dg",
+    file: ["config.json", "dati_generali.json"]
+};
+const elToCombine = {
+    tags: [
+        { tag: "cs", file: ["cabine_secondarie.json"] },
+        { tag: "sc", file: scomparti },
+        { tag: "tr", file: trasformatori },
+        { tag: "dbt", file: derivazioni_bt },
+        { tag: "qbt", file: quadri_bt }
+    ]
+};
 
-exports.confArray = [
-    {
-        outname: "dati_generali.html",
-        files: ["config.json", "dati_generali.json"]
-    },
-    {
-        outname: "cabine_secondarie.html",
-        files: ["config.json", "cabine_secondarie.json"]
-    },
-    {
-        outname: "scomparti.html",
-        files: ["config.json"].concat(scomparti)
-    },
-    {
-        outname: "trasformatori_mt_bt.html",
-        files: ["config.json"].concat(trasformatori)
-    },
-    // {
-    //     outname: "derivazioni_bt.html",
-    //     files: ["config.json", "derivazioni_bt.json"]
-    // }
-    // ,
-    {
-        outname: "quadro_bt.html",
-        files: ["config.json"].concat(quadri_bt)
-    },
-    // {
-    //     outname: "dati_generali_cabine_secondarie.html",
-    //     files: ["config.json", "dati_generali.json", "cabine_secondarie.json"]
-    // },
-    // {
-    //     outname: "dati_generali_scomparti.html",
-    //     files: ["config.json", "dati_generali.json", "scomparti.json"]
-    // },
-    // {
-    //     outname: "dati_generali_trasformatori_mt_bt.html",
-    //     files: ["config.json", "dati_generali.json", "trasformatori_mt_bt.json"]
-    // },
-    {
-        outname: "dati_generali_derivazioni_bt.html",
-        files: ["config.json", "dati_generali.json"].concat(derivazioni_bt)
-    },
-    // {
-    //     outname: "dati_generali_bt_quadro_bt.html",
-    //     files: ["config.json", "dati_generali.json", "quadro_bt.json"]
-    // }
-// ,
-    // {
-    //     outname: "dati_generali_derivazioni_bt_quadro_bt.html",
-    //     files: ["config.json", "dati_generali.json", "derivazioni_bt.json", "quadro_bt.json"]
-    // }
-];
+
+exports.confArray = builder_util.buildConfiguration(firstElDefault,elToCombine);
+
+// console.log("================================");
+// console.log(builder_util.buildConfiguration());
+// console.log("================================");
