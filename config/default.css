@@ -60,6 +60,38 @@ input, textarea, select {
     display: none;
 }
 
+.buttonExtra0{
+    background-color: #000;
+    top: 19px;
+    left: 216px;
+    border-radius: 50%;
+    display: none;
+}
+
+.buttonExtra1{
+    background-color: #aaaaaa;
+    top: 19px;
+    left: 279px;
+    border-radius: 50%;
+    display: none;
+}
+
+.buttonExtra2{
+    background-color:#ccc;
+    top: 19px;
+    left: 342px;
+    border-radius: 50%;
+    display: none;
+}
+
+.buttonExtra3{
+    background-color:#fefefe;
+    top: 19px;
+    left: 405px;
+    border-radius: 50%;
+    display: none;
+}
+
 
 .div-table {
     display: none;         
