@@ -52,10 +52,20 @@
         bt.addEventListener('click', function () {
             
             let ck = document.getElementsByName("card_selection");
-            let filename = "co_dg_";
+            let filename = "";
             ck.forEach((c) => {
                 if (c.checked) filename += c.id + "_";
             });
+
+            // Check for no selection
+            if (filename === ""){
+                alert("E' necessario selezionare almeno una scheda!");
+                return;
+            }
+
+            // Add default: config and dati_generali
+            filename = "co_dg_" + filename;
+
             // Remove last underscore and add extension
             filename = filename.slice(0,-1);
             filename += ".html";
