@@ -10,7 +10,7 @@ const makeScomparti = (config) => {
         // let idx = "01";
         let sourceData = fs.readFileSync(config.source, 'utf8');
         let outData = sourceData.replace(/"scomparti"/g, `"scomparti_${idx}"`);
-        outData = outData.replace(/"Scomparti"/g, `"Scomparti ${idx}"`);
+        outData = outData.replace(/"00 Scomparti"/g, `"${idx} Scomparti"`);
         outData = outData.replace(/rule_/g, `rule${idx}_`);
         outData = outData.replace(/sc_/g, `sc${idx}_`);
 
@@ -41,7 +41,7 @@ const makeTrasformatoriMtBt = (config) => {
         // let idx = "01";
         let sourceData = fs.readFileSync(config.source, 'utf8');
         let outData = sourceData.replace(/"trasformatori_mt_bt"/g, `"trasformatori_mt_bt_${idx}"`);
-        outData = outData.replace(/"Trasformatori MT-BT"/g, `"Trasformatori MT-BT ${idx}"`);
+        outData = outData.replace(/"00 Trasformatori MT-BT"/g, `"${idx} Trasformatori MT-BT"`);
         // outData = outData.replace(/rule_/g, `rule${idx}_`);
         outData = outData.replace(/tr_/g, `tr${idx}_`);
 
@@ -72,7 +72,7 @@ const makeDerivazioniBt = (config) => {
 
         let sourceData = fs.readFileSync(config.source, 'utf8');
         let outData = sourceData.replace(/"derivazioni_bt"/g, `"derivazioni_bt_${idx}"`);
-        outData = outData.replace(/"Derivazioni BT"/g, `"Derivazioni BT ${idx}"`);
+        outData = outData.replace(/"00 Derivazioni BT"/g, `"${idx} Derivazioni BT"`);
         // outData = outData.replace(/rule_/g, `rule${idx}_`);
         outData = outData.replace(/dbt_/g, `dbt${idx}_`);
 
@@ -103,7 +103,7 @@ const makeQuadroBt = (config) => {
 
         let sourceData = fs.readFileSync(config.source, 'utf8');
         let outData = sourceData.replace(/"quadro_bt"/g, `"quadro_bt_${idx}"`);
-        outData = outData.replace(/"Quadro BT"/g, `"Quadro BT ${idx}"`);
+        outData = outData.replace(/"00 Quadro BT"/g, `"${idx} Quadro BT"`);
         // outData = outData.replace(/rule_/g, `rule${idx}_`);
         outData = outData.replace(/qbt_/g, `qbt${idx}_`);
 
@@ -132,6 +132,7 @@ makeScomparti({
     source: path.join(__dirname, '../../config/json_split/scomparti.json'),
     destination: path.join(__dirname, outFolder)
 });
+
 
 makeTrasformatoriMtBt({
     source: path.join(__dirname, '../../config/json_split/trasformatori_mt_bt.json'),

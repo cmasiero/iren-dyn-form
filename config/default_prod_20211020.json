@@ -4,8 +4,8 @@
         "filename": "allcards.html",
         "css" : "main.css",
         "title": "Scheda Raccolta dati U4",
-        "sendJson": "http://localhost:5000/resource",
-        "sendFile": "http://localhost:5000/upload",
+        "sendJson": "http://srvnode.gruppoiren.it:5000/resource",
+        "sendFile": "http://srvnode.gruppoiren.it:5000/upload",
         "menuExtra": [
           {
               "id": "back_to_menu",
@@ -103,21 +103,15 @@
                 ]
             },
             {
-              "group": [
-                {
-                  "type": "text", "id": "dg_codice_cabina", "size":"8", "maxlength": "6", "label": "CODICE CABINA", "rule": "mandatory",
-                  "pattern": [
+                "type": "text", "id": "dg_codice_cabina", "size":"8", "maxlength": "6", "label": "CODICE CABINA", "rule": "mandatory",
+                "pattern": [
                     "set if dg_provincia == 'PARMA' : '6_char'",
                     "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : '1_to_6_char'"
-                  ],
-                  "patMessage": [
+                ],
+                "patMessage": [
                     "CODICE CABINA (Parma) deve essere di 6 caratteri, non sono ammessi caratteri speciali!",
                     "CODICE CABINA (Torino, Chiomonte) deve essere di al massimo 6 caratteri, non sono ammessi caratteri speciali!"
-                  ]
-                },
-                {"type": "hint", "id": "dg_codice_cabina_nota", "value": "Per Parma si ricorda che i codici cabina sono es. 200125 es.295099"
-                }
-              ]
+                ]
             },
             {"type": "date", "id": "dg_data", "label": "DATA", "init": "today", "rule": "mandatory" },
             {"type": "text", "id": "dg_nome_cognome", "label": "NOME COGNOME", "size":"70", "maxlength": "60", "rule": "mandatory" },
@@ -178,6 +172,17 @@
                 {"type": "text", "size":"6", "maxlength":"4", "id": "cs_dimensione_locale_cabina_b", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'b' è obbligatorio", "pattern": "1_to_2_comma_1_digit", "patMessage": "DIMENSIONE LOCALE CABINA 'b' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"},
                 {"type": "text", "size":"6", "maxlength":"4", "id": "cs_dimensione_locale_cabina_h", "rule": "rule_001", "valMessage": "DIMENSIONE LOCALE CABINA 'h' è obbligatorio", "pattern": "1_to_2_comma_1_digit", "patMessage": "DIMENSIONE LOCALE CABINA 'h' deve contenere da 1 a 3 caratteri numerici con decimale (facoltativo)!"}
             ]},
+            
+            {"type": "select", "id": "cs_livello_tensione", "label": "LIVELLO TENSIONE (kV)", "rule": "mandatory if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'#visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'",
+                "option":[
+                    {"value":"", "label":""},
+                    {"value":"5,4", "label":"5,4"},
+                    {"value":"6,3", "label":"6,3"},
+                    {"value":"15", "label":"15"},
+                    {"value":"22", "label":"22"},
+                    {"value":"27", "label":"27"}
+                    ]
+            },
             {"type":"text", "size":"70", "maxlength": "60", "id": "cs_indirizzo", "label": "INDIRIZZO", "rule":"mandatory if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'#visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"}
             
         ],
@@ -206,8 +211,7 @@
                             {"value":"FRONTE ATTIVITA COMMERCIALI", "label":"fronte attivita' commerciali"},
                             {"value":"SU MARCIAPIEDE", "label":"su marciapiede"},
                             {"value":"SU STRADA", "label":"su strada"},
-                            {"value":"SU AREA VERDE", "label":"su area verde"},
-                            {"value":"SU AREA PRIVATA", "label":"su area privata"}
+                            {"value":"SU AREA VERDE", "label":"su area verde"}
                         ]
                     },
                     {"type": "hint", "id": "cs_posizione_botola_sfavorevole", "rule": "rule_botola", "value": "In caso di situazioni combinate, scegliere la posizione più sfavorevole (fronte passo carraio o fronte attività commerciali, se presenti)"}
@@ -226,7 +230,7 @@
                     {"value":"BOTOLA TIPO 22 KV (2 BATTENTI AREATA)", "label":"Botola tipo 22 kV (2 battenti areata)"},
                     {"value":"BOTOLA TIPO 22 KV (3 BATTENTI AREATA)", "label":"Botola tipo 22 kV (3 battenti areata)"},
                     {"value":"BOTOLA TIPO 22 KV (3 BATTENTI CARRABILE)", "label":"Botola tipo 22 kV (3 battenti carrabile)"},
-                    {"value":"GENERICA", "label":"Generica"}
+                    {"value":"GENERICA PARMA", "label":"Generica Parma"}
                 ]
             },
             {"group": [ 
@@ -384,7 +388,7 @@
     },
     "scomparti": {
         "title":{
-            "value": "00 Scomparti",
+            "value": "Scomparti",
             "hint": { 
               "type": "hint", "id": "sc_hintTitle", "ruleValue": "set if '1' == '1' : sc_identificativo_scomparto"
             }
@@ -586,7 +590,7 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "text", "id": "sc_tensione_massima_isolamento", "size":"8", "maxlength":"6", "label": "TENSIONE MASSIMA ISOLAMENTO (kV)", "rule": "rule_nuovaposa_sostituzione_rossa",
+            {"type": "text", "id": "sc_tensione_massima_isolamento", "size":"8", "maxlength":"6", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_nuovaposa_sostituzione_rossa",
                 "pattern": "1_to_6_comma_1_to_2_digit", 
                 "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"},
             {"type": "select", "id": "sc_censimento_caratteristica_involucro", "label": "CARATTERISTICA DELL' INVOLUCRO", "rule": "rule_censimento",
@@ -739,7 +743,7 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "text", "id": "sc_censimento_tensione_massima_isolamento", "size":"8", "maxlength":"6", "label": "TENSIONE MASSIMA ISOLAMENTO (kV)", "rule": "rule_censimento_normale_ridotto_quadro_compatto",
+            {"type": "text", "id": "sc_censimento_tensione_massima_isolamento", "size":"8", "maxlength":"6", "label": "TENSIONE MASSIMA ISOLAMENTO", "rule": "rule_censimento_normale_ridotto_quadro_compatto",
                 "pattern": "1_to_6_comma_1_to_2_digit", 
                 "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
             }
@@ -764,7 +768,7 @@
     "scomparti_01": {
         "rule": "visible if sc_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "01 Scomparti",
+          "value": "Scomparti 01",
           "hint": {
             "type": "hint",
             "id": "sc01_hintTitle",
@@ -1324,7 +1328,7 @@
             "id": "sc01_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule01_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -1795,7 +1799,7 @@
             "id": "sc01_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule01_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -1860,7 +1864,7 @@
       "scomparti_02": {
         "rule": "visible if sc01_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "02 Scomparti",
+          "value": "Scomparti 02",
           "hint": {
             "type": "hint",
             "id": "sc02_hintTitle",
@@ -2420,7 +2424,7 @@
             "id": "sc02_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule02_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -2891,7 +2895,7 @@
             "id": "sc02_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule02_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -2956,7 +2960,7 @@
       "scomparti_03": {
         "rule": "visible if sc02_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "03 Scomparti",
+          "value": "Scomparti 03",
           "hint": {
             "type": "hint",
             "id": "sc03_hintTitle",
@@ -3516,7 +3520,7 @@
             "id": "sc03_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule03_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -3987,7 +3991,7 @@
             "id": "sc03_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule03_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -4052,7 +4056,7 @@
       "scomparti_04": {
         "rule": "visible if sc03_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "04 Scomparti",
+          "value": "Scomparti 04",
           "hint": {
             "type": "hint",
             "id": "sc04_hintTitle",
@@ -4612,7 +4616,7 @@
             "id": "sc04_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule04_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -5083,7 +5087,7 @@
             "id": "sc04_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule04_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -5148,7 +5152,7 @@
       "scomparti_05": {
         "rule": "visible if sc04_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "05 Scomparti",
+          "value": "Scomparti 05",
           "hint": {
             "type": "hint",
             "id": "sc05_hintTitle",
@@ -5708,7 +5712,7 @@
             "id": "sc05_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule05_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -6179,7 +6183,7 @@
             "id": "sc05_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule05_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -6244,7 +6248,7 @@
       "scomparti_06": {
         "rule": "visible if sc05_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "06 Scomparti",
+          "value": "Scomparti 06",
           "hint": {
             "type": "hint",
             "id": "sc06_hintTitle",
@@ -6804,7 +6808,7 @@
             "id": "sc06_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule06_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -7275,7 +7279,7 @@
             "id": "sc06_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule06_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -7340,7 +7344,7 @@
       "scomparti_07": {
         "rule": "visible if sc06_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "07 Scomparti",
+          "value": "Scomparti 07",
           "hint": {
             "type": "hint",
             "id": "sc07_hintTitle",
@@ -7900,7 +7904,7 @@
             "id": "sc07_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule07_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -8371,7 +8375,7 @@
             "id": "sc07_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule07_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -8436,7 +8440,7 @@
       "scomparti_08": {
         "rule": "visible if sc07_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "08 Scomparti",
+          "value": "Scomparti 08",
           "hint": {
             "type": "hint",
             "id": "sc08_hintTitle",
@@ -8996,7 +9000,7 @@
             "id": "sc08_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule08_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -9467,7 +9471,7 @@
             "id": "sc08_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule08_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -9532,7 +9536,7 @@
       "scomparti_09": {
         "rule": "visible if sc08_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "09 Scomparti",
+          "value": "Scomparti 09",
           "hint": {
             "type": "hint",
             "id": "sc09_hintTitle",
@@ -10092,7 +10096,7 @@
             "id": "sc09_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule09_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -10563,7 +10567,7 @@
             "id": "sc09_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule09_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -10628,7 +10632,7 @@
       "scomparti_10": {
         "rule": "visible if sc09_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "10 Scomparti",
+          "value": "Scomparti 10",
           "hint": {
             "type": "hint",
             "id": "sc10_hintTitle",
@@ -11188,7 +11192,7 @@
             "id": "sc10_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule10_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -11659,7 +11663,7 @@
             "id": "sc10_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule10_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -11724,7 +11728,7 @@
       "scomparti_11": {
         "rule": "visible if sc10_ulteriore_scomparto_gestire == 'SI'",
         "title": {
-          "value": "11 Scomparti",
+          "value": "Scomparti 11",
           "hint": {
             "type": "hint",
             "id": "sc11_hintTitle",
@@ -12284,7 +12288,7 @@
             "id": "sc11_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule11_nuovaposa_sostituzione_rossa",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -12755,7 +12759,7 @@
             "id": "sc11_censimento_tensione_massima_isolamento",
             "size": "8",
             "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
+            "label": "TENSIONE MASSIMA ISOLAMENTO",
             "rule": "rule11_censimento_normale_ridotto_quadro_compatto",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -12819,7 +12823,7 @@
       },
     "trasformatori_mt_bt": {
         "title":{
-            "value": "00 Trasformatori MT-BT",
+            "value": "Trasformatori MT-BT",
             "hint": { 
                 "type": "hint", "id": "tr_hintTitle", "ruleValue": "set if '1' == '1' : tr_identificativo_trasformatore"
               }
@@ -13110,7 +13114,7 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "text", "id": "tr_censimento_potenza_nominale", "size": "8", "maxlength": "6", "label": "POTENZA NOMINALE (kVA)", "rule": "rule_tr_censimento_targa_si",
+            {"type": "text", "id": "tr_censimento_potenza_nominale", "size": "8", "maxlength": "6", "label": "POTENZA NOMINALE", "rule": "rule_tr_censimento_targa_si",
                 "pattern": "1_to_6_comma_1_to_2_digit", 
                 "patMessage": "POTENZA NOMINALE (kVA) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
             },
@@ -13160,7 +13164,7 @@
     "trasformatori_mt_bt_01": {
         "rule": "visible if tr_ulteriore_trasformatore_gestire == 'SI'",
         "title": {
-          "value": "01 Trasformatori MT-BT",
+          "value": "Trasformatori MT-BT 01",
           "hint": {
             "type": "hint",
             "id": "tr01_hintTitle",
@@ -13956,7 +13960,7 @@
             "id": "tr01_censimento_potenza_nominale",
             "size": "8",
             "maxlength": "6",
-            "label": "POTENZA NOMINALE (kVA)",
+            "label": "POTENZA NOMINALE",
             "rule": "rule_tr01_censimento_targa_si",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "POTENZA NOMINALE (kVA) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -14097,7 +14101,7 @@
       "trasformatori_mt_bt_02": {
         "rule": "visible if tr01_ulteriore_trasformatore_gestire == 'SI'",
         "title": {
-          "value": "02 Trasformatori MT-BT",
+          "value": "Trasformatori MT-BT 02",
           "hint": {
             "type": "hint",
             "id": "tr02_hintTitle",
@@ -14893,7 +14897,7 @@
             "id": "tr02_censimento_potenza_nominale",
             "size": "8",
             "maxlength": "6",
-            "label": "POTENZA NOMINALE (kVA)",
+            "label": "POTENZA NOMINALE",
             "rule": "rule_tr02_censimento_targa_si",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "POTENZA NOMINALE (kVA) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -15034,7 +15038,7 @@
       "trasformatori_mt_bt_03": {
         "rule": "visible if tr02_ulteriore_trasformatore_gestire == 'SI'",
         "title": {
-          "value": "03 Trasformatori MT-BT",
+          "value": "Trasformatori MT-BT 03",
           "hint": {
             "type": "hint",
             "id": "tr03_hintTitle",
@@ -15830,7 +15834,7 @@
             "id": "tr03_censimento_potenza_nominale",
             "size": "8",
             "maxlength": "6",
-            "label": "POTENZA NOMINALE (kVA)",
+            "label": "POTENZA NOMINALE",
             "rule": "rule_tr03_censimento_targa_si",
             "pattern": "1_to_6_comma_1_to_2_digit",
             "patMessage": "POTENZA NOMINALE (kVA) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
@@ -15970,7 +15974,7 @@
       },
     "derivazioni_bt": {
         "title":{
-            "value": "00 Derivazioni BT",
+            "value": "Derivazioni BT",
             "hint": { 
                 "type": "hint", "id": "dbt_hintTitle", "ruleValue": "set if '1' == '1' : dbt_codice_derivazione_interessata"
             }
@@ -15982,7 +15986,7 @@
             },
             {
                 "name": "rule_dbt_posa_sostituzione_censimento_maniglia_altro",
-                "rule": "mandatory if ( dbt_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO' )#visible if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if ( dbt_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO' )#visible if dbt_tipologia_attivita == 'NUOVA POSA' || dbt_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt_tipologia_attivita == 'CENSIMENTO'"
             }
         ],
         "row_00": [
@@ -16005,8 +16009,8 @@
                     "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
                 ],
                 "patMessage": [
-                    "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-                    "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+                    "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
                 ]
             }   
         ],
@@ -16069,7 +16073,7 @@
     "derivazioni_bt_01": {
         "rule": "visible if dbt_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "01 Derivazioni BT",
+          "value": "Derivazioni BT 01",
           "hint": {
             "type": "hint",
             "id": "dbt01_hintTitle",
@@ -16083,7 +16087,7 @@
           },
           {
             "name": "rule_dbt01_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt01_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt01_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt01_tipologia_attivita == 'NUOVA POSA' || dbt01_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt01_tipologia_attivita == 'CENSIMENTO' )#visible if dbt01_tipologia_attivita == 'NUOVA POSA' || dbt01_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt01_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt01_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt01_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt01_tipologia_attivita == 'NUOVA POSA' || dbt01_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt01_tipologia_attivita == 'CENSIMENTO' )#visible if dbt01_tipologia_attivita == 'NUOVA POSA' || dbt01_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt01_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -16128,8 +16132,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -16302,7 +16306,7 @@
       "derivazioni_bt_02": {
         "rule": "visible if dbt01_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "02 Derivazioni BT",
+          "value": "Derivazioni BT 02",
           "hint": {
             "type": "hint",
             "id": "dbt02_hintTitle",
@@ -16316,7 +16320,7 @@
           },
           {
             "name": "rule_dbt02_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt02_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt02_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt02_tipologia_attivita == 'NUOVA POSA' || dbt02_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt02_tipologia_attivita == 'CENSIMENTO' )#visible if dbt02_tipologia_attivita == 'NUOVA POSA' || dbt02_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt02_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt02_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt02_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt02_tipologia_attivita == 'NUOVA POSA' || dbt02_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt02_tipologia_attivita == 'CENSIMENTO' )#visible if dbt02_tipologia_attivita == 'NUOVA POSA' || dbt02_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt02_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -16361,8 +16365,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -16535,7 +16539,7 @@
       "derivazioni_bt_03": {
         "rule": "visible if dbt02_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "03 Derivazioni BT",
+          "value": "Derivazioni BT 03",
           "hint": {
             "type": "hint",
             "id": "dbt03_hintTitle",
@@ -16549,7 +16553,7 @@
           },
           {
             "name": "rule_dbt03_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt03_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt03_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt03_tipologia_attivita == 'NUOVA POSA' || dbt03_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt03_tipologia_attivita == 'CENSIMENTO' )#visible if dbt03_tipologia_attivita == 'NUOVA POSA' || dbt03_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt03_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt03_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt03_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt03_tipologia_attivita == 'NUOVA POSA' || dbt03_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt03_tipologia_attivita == 'CENSIMENTO' )#visible if dbt03_tipologia_attivita == 'NUOVA POSA' || dbt03_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt03_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -16594,8 +16598,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -16768,7 +16772,7 @@
       "derivazioni_bt_04": {
         "rule": "visible if dbt03_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "04 Derivazioni BT",
+          "value": "Derivazioni BT 04",
           "hint": {
             "type": "hint",
             "id": "dbt04_hintTitle",
@@ -16782,7 +16786,7 @@
           },
           {
             "name": "rule_dbt04_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt04_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt04_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt04_tipologia_attivita == 'NUOVA POSA' || dbt04_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt04_tipologia_attivita == 'CENSIMENTO' )#visible if dbt04_tipologia_attivita == 'NUOVA POSA' || dbt04_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt04_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt04_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt04_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt04_tipologia_attivita == 'NUOVA POSA' || dbt04_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt04_tipologia_attivita == 'CENSIMENTO' )#visible if dbt04_tipologia_attivita == 'NUOVA POSA' || dbt04_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt04_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -16827,8 +16831,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -17001,7 +17005,7 @@
       "derivazioni_bt_05": {
         "rule": "visible if dbt04_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "05 Derivazioni BT",
+          "value": "Derivazioni BT 05",
           "hint": {
             "type": "hint",
             "id": "dbt05_hintTitle",
@@ -17015,7 +17019,7 @@
           },
           {
             "name": "rule_dbt05_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt05_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt05_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt05_tipologia_attivita == 'NUOVA POSA' || dbt05_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt05_tipologia_attivita == 'CENSIMENTO' )#visible if dbt05_tipologia_attivita == 'NUOVA POSA' || dbt05_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt05_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt05_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt05_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt05_tipologia_attivita == 'NUOVA POSA' || dbt05_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt05_tipologia_attivita == 'CENSIMENTO' )#visible if dbt05_tipologia_attivita == 'NUOVA POSA' || dbt05_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt05_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -17060,8 +17064,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -17234,7 +17238,7 @@
       "derivazioni_bt_06": {
         "rule": "visible if dbt05_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "06 Derivazioni BT",
+          "value": "Derivazioni BT 06",
           "hint": {
             "type": "hint",
             "id": "dbt06_hintTitle",
@@ -17248,7 +17252,7 @@
           },
           {
             "name": "rule_dbt06_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt06_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt06_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt06_tipologia_attivita == 'NUOVA POSA' || dbt06_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt06_tipologia_attivita == 'CENSIMENTO' )#visible if dbt06_tipologia_attivita == 'NUOVA POSA' || dbt06_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt06_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt06_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt06_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt06_tipologia_attivita == 'NUOVA POSA' || dbt06_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt06_tipologia_attivita == 'CENSIMENTO' )#visible if dbt06_tipologia_attivita == 'NUOVA POSA' || dbt06_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt06_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -17293,8 +17297,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -17467,7 +17471,7 @@
       "derivazioni_bt_07": {
         "rule": "visible if dbt06_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "07 Derivazioni BT",
+          "value": "Derivazioni BT 07",
           "hint": {
             "type": "hint",
             "id": "dbt07_hintTitle",
@@ -17481,7 +17485,7 @@
           },
           {
             "name": "rule_dbt07_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt07_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt07_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt07_tipologia_attivita == 'NUOVA POSA' || dbt07_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt07_tipologia_attivita == 'CENSIMENTO' )#visible if dbt07_tipologia_attivita == 'NUOVA POSA' || dbt07_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt07_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt07_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt07_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt07_tipologia_attivita == 'NUOVA POSA' || dbt07_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt07_tipologia_attivita == 'CENSIMENTO' )#visible if dbt07_tipologia_attivita == 'NUOVA POSA' || dbt07_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt07_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -17526,8 +17530,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -17700,7 +17704,7 @@
       "derivazioni_bt_08": {
         "rule": "visible if dbt07_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "08 Derivazioni BT",
+          "value": "Derivazioni BT 08",
           "hint": {
             "type": "hint",
             "id": "dbt08_hintTitle",
@@ -17714,7 +17718,7 @@
           },
           {
             "name": "rule_dbt08_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt08_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt08_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt08_tipologia_attivita == 'NUOVA POSA' || dbt08_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt08_tipologia_attivita == 'CENSIMENTO' )#visible if dbt08_tipologia_attivita == 'NUOVA POSA' || dbt08_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt08_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt08_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt08_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt08_tipologia_attivita == 'NUOVA POSA' || dbt08_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt08_tipologia_attivita == 'CENSIMENTO' )#visible if dbt08_tipologia_attivita == 'NUOVA POSA' || dbt08_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt08_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -17759,8 +17763,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -17933,7 +17937,7 @@
       "derivazioni_bt_09": {
         "rule": "visible if dbt08_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "09 Derivazioni BT",
+          "value": "Derivazioni BT 09",
           "hint": {
             "type": "hint",
             "id": "dbt09_hintTitle",
@@ -17947,7 +17951,7 @@
           },
           {
             "name": "rule_dbt09_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt09_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt09_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt09_tipologia_attivita == 'NUOVA POSA' || dbt09_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt09_tipologia_attivita == 'CENSIMENTO' )#visible if dbt09_tipologia_attivita == 'NUOVA POSA' || dbt09_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt09_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt09_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt09_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt09_tipologia_attivita == 'NUOVA POSA' || dbt09_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt09_tipologia_attivita == 'CENSIMENTO' )#visible if dbt09_tipologia_attivita == 'NUOVA POSA' || dbt09_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt09_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -17992,8 +17996,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -18166,7 +18170,7 @@
       "derivazioni_bt_10": {
         "rule": "visible if dbt09_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "10 Derivazioni BT",
+          "value": "Derivazioni BT 10",
           "hint": {
             "type": "hint",
             "id": "dbt10_hintTitle",
@@ -18180,7 +18184,7 @@
           },
           {
             "name": "rule_dbt10_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt10_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt10_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt10_tipologia_attivita == 'NUOVA POSA' || dbt10_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt10_tipologia_attivita == 'CENSIMENTO' )#visible if dbt10_tipologia_attivita == 'NUOVA POSA' || dbt10_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt10_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt10_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt10_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt10_tipologia_attivita == 'NUOVA POSA' || dbt10_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt10_tipologia_attivita == 'CENSIMENTO' )#visible if dbt10_tipologia_attivita == 'NUOVA POSA' || dbt10_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt10_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -18225,8 +18229,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -18399,7 +18403,7 @@
       "derivazioni_bt_11": {
         "rule": "visible if dbt10_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "11 Derivazioni BT",
+          "value": "Derivazioni BT 11",
           "hint": {
             "type": "hint",
             "id": "dbt11_hintTitle",
@@ -18413,7 +18417,7 @@
           },
           {
             "name": "rule_dbt11_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt11_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt11_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt11_tipologia_attivita == 'NUOVA POSA' || dbt11_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt11_tipologia_attivita == 'CENSIMENTO' )#visible if dbt11_tipologia_attivita == 'NUOVA POSA' || dbt11_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt11_tipologia_attivita == 'CENSIMENTO'"
+            "rule": "mandatory if ( dbt11_tipo_interruttore == 'FUSIBILI A MANIGLIA' || dbt11_tipo_interruttore == 'NON NOTO/ALTRO' ) && ( dbt11_tipologia_attivita == 'NUOVA POSA' || dbt11_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt11_tipologia_attivita == 'CENSIMENTO' )#visible if dbt11_tipologia_attivita == 'NUOVA POSA' || dbt11_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt11_tipologia_attivita == 'CENSIMENTO'"
           }
         ],
         "row_00": [
@@ -18458,8 +18462,8 @@
               "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
             ],
             "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'a23'",
+              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3x'"
             ]
           }
         ],
@@ -18631,7 +18635,7 @@
       },
     "quadro_bt": {
         "title":{
-            "value": "00 Quadro BT",
+            "value": "Quadro BT",
             "hint": { 
                 "type": "hint", "id": "qbt_hintTitle", "ruleValue": "set if '1' == '1' : qbt_codice_del_quadro_interessato"
             }
@@ -18816,7 +18820,7 @@
     "quadro_bt_01": {
         "rule": "visible if qbt_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "01 Quadro BT",
+          "value": "Quadro BT 01",
           "hint": {
             "type": "hint",
             "id": "qbt01_hintTitle",
@@ -19308,7 +19312,7 @@
       "quadro_bt_02": {
         "rule": "visible if qbt01_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "02 Quadro BT",
+          "value": "Quadro BT 02",
           "hint": {
             "type": "hint",
             "id": "qbt02_hintTitle",
@@ -19800,7 +19804,7 @@
       "quadro_bt_03": {
         "rule": "visible if qbt02_ulteriore_derivazione_gestire == 'SI'",
         "title": {
-          "value": "03 Quadro BT",
+          "value": "Quadro BT 03",
           "hint": {
             "type": "hint",
             "id": "qbt03_hintTitle",
