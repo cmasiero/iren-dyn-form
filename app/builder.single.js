@@ -2,7 +2,7 @@
 const resource = require('../lib/resource');
 const fs = require('fs');
 const path = require('path');
-const parser = require('../lib/parser-json.js');
+const parser = require('../lib/json.parser');
 const pretty = require('pretty');
 
 // logging purpose

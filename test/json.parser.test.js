@@ -6,7 +6,7 @@ const env = initializeEnv('dev');
 
 const { getCss, getJson, getTemplateHtml, getOutputPathTest, DataSource } = require('../lib/resource');
 const fs = require('fs');
-const parser = require('../lib/parser-json');
+const parser = require('../lib/json.parser');
 const pretty = require('pretty');
 
 let jsonObj = getJson(DataSource.FILESYSTEM);

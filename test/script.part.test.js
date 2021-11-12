@@ -3,16 +3,16 @@
 const pretty = require('pretty');
 const { 
     resultScript 
-} = require('../lib/part-script');
+} = require('../lib/script.part');
 
 const {
     generatedManager
-} = require('../lib/part-html');
+} = require('../lib/html.part');
 
 
 test('test MandatoryRule class.', () => {
 
-    /* Avoid in file part-html.js 'throw new Error('htmlGen.id must be exists and unique, check your json input file!');' */
+    /* Avoid in file html.part.js 'throw new Error('htmlGen.id must be exists and unique, check your json input file!');' */
     generatedManager.clean();
     generatedManager.add({id: 'id01', type: 'text'});
     generatedManager.add({id: 'id02', type: 'text'});
@@ -49,7 +49,7 @@ test('test MandatoryRule class.', () => {
 
 test('test VisibleRule class.', () => {
 
-    /* Avoid in file part-html.js 'throw new Error('htmlGen.id must be exists and unique, check your json input file!');' */
+    /* Avoid in file html.part.js 'throw new Error('htmlGen.id must be exists and unique, check your json input file!');' */
     generatedManager.clean();
     generatedManager.add({id: '01_id', type: 'text'});
     generatedManager.add({id: '02_id', type: 'text'});
@@ -104,7 +104,7 @@ test('test VisibleRule class.', () => {
 test('test scriptRule method visible.', () => {
 
 
-    /* Avoid in file part-html.js 'throw new Error('htmlGen.id must be exists and unique, check your json input file!');' */
+    /* Avoid in file html.part.js 'throw new Error('htmlGen.id must be exists and unique, check your json input file!');' */
     generatedManager.clean();
     generatedManager.add({id: '02_id', type: 'text'});
     generatedManager.add({id: '03_id', type: 'text'});

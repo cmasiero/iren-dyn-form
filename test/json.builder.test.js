@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const pretty = require('pretty');
-const { joinJsonFile } = require('../lib/builder-json');
+const { joinJsonFile } = require('../lib/json.builder');
 
 
 test('build json parts', () => {

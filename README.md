@@ -1,31 +1,49 @@
 # **iren-dyn-form**
+
 Dynamic html form from json
 
-# Clean splitted json file and output files
+## Clean splitted json file and output files
+
 Remove all files inside ./config/json_split a ./output
 
-**npm run clean-output**
+```bash
+npm run clean
+```
 
-# build all: 
+## build all
+
 Create json splitted in config/json_split and html files in output/
 
-**npm run all-json-html**
+```bash
+npm run build
+```
 
-# Build json splitted
+## Build json splitted
+
 From a single source file (eg: config/default.json) creates multiple json files. Output is in config/json_split.
 
-**npm run split-json**
+```bash
+npm run split-json
+```
 
-# Create html composed 
+## Create html composed
+
 From multiple json files creted by **json-split** creates multiple html files. Output is in output/
 
-**npm run html-builder**
+```bash
+npm run build-all
+```
 
-# Create a main html from a single default file.
+## Create a main html from a single default file
+
 From a single source file (eg: config/default.json) creates a single html file, it contains all cards. Output is in output/.
 
-**npm run html-main**
+```bash
+npm run build-single
+```
 
-# Build extra code for 'Scheda raccolta dati'
+## Build extra code for 'Scheda raccolta dati'
 
-**npm run extra-scheda-racc-dati**
+```bash
+npm run extra-scheda-racc-dati
+```

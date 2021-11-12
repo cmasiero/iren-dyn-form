@@ -1,7 +1,7 @@
 "use strict"
 
 const pretty = require('pretty');
-const { buildHtmlPart } = require('../lib/part-html');
+const { buildHtmlPart } = require('../lib/html.part');
 
 test('test RadiotHtml component.', () => {
 

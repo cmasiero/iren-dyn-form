@@ -1,9 +1,9 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const { joinJsonFile } = require('../lib/builder-json');
+const { joinJsonFile } = require('../lib/json.builder');
 const resource = require('../lib/resource');
-const parser = require('../lib/parser-json.js');
+const parser = require('../lib/json.parser');
 const pretty = require('pretty');
 
 // Load building environment configuration.

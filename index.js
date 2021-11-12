@@ -2,7 +2,7 @@
 // const { initConfig, getCss, getJson, getTemplateHtml, getOutputPath, DataSource } = require('./lib/resource');
 const resource = require('./lib/resource');
 const fs = require('fs');
-const parser = require('./lib/parser-json.js');
+const parser = require('./lib/json.parser.js');
 const pretty = require('pretty');
 
 

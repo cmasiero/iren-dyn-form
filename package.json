@@ -10,11 +10,11 @@
   },
   "scripts": {
     "test": "jest",
-    "clean-output": "node ./app/clean-split-output.js",
-    "all-json-html": "node ./app/split-json-main.js && node ./app/parser-builder-main.js && node ./app/parser-main.js",
-    "split-json": "node ./app/split-json-main.js",
-    "html-builder": "node ./app/parser-builder-main.js",
-    "html-main": "node ./app/parser-main.js",
+    "clean": "node ./app/clean.js",
+    "build": "node ./app/split.json.js && node ./app/builder.js && node ./app/builder.single.js",
+    "split-json": "node ./app/split.json.js",
+    "build-all": "node ./app/builder.js",
+    "build-single": "node ./app/builder.single.js",
     "extra-scheda-racc-dati": "node ./customization_project/SchedaRaccDati/app/menu-to-output.js"
   },
   "dependencies": {
