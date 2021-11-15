@@ -42,8 +42,16 @@ confArray.forEach(confObj => {
     let dom = parser.execute(jsonObj, htmlTemplate);
 
     try {
-        fs.writeFileSync(resource.getOutputPath(dt) + '/' + jsonObj.config.css, resource.getCss(dt));
-        fs.writeFileSync(resource.getOutputPath(dt) + '/' + jsonObj.config.filename, pretty(dom.serialize()));
+        let outputPath = resource.getOutputPath(dt);
+
+        // copies static files in output
+        let staticFiles = resource.getStaticFiles(dt);
+        staticFiles.forEach(f => {
+            fs.writeFileSync(outputPath + '/' + f.filename, f.file);
+        });
+
+        fs.writeFileSync(outputPath + '/' + jsonObj.config.css, resource.getCss(dt));
+        fs.writeFileSync(outputPath + '/' + jsonObj.config.filename, pretty(dom.serialize()));
         console.log(`${log_filename_tag} file: ${jsonObj.config.filename} CREATED!`);
     } catch (err) {
         console.error(err)

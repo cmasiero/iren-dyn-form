@@ -4,6 +4,7 @@
   "dev": {
     "path_json": "config/default_dev.json",
     "path_css": "config/default.css",
+    "path_static_script": "config/static_script",
     "path_folder_json_split": "config/json_split",
     "path_template_html": "config/version5.html",
     "path_folder_output": "output",

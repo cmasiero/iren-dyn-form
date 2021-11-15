@@ -18,9 +18,16 @@ let htmlTemplate = resource.getTemplateHtml(dt);
 let dom = parser.execute(jsonObj, htmlTemplate);
 try {
   let outputPath = resource.getOutputPath(dt);
-  fs.writeFileSync( outputPath + '/' + jsonObj.config.css , resource.getCss(dt));
-  let pathHtmlFile = outputPath + '/'  + jsonObj.config.filename;
-  fs.writeFileSync(pathHtmlFile , pretty(dom.serialize()));
+
+  // copies static files in output
+  let staticFiles = resource.getStaticFiles(dt);
+  staticFiles.forEach(f => {
+      fs.writeFileSync(outputPath + '/' + f.filename, f.file);
+  });
+
+  fs.writeFileSync(outputPath + '/' + jsonObj.config.css, resource.getCss(dt));
+  let pathHtmlFile = outputPath + '/' + jsonObj.config.filename;
+  fs.writeFileSync(pathHtmlFile, pretty(dom.serialize()));
   console.log(`${log_filename_tag} file: ${jsonObj.config.filename} CREATED! `);
 } catch (err) {
   console.error(err)
