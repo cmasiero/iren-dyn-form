@@ -22,7 +22,11 @@ try {
   // copies static files in output
   let staticFiles = resource.getStaticFiles(dt);
   staticFiles.forEach(f => {
+    // copy if not exists!
+    if (fs.existsSync(outputPath + '/' + f.filename) === false) {
       fs.writeFileSync(outputPath + '/' + f.filename, f.file);
+      console.log(`${log_filename_tag} file: ${f.filename} COPIED!`);
+    }
   });
 
   fs.writeFileSync(outputPath + '/' + jsonObj.config.css, resource.getCss(dt));
