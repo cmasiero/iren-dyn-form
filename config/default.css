@@ -25,6 +25,11 @@ input, textarea, select {
     height: 38px;
 }
 
+input[type=checkbox], input[type=radio] {
+    box-shadow: none;
+}
+
+
 .buttonMenu{
     position: fixed;
     height: 60px;
