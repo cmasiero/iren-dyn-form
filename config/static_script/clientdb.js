@@ -19,7 +19,7 @@ clientdb.initDb = (object_store) => {
     open.onupgradeneeded = function () {
         console.log("[indexDb] open.onupgradeneeded");
         var db = open.result;
-        let store1 = db.createObjectStore(store_main, { autoIncrement: false });
+        // let store1 = db.createObjectStore(store_main, { autoIncrement: false });
         let store2 = db.createObjectStore(store_not_send, { autoIncrement: false });
     };
 
