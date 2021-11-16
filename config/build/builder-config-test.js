@@ -16,7 +16,9 @@ const scomparti = [
     "scomparti_08.json",
     "scomparti_09.json",
     "scomparti_10.json",
-    "scomparti_11.json"
+    "scomparti_11.json",
+    "scomparti_12.json",
+    "scomparti_13.json"
 ];
 const trasformatori = [
     "trasformatori_mt_bt.json",
@@ -36,7 +38,9 @@ const derivazioni_bt = [
     "derivazioni_bt_08.json",
     "derivazioni_bt_09.json",
     "derivazioni_bt_10.json",
-    "derivazioni_bt_11.json"
+    "derivazioni_bt_11.json",
+    "derivazioni_bt_12.json",
+    "derivazioni_bt_13.json"
 ];
 const quadri_bt = [
     "quadro_bt.json",

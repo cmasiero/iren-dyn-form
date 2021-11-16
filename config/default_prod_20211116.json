@@ -350,20 +350,19 @@
                     {"value":"CONDIZIONAMENTO", "label":"condizionamento"},
                     {"value":"ASPIRAZIONE", "label":"aspirazione"}
                 ]
+            },
+            {"type": "select", "id": "cs_tipo_di_sensore", "label": "TIPO DI SENSORE", "rule": "rule_001_optional",
+                "option": [
+                    {"value":"", "label":""},
+                    {"value":"RILEVAMENTO FUMI", "label":"rilevamento fumi"},
+                    {"value":"RILEV APERTURA PORTA-BOTOLA", "label":"rilev apertura porta-botola"},
+                    {"value":"RILEVAMENTO TEMP-UMIDITA", "label":"rilevamento temp-umidita'"},
+                    {"value":"RILEVAMENTO PRESENZA", "label":"rilevamento presenza"},
+                    {"value":"RILEVAMENTO ALLAGAMENTO", "label":"rilevamento allagamento"}
+                ]
             }
         ],
         "row_06": [
-          {"group":
-            [
-                {"type": "checkbox", "id": "cs_tipo_di_sensore_rilevamento_fumi", "label": "RILEVAMENTO FUMI", "rule": "rule_001_optional"},
-                {"type": "checkbox", "id": "cs_tipo_di_sensore_rilev_apertura_porta_botola", "label": "RILEV APERTURA PORTA-BOTOLA", "rule": "rule_001_optional"},
-                {"type": "checkbox", "id": "cs_tipo_di_sensore_rilevamento_temp_umidita", "label": "RILEVAMENTO TEMP-UMIDITA", "rule": "rule_001_optional"},
-                {"type": "checkbox", "id": "cs_tipo_di_sensore_rilevamento_presenza", "label": "RILEVAMENTO PRESENZA", "rule": "rule_001_optional"},
-                {"type": "checkbox", "id": "cs_tipo_di_sensore_rilevamento_allagamento", "label": "RILEVAMENTO ALLAGAMENTO", "rule": "rule_001_optional"}
-            ]
-          }
-        ],
-        "row_08": [
             {"type": "select", "id": "cs_tipologia_di_dismissione", "label": "TIPOLOGIA DI DISMISSIONE", "rule": "mandatory if cs_tipologia_di_attivita == 'DISMISSIONE'#visible if cs_tipologia_di_attivita == 'DISMISSIONE'",
                 "option": [
                     {"value":"", "label":""},
@@ -373,10 +372,10 @@
             },
             {"type": "date", "id": "cs_data_cessazione", "label": "DATA DI CESSAZIONE", "rule": "mandatory if cs_tipologia_di_attivita == 'DISMISSIONE'#visible if cs_tipologia_di_attivita == 'DISMISSIONE'"}
         ],
-        "row_09": [
+        "row_07": [
             {"type": "textarea", "rows": "2", "cols": "40", "id": "cs_note", "label": "NOTE"}
         ],
-        "row_10": [
+        "row_08": [
             {"type": "file", "id": "cs_foto_01", "accept": "image/*", "label": "foto 1"},
             {"type": "file", "id": "cs_foto_02", "accept": "image/*", "label": "foto 2"},
             {"type": "file", "id": "cs_foto_03", "accept": "image/*", "label": "foto 3"},
@@ -483,8 +482,7 @@
                     {"value":"", "label":""},
                     {"value":"ARIA/ARIA", "label":"aria/aria"},
                     {"value":"ARIA/GAS", "label":"aria/gas"},
-                    {"value":"GAS/GAS", "label":"gas/gas"},
-                    {"value":"IN OLIO", "label":"in olio"}
+                    {"value":"GAS/GAS", "label":"gas/gas"}
                 ]
             },
             {"type": "select", "id": "sc_blocchi_sicurezza", "label": "BLOCCHI DI SICUREZZA", "rule": "rule_nuovaposa_sostituzione_rossa",
@@ -547,8 +545,7 @@
                     {"value":"IMS PLUS IMS CON FUSIBILI", "label":"ims+ims con fusibili"},
                     {"value":"ICS", "label":"ics"},
                     {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"},
-                    {"value":"IMS + SEZ. A VUOTO", "label":"ims + sez. a vuoto"},
-                    {"value":"INTERRUTTORE", "label":"interruttore"}
+                    {"value":"IMS + SEZ. A VUOTO", "label":"ims + sez. a vuoto"}
                 ]
             },
             {"type": "select", "id": "sc_presenza_sez_messa_terra", "label": "PRESENZA SEZ DI MESSA A TERRA", "rule": "rule_nuovaposa_sostituzione_rossa",
@@ -646,8 +643,7 @@
                     {"value":"", "label":""},
                     {"value":"ARIA/ARIA", "label":"aria/aria"},
                     {"value":"ARIA/GAS", "label":"aria/gas"},
-                    {"value":"GAS/GAS", "label":"gas/gas"},
-                    {"value":"IN OLIO", "label":"in olio"}
+                    {"value":"GAS/GAS", "label":"gas/gas"}
                 ]
             },
             {"type": "select", "id": "sc_censimento_blocchi_sicurezza", "label": "BLOCCHI DI SICUREZZA", "rule": "rule_censimento",
@@ -712,8 +708,7 @@
                     {"value":"IMS_PLUS_IMS CON FUSIBILI", "label":"ims+ims con fusibili"},
                     {"value":"ICS", "label":"ICS"},
                     {"value":"SEZIONATORE CON FUSIBILE", "label":"sezionatore con fusibile"},
-                    {"value":"IMS + SEZ. A VUOTO", "label":"ims + sez. a vuoto"},
-                    {"value":"INTERRUTTORE", "label":"interruttore"}
+                    {"value":"IMS + SEZ. A VUOTO", "label":"ims + sez. a vuoto"}
                 ]
             },
             {"type": "select", "id": "sc_censimento_presenza_sez_messa_terra", "label": "PRESENZA SEZ DI MESSA A TERRA", "rule": "rule_censimento",
@@ -1015,10 +1010,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -1213,10 +1204,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -1526,10 +1513,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -1724,10 +1707,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -2127,10 +2106,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -2325,10 +2300,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -2638,10 +2609,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -2836,10 +2803,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -3239,10 +3202,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -3437,10 +3396,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -3750,10 +3705,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -3948,10 +3899,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -4351,10 +4298,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -4549,10 +4492,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -4862,10 +4801,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -5060,10 +4995,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -5463,10 +5394,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -5661,10 +5588,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -5974,10 +5897,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -6172,10 +6091,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -6575,10 +6490,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -6773,10 +6684,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -7086,10 +6993,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -7284,10 +7187,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -7687,10 +7586,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -7885,10 +7780,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -8198,10 +8089,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -8396,10 +8283,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -8799,10 +8682,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -8997,10 +8876,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -9310,10 +9185,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -9508,10 +9379,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -9911,10 +9778,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -10109,10 +9972,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -10422,10 +10281,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -10620,10 +10475,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -11023,10 +10874,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -11221,10 +11068,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -11534,10 +11377,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -11732,10 +11571,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -12135,10 +11970,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -12333,10 +12164,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -12646,10 +12473,6 @@
               {
                 "value": "GAS/GAS",
                 "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
               }
             ]
           },
@@ -12844,10 +12667,6 @@
               {
                 "value": "IMS + SEZ. A VUOTO",
                 "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
               }
             ]
           },
@@ -12998,2230 +12817,6 @@
           }
         ]
       },
-      "scomparti_12": {
-        "rule": "visible if sc11_ulteriore_scomparto_gestire == 'SI'",
-        "title": {
-          "value": "12 Scomparti",
-          "hint": {
-            "type": "hint",
-            "id": "sc12_hintTitle",
-            "ruleValue": "set if '1' == '1' : sc12_identificativo_scomparto"
-          }
-        },
-        "reusableRule": [
-          {
-            "name": "rule12_sostituzione_recupero",
-            "rule": "mandatory if sc12_tipologia_di_attivita == 'SOSTITUZIONE' || sc12_tipologia_di_attivita == 'RECUPERO'#visible if sc12_tipologia_di_attivita == 'SOSTITUZIONE' || sc12_tipologia_di_attivita == 'RECUPERO'"
-          },
-          {
-            "name": "rule12_nuovaposa_sostituzione",
-            "rule": "mandatory if sc12_tipologia_di_attivita == 'SOSTITUZIONE' || sc12_tipologia_di_attivita == 'NUOVA POSA'#visible if sc12_tipologia_di_attivita == 'SOSTITUZIONE' || sc12_tipologia_di_attivita == 'NUOVA POSA'"
-          },
-          {
-            "name": "rule12_nuovaposa_sostituzione_rossa",
-            "rule": "mandatory if sc12_nuova_apparecchiatura_presenta_etichetta_rossa == 'SI' && ( sc12_tipologia_di_attivita == 'SOSTITUZIONE' || sc12_tipologia_di_attivita == 'NUOVA POSA' )#visible if ( sc12_tipologia_di_attivita == 'SOSTITUZIONE' || sc12_tipologia_di_attivita == 'NUOVA POSA' )"
-          },
-          {
-            "name": "rule12_censimento",
-            "rule": "mandatory if sc12_tipologia_di_attivita == 'CENSIMENTO'#visible if sc12_tipologia_di_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule12_censimento_facoltativo",
-            "rule": "visible if sc12_tipologia_di_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule12_censimento_normale_ridotto_quadro_compatto",
-            "rule": "mandatory if sc12_censimento_caratteristica_involucro == 'SCOMPARTO NORMALE' ||  sc12_censimento_caratteristica_involucro == 'SCOMPARTO RIDOTTO' || sc12_censimento_caratteristica_involucro ==  'QUADRO COMPATTO'#visible if sc12_tipologia_di_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule12_censimento_normale_ridotto",
-            "rule": "mandatory if sc12_censimento_caratteristica_involucro == 'SCOMPARTO NORMALE' ||  sc12_censimento_caratteristica_involucro == 'SCOMPARTO RIDOTTO'#visible if sc12_tipologia_di_attivita == 'CENSIMENTO'"
-          }
-        ],
-        "row_00": [
-          {
-            "type": "text",
-            "size": "6",
-            "maxlength": "4",
-            "id": "sc12_identificativo_scomparto",
-            "label": "IDENTIFICATIVO SCOMPARTO (es. MT01-MT02...)",
-            "rule": "mandatory"
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipologia_di_attivita",
-            "label": "TIPOLOGIA DI ATTIVITA'",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NUOVA POSA",
-                "label": "nuova posa"
-              },
-              {
-                "value": "SOSTITUZIONE",
-                "label": "sostituzione"
-              },
-              {
-                "value": "RECUPERO",
-                "label": "recupero"
-              },
-              {
-                "value": "CENSIMENTO",
-                "label": "censimento"
-              }
-            ]
-          }
-        ],
-        "row_01": [
-          {
-            "type": "text",
-            "size": "40",
-            "maxlength": "30",
-            "id": "sc12_matricola_dello_scomparto_rimosso",
-            "label": "MATRICOLA DELLO SCOMPARTO RIMOSSO",
-            "rule": "rule12_sostituzione_recupero"
-          },
-          {
-            "type": "select",
-            "id": "sc12_stato_dello_scomparto_rimosso",
-            "label": "STATO DELLO SCOMPARTO RIMOSSO",
-            "rule": "rule12_sostituzione_recupero",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "RIENTRATO A MAGAZZINO",
-                "label": "rientrato a magazzino"
-              },
-              {
-                "value": "DA ROTTAMARE",
-                "label": "da rottamare"
-              },
-              {
-                "value": "IN ATTESA DI REVISIONE",
-                "label": "in attesa di revisione"
-              }
-            ]
-          }
-        ],
-        "row_02": [
-          {
-            "type": "select",
-            "id": "sc12_nuova_apparecchiatura_presenta_etichetta_rossa",
-            "label": "LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA",
-            "rule": "rule12_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipologia_nuovo_scomparto_installato",
-            "label": "TIPOLOGIA NUOVO SCOMPARTO INSTALLATO",
-            "rule": "rule12_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "LINEA",
-                "label": "linea"
-              },
-              {
-                "value": "PROTEZIONE TRASFORMATORE",
-                "label": "protezione trasformatore"
-              },
-              {
-                "value": "CONGIUNTORE",
-                "label": "congiuntore"
-              },
-              {
-                "value": "RISALITA",
-                "label": "risalita"
-              },
-              {
-                "value": "UTENTE",
-                "label": "utente"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc12_produttore_marca",
-            "size": "40",
-            "maxlength": "30",
-            "label": "PRODUTTORE (MARCA)",
-            "rule": "rule12_nuovaposa_sostituzione"
-          },
-          {
-            "type": "text",
-            "id": "sc12_definizione_tipo_modello",
-            "size": "40",
-            "maxlength": "30",
-            "label": "DEFINIZIONE TIPO (MODELLO)",
-            "rule": "rule12_nuovaposa_sostituzione"
-          },
-          {
-            "type": "text",
-            "id": "sc12_numero_serie_definito_produttore_matricola",
-            "size": "40",
-            "maxlength": "30",
-            "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)",
-            "rule": "rule12_nuovaposa_sostituzione"
-          }
-        ],
-        "row_03": [
-          {
-            "type": "text",
-            "size": "9",
-            "maxlength": "7",
-            "id": "sc12_anno_mese_costruzione",
-            "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "pattern": "aaaamm"
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipo_automazione",
-            "label": "TIPO DI AUTOMAZIONE",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ASSENTE",
-                "label": "assente"
-              },
-              {
-                "value": "MOTORIZZATO",
-                "label": "motorizzato"
-              },
-              {
-                "value": "ICS SMART",
-                "label": "ics smart"
-              },
-              {
-                "value": "MOTORIZZATO CON KIT ESTERNO",
-                "label": "motorizzato con kit esterno"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipo_isolamento",
-            "label": "TIPO DI ISOLAMENTO",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ARIA/ARIA",
-                "label": "aria/aria"
-              },
-              {
-                "value": "ARIA/GAS",
-                "label": "aria/gas"
-              },
-              {
-                "value": "GAS/GAS",
-                "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_blocchi_sicurezza",
-            "label": "BLOCCHI DI SICUREZZA",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERBLOCCO IMS-ST",
-                "label": "interblocco ims-st"
-              },
-              {
-                "value": "INTERBLOCCHI A CHIAVE",
-                "label": "interblocchi a chiave"
-              },
-              {
-                "value": "INTERBLOCCHI ASSENTI",
-                "label": "interblocchi assenti"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipo_comando",
-            "label": "TIPO DI COMANDO",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "COMANDO A LEVA DIRETTO",
-                "label": "comando a leva diretto"
-              },
-              {
-                "value": "COMANDO A LEVA RINVIATO",
-                "label": "comando a leva rinviato"
-              },
-              {
-                "value": "FIORETTO",
-                "label": "fioretto"
-              },
-              {
-                "value": "COMANDO A DISTANZA",
-                "label": "comando a distanza"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipo_terminali",
-            "label": "TIPO DI TERMINALI",
-            "rule": "rule12_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NORMALE",
-                "label": "normale"
-              },
-              {
-                "value": "PIPA",
-                "label": "pipa"
-              },
-              {
-                "value": "SPINA",
-                "label": "spina"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_corrente_nominale_dee",
-            "label": "CORRENTE NOMINALE DEE",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "400",
-                "label": "400"
-              },
-              {
-                "value": "630",
-                "label": "630"
-              },
-              {
-                "value": "NON NOTO/ALTRO",
-                "label": "[Non noto/Altro]"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipo_installazione",
-            "label": "TIPO DI INSTALLAZIONE",
-            "rule": "rule12_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "A PAVIMENTO",
-                "label": "a pavimento"
-              },
-              {
-                "value": "A PARETE",
-                "label": "a parete"
-              },
-              {
-                "value": "VERTICALE SU PALO",
-                "label": "verticale su palo"
-              },
-              {
-                "value": "ORIZZONTALE SU PALO",
-                "label": "orizzontale su palo"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_tipologia_gas_isolante",
-            "label": "TIPOLOGIA DI GAS ISOLANTE",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SF6",
-                "label": "sf6"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc12_quantita_gas_isolante",
-            "size": "8",
-            "maxlength": "6",
-            "label": "QUANTITA' DI GAS ISOLANTE (kg)",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "QUANTITA' DI GAS ISOLANTE (kg) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "sc12_organo_manovra",
-            "label": "ORGANO DI MANOVRA",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SEZIONATORE A VUOTO",
-                "label": "sezionatore a vuoto"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              },
-              {
-                "value": "IMS CON FUSIBILI",
-                "label": "ims con fusibili"
-              },
-              {
-                "value": "IMS PLUS IMS CON FUSIBILI",
-                "label": "ims+ims con fusibili"
-              },
-              {
-                "value": "ICS",
-                "label": "ics"
-              },
-              {
-                "value": "SEZIONATORE CON FUSIBILE",
-                "label": "sezionatore con fusibile"
-              },
-              {
-                "value": "IMS + SEZ. A VUOTO",
-                "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_presenza_sez_messa_terra",
-            "label": "PRESENZA SEZ DI MESSA A TERRA",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_caratteristica_involucro",
-            "label": "CARATTERISTICA DELL' INVOLUCRO",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SCOMPARTO NORMALE",
-                "label": "scomparto normale"
-              },
-              {
-                "value": "SCOMPARTO RIDOTTO",
-                "label": "scomparto ridotto"
-              },
-              {
-                "value": "QUADRO COMPATTO",
-                "label": "quadro compatto"
-              },
-              {
-                "value": "IN CELLA",
-                "label": "in cella"
-              },
-              {
-                "value": "LIBERO",
-                "label": "libero"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_sincr_tra_poli_sez_fase_mov",
-            "label": "SINCR TRA POLI SEZ FASE DI MOV",
-            "rule": "rule12_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_presenza_scaldiglie",
-            "label": "PRESENZA SCALDIGLIE",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_presenza_tv_tetto",
-            "label": "PRESENZA TV A TETTO",
-            "rule": "rule12_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc12_tensione_massima_isolamento",
-            "size": "8",
-            "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
-            "rule": "rule12_nuovaposa_sostituzione_rossa",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_caratteristica_involucro",
-            "label": "CARATTERISTICA DELL' INVOLUCRO",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SCOMPARTO NORMALE",
-                "label": "scomparto normale"
-              },
-              {
-                "value": "SCOMPARTO RIDOTTO",
-                "label": "scomparto ridotto"
-              },
-              {
-                "value": "QUADRO COMPATTO",
-                "label": "quadro compatto"
-              },
-              {
-                "value": "IN CELLA",
-                "label": "in cella"
-              },
-              {
-                "value": "LIBERO",
-                "label": "libero"
-              }
-            ]
-          }
-        ],
-        "row_04": [
-          {
-            "type": "select",
-            "id": "sc12_tipologia_scomparto",
-            "label": "TIPOLOGIA SCOMPARTO",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "LINEA",
-                "label": "linea"
-              },
-              {
-                "value": "PROTEZIONE TRASFORMATORE",
-                "label": "protezione trasformatore"
-              },
-              {
-                "value": "CONGIUNTORE",
-                "label": "congiuntore"
-              },
-              {
-                "value": "RISALITA",
-                "label": "risalita"
-              },
-              {
-                "value": "UTENTE",
-                "label": "utente"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_specificare_trasformatore",
-            "label": "SPECIFICARE TRASFORMATORE",
-            "rule": "mandatory if sc12_tipologia_scomparto == 'PROTEZIONE TRASFORMATORE'#visible if sc12_tipologia_di_attivita == 'CENSIMENTO' && sc12_tipologia_scomparto == 'PROTEZIONE TRASFORMATORE'",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc12_censimento_produttore_marca",
-            "size": "40",
-            "maxlength": "30",
-            "label": "PRODUTTORE (MARCA)",
-            "rule": "rule12_censimento_normale_ridotto_quadro_compatto"
-          },
-          {
-            "type": "text",
-            "id": "sc12_censimento_definizione_tipo_modello",
-            "size": "40",
-            "maxlength": "30",
-            "label": "DEFINIZIONE TIPO (MODELLO)",
-            "rule": "rule12_censimento_normale_ridotto_quadro_compatto"
-          },
-          {
-            "type": "text",
-            "id": "sc12_censimento_numero_serie_definito_produttore_matricola",
-            "size": "40",
-            "maxlength": "30",
-            "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)",
-            "rule": "rule12_censimento_normale_ridotto_quadro_compatto"
-          },
-          {
-            "type": "text",
-            "size": "9",
-            "maxlength": "7",
-            "id": "sc12_censimento_anno_mese_costruzione",
-            "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)",
-            "rule": "rule12_censimento_normale_ridotto_quadro_compatto",
-            "pattern": "aaaamm"
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_tipo_automazione",
-            "label": "TIPO DI AUTOMAZIONE",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ASSENTE",
-                "label": "assente"
-              },
-              {
-                "value": "MOTORIZZATO",
-                "label": "motorizzato"
-              },
-              {
-                "value": "ICS SMART",
-                "label": "ics smart"
-              },
-              {
-                "value": "MOTORIZZATO CON KIT ESTERNO",
-                "label": "motorizzato con kit esterno"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_tipo_isolamento",
-            "label": "TIPO DI ISOLAMENTO",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ARIA/ARIA",
-                "label": "aria/aria"
-              },
-              {
-                "value": "ARIA/GAS",
-                "label": "aria/gas"
-              },
-              {
-                "value": "GAS/GAS",
-                "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_blocchi_sicurezza",
-            "label": "BLOCCHI DI SICUREZZA",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERBLOCCO IMS-ST",
-                "label": "interblocco ims-st"
-              },
-              {
-                "value": "INTERBLOCCHI A CHIAVE",
-                "label": "interblocchi a chiave"
-              },
-              {
-                "value": "INTERBLOCCHI ASSENTI",
-                "label": "interblocchi assenti"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_tipo_comando",
-            "label": "TIPO DI COMANDO",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "COMANDO A LEVA DIRETTO",
-                "label": "comando a leva diretto"
-              },
-              {
-                "value": "COMANDO A LEVA RINVIATO",
-                "label": "comando a leva rinviato"
-              },
-              {
-                "value": "FIORETTO",
-                "label": "fioretto"
-              },
-              {
-                "value": "COMANDO A DISTANZA",
-                "label": "comando a distanza"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_tipo_terminali",
-            "label": "TIPO DI TERMINALI",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NORMALE",
-                "label": "normale"
-              },
-              {
-                "value": "PIPA",
-                "label": "pipa"
-              },
-              {
-                "value": "SPINA",
-                "label": "spina"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_corrente_nominale_dee",
-            "label": "CORRENTE NOMINALE DEE",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "400,00",
-                "label": "400,00"
-              },
-              {
-                "value": "630,00",
-                "label": "630,00"
-              },
-              {
-                "value": "NON NOTO/ALTRO",
-                "label": "[Non noto/Altro]"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_tipo_installazione",
-            "label": "TIPO DI INSTALLAZIONE",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "A PAVIMENTO",
-                "label": "a pavimento"
-              },
-              {
-                "value": "A PARETE",
-                "label": "a parete"
-              },
-              {
-                "value": "VERTICALE SU PALO",
-                "label": "verticale su palo"
-              },
-              {
-                "value": "ORIZZONTALE SU PALO",
-                "label": "orizzontale su palo"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_tipologia_gas_isolante",
-            "label": "TIPOLOGIA DI GAS ISOLANTE",
-            "rule": "rule12_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SF6",
-                "label": "sf6"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc12_censimento_quantita_gas_isolante",
-            "size": "8",
-            "maxlength": "6",
-            "label": "QUANTITA' DI GAS ISOLANTE (kg)",
-            "rule": "rule12_censimento_facoltativo",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "QUANTITA' DI GAS ISOLANTE (kg) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_organo_manovra",
-            "label": "ORGANO DI MANOVRA",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SEZIONATORE A VUOTO",
-                "label": "sezionatore a vuoto"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              },
-              {
-                "value": "IMS CON FUSIBILI",
-                "label": "ims con fusibili"
-              },
-              {
-                "value": "IMS_PLUS_IMS CON FUSIBILI",
-                "label": "ims+ims con fusibili"
-              },
-              {
-                "value": "ICS",
-                "label": "ICS"
-              },
-              {
-                "value": "SEZIONATORE CON FUSIBILE",
-                "label": "sezionatore con fusibile"
-              },
-              {
-                "value": "IMS + SEZ. A VUOTO",
-                "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_presenza_sez_messa_terra",
-            "label": "PRESENZA SEZ DI MESSA A TERRA",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_sincr_tra_poli_sez_fase_mov",
-            "label": "SINCR TRA POLI SEZ FASE DI MOV",
-            "rule": "rule12_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_presenza_scaldiglie",
-            "label": "PRESENZA SCALDIGLIE",
-            "rule": "rule12_censimento_normale_ridotto",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc12_censimento_presenza_tv_tetto",
-            "label": "PRESENZA TV A TETTO",
-            "rule": "rule12_censimento_normale_ridotto",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc12_censimento_tensione_massima_isolamento",
-            "size": "8",
-            "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
-            "rule": "rule12_censimento_normale_ridotto_quadro_compatto",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          }
-        ],
-        "row_05": [
-          {
-            "type": "textarea",
-            "rows": "2",
-            "cols": "40",
-            "id": "sc12_note",
-            "label": "NOTE"
-          },
-          {
-            "type": "select",
-            "id": "sc12_ulteriore_scomparto_gestire",
-            "label": "ULTERIORE SCOMPARTO DA GESTIRE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_06": [
-          {
-            "type": "file",
-            "id": "sc12_foto_01",
-            "accept": "image/*",
-            "label": "foto 1"
-          },
-          {
-            "type": "file",
-            "id": "sc12_foto_02",
-            "accept": "image/*",
-            "label": "foto 2"
-          },
-          {
-            "type": "file",
-            "id": "sc12_foto_03",
-            "accept": "image/*",
-            "label": "foto 3"
-          },
-          {
-            "type": "file",
-            "id": "sc12_foto_04",
-            "accept": "image/*",
-            "label": "foto 4"
-          }
-        ]
-      },
-      "scomparti_13": {
-        "rule": "visible if sc12_ulteriore_scomparto_gestire == 'SI'",
-        "title": {
-          "value": "13 Scomparti",
-          "hint": {
-            "type": "hint",
-            "id": "sc13_hintTitle",
-            "ruleValue": "set if '1' == '1' : sc13_identificativo_scomparto"
-          }
-        },
-        "reusableRule": [
-          {
-            "name": "rule13_sostituzione_recupero",
-            "rule": "mandatory if sc13_tipologia_di_attivita == 'SOSTITUZIONE' || sc13_tipologia_di_attivita == 'RECUPERO'#visible if sc13_tipologia_di_attivita == 'SOSTITUZIONE' || sc13_tipologia_di_attivita == 'RECUPERO'"
-          },
-          {
-            "name": "rule13_nuovaposa_sostituzione",
-            "rule": "mandatory if sc13_tipologia_di_attivita == 'SOSTITUZIONE' || sc13_tipologia_di_attivita == 'NUOVA POSA'#visible if sc13_tipologia_di_attivita == 'SOSTITUZIONE' || sc13_tipologia_di_attivita == 'NUOVA POSA'"
-          },
-          {
-            "name": "rule13_nuovaposa_sostituzione_rossa",
-            "rule": "mandatory if sc13_nuova_apparecchiatura_presenta_etichetta_rossa == 'SI' && ( sc13_tipologia_di_attivita == 'SOSTITUZIONE' || sc13_tipologia_di_attivita == 'NUOVA POSA' )#visible if ( sc13_tipologia_di_attivita == 'SOSTITUZIONE' || sc13_tipologia_di_attivita == 'NUOVA POSA' )"
-          },
-          {
-            "name": "rule13_censimento",
-            "rule": "mandatory if sc13_tipologia_di_attivita == 'CENSIMENTO'#visible if sc13_tipologia_di_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule13_censimento_facoltativo",
-            "rule": "visible if sc13_tipologia_di_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule13_censimento_normale_ridotto_quadro_compatto",
-            "rule": "mandatory if sc13_censimento_caratteristica_involucro == 'SCOMPARTO NORMALE' ||  sc13_censimento_caratteristica_involucro == 'SCOMPARTO RIDOTTO' || sc13_censimento_caratteristica_involucro ==  'QUADRO COMPATTO'#visible if sc13_tipologia_di_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule13_censimento_normale_ridotto",
-            "rule": "mandatory if sc13_censimento_caratteristica_involucro == 'SCOMPARTO NORMALE' ||  sc13_censimento_caratteristica_involucro == 'SCOMPARTO RIDOTTO'#visible if sc13_tipologia_di_attivita == 'CENSIMENTO'"
-          }
-        ],
-        "row_00": [
-          {
-            "type": "text",
-            "size": "6",
-            "maxlength": "4",
-            "id": "sc13_identificativo_scomparto",
-            "label": "IDENTIFICATIVO SCOMPARTO (es. MT01-MT02...)",
-            "rule": "mandatory"
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipologia_di_attivita",
-            "label": "TIPOLOGIA DI ATTIVITA'",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NUOVA POSA",
-                "label": "nuova posa"
-              },
-              {
-                "value": "SOSTITUZIONE",
-                "label": "sostituzione"
-              },
-              {
-                "value": "RECUPERO",
-                "label": "recupero"
-              },
-              {
-                "value": "CENSIMENTO",
-                "label": "censimento"
-              }
-            ]
-          }
-        ],
-        "row_01": [
-          {
-            "type": "text",
-            "size": "40",
-            "maxlength": "30",
-            "id": "sc13_matricola_dello_scomparto_rimosso",
-            "label": "MATRICOLA DELLO SCOMPARTO RIMOSSO",
-            "rule": "rule13_sostituzione_recupero"
-          },
-          {
-            "type": "select",
-            "id": "sc13_stato_dello_scomparto_rimosso",
-            "label": "STATO DELLO SCOMPARTO RIMOSSO",
-            "rule": "rule13_sostituzione_recupero",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "RIENTRATO A MAGAZZINO",
-                "label": "rientrato a magazzino"
-              },
-              {
-                "value": "DA ROTTAMARE",
-                "label": "da rottamare"
-              },
-              {
-                "value": "IN ATTESA DI REVISIONE",
-                "label": "in attesa di revisione"
-              }
-            ]
-          }
-        ],
-        "row_02": [
-          {
-            "type": "select",
-            "id": "sc13_nuova_apparecchiatura_presenta_etichetta_rossa",
-            "label": "LA NUOVA APPARECCHIATURA PRESENTA L'ETICHETTA ROSSA",
-            "rule": "rule13_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipologia_nuovo_scomparto_installato",
-            "label": "TIPOLOGIA NUOVO SCOMPARTO INSTALLATO",
-            "rule": "rule13_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "LINEA",
-                "label": "linea"
-              },
-              {
-                "value": "PROTEZIONE TRASFORMATORE",
-                "label": "protezione trasformatore"
-              },
-              {
-                "value": "CONGIUNTORE",
-                "label": "congiuntore"
-              },
-              {
-                "value": "RISALITA",
-                "label": "risalita"
-              },
-              {
-                "value": "UTENTE",
-                "label": "utente"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc13_produttore_marca",
-            "size": "40",
-            "maxlength": "30",
-            "label": "PRODUTTORE (MARCA)",
-            "rule": "rule13_nuovaposa_sostituzione"
-          },
-          {
-            "type": "text",
-            "id": "sc13_definizione_tipo_modello",
-            "size": "40",
-            "maxlength": "30",
-            "label": "DEFINIZIONE TIPO (MODELLO)",
-            "rule": "rule13_nuovaposa_sostituzione"
-          },
-          {
-            "type": "text",
-            "id": "sc13_numero_serie_definito_produttore_matricola",
-            "size": "40",
-            "maxlength": "30",
-            "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)",
-            "rule": "rule13_nuovaposa_sostituzione"
-          }
-        ],
-        "row_03": [
-          {
-            "type": "text",
-            "size": "9",
-            "maxlength": "7",
-            "id": "sc13_anno_mese_costruzione",
-            "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "pattern": "aaaamm"
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipo_automazione",
-            "label": "TIPO DI AUTOMAZIONE",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ASSENTE",
-                "label": "assente"
-              },
-              {
-                "value": "MOTORIZZATO",
-                "label": "motorizzato"
-              },
-              {
-                "value": "ICS SMART",
-                "label": "ics smart"
-              },
-              {
-                "value": "MOTORIZZATO CON KIT ESTERNO",
-                "label": "motorizzato con kit esterno"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipo_isolamento",
-            "label": "TIPO DI ISOLAMENTO",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ARIA/ARIA",
-                "label": "aria/aria"
-              },
-              {
-                "value": "ARIA/GAS",
-                "label": "aria/gas"
-              },
-              {
-                "value": "GAS/GAS",
-                "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_blocchi_sicurezza",
-            "label": "BLOCCHI DI SICUREZZA",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERBLOCCO IMS-ST",
-                "label": "interblocco ims-st"
-              },
-              {
-                "value": "INTERBLOCCHI A CHIAVE",
-                "label": "interblocchi a chiave"
-              },
-              {
-                "value": "INTERBLOCCHI ASSENTI",
-                "label": "interblocchi assenti"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipo_comando",
-            "label": "TIPO DI COMANDO",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "COMANDO A LEVA DIRETTO",
-                "label": "comando a leva diretto"
-              },
-              {
-                "value": "COMANDO A LEVA RINVIATO",
-                "label": "comando a leva rinviato"
-              },
-              {
-                "value": "FIORETTO",
-                "label": "fioretto"
-              },
-              {
-                "value": "COMANDO A DISTANZA",
-                "label": "comando a distanza"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipo_terminali",
-            "label": "TIPO DI TERMINALI",
-            "rule": "rule13_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NORMALE",
-                "label": "normale"
-              },
-              {
-                "value": "PIPA",
-                "label": "pipa"
-              },
-              {
-                "value": "SPINA",
-                "label": "spina"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_corrente_nominale_dee",
-            "label": "CORRENTE NOMINALE DEE",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "400",
-                "label": "400"
-              },
-              {
-                "value": "630",
-                "label": "630"
-              },
-              {
-                "value": "NON NOTO/ALTRO",
-                "label": "[Non noto/Altro]"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipo_installazione",
-            "label": "TIPO DI INSTALLAZIONE",
-            "rule": "rule13_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "A PAVIMENTO",
-                "label": "a pavimento"
-              },
-              {
-                "value": "A PARETE",
-                "label": "a parete"
-              },
-              {
-                "value": "VERTICALE SU PALO",
-                "label": "verticale su palo"
-              },
-              {
-                "value": "ORIZZONTALE SU PALO",
-                "label": "orizzontale su palo"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_tipologia_gas_isolante",
-            "label": "TIPOLOGIA DI GAS ISOLANTE",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SF6",
-                "label": "sf6"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc13_quantita_gas_isolante",
-            "size": "8",
-            "maxlength": "6",
-            "label": "QUANTITA' DI GAS ISOLANTE (kg)",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "QUANTITA' DI GAS ISOLANTE (kg) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "sc13_organo_manovra",
-            "label": "ORGANO DI MANOVRA",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SEZIONATORE A VUOTO",
-                "label": "sezionatore a vuoto"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              },
-              {
-                "value": "IMS CON FUSIBILI",
-                "label": "ims con fusibili"
-              },
-              {
-                "value": "IMS PLUS IMS CON FUSIBILI",
-                "label": "ims+ims con fusibili"
-              },
-              {
-                "value": "ICS",
-                "label": "ics"
-              },
-              {
-                "value": "SEZIONATORE CON FUSIBILE",
-                "label": "sezionatore con fusibile"
-              },
-              {
-                "value": "IMS + SEZ. A VUOTO",
-                "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_presenza_sez_messa_terra",
-            "label": "PRESENZA SEZ DI MESSA A TERRA",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_caratteristica_involucro",
-            "label": "CARATTERISTICA DELL' INVOLUCRO",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SCOMPARTO NORMALE",
-                "label": "scomparto normale"
-              },
-              {
-                "value": "SCOMPARTO RIDOTTO",
-                "label": "scomparto ridotto"
-              },
-              {
-                "value": "QUADRO COMPATTO",
-                "label": "quadro compatto"
-              },
-              {
-                "value": "IN CELLA",
-                "label": "in cella"
-              },
-              {
-                "value": "LIBERO",
-                "label": "libero"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_sincr_tra_poli_sez_fase_mov",
-            "label": "SINCR TRA POLI SEZ FASE DI MOV",
-            "rule": "rule13_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_presenza_scaldiglie",
-            "label": "PRESENZA SCALDIGLIE",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_presenza_tv_tetto",
-            "label": "PRESENZA TV A TETTO",
-            "rule": "rule13_nuovaposa_sostituzione",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc13_tensione_massima_isolamento",
-            "size": "8",
-            "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
-            "rule": "rule13_nuovaposa_sostituzione_rossa",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_caratteristica_involucro",
-            "label": "CARATTERISTICA DELL' INVOLUCRO",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SCOMPARTO NORMALE",
-                "label": "scomparto normale"
-              },
-              {
-                "value": "SCOMPARTO RIDOTTO",
-                "label": "scomparto ridotto"
-              },
-              {
-                "value": "QUADRO COMPATTO",
-                "label": "quadro compatto"
-              },
-              {
-                "value": "IN CELLA",
-                "label": "in cella"
-              },
-              {
-                "value": "LIBERO",
-                "label": "libero"
-              }
-            ]
-          }
-        ],
-        "row_04": [
-          {
-            "type": "select",
-            "id": "sc13_tipologia_scomparto",
-            "label": "TIPOLOGIA SCOMPARTO",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "LINEA",
-                "label": "linea"
-              },
-              {
-                "value": "PROTEZIONE TRASFORMATORE",
-                "label": "protezione trasformatore"
-              },
-              {
-                "value": "CONGIUNTORE",
-                "label": "congiuntore"
-              },
-              {
-                "value": "RISALITA",
-                "label": "risalita"
-              },
-              {
-                "value": "UTENTE",
-                "label": "utente"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_specificare_trasformatore",
-            "label": "SPECIFICARE TRASFORMATORE",
-            "rule": "mandatory if sc13_tipologia_scomparto == 'PROTEZIONE TRASFORMATORE'#visible if sc13_tipologia_di_attivita == 'CENSIMENTO' && sc13_tipologia_scomparto == 'PROTEZIONE TRASFORMATORE'",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc13_censimento_produttore_marca",
-            "size": "40",
-            "maxlength": "30",
-            "label": "PRODUTTORE (MARCA)",
-            "rule": "rule13_censimento_normale_ridotto_quadro_compatto"
-          },
-          {
-            "type": "text",
-            "id": "sc13_censimento_definizione_tipo_modello",
-            "size": "40",
-            "maxlength": "30",
-            "label": "DEFINIZIONE TIPO (MODELLO)",
-            "rule": "rule13_censimento_normale_ridotto_quadro_compatto"
-          },
-          {
-            "type": "text",
-            "id": "sc13_censimento_numero_serie_definito_produttore_matricola",
-            "size": "40",
-            "maxlength": "30",
-            "label": "NUMERO DI SERIE DEFINITO DAL PRODUTTORE (MATRICOLA)",
-            "rule": "rule13_censimento_normale_ridotto_quadro_compatto"
-          },
-          {
-            "type": "text",
-            "size": "9",
-            "maxlength": "7",
-            "id": "sc13_censimento_anno_mese_costruzione",
-            "label": "ANNO E MESE DI COSTRUZIONE (aaaa/mm)",
-            "rule": "rule13_censimento_normale_ridotto_quadro_compatto",
-            "pattern": "aaaamm"
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_tipo_automazione",
-            "label": "TIPO DI AUTOMAZIONE",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ASSENTE",
-                "label": "assente"
-              },
-              {
-                "value": "MOTORIZZATO",
-                "label": "motorizzato"
-              },
-              {
-                "value": "ICS SMART",
-                "label": "ics smart"
-              },
-              {
-                "value": "MOTORIZZATO CON KIT ESTERNO",
-                "label": "motorizzato con kit esterno"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_tipo_isolamento",
-            "label": "TIPO DI ISOLAMENTO",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "ARIA/ARIA",
-                "label": "aria/aria"
-              },
-              {
-                "value": "ARIA/GAS",
-                "label": "aria/gas"
-              },
-              {
-                "value": "GAS/GAS",
-                "label": "gas/gas"
-              },
-              {
-                "value": "IN OLIO",
-                "label": "in olio"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_blocchi_sicurezza",
-            "label": "BLOCCHI DI SICUREZZA",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERBLOCCO IMS-ST",
-                "label": "interblocco ims-st"
-              },
-              {
-                "value": "INTERBLOCCHI A CHIAVE",
-                "label": "interblocchi a chiave"
-              },
-              {
-                "value": "INTERBLOCCHI ASSENTI",
-                "label": "interblocchi assenti"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_tipo_comando",
-            "label": "TIPO DI COMANDO",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "COMANDO A LEVA DIRETTO",
-                "label": "comando a leva diretto"
-              },
-              {
-                "value": "COMANDO A LEVA RINVIATO",
-                "label": "comando a leva rinviato"
-              },
-              {
-                "value": "FIORETTO",
-                "label": "fioretto"
-              },
-              {
-                "value": "COMANDO A DISTANZA",
-                "label": "comando a distanza"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_tipo_terminali",
-            "label": "TIPO DI TERMINALI",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NORMALE",
-                "label": "normale"
-              },
-              {
-                "value": "PIPA",
-                "label": "pipa"
-              },
-              {
-                "value": "SPINA",
-                "label": "spina"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_corrente_nominale_dee",
-            "label": "CORRENTE NOMINALE DEE",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "400,00",
-                "label": "400,00"
-              },
-              {
-                "value": "630,00",
-                "label": "630,00"
-              },
-              {
-                "value": "NON NOTO/ALTRO",
-                "label": "[Non noto/Altro]"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_tipo_installazione",
-            "label": "TIPO DI INSTALLAZIONE",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "A PAVIMENTO",
-                "label": "a pavimento"
-              },
-              {
-                "value": "A PARETE",
-                "label": "a parete"
-              },
-              {
-                "value": "VERTICALE SU PALO",
-                "label": "verticale su palo"
-              },
-              {
-                "value": "ORIZZONTALE SU PALO",
-                "label": "orizzontale su palo"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_tipologia_gas_isolante",
-            "label": "TIPOLOGIA DI GAS ISOLANTE",
-            "rule": "rule13_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SF6",
-                "label": "sf6"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc13_censimento_quantita_gas_isolante",
-            "size": "8",
-            "maxlength": "6",
-            "label": "QUANTITA' DI GAS ISOLANTE (kg)",
-            "rule": "rule13_censimento_facoltativo",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "QUANTITA' DI GAS ISOLANTE (kg) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_organo_manovra",
-            "label": "ORGANO DI MANOVRA",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SEZIONATORE A VUOTO",
-                "label": "sezionatore a vuoto"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              },
-              {
-                "value": "IMS CON FUSIBILI",
-                "label": "ims con fusibili"
-              },
-              {
-                "value": "IMS_PLUS_IMS CON FUSIBILI",
-                "label": "ims+ims con fusibili"
-              },
-              {
-                "value": "ICS",
-                "label": "ICS"
-              },
-              {
-                "value": "SEZIONATORE CON FUSIBILE",
-                "label": "sezionatore con fusibile"
-              },
-              {
-                "value": "IMS + SEZ. A VUOTO",
-                "label": "ims + sez. a vuoto"
-              },
-              {
-                "value": "INTERRUTTORE",
-                "label": "interruttore"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_presenza_sez_messa_terra",
-            "label": "PRESENZA SEZ DI MESSA A TERRA",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_sincr_tra_poli_sez_fase_mov",
-            "label": "SINCR TRA POLI SEZ FASE DI MOV",
-            "rule": "rule13_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_presenza_scaldiglie",
-            "label": "PRESENZA SCALDIGLIE",
-            "rule": "rule13_censimento_normale_ridotto",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "sc13_censimento_presenza_tv_tetto",
-            "label": "PRESENZA TV A TETTO",
-            "rule": "rule13_censimento_normale_ridotto",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "sc13_censimento_tensione_massima_isolamento",
-            "size": "8",
-            "maxlength": "6",
-            "label": "TENSIONE MASSIMA ISOLAMENTO (kV)",
-            "rule": "rule13_censimento_normale_ridotto_quadro_compatto",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "TENSIONE MASSIMA ISOLAMENTO deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          }
-        ],
-        "row_05": [
-          {
-            "type": "textarea",
-            "rows": "2",
-            "cols": "40",
-            "id": "sc13_note",
-            "label": "NOTE"
-          },
-          {
-            "type": "select",
-            "id": "sc13_ulteriore_scomparto_gestire",
-            "label": "ULTERIORE SCOMPARTO DA GESTIRE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_06": [
-          {
-            "type": "file",
-            "id": "sc13_foto_01",
-            "accept": "image/*",
-            "label": "foto 1"
-          },
-          {
-            "type": "file",
-            "id": "sc13_foto_02",
-            "accept": "image/*",
-            "label": "foto 2"
-          },
-          {
-            "type": "file",
-            "id": "sc13_foto_03",
-            "accept": "image/*",
-            "label": "foto 3"
-          },
-          {
-            "type": "file",
-            "id": "sc13_foto_04",
-            "accept": "image/*",
-            "label": "foto 4"
-          }
-        ]
-      },
     "trasformatori_mt_bt": {
         "title":{
             "value": "00 Trasformatori MT-BT",
@@ -15326,8 +12921,7 @@
                     {"value":"NO", "label":"no"}
                 ]
             },
-            {"type": "select", "id": "tr_tipologia_vasca", "label": "TIPOLOGIA DI VASCA", 
-              "rule": "mandatory if tr_presenza_vasca == 'SI'#visible if tr_presenza_vasca == 'SI'",
+            {"type": "select", "id": "tr_tipologia_vasca", "label": "TIPOLOGIA DI VASCA", "rule": "rule_tr_nuova_posa_sostituzione",
                 "option":[
                     {"value":"", "label":""},
                     {"value":"VASCA INGLOBATA NEL PAVIMENTO", "label":"vasca inglobata nel pavimento"},
@@ -15806,7 +13400,7 @@
             "type": "select",
             "id": "tr01_tipologia_vasca",
             "label": "TIPOLOGIA DI VASCA",
-            "rule": "mandatory if tr01_presenza_vasca == 'SI'#visible if tr01_presenza_vasca == 'SI'",
+            "rule": "rule_tr01_nuova_posa_sostituzione",
             "option": [
               {
                 "value": "",
@@ -16743,7 +14337,7 @@
             "type": "select",
             "id": "tr02_tipologia_vasca",
             "label": "TIPOLOGIA DI VASCA",
-            "rule": "mandatory if tr02_presenza_vasca == 'SI'#visible if tr02_presenza_vasca == 'SI'",
+            "rule": "rule_tr02_nuova_posa_sostituzione",
             "option": [
               {
                 "value": "",
@@ -17680,7 +15274,7 @@
             "type": "select",
             "id": "tr03_tipologia_vasca",
             "label": "TIPOLOGIA DI VASCA",
-            "rule": "mandatory if tr03_presenza_vasca == 'SI'#visible if tr03_presenza_vasca == 'SI'",
+            "rule": "rule_tr03_nuova_posa_sostituzione",
             "option": [
               {
                 "value": "",
@@ -18414,18 +16008,7 @@
                     "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
                     "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
                 ]
-            },
-            {"type": "select", "id": "dbt_trasformatore_alimenta_derivazione", "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE", "rule": "mandatory",
-              "option":[
-                  {"value":"", "label":""},
-                  {"value":"T01 - Torino", "label":"T01 - Torino"},
-                  {"value":"T02 - Torino", "label":"T02 - Torino"},
-                  {"value":"T03 - Torino", "label":"T03 - Torino"},
-                  {"value":"T0A - Parma", "label":"T0A - Parma"},
-                  {"value":"T0B - Parma", "label":"T0B - Parma"},
-                  {"value":"T0C - Parma", "label":"T0C - Parma"}
-              ]
-            }
+            }   
         ],
         "row_01": [
             {"type": "select", "id": "dbt_tipo_interruttore", "label": "TIPO DI INTERRUTTORE", "rule": "rule_dbt_posa_sostituzione_censimento",
@@ -18547,42 +16130,6 @@
             "patMessage": [
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt01_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
             ]
           }
         ],
@@ -18817,42 +16364,6 @@
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
             ]
-          },
-          {
-            "type": "select",
-            "id": "dbt02_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
           }
         ],
         "row_01": [
@@ -19085,42 +16596,6 @@
             "patMessage": [
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt03_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
             ]
           }
         ],
@@ -19355,42 +16830,6 @@
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
             ]
-          },
-          {
-            "type": "select",
-            "id": "dbt04_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
           }
         ],
         "row_01": [
@@ -19623,42 +17062,6 @@
             "patMessage": [
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt05_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
             ]
           }
         ],
@@ -19893,42 +17296,6 @@
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
             ]
-          },
-          {
-            "type": "select",
-            "id": "dbt06_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
           }
         ],
         "row_01": [
@@ -20161,42 +17528,6 @@
             "patMessage": [
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt07_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
             ]
           }
         ],
@@ -20431,42 +17762,6 @@
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
             ]
-          },
-          {
-            "type": "select",
-            "id": "dbt08_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
           }
         ],
         "row_01": [
@@ -20699,42 +17994,6 @@
             "patMessage": [
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt09_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
             ]
           }
         ],
@@ -20969,42 +18228,6 @@
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
             ]
-          },
-          {
-            "type": "select",
-            "id": "dbt10_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
           }
         ],
         "row_01": [
@@ -21238,42 +18461,6 @@
               "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
               "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
             ]
-          },
-          {
-            "type": "select",
-            "id": "dbt11_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
           }
         ],
         "row_01": [
@@ -21442,544 +18629,6 @@
           }
         ]
       },
-      "derivazioni_bt_12": {
-        "rule": "visible if dbt11_ulteriore_derivazione_gestire == 'SI'",
-        "title": {
-          "value": "12 Derivazioni BT",
-          "hint": {
-            "type": "hint",
-            "id": "dbt12_hintTitle",
-            "ruleValue": "set if '1' == '1' : dbt12_codice_derivazione_interessata"
-          }
-        },
-        "reusableRule": [
-          {
-            "name": "rule_dbt12_posa_sostituzione_censimento",
-            "rule": "mandatory if dbt12_tipologia_attivita == 'NUOVA POSA' || dbt12_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt12_tipologia_attivita == 'CENSIMENTO'#visible if dbt12_tipologia_attivita == 'NUOVA POSA' || dbt12_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt12_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_dbt12_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt12_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt12_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt12_tipologia_attivita == 'NUOVA POSA' || dbt12_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt12_tipologia_attivita == 'CENSIMENTO' )#visible if dbt12_tipologia_attivita == 'NUOVA POSA' || dbt12_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt12_tipologia_attivita == 'CENSIMENTO'"
-          }
-        ],
-        "row_00": [
-          {
-            "type": "select",
-            "id": "dbt12_tipologia_attivita",
-            "label": "TIPOLOGIA ATTIVITA'",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NUOVA POSA",
-                "label": "nuova posa"
-              },
-              {
-                "value": "SOSTITUZIONE INTERRUTTORE",
-                "label": "sostituzione interruttore"
-              },
-              {
-                "value": "ELIMINAZIONE",
-                "label": "eliminazione"
-              },
-              {
-                "value": "CENSIMENTO",
-                "label": "censimento"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "size": "5",
-            "maxlength": "3",
-            "id": "dbt12_codice_derivazione_interessata",
-            "value": "",
-            "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-            "rule": "mandatory",
-            "pattern": [
-              "set if dg_provincia == 'PARMA' : '1_char_than_2_digit'",
-              "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
-            ],
-            "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt12_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
-          }
-        ],
-        "row_01": [
-          {
-            "type": "select",
-            "id": "dbt12_tipo_interruttore",
-            "label": "TIPO DI INTERRUTTORE",
-            "rule": "rule_dbt12_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "FUSIBILI A MANIGLIA",
-                "label": "fusibili a maniglia"
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS CON FUSIBILI",
-                "label": "ims con fusibili"
-              },
-              {
-                "value": "INTERRUTTORI MOTORIZZATO",
-                "label": "interruttori motorizzato"
-              },
-              {
-                "value": "NON NOTO/ALTRO",
-                "label": "[Non noto/Altro]"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "dbt12_produttore_interruttore_installato",
-            "size": "40",
-            "maxlength": "30",
-            "label": "PRODUTTORE DELL'INTERRUTTORE INSTALLATO",
-            "rule": "rule_dbt12_posa_sostituzione_censimento_maniglia_altro"
-          },
-          {
-            "type": "text",
-            "id": "dbt12_definizione_tipo_modello",
-            "size": "40",
-            "maxlength": "30",
-            "label": "DEFINIZIONE TIPO (MODELLO)",
-            "rule": "rule_dbt12_posa_sostituzione_censimento_maniglia_altro"
-          },
-          {
-            "type": "text",
-            "id": "dbt12_corrente_nominale_portata_fusibile",
-            "label": "CORRENTE NOMINALE (A) PORTATA FUSIBILE",
-            "rule": "rule_dbt12_posa_sostituzione_censimento_maniglia_altro",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "CORRENTE NOMINALE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "text",
-            "id": "dbt12_portata_interruttore",
-            "label": "PORTATA INTERRUTTORE (A)",
-            "rule": "rule_dbt12_posa_sostituzione_censimento_maniglia_altro",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA INTERRUTTORE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "dbt12_potere_interruzione",
-            "label": "POTERE DI INTERRUZIONE",
-            "rule": "rule_dbt12_posa_sostituzione_censimento_maniglia_altro",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt12_interruttore_tarabile",
-            "label": "INTERRUTTORE TARABILE",
-            "rule": "rule_dbt12_posa_sostituzione_censimento_maniglia_altro",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_02": [
-          {
-            "type": "textarea",
-            "rows": "2",
-            "cols": "40",
-            "id": "dbt12_note",
-            "label": "NOTE"
-          },
-          {
-            "type": "select",
-            "id": "dbt12_ulteriore_derivazione_gestire",
-            "label": "ULTERIORE DERIVAZIONE DA GESTIRE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_03": [
-          {
-            "type": "file",
-            "id": "dbt12_foto_01",
-            "accept": "image/*",
-            "label": "foto 1"
-          },
-          {
-            "type": "file",
-            "id": "dbt12_foto_02",
-            "accept": "image/*",
-            "label": "foto 2"
-          },
-          {
-            "type": "file",
-            "id": "dbt12_foto_03",
-            "accept": "image/*",
-            "label": "foto 3"
-          },
-          {
-            "type": "file",
-            "id": "dbt12_foto_04",
-            "accept": "image/*",
-            "label": "foto 4"
-          }
-        ]
-      },
-      "derivazioni_bt_13": {
-        "rule": "visible if dbt12_ulteriore_derivazione_gestire == 'SI'",
-        "title": {
-          "value": "13 Derivazioni BT",
-          "hint": {
-            "type": "hint",
-            "id": "dbt13_hintTitle",
-            "ruleValue": "set if '1' == '1' : dbt13_codice_derivazione_interessata"
-          }
-        },
-        "reusableRule": [
-          {
-            "name": "rule_dbt13_posa_sostituzione_censimento",
-            "rule": "mandatory if dbt13_tipologia_attivita == 'NUOVA POSA' || dbt13_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt13_tipologia_attivita == 'CENSIMENTO'#visible if dbt13_tipologia_attivita == 'NUOVA POSA' || dbt13_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt13_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_dbt13_posa_sostituzione_censimento_maniglia_altro",
-            "rule": "mandatory if ( dbt13_tipo_interruttore != 'FUSIBILI A MANIGLIA' && dbt13_tipo_interruttore != 'NON NOTO/ALTRO' ) && ( dbt13_tipologia_attivita == 'NUOVA POSA' || dbt13_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt13_tipologia_attivita == 'CENSIMENTO' )#visible if dbt13_tipologia_attivita == 'NUOVA POSA' || dbt13_tipologia_attivita == 'SOSTITUZIONE INTERRUTTORE' || dbt13_tipologia_attivita == 'CENSIMENTO'"
-          }
-        ],
-        "row_00": [
-          {
-            "type": "select",
-            "id": "dbt13_tipologia_attivita",
-            "label": "TIPOLOGIA ATTIVITA'",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NUOVA POSA",
-                "label": "nuova posa"
-              },
-              {
-                "value": "SOSTITUZIONE INTERRUTTORE",
-                "label": "sostituzione interruttore"
-              },
-              {
-                "value": "ELIMINAZIONE",
-                "label": "eliminazione"
-              },
-              {
-                "value": "CENSIMENTO",
-                "label": "censimento"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "size": "5",
-            "maxlength": "3",
-            "id": "dbt13_codice_derivazione_interessata",
-            "value": "",
-            "label": "CODICE DELLA DERIVAZIONE INTERESSATA",
-            "rule": "mandatory",
-            "pattern": [
-              "set if dg_provincia == 'PARMA' : '1_char_than_2_digit'",
-              "set if dg_provincia == 'TORINO' || dg_provincia == 'CHIOMONTE' : 'D3_than_1_char'"
-            ],
-            "patMessage": [
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Parma) deve essere di 1 lettera poi 2 numeri, es 'A01'",
-              "CODICE DELLA DERIVAZIONE INTERESSATA (Torino/Chiomonte) deve essere composta da 'D3' poi una lettera, es 'D3A'"
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt13_trasformatore_alimenta_derivazione",
-            "label": "TRASFORMATORE CHE ALIMENTA LA DERIVAZIONE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "T01 - Torino",
-                "label": "T01 - Torino"
-              },
-              {
-                "value": "T02 - Torino",
-                "label": "T02 - Torino"
-              },
-              {
-                "value": "T03 - Torino",
-                "label": "T03 - Torino"
-              },
-              {
-                "value": "T0A - Parma",
-                "label": "T0A - Parma"
-              },
-              {
-                "value": "T0B - Parma",
-                "label": "T0B - Parma"
-              },
-              {
-                "value": "T0C - Parma",
-                "label": "T0C - Parma"
-              }
-            ]
-          }
-        ],
-        "row_01": [
-          {
-            "type": "select",
-            "id": "dbt13_tipo_interruttore",
-            "label": "TIPO DI INTERRUTTORE",
-            "rule": "rule_dbt13_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "FUSIBILI A MANIGLIA",
-                "label": "fusibili a maniglia"
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS CON FUSIBILI",
-                "label": "ims con fusibili"
-              },
-              {
-                "value": "INTERRUTTORI MOTORIZZATO",
-                "label": "interruttori motorizzato"
-              },
-              {
-                "value": "NON NOTO/ALTRO",
-                "label": "[Non noto/Altro]"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "dbt13_produttore_interruttore_installato",
-            "size": "40",
-            "maxlength": "30",
-            "label": "PRODUTTORE DELL'INTERRUTTORE INSTALLATO",
-            "rule": "rule_dbt13_posa_sostituzione_censimento_maniglia_altro"
-          },
-          {
-            "type": "text",
-            "id": "dbt13_definizione_tipo_modello",
-            "size": "40",
-            "maxlength": "30",
-            "label": "DEFINIZIONE TIPO (MODELLO)",
-            "rule": "rule_dbt13_posa_sostituzione_censimento_maniglia_altro"
-          },
-          {
-            "type": "text",
-            "id": "dbt13_corrente_nominale_portata_fusibile",
-            "label": "CORRENTE NOMINALE (A) PORTATA FUSIBILE",
-            "rule": "rule_dbt13_posa_sostituzione_censimento_maniglia_altro",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "CORRENTE NOMINALE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "text",
-            "id": "dbt13_portata_interruttore",
-            "label": "PORTATA INTERRUTTORE (A)",
-            "rule": "rule_dbt13_posa_sostituzione_censimento_maniglia_altro",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA INTERRUTTORE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "dbt13_potere_interruzione",
-            "label": "POTERE DI INTERRUZIONE",
-            "rule": "rule_dbt13_posa_sostituzione_censimento_maniglia_altro",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "dbt13_interruttore_tarabile",
-            "label": "INTERRUTTORE TARABILE",
-            "rule": "rule_dbt13_posa_sostituzione_censimento_maniglia_altro",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_02": [
-          {
-            "type": "textarea",
-            "rows": "2",
-            "cols": "40",
-            "id": "dbt13_note",
-            "label": "NOTE"
-          },
-          {
-            "type": "select",
-            "id": "dbt13_ulteriore_derivazione_gestire",
-            "label": "ULTERIORE DERIVAZIONE DA GESTIRE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_03": [
-          {
-            "type": "file",
-            "id": "dbt13_foto_01",
-            "accept": "image/*",
-            "label": "foto 1"
-          },
-          {
-            "type": "file",
-            "id": "dbt13_foto_02",
-            "accept": "image/*",
-            "label": "foto 2"
-          },
-          {
-            "type": "file",
-            "id": "dbt13_foto_03",
-            "accept": "image/*",
-            "label": "foto 3"
-          },
-          {
-            "type": "file",
-            "id": "dbt13_foto_04",
-            "accept": "image/*",
-            "label": "foto 4"
-          }
-        ]
-      },
     "quadro_bt": {
         "title":{
             "value": "00 Quadro BT",
@@ -22093,8 +18742,8 @@
                 "option":[
                     {"value":"", "label":""},
                     {"value":"INTERRUTTORE AUTOMATICO", "label":"interruttore automatico"},
-                    {"value":"IMS", "label":"ims"},
-                    {"value":"Altro", "label":"Altro"}
+                    {"value":"IMS", "label":"ims"}
+                    
                 ]
             },
             {"type": "text", "id": "qbt_portata_interruttore_generale", "label": "PORTATA INTERRUTTORE GENERALE (A)", "rule": "rule_qbt_tipo_funzionale_02",
@@ -22458,10 +19107,6 @@
               {
                 "value": "IMS",
                 "label": "ims"
-              },
-              {
-                "value": "Altro",
-                "label": "Altro"
               }
             ]
           },
@@ -22954,10 +19599,6 @@
               {
                 "value": "IMS",
                 "label": "ims"
-              },
-              {
-                "value": "Altro",
-                "label": "Altro"
               }
             ]
           },
@@ -23450,10 +20091,6 @@
               {
                 "value": "IMS",
                 "label": "ims"
-              },
-              {
-                "value": "Altro",
-                "label": "Altro"
               }
             ]
           },
