@@ -1,10 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+// logging purpose
+let log_filename_tag = `[${path.basename(__filename)}]`;
+
 const makeScomparti = (config) => {
 
     let resultAll = {};
-    let idxes = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"];
+    let idxes = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"];
     idxes.forEach(idx => {
 
         // let idx = "01";
@@ -67,7 +70,7 @@ const makeTrasformatoriMtBt = (config) => {
 const makeDerivazioniBt = (config) => {
 
     let resultAll = {};
-    let idxes = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"];
+    let idxes = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"];
     idxes.forEach(idx => {
 
         let sourceData = fs.readFileSync(config.source, 'utf8');
@@ -126,28 +129,40 @@ const makeQuadroBt = (config) => {
 
 };
 
-const outFolder = 'duplicate_card_out';
+// out folder
+const outFolder = path.join(__dirname, 'duplicate_card_out')
+
+// clean outFolder
+let filesRemoved = fs.readdirSync(outFolder);
+filesRemoved.forEach(file => {
+    fs.unlinkSync(path.join(outFolder, file));
+    console.log(path.join(outFolder, file).concat(' Old file REMOVED!'));
+});
+
+
+console.log(`${log_filename_tag} ### Do new files ###`);
 
 makeScomparti({
     source: path.join(__dirname, '../../config/json_split/scomparti.json'),
-    destination: path.join(__dirname, outFolder)
+    destination: outFolder
 });
 
 
 makeTrasformatoriMtBt({
     source: path.join(__dirname, '../../config/json_split/trasformatori_mt_bt.json'),
-    destination: path.join(__dirname, outFolder)
+    destination: outFolder
 });
 
 makeDerivazioniBt({
     source: path.join(__dirname, '../../config/json_split/derivazioni_bt.json'),
-    destination: path.join(__dirname, outFolder)
+    destination: outFolder
 });
 
 makeQuadroBt({
     source: path.join(__dirname, '../../config/json_split/quadro_bt.json'),
-    destination: path.join(__dirname, outFolder)
+    destination: outFolder
 });
 
-
+console.log(`${log_filename_tag} ### New files DONE ###`);
+console.log(`${log_filename_tag} ### Path: ${outFolder} ###`);
 
