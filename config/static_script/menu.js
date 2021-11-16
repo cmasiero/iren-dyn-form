@@ -100,12 +100,13 @@ document.getElementById("buttonSend").addEventListener("click", () => {
             }
         }
 
-        /* inserts content's file in indexDb */
         finalObj.content = validArray;
-        clientdb.saveOnDB(store_main, finalObj, finalObj.uuid);
-        filesToSave.forEach(obj => {
-            clientdb.saveOnDB(store_main, obj.file, obj.filename);
-        });
+        
+        /* inserts content's file in indexDb */
+        // clientdb.saveOnDB(store_main, finalObj, finalObj.uuid);
+        // filesToSave.forEach(obj => {
+        //     clientdb.saveOnDB(store_main, obj.file, obj.filename);
+        // });
 
         // doc in str format.
         let finalDoc = JSON.stringify(finalObj, null, 2);
