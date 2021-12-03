@@ -10,7 +10,7 @@ Remove all files inside ./config/json_split a ./output
 npm run clean
 ```
 
-## build all
+## build
 
 Create json splitted in config/json_split and html files in output/
 
@@ -20,7 +20,7 @@ npm run build
 
 ## Build json splitted
 
-From a single source file (eg: config/default.json) creates multiple json files. Output is in config/json_split.
+From a single source file (eg: config/default_test.json) creates multiple json files. Output is in config/json_split.
 
 ```bash
 npm run split-json
@@ -36,7 +36,7 @@ npm run build-all
 
 ## Create a main html from a single default file
 
-From a single source file (eg: config/default.json) creates a single html file, it contains all cards. Output is in output/.
+From a single source file (eg: config/default_test.json) creates a single html file, it contains all cards. Output is in output/.
 
 ```bash
 npm run build-single
