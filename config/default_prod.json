@@ -21998,15 +21998,15 @@
             },
             {
                 "name": "rule_qbt_tipo_funzionale_01",
-                "rule": "mandatory if qbt_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if qbt_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt_presenza_congiuntore_interruttore_generale == 'SI'"
             },
             {
                 "name": "rule_qbt_tipo_funzionale_02",
-                "rule": "mandatory if qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if ( qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO' ) && ( qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO' ) && ( qbt_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt_tipo_funzionale == 'ENTRAMBI' )"
             },
             {
                 "name": "rule_qbt_tipo_funzionale_03",
-                "rule": "mandatory if qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI'#visible if qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO'"
+                "rule": "mandatory if ( qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO' ) && ( qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt_tipologia_attivita == 'NUOVA POSA' || qbt_tipologia_attivita == 'SOSTITUZIONE' || qbt_tipologia_attivita == 'CENSIMENTO' ) && ( qbt_tipo_funzionale == 'CONGIUNTORE' || qbt_tipo_funzionale == 'ENTRAMBI' )"
             }
         ],
         "row_00": [
@@ -22165,1491 +22165,1491 @@
         ]
     },
     "quadro_bt_01": {
-        "rule": "visible if qbt_ulteriore_derivazione_gestire == 'SI'",
-        "title": {
-          "value": "01 Quadro BT",
-          "hint": {
-            "type": "hint",
-            "id": "qbt01_hintTitle",
-            "ruleValue": "set if '1' == '1' : qbt01_codice_del_quadro_interessato"
-          }
-        },
-        "reusableRule": [
-          {
-            "name": "rule_qbt01_posa_sostituzione_censimento",
-            "rule": "mandatory if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'#visible if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt01_posa_sostituzione_censimento_facoltativo",
-            "rule": "visible if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt01_tipo_funzionale_01",
-            "rule": "mandatory if qbt01_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt01_tipo_funzionale_02",
-            "rule": "mandatory if qbt01_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt01_tipo_funzionale == 'ENTRAMBI'#visible if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt01_tipo_funzionale_03",
-            "rule": "mandatory if qbt01_tipo_funzionale == 'CONGIUNTORE' || qbt01_tipo_funzionale == 'ENTRAMBI'#visible if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'"
-          }
-        ],
-        "row_00": [
-          {
-            "type": "select",
-            "id": "qbt01_tipologia_attivita",
-            "label": "TIPOLOGIA ATTIVITA'",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NUOVA POSA",
-                "label": "nuova posa"
-              },
-              {
-                "value": "SOSTITUZIONE",
-                "label": "sostituzione"
-              },
-              {
-                "value": "ELIMINAZIONE",
-                "label": "eliminazione"
-              },
-              {
-                "value": "CENSIMENTO",
-                "label": "censimento"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt01_codice_del_quadro_interessato",
-            "label": "CODICE DEL QUADRO INTERESSATO",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "Q01 - Torino",
-                "label": "Q01 - Torino"
-              },
-              {
-                "value": "Q02 - Torino",
-                "label": "Q02 - Torino"
-              },
-              {
-                "value": "Q03 - Torino",
-                "label": "Q03 - Torino"
-              },
-              {
-                "value": "Q0A - Parma",
-                "label": "Q0A - Parma"
-              },
-              {
-                "value": "Q0B - Parma",
-                "label": "Q0B - Parma"
-              },
-              {
-                "value": "Q0C - Parma",
-                "label": "Q0C - Parma"
-              }
-            ]
-          }
-        ],
-        "row_01": [
-          {
-            "type": "select",
-            "id": "qbt01_tipologia_quadro_bt_installato",
-            "label": "TIPOLOGIA QUADRO BT INSTALLATO",
-            "rule": "rule_qbt01_posa_sostituzione_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "WEBER",
-                "label": "weber"
-              },
-              {
-                "value": "ROMANO",
-                "label": "romano"
-              },
-              {
-                "value": "FIAMESA",
-                "label": "fiamesa"
-              },
-              {
-                "value": "ELECA",
-                "label": "eleca"
-              },
-              {
-                "value": "BTICINO",
-                "label": "bticino"
-              },
-              {
-                "value": "ABB",
-                "label": "abb"
-              },
-              {
-                "value": "[Parma]",
-                "label": "[Parma]"
-              }
-            ]
-          },
-          {
-            "type": "date",
-            "id": "qbt01_revisione_quadro_bt",
-            "label": "REVISIONE QUADRO BT",
-            "rule": "rule_qbt01_posa_sostituzione_censimento_facoltativo"
-          },
-          {
-            "type": "select",
-            "id": "qbt01_tipo_collegamento",
-            "label": "TIPO DI COLLEGAMENTO",
-            "rule": "rule_qbt01_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SU QUADRO",
-                "label": "su quadro"
-              },
-              {
-                "value": "SU SBARRE",
-                "label": "su sbarre"
-              },
-              {
-                "value": "NESSUNO",
-                "label": "nessuno"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt01_presenza_cassetta_arrivo_trafo",
-            "label": "PRESENZA CASSETTA ARRIVO TRAFO",
-            "rule": "rule_qbt01_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt01_modello_2_4_moduli",
-            "label": "MODELLO 2 O 4 MODULI",
-            "rule": "rule_qbt01_posa_sostituzione_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "MODELLO 2 MODULI",
-                "label": "modello 2 moduli"
-              },
-              {
-                "value": "MODELLO 4 MODULI",
-                "label": "modello 4 moduli"
-              },
-              {
-                "value": "ENTRAMBI",
-                "label": "entrambi"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt01_presenza_congiuntore_interruttore_generale",
-            "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE",
-            "rule": "rule_qbt01_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_02": [
-          {
-            "type": "select",
-            "id": "qbt01_tipo_funzionale",
-            "label": "TIPO FUNZIONALE",
-            "rule": "rule_qbt01_tipo_funzionale_01",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE GENERALE",
-                "label": "interruttore generale"
-              },
-              {
-                "value": "CONGIUNTORE",
-                "label": "congiuntore"
-              },
-              {
-                "value": "ENTRAMBI",
-                "label": "entrambi"
-              }
-            ]
-          }
-        ],
-        "row_03": [
-          {
-            "type": "text",
-            "id": "qbt01_modello_interruttore_generale",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MODELLO INTERRUTTORE GENERALE",
-            "rule": "rule_qbt01_tipo_funzionale_02"
-          },
-          {
-            "type": "text",
-            "id": "qbt01_marca_interruttore_generale",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MARCA INTERRUTTORE GENERALE",
-            "rule": "rule_qbt01_tipo_funzionale_02"
-          },
-          {
-            "type": "select",
-            "id": "qbt01_tipo_interruttore_generale",
-            "label": "TIPO INTERRUTTORE GENERALE",
-            "rule": "rule_qbt01_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              },
-              {
-                "value": "Altro",
-                "label": "Altro"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "qbt01_portata_interruttore_generale",
-            "label": "PORTATA INTERRUTTORE GENERALE (A)",
-            "rule": "rule_qbt01_tipo_funzionale_02",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA INTERRUTTORE GENERALE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "qbt01_potere_interruzione_interruttore_generale",
-            "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE",
-            "rule": "rule_qbt01_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt01_interruttore_generale_tarabile",
-            "label": "INTERRUTTORE GENERALE TARABILE",
-            "rule": "rule_qbt01_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_04": [
-          {
-            "type": "text",
-            "id": "qbt01_modello_congiuntore",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MODELLO CONGIUNTORE",
-            "rule": "rule_qbt01_tipo_funzionale_03"
-          },
-          {
-            "type": "text",
-            "id": "qbt01_marca_congiuntore",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MARCA CONGIUNTORE",
-            "rule": "rule_qbt01_tipo_funzionale_03"
-          },
-          {
-            "type": "select",
-            "id": "qbt01_tipo_congiuntore",
-            "label": "TIPO CONGIUNTORE",
-            "rule": "rule_qbt01_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "qbt01_portata_congiuntore",
-            "label": "PORTATA CONGIUNTORE (A)",
-            "rule": "rule_qbt01_tipo_funzionale_03",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA CONGIUNTORE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "qbt01_potere_interruzione_congiuntore",
-            "label": "POTERE DI INTERRUZIONE CONGIUNTORE",
-            "rule": "rule_qbt01_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt01_congiuntore_tarabile",
-            "label": "CONGIUNTORE TARABILE",
-            "rule": "rule_qbt01_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_05": [
-          {
-            "type": "textarea",
-            "rows": "2",
-            "cols": "40",
-            "id": "qbt01_note",
-            "label": "NOTE"
-          },
-          {
-            "type": "select",
-            "id": "qbt01_ulteriore_derivazione_gestire",
-            "label": "ULTERIORE QUADRO DA GESTIRE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_06": [
-          {
-            "type": "file",
-            "id": "qbt01_foto_01",
-            "accept": "image/*",
-            "label": "foto 1"
-          },
-          {
-            "type": "file",
-            "id": "qbt01_foto_02",
-            "accept": "image/*",
-            "label": "foto 2"
-          },
-          {
-            "type": "file",
-            "id": "qbt01_foto_03",
-            "accept": "image/*",
-            "label": "foto 3"
-          },
-          {
-            "type": "file",
-            "id": "qbt01_foto_04",
-            "accept": "image/*",
-            "label": "foto 4"
-          }
-        ]
+      "rule": "visible if qbt_ulteriore_derivazione_gestire == 'SI'",
+      "title": {
+        "value": "01 Quadro BT",
+        "hint": {
+          "type": "hint",
+          "id": "qbt01_hintTitle",
+          "ruleValue": "set if '1' == '1' : qbt01_codice_del_quadro_interessato"
+        }
       },
-      "quadro_bt_02": {
-        "rule": "visible if qbt01_ulteriore_derivazione_gestire == 'SI'",
-        "title": {
-          "value": "02 Quadro BT",
-          "hint": {
-            "type": "hint",
-            "id": "qbt02_hintTitle",
-            "ruleValue": "set if '1' == '1' : qbt02_codice_del_quadro_interessato"
-          }
+      "reusableRule": [
+        {
+          "name": "rule_qbt01_posa_sostituzione_censimento",
+          "rule": "mandatory if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'#visible if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'"
         },
-        "reusableRule": [
-          {
-            "name": "rule_qbt02_posa_sostituzione_censimento",
-            "rule": "mandatory if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'#visible if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt02_posa_sostituzione_censimento_facoltativo",
-            "rule": "visible if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt02_tipo_funzionale_01",
-            "rule": "mandatory if qbt02_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt02_tipo_funzionale_02",
-            "rule": "mandatory if qbt02_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt02_tipo_funzionale == 'ENTRAMBI'#visible if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt02_tipo_funzionale_03",
-            "rule": "mandatory if qbt02_tipo_funzionale == 'CONGIUNTORE' || qbt02_tipo_funzionale == 'ENTRAMBI'#visible if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'"
-          }
-        ],
-        "row_00": [
-          {
-            "type": "select",
-            "id": "qbt02_tipologia_attivita",
-            "label": "TIPOLOGIA ATTIVITA'",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NUOVA POSA",
-                "label": "nuova posa"
-              },
-              {
-                "value": "SOSTITUZIONE",
-                "label": "sostituzione"
-              },
-              {
-                "value": "ELIMINAZIONE",
-                "label": "eliminazione"
-              },
-              {
-                "value": "CENSIMENTO",
-                "label": "censimento"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt02_codice_del_quadro_interessato",
-            "label": "CODICE DEL QUADRO INTERESSATO",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "Q01 - Torino",
-                "label": "Q01 - Torino"
-              },
-              {
-                "value": "Q02 - Torino",
-                "label": "Q02 - Torino"
-              },
-              {
-                "value": "Q03 - Torino",
-                "label": "Q03 - Torino"
-              },
-              {
-                "value": "Q0A - Parma",
-                "label": "Q0A - Parma"
-              },
-              {
-                "value": "Q0B - Parma",
-                "label": "Q0B - Parma"
-              },
-              {
-                "value": "Q0C - Parma",
-                "label": "Q0C - Parma"
-              }
-            ]
-          }
-        ],
-        "row_01": [
-          {
-            "type": "select",
-            "id": "qbt02_tipologia_quadro_bt_installato",
-            "label": "TIPOLOGIA QUADRO BT INSTALLATO",
-            "rule": "rule_qbt02_posa_sostituzione_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "WEBER",
-                "label": "weber"
-              },
-              {
-                "value": "ROMANO",
-                "label": "romano"
-              },
-              {
-                "value": "FIAMESA",
-                "label": "fiamesa"
-              },
-              {
-                "value": "ELECA",
-                "label": "eleca"
-              },
-              {
-                "value": "BTICINO",
-                "label": "bticino"
-              },
-              {
-                "value": "ABB",
-                "label": "abb"
-              },
-              {
-                "value": "[Parma]",
-                "label": "[Parma]"
-              }
-            ]
-          },
-          {
-            "type": "date",
-            "id": "qbt02_revisione_quadro_bt",
-            "label": "REVISIONE QUADRO BT",
-            "rule": "rule_qbt02_posa_sostituzione_censimento_facoltativo"
-          },
-          {
-            "type": "select",
-            "id": "qbt02_tipo_collegamento",
-            "label": "TIPO DI COLLEGAMENTO",
-            "rule": "rule_qbt02_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SU QUADRO",
-                "label": "su quadro"
-              },
-              {
-                "value": "SU SBARRE",
-                "label": "su sbarre"
-              },
-              {
-                "value": "NESSUNO",
-                "label": "nessuno"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt02_presenza_cassetta_arrivo_trafo",
-            "label": "PRESENZA CASSETTA ARRIVO TRAFO",
-            "rule": "rule_qbt02_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt02_modello_2_4_moduli",
-            "label": "MODELLO 2 O 4 MODULI",
-            "rule": "rule_qbt02_posa_sostituzione_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "MODELLO 2 MODULI",
-                "label": "modello 2 moduli"
-              },
-              {
-                "value": "MODELLO 4 MODULI",
-                "label": "modello 4 moduli"
-              },
-              {
-                "value": "ENTRAMBI",
-                "label": "entrambi"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt02_presenza_congiuntore_interruttore_generale",
-            "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE",
-            "rule": "rule_qbt02_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_02": [
-          {
-            "type": "select",
-            "id": "qbt02_tipo_funzionale",
-            "label": "TIPO FUNZIONALE",
-            "rule": "rule_qbt02_tipo_funzionale_01",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE GENERALE",
-                "label": "interruttore generale"
-              },
-              {
-                "value": "CONGIUNTORE",
-                "label": "congiuntore"
-              },
-              {
-                "value": "ENTRAMBI",
-                "label": "entrambi"
-              }
-            ]
-          }
-        ],
-        "row_03": [
-          {
-            "type": "text",
-            "id": "qbt02_modello_interruttore_generale",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MODELLO INTERRUTTORE GENERALE",
-            "rule": "rule_qbt02_tipo_funzionale_02"
-          },
-          {
-            "type": "text",
-            "id": "qbt02_marca_interruttore_generale",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MARCA INTERRUTTORE GENERALE",
-            "rule": "rule_qbt02_tipo_funzionale_02"
-          },
-          {
-            "type": "select",
-            "id": "qbt02_tipo_interruttore_generale",
-            "label": "TIPO INTERRUTTORE GENERALE",
-            "rule": "rule_qbt02_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              },
-              {
-                "value": "Altro",
-                "label": "Altro"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "qbt02_portata_interruttore_generale",
-            "label": "PORTATA INTERRUTTORE GENERALE (A)",
-            "rule": "rule_qbt02_tipo_funzionale_02",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA INTERRUTTORE GENERALE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "qbt02_potere_interruzione_interruttore_generale",
-            "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE",
-            "rule": "rule_qbt02_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt02_interruttore_generale_tarabile",
-            "label": "INTERRUTTORE GENERALE TARABILE",
-            "rule": "rule_qbt02_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_04": [
-          {
-            "type": "text",
-            "id": "qbt02_modello_congiuntore",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MODELLO CONGIUNTORE",
-            "rule": "rule_qbt02_tipo_funzionale_03"
-          },
-          {
-            "type": "text",
-            "id": "qbt02_marca_congiuntore",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MARCA CONGIUNTORE",
-            "rule": "rule_qbt02_tipo_funzionale_03"
-          },
-          {
-            "type": "select",
-            "id": "qbt02_tipo_congiuntore",
-            "label": "TIPO CONGIUNTORE",
-            "rule": "rule_qbt02_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "qbt02_portata_congiuntore",
-            "label": "PORTATA CONGIUNTORE (A)",
-            "rule": "rule_qbt02_tipo_funzionale_03",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA CONGIUNTORE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "qbt02_potere_interruzione_congiuntore",
-            "label": "POTERE DI INTERRUZIONE CONGIUNTORE",
-            "rule": "rule_qbt02_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt02_congiuntore_tarabile",
-            "label": "CONGIUNTORE TARABILE",
-            "rule": "rule_qbt02_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_05": [
-          {
-            "type": "textarea",
-            "rows": "2",
-            "cols": "40",
-            "id": "qbt02_note",
-            "label": "NOTE"
-          },
-          {
-            "type": "select",
-            "id": "qbt02_ulteriore_derivazione_gestire",
-            "label": "ULTERIORE QUADRO DA GESTIRE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_06": [
-          {
-            "type": "file",
-            "id": "qbt02_foto_01",
-            "accept": "image/*",
-            "label": "foto 1"
-          },
-          {
-            "type": "file",
-            "id": "qbt02_foto_02",
-            "accept": "image/*",
-            "label": "foto 2"
-          },
-          {
-            "type": "file",
-            "id": "qbt02_foto_03",
-            "accept": "image/*",
-            "label": "foto 3"
-          },
-          {
-            "type": "file",
-            "id": "qbt02_foto_04",
-            "accept": "image/*",
-            "label": "foto 4"
-          }
-        ]
+        {
+          "name": "rule_qbt01_posa_sostituzione_censimento_facoltativo",
+          "rule": "visible if qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO'"
+        },
+        {
+          "name": "rule_qbt01_tipo_funzionale_01",
+          "rule": "mandatory if qbt01_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt01_presenza_congiuntore_interruttore_generale == 'SI'"
+        },
+        {
+          "name": "rule_qbt01_tipo_funzionale_02",
+          "rule": "mandatory if ( qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO' ) && ( qbt01_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt01_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO' ) && ( qbt01_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt01_tipo_funzionale == 'ENTRAMBI' )"
+        },
+        {
+          "name": "rule_qbt01_tipo_funzionale_03",
+          "rule": "mandatory if ( qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO' ) && ( qbt01_tipo_funzionale == 'CONGIUNTORE' || qbt01_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt01_tipologia_attivita == 'NUOVA POSA' || qbt01_tipologia_attivita == 'SOSTITUZIONE' || qbt01_tipologia_attivita == 'CENSIMENTO' ) && ( qbt01_tipo_funzionale == 'CONGIUNTORE' || qbt01_tipo_funzionale == 'ENTRAMBI' )"
+        }
+      ],
+      "row_00": [
+        {
+          "type": "select",
+          "id": "qbt01_tipologia_attivita",
+          "label": "TIPOLOGIA ATTIVITA'",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "NUOVA POSA",
+              "label": "nuova posa"
+            },
+            {
+              "value": "SOSTITUZIONE",
+              "label": "sostituzione"
+            },
+            {
+              "value": "ELIMINAZIONE",
+              "label": "eliminazione"
+            },
+            {
+              "value": "CENSIMENTO",
+              "label": "censimento"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt01_codice_del_quadro_interessato",
+          "label": "CODICE DEL QUADRO INTERESSATO",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "Q01 - Torino",
+              "label": "Q01 - Torino"
+            },
+            {
+              "value": "Q02 - Torino",
+              "label": "Q02 - Torino"
+            },
+            {
+              "value": "Q03 - Torino",
+              "label": "Q03 - Torino"
+            },
+            {
+              "value": "Q0A - Parma",
+              "label": "Q0A - Parma"
+            },
+            {
+              "value": "Q0B - Parma",
+              "label": "Q0B - Parma"
+            },
+            {
+              "value": "Q0C - Parma",
+              "label": "Q0C - Parma"
+            }
+          ]
+        }
+      ],
+      "row_01": [
+        {
+          "type": "select",
+          "id": "qbt01_tipologia_quadro_bt_installato",
+          "label": "TIPOLOGIA QUADRO BT INSTALLATO",
+          "rule": "rule_qbt01_posa_sostituzione_censimento_facoltativo",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "WEBER",
+              "label": "weber"
+            },
+            {
+              "value": "ROMANO",
+              "label": "romano"
+            },
+            {
+              "value": "FIAMESA",
+              "label": "fiamesa"
+            },
+            {
+              "value": "ELECA",
+              "label": "eleca"
+            },
+            {
+              "value": "BTICINO",
+              "label": "bticino"
+            },
+            {
+              "value": "ABB",
+              "label": "abb"
+            },
+            {
+              "value": "[Parma]",
+              "label": "[Parma]"
+            }
+          ]
+        },
+        {
+          "type": "date",
+          "id": "qbt01_revisione_quadro_bt",
+          "label": "REVISIONE QUADRO BT",
+          "rule": "rule_qbt01_posa_sostituzione_censimento_facoltativo"
+        },
+        {
+          "type": "select",
+          "id": "qbt01_tipo_collegamento",
+          "label": "TIPO DI COLLEGAMENTO",
+          "rule": "rule_qbt01_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SU QUADRO",
+              "label": "su quadro"
+            },
+            {
+              "value": "SU SBARRE",
+              "label": "su sbarre"
+            },
+            {
+              "value": "NESSUNO",
+              "label": "nessuno"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt01_presenza_cassetta_arrivo_trafo",
+          "label": "PRESENZA CASSETTA ARRIVO TRAFO",
+          "rule": "rule_qbt01_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt01_modello_2_4_moduli",
+          "label": "MODELLO 2 O 4 MODULI",
+          "rule": "rule_qbt01_posa_sostituzione_censimento_facoltativo",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "MODELLO 2 MODULI",
+              "label": "modello 2 moduli"
+            },
+            {
+              "value": "MODELLO 4 MODULI",
+              "label": "modello 4 moduli"
+            },
+            {
+              "value": "ENTRAMBI",
+              "label": "entrambi"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt01_presenza_congiuntore_interruttore_generale",
+          "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE",
+          "rule": "rule_qbt01_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_02": [
+        {
+          "type": "select",
+          "id": "qbt01_tipo_funzionale",
+          "label": "TIPO FUNZIONALE",
+          "rule": "rule_qbt01_tipo_funzionale_01",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE GENERALE",
+              "label": "interruttore generale"
+            },
+            {
+              "value": "CONGIUNTORE",
+              "label": "congiuntore"
+            },
+            {
+              "value": "ENTRAMBI",
+              "label": "entrambi"
+            }
+          ]
+        }
+      ],
+      "row_03": [
+        {
+          "type": "text",
+          "id": "qbt01_modello_interruttore_generale",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MODELLO INTERRUTTORE GENERALE",
+          "rule": "rule_qbt01_tipo_funzionale_02"
+        },
+        {
+          "type": "text",
+          "id": "qbt01_marca_interruttore_generale",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MARCA INTERRUTTORE GENERALE",
+          "rule": "rule_qbt01_tipo_funzionale_02"
+        },
+        {
+          "type": "select",
+          "id": "qbt01_tipo_interruttore_generale",
+          "label": "TIPO INTERRUTTORE GENERALE",
+          "rule": "rule_qbt01_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE AUTOMATICO",
+              "label": "interruttore automatico"
+            },
+            {
+              "value": "IMS",
+              "label": "ims"
+            },
+            {
+              "value": "Altro",
+              "label": "Altro"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "qbt01_portata_interruttore_generale",
+          "label": "PORTATA INTERRUTTORE GENERALE (A)",
+          "rule": "rule_qbt01_tipo_funzionale_02",
+          "size": "8",
+          "maxlength": "6",
+          "pattern": "1_to_6_comma_1_to_2_digit",
+          "patMessage": "PORTATA INTERRUTTORE GENERALE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
+        },
+        {
+          "type": "select",
+          "id": "qbt01_potere_interruzione_interruttore_generale",
+          "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE",
+          "rule": "rule_qbt01_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "16,00",
+              "label": "16,00"
+            },
+            {
+              "value": "25,00",
+              "label": "25,00"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt01_interruttore_generale_tarabile",
+          "label": "INTERRUTTORE GENERALE TARABILE",
+          "rule": "rule_qbt01_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_04": [
+        {
+          "type": "text",
+          "id": "qbt01_modello_congiuntore",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MODELLO CONGIUNTORE",
+          "rule": "rule_qbt01_tipo_funzionale_03"
+        },
+        {
+          "type": "text",
+          "id": "qbt01_marca_congiuntore",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MARCA CONGIUNTORE",
+          "rule": "rule_qbt01_tipo_funzionale_03"
+        },
+        {
+          "type": "select",
+          "id": "qbt01_tipo_congiuntore",
+          "label": "TIPO CONGIUNTORE",
+          "rule": "rule_qbt01_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE AUTOMATICO",
+              "label": "interruttore automatico"
+            },
+            {
+              "value": "IMS",
+              "label": "ims"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "qbt01_portata_congiuntore",
+          "label": "PORTATA CONGIUNTORE (A)",
+          "rule": "rule_qbt01_tipo_funzionale_03",
+          "size": "8",
+          "maxlength": "6",
+          "pattern": "1_to_6_comma_1_to_2_digit",
+          "patMessage": "PORTATA CONGIUNTORE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
+        },
+        {
+          "type": "select",
+          "id": "qbt01_potere_interruzione_congiuntore",
+          "label": "POTERE DI INTERRUZIONE CONGIUNTORE",
+          "rule": "rule_qbt01_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "16,00",
+              "label": "16,00"
+            },
+            {
+              "value": "25,00",
+              "label": "25,00"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt01_congiuntore_tarabile",
+          "label": "CONGIUNTORE TARABILE",
+          "rule": "rule_qbt01_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_05": [
+        {
+          "type": "textarea",
+          "rows": "2",
+          "cols": "40",
+          "id": "qbt01_note",
+          "label": "NOTE"
+        },
+        {
+          "type": "select",
+          "id": "qbt01_ulteriore_derivazione_gestire",
+          "label": "ULTERIORE QUADRO DA GESTIRE",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_06": [
+        {
+          "type": "file",
+          "id": "qbt01_foto_01",
+          "accept": "image/*",
+          "label": "foto 1"
+        },
+        {
+          "type": "file",
+          "id": "qbt01_foto_02",
+          "accept": "image/*",
+          "label": "foto 2"
+        },
+        {
+          "type": "file",
+          "id": "qbt01_foto_03",
+          "accept": "image/*",
+          "label": "foto 3"
+        },
+        {
+          "type": "file",
+          "id": "qbt01_foto_04",
+          "accept": "image/*",
+          "label": "foto 4"
+        }
+      ]
+    },
+    "quadro_bt_02": {
+      "rule": "visible if qbt01_ulteriore_derivazione_gestire == 'SI'",
+      "title": {
+        "value": "02 Quadro BT",
+        "hint": {
+          "type": "hint",
+          "id": "qbt02_hintTitle",
+          "ruleValue": "set if '1' == '1' : qbt02_codice_del_quadro_interessato"
+        }
       },
-      "quadro_bt_03": {
-        "rule": "visible if qbt02_ulteriore_derivazione_gestire == 'SI'",
-        "title": {
-          "value": "03 Quadro BT",
-          "hint": {
-            "type": "hint",
-            "id": "qbt03_hintTitle",
-            "ruleValue": "set if '1' == '1' : qbt03_codice_del_quadro_interessato"
-          }
+      "reusableRule": [
+        {
+          "name": "rule_qbt02_posa_sostituzione_censimento",
+          "rule": "mandatory if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'#visible if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'"
         },
-        "reusableRule": [
-          {
-            "name": "rule_qbt03_posa_sostituzione_censimento",
-            "rule": "mandatory if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'#visible if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt03_posa_sostituzione_censimento_facoltativo",
-            "rule": "visible if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt03_tipo_funzionale_01",
-            "rule": "mandatory if qbt03_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt03_tipo_funzionale_02",
-            "rule": "mandatory if qbt03_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt03_tipo_funzionale == 'ENTRAMBI'#visible if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'"
-          },
-          {
-            "name": "rule_qbt03_tipo_funzionale_03",
-            "rule": "mandatory if qbt03_tipo_funzionale == 'CONGIUNTORE' || qbt03_tipo_funzionale == 'ENTRAMBI'#visible if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'"
-          }
-        ],
-        "row_00": [
-          {
-            "type": "select",
-            "id": "qbt03_tipologia_attivita",
-            "label": "TIPOLOGIA ATTIVITA'",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "NUOVA POSA",
-                "label": "nuova posa"
-              },
-              {
-                "value": "SOSTITUZIONE",
-                "label": "sostituzione"
-              },
-              {
-                "value": "ELIMINAZIONE",
-                "label": "eliminazione"
-              },
-              {
-                "value": "CENSIMENTO",
-                "label": "censimento"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt03_codice_del_quadro_interessato",
-            "label": "CODICE DEL QUADRO INTERESSATO",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "Q01 - Torino",
-                "label": "Q01 - Torino"
-              },
-              {
-                "value": "Q02 - Torino",
-                "label": "Q02 - Torino"
-              },
-              {
-                "value": "Q03 - Torino",
-                "label": "Q03 - Torino"
-              },
-              {
-                "value": "Q0A - Parma",
-                "label": "Q0A - Parma"
-              },
-              {
-                "value": "Q0B - Parma",
-                "label": "Q0B - Parma"
-              },
-              {
-                "value": "Q0C - Parma",
-                "label": "Q0C - Parma"
-              }
-            ]
-          }
-        ],
-        "row_01": [
-          {
-            "type": "select",
-            "id": "qbt03_tipologia_quadro_bt_installato",
-            "label": "TIPOLOGIA QUADRO BT INSTALLATO",
-            "rule": "rule_qbt03_posa_sostituzione_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "WEBER",
-                "label": "weber"
-              },
-              {
-                "value": "ROMANO",
-                "label": "romano"
-              },
-              {
-                "value": "FIAMESA",
-                "label": "fiamesa"
-              },
-              {
-                "value": "ELECA",
-                "label": "eleca"
-              },
-              {
-                "value": "BTICINO",
-                "label": "bticino"
-              },
-              {
-                "value": "ABB",
-                "label": "abb"
-              },
-              {
-                "value": "[Parma]",
-                "label": "[Parma]"
-              }
-            ]
-          },
-          {
-            "type": "date",
-            "id": "qbt03_revisione_quadro_bt",
-            "label": "REVISIONE QUADRO BT",
-            "rule": "rule_qbt03_posa_sostituzione_censimento_facoltativo"
-          },
-          {
-            "type": "select",
-            "id": "qbt03_tipo_collegamento",
-            "label": "TIPO DI COLLEGAMENTO",
-            "rule": "rule_qbt03_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SU QUADRO",
-                "label": "su quadro"
-              },
-              {
-                "value": "SU SBARRE",
-                "label": "su sbarre"
-              },
-              {
-                "value": "NESSUNO",
-                "label": "nessuno"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt03_presenza_cassetta_arrivo_trafo",
-            "label": "PRESENZA CASSETTA ARRIVO TRAFO",
-            "rule": "rule_qbt03_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt03_modello_2_4_moduli",
-            "label": "MODELLO 2 O 4 MODULI",
-            "rule": "rule_qbt03_posa_sostituzione_censimento_facoltativo",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "MODELLO 2 MODULI",
-                "label": "modello 2 moduli"
-              },
-              {
-                "value": "MODELLO 4 MODULI",
-                "label": "modello 4 moduli"
-              },
-              {
-                "value": "ENTRAMBI",
-                "label": "entrambi"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt03_presenza_congiuntore_interruttore_generale",
-            "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE",
-            "rule": "rule_qbt03_posa_sostituzione_censimento",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_02": [
-          {
-            "type": "select",
-            "id": "qbt03_tipo_funzionale",
-            "label": "TIPO FUNZIONALE",
-            "rule": "rule_qbt03_tipo_funzionale_01",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE GENERALE",
-                "label": "interruttore generale"
-              },
-              {
-                "value": "CONGIUNTORE",
-                "label": "congiuntore"
-              },
-              {
-                "value": "ENTRAMBI",
-                "label": "entrambi"
-              }
-            ]
-          }
-        ],
-        "row_03": [
-          {
-            "type": "text",
-            "id": "qbt03_modello_interruttore_generale",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MODELLO INTERRUTTORE GENERALE",
-            "rule": "rule_qbt03_tipo_funzionale_02"
-          },
-          {
-            "type": "text",
-            "id": "qbt03_marca_interruttore_generale",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MARCA INTERRUTTORE GENERALE",
-            "rule": "rule_qbt03_tipo_funzionale_02"
-          },
-          {
-            "type": "select",
-            "id": "qbt03_tipo_interruttore_generale",
-            "label": "TIPO INTERRUTTORE GENERALE",
-            "rule": "rule_qbt03_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              },
-              {
-                "value": "Altro",
-                "label": "Altro"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "qbt03_portata_interruttore_generale",
-            "label": "PORTATA INTERRUTTORE GENERALE (A)",
-            "rule": "rule_qbt03_tipo_funzionale_02",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA INTERRUTTORE GENERALE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "qbt03_potere_interruzione_interruttore_generale",
-            "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE",
-            "rule": "rule_qbt03_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt03_interruttore_generale_tarabile",
-            "label": "INTERRUTTORE GENERALE TARABILE",
-            "rule": "rule_qbt03_tipo_funzionale_02",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_04": [
-          {
-            "type": "text",
-            "id": "qbt03_modello_congiuntore",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MODELLO CONGIUNTORE",
-            "rule": "rule_qbt03_tipo_funzionale_03"
-          },
-          {
-            "type": "text",
-            "id": "qbt03_marca_congiuntore",
-            "size": "40",
-            "maxlength": "30",
-            "label": "MARCA CONGIUNTORE",
-            "rule": "rule_qbt03_tipo_funzionale_03"
-          },
-          {
-            "type": "select",
-            "id": "qbt03_tipo_congiuntore",
-            "label": "TIPO CONGIUNTORE",
-            "rule": "rule_qbt03_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "INTERRUTTORE AUTOMATICO",
-                "label": "interruttore automatico"
-              },
-              {
-                "value": "IMS",
-                "label": "ims"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "id": "qbt03_portata_congiuntore",
-            "label": "PORTATA CONGIUNTORE (A)",
-            "rule": "rule_qbt03_tipo_funzionale_03",
-            "size": "8",
-            "maxlength": "6",
-            "pattern": "1_to_6_comma_1_to_2_digit",
-            "patMessage": "PORTATA CONGIUNTORE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
-          },
-          {
-            "type": "select",
-            "id": "qbt03_potere_interruzione_congiuntore",
-            "label": "POTERE DI INTERRUZIONE CONGIUNTORE",
-            "rule": "rule_qbt03_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "16,00",
-                "label": "16,00"
-              },
-              {
-                "value": "25,00",
-                "label": "25,00"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "qbt03_congiuntore_tarabile",
-            "label": "CONGIUNTORE TARABILE",
-            "rule": "rule_qbt03_tipo_funzionale_03",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_05": [
-          {
-            "type": "textarea",
-            "rows": "2",
-            "cols": "40",
-            "id": "qbt03_note",
-            "label": "NOTE"
-          },
-          {
-            "type": "select",
-            "id": "qbt03_ulteriore_derivazione_gestire",
-            "label": "ULTERIORE QUADRO DA GESTIRE",
-            "rule": "mandatory",
-            "option": [
-              {
-                "value": "",
-                "label": ""
-              },
-              {
-                "value": "SI",
-                "label": "si"
-              },
-              {
-                "value": "NO",
-                "label": "no"
-              }
-            ]
-          }
-        ],
-        "row_06": [
-          {
-            "type": "file",
-            "id": "qbt03_foto_01",
-            "accept": "image/*",
-            "label": "foto 1"
-          },
-          {
-            "type": "file",
-            "id": "qbt03_foto_02",
-            "accept": "image/*",
-            "label": "foto 2"
-          },
-          {
-            "type": "file",
-            "id": "qbt03_foto_03",
-            "accept": "image/*",
-            "label": "foto 3"
-          },
-          {
-            "type": "file",
-            "id": "qbt03_foto_04",
-            "accept": "image/*",
-            "label": "foto 4"
-          }
-        ]
-      }
+        {
+          "name": "rule_qbt02_posa_sostituzione_censimento_facoltativo",
+          "rule": "visible if qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO'"
+        },
+        {
+          "name": "rule_qbt02_tipo_funzionale_01",
+          "rule": "mandatory if qbt02_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt02_presenza_congiuntore_interruttore_generale == 'SI'"
+        },
+        {
+          "name": "rule_qbt02_tipo_funzionale_02",
+          "rule": "mandatory if ( qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO' ) && ( qbt02_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt02_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO' ) && ( qbt02_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt02_tipo_funzionale == 'ENTRAMBI' )"
+        },
+        {
+          "name": "rule_qbt02_tipo_funzionale_03",
+          "rule": "mandatory if ( qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO' ) && ( qbt02_tipo_funzionale == 'CONGIUNTORE' || qbt02_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt02_tipologia_attivita == 'NUOVA POSA' || qbt02_tipologia_attivita == 'SOSTITUZIONE' || qbt02_tipologia_attivita == 'CENSIMENTO' ) && ( qbt02_tipo_funzionale == 'CONGIUNTORE' || qbt02_tipo_funzionale == 'ENTRAMBI' )"
+        }
+      ],
+      "row_00": [
+        {
+          "type": "select",
+          "id": "qbt02_tipologia_attivita",
+          "label": "TIPOLOGIA ATTIVITA'",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "NUOVA POSA",
+              "label": "nuova posa"
+            },
+            {
+              "value": "SOSTITUZIONE",
+              "label": "sostituzione"
+            },
+            {
+              "value": "ELIMINAZIONE",
+              "label": "eliminazione"
+            },
+            {
+              "value": "CENSIMENTO",
+              "label": "censimento"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt02_codice_del_quadro_interessato",
+          "label": "CODICE DEL QUADRO INTERESSATO",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "Q01 - Torino",
+              "label": "Q01 - Torino"
+            },
+            {
+              "value": "Q02 - Torino",
+              "label": "Q02 - Torino"
+            },
+            {
+              "value": "Q03 - Torino",
+              "label": "Q03 - Torino"
+            },
+            {
+              "value": "Q0A - Parma",
+              "label": "Q0A - Parma"
+            },
+            {
+              "value": "Q0B - Parma",
+              "label": "Q0B - Parma"
+            },
+            {
+              "value": "Q0C - Parma",
+              "label": "Q0C - Parma"
+            }
+          ]
+        }
+      ],
+      "row_01": [
+        {
+          "type": "select",
+          "id": "qbt02_tipologia_quadro_bt_installato",
+          "label": "TIPOLOGIA QUADRO BT INSTALLATO",
+          "rule": "rule_qbt02_posa_sostituzione_censimento_facoltativo",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "WEBER",
+              "label": "weber"
+            },
+            {
+              "value": "ROMANO",
+              "label": "romano"
+            },
+            {
+              "value": "FIAMESA",
+              "label": "fiamesa"
+            },
+            {
+              "value": "ELECA",
+              "label": "eleca"
+            },
+            {
+              "value": "BTICINO",
+              "label": "bticino"
+            },
+            {
+              "value": "ABB",
+              "label": "abb"
+            },
+            {
+              "value": "[Parma]",
+              "label": "[Parma]"
+            }
+          ]
+        },
+        {
+          "type": "date",
+          "id": "qbt02_revisione_quadro_bt",
+          "label": "REVISIONE QUADRO BT",
+          "rule": "rule_qbt02_posa_sostituzione_censimento_facoltativo"
+        },
+        {
+          "type": "select",
+          "id": "qbt02_tipo_collegamento",
+          "label": "TIPO DI COLLEGAMENTO",
+          "rule": "rule_qbt02_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SU QUADRO",
+              "label": "su quadro"
+            },
+            {
+              "value": "SU SBARRE",
+              "label": "su sbarre"
+            },
+            {
+              "value": "NESSUNO",
+              "label": "nessuno"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt02_presenza_cassetta_arrivo_trafo",
+          "label": "PRESENZA CASSETTA ARRIVO TRAFO",
+          "rule": "rule_qbt02_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt02_modello_2_4_moduli",
+          "label": "MODELLO 2 O 4 MODULI",
+          "rule": "rule_qbt02_posa_sostituzione_censimento_facoltativo",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "MODELLO 2 MODULI",
+              "label": "modello 2 moduli"
+            },
+            {
+              "value": "MODELLO 4 MODULI",
+              "label": "modello 4 moduli"
+            },
+            {
+              "value": "ENTRAMBI",
+              "label": "entrambi"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt02_presenza_congiuntore_interruttore_generale",
+          "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE",
+          "rule": "rule_qbt02_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_02": [
+        {
+          "type": "select",
+          "id": "qbt02_tipo_funzionale",
+          "label": "TIPO FUNZIONALE",
+          "rule": "rule_qbt02_tipo_funzionale_01",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE GENERALE",
+              "label": "interruttore generale"
+            },
+            {
+              "value": "CONGIUNTORE",
+              "label": "congiuntore"
+            },
+            {
+              "value": "ENTRAMBI",
+              "label": "entrambi"
+            }
+          ]
+        }
+      ],
+      "row_03": [
+        {
+          "type": "text",
+          "id": "qbt02_modello_interruttore_generale",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MODELLO INTERRUTTORE GENERALE",
+          "rule": "rule_qbt02_tipo_funzionale_02"
+        },
+        {
+          "type": "text",
+          "id": "qbt02_marca_interruttore_generale",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MARCA INTERRUTTORE GENERALE",
+          "rule": "rule_qbt02_tipo_funzionale_02"
+        },
+        {
+          "type": "select",
+          "id": "qbt02_tipo_interruttore_generale",
+          "label": "TIPO INTERRUTTORE GENERALE",
+          "rule": "rule_qbt02_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE AUTOMATICO",
+              "label": "interruttore automatico"
+            },
+            {
+              "value": "IMS",
+              "label": "ims"
+            },
+            {
+              "value": "Altro",
+              "label": "Altro"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "qbt02_portata_interruttore_generale",
+          "label": "PORTATA INTERRUTTORE GENERALE (A)",
+          "rule": "rule_qbt02_tipo_funzionale_02",
+          "size": "8",
+          "maxlength": "6",
+          "pattern": "1_to_6_comma_1_to_2_digit",
+          "patMessage": "PORTATA INTERRUTTORE GENERALE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
+        },
+        {
+          "type": "select",
+          "id": "qbt02_potere_interruzione_interruttore_generale",
+          "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE",
+          "rule": "rule_qbt02_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "16,00",
+              "label": "16,00"
+            },
+            {
+              "value": "25,00",
+              "label": "25,00"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt02_interruttore_generale_tarabile",
+          "label": "INTERRUTTORE GENERALE TARABILE",
+          "rule": "rule_qbt02_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_04": [
+        {
+          "type": "text",
+          "id": "qbt02_modello_congiuntore",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MODELLO CONGIUNTORE",
+          "rule": "rule_qbt02_tipo_funzionale_03"
+        },
+        {
+          "type": "text",
+          "id": "qbt02_marca_congiuntore",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MARCA CONGIUNTORE",
+          "rule": "rule_qbt02_tipo_funzionale_03"
+        },
+        {
+          "type": "select",
+          "id": "qbt02_tipo_congiuntore",
+          "label": "TIPO CONGIUNTORE",
+          "rule": "rule_qbt02_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE AUTOMATICO",
+              "label": "interruttore automatico"
+            },
+            {
+              "value": "IMS",
+              "label": "ims"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "qbt02_portata_congiuntore",
+          "label": "PORTATA CONGIUNTORE (A)",
+          "rule": "rule_qbt02_tipo_funzionale_03",
+          "size": "8",
+          "maxlength": "6",
+          "pattern": "1_to_6_comma_1_to_2_digit",
+          "patMessage": "PORTATA CONGIUNTORE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
+        },
+        {
+          "type": "select",
+          "id": "qbt02_potere_interruzione_congiuntore",
+          "label": "POTERE DI INTERRUZIONE CONGIUNTORE",
+          "rule": "rule_qbt02_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "16,00",
+              "label": "16,00"
+            },
+            {
+              "value": "25,00",
+              "label": "25,00"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt02_congiuntore_tarabile",
+          "label": "CONGIUNTORE TARABILE",
+          "rule": "rule_qbt02_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_05": [
+        {
+          "type": "textarea",
+          "rows": "2",
+          "cols": "40",
+          "id": "qbt02_note",
+          "label": "NOTE"
+        },
+        {
+          "type": "select",
+          "id": "qbt02_ulteriore_derivazione_gestire",
+          "label": "ULTERIORE QUADRO DA GESTIRE",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_06": [
+        {
+          "type": "file",
+          "id": "qbt02_foto_01",
+          "accept": "image/*",
+          "label": "foto 1"
+        },
+        {
+          "type": "file",
+          "id": "qbt02_foto_02",
+          "accept": "image/*",
+          "label": "foto 2"
+        },
+        {
+          "type": "file",
+          "id": "qbt02_foto_03",
+          "accept": "image/*",
+          "label": "foto 3"
+        },
+        {
+          "type": "file",
+          "id": "qbt02_foto_04",
+          "accept": "image/*",
+          "label": "foto 4"
+        }
+      ]
+    },
+    "quadro_bt_03": {
+      "rule": "visible if qbt02_ulteriore_derivazione_gestire == 'SI'",
+      "title": {
+        "value": "03 Quadro BT",
+        "hint": {
+          "type": "hint",
+          "id": "qbt03_hintTitle",
+          "ruleValue": "set if '1' == '1' : qbt03_codice_del_quadro_interessato"
+        }
+      },
+      "reusableRule": [
+        {
+          "name": "rule_qbt03_posa_sostituzione_censimento",
+          "rule": "mandatory if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'#visible if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'"
+        },
+        {
+          "name": "rule_qbt03_posa_sostituzione_censimento_facoltativo",
+          "rule": "visible if qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO'"
+        },
+        {
+          "name": "rule_qbt03_tipo_funzionale_01",
+          "rule": "mandatory if qbt03_presenza_congiuntore_interruttore_generale == 'SI'#visible if qbt03_presenza_congiuntore_interruttore_generale == 'SI'"
+        },
+        {
+          "name": "rule_qbt03_tipo_funzionale_02",
+          "rule": "mandatory if ( qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO' ) && ( qbt03_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt03_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO' ) && ( qbt03_tipo_funzionale == 'INTERRUTTORE GENERALE' || qbt03_tipo_funzionale == 'ENTRAMBI' )"
+        },
+        {
+          "name": "rule_qbt03_tipo_funzionale_03",
+          "rule": "mandatory if ( qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO' ) && ( qbt03_tipo_funzionale == 'CONGIUNTORE' || qbt03_tipo_funzionale == 'ENTRAMBI' )#visible if ( qbt03_tipologia_attivita == 'NUOVA POSA' || qbt03_tipologia_attivita == 'SOSTITUZIONE' || qbt03_tipologia_attivita == 'CENSIMENTO' ) && ( qbt03_tipo_funzionale == 'CONGIUNTORE' || qbt03_tipo_funzionale == 'ENTRAMBI' )"
+        }
+      ],
+      "row_00": [
+        {
+          "type": "select",
+          "id": "qbt03_tipologia_attivita",
+          "label": "TIPOLOGIA ATTIVITA'",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "NUOVA POSA",
+              "label": "nuova posa"
+            },
+            {
+              "value": "SOSTITUZIONE",
+              "label": "sostituzione"
+            },
+            {
+              "value": "ELIMINAZIONE",
+              "label": "eliminazione"
+            },
+            {
+              "value": "CENSIMENTO",
+              "label": "censimento"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt03_codice_del_quadro_interessato",
+          "label": "CODICE DEL QUADRO INTERESSATO",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "Q01 - Torino",
+              "label": "Q01 - Torino"
+            },
+            {
+              "value": "Q02 - Torino",
+              "label": "Q02 - Torino"
+            },
+            {
+              "value": "Q03 - Torino",
+              "label": "Q03 - Torino"
+            },
+            {
+              "value": "Q0A - Parma",
+              "label": "Q0A - Parma"
+            },
+            {
+              "value": "Q0B - Parma",
+              "label": "Q0B - Parma"
+            },
+            {
+              "value": "Q0C - Parma",
+              "label": "Q0C - Parma"
+            }
+          ]
+        }
+      ],
+      "row_01": [
+        {
+          "type": "select",
+          "id": "qbt03_tipologia_quadro_bt_installato",
+          "label": "TIPOLOGIA QUADRO BT INSTALLATO",
+          "rule": "rule_qbt03_posa_sostituzione_censimento_facoltativo",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "WEBER",
+              "label": "weber"
+            },
+            {
+              "value": "ROMANO",
+              "label": "romano"
+            },
+            {
+              "value": "FIAMESA",
+              "label": "fiamesa"
+            },
+            {
+              "value": "ELECA",
+              "label": "eleca"
+            },
+            {
+              "value": "BTICINO",
+              "label": "bticino"
+            },
+            {
+              "value": "ABB",
+              "label": "abb"
+            },
+            {
+              "value": "[Parma]",
+              "label": "[Parma]"
+            }
+          ]
+        },
+        {
+          "type": "date",
+          "id": "qbt03_revisione_quadro_bt",
+          "label": "REVISIONE QUADRO BT",
+          "rule": "rule_qbt03_posa_sostituzione_censimento_facoltativo"
+        },
+        {
+          "type": "select",
+          "id": "qbt03_tipo_collegamento",
+          "label": "TIPO DI COLLEGAMENTO",
+          "rule": "rule_qbt03_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SU QUADRO",
+              "label": "su quadro"
+            },
+            {
+              "value": "SU SBARRE",
+              "label": "su sbarre"
+            },
+            {
+              "value": "NESSUNO",
+              "label": "nessuno"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt03_presenza_cassetta_arrivo_trafo",
+          "label": "PRESENZA CASSETTA ARRIVO TRAFO",
+          "rule": "rule_qbt03_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt03_modello_2_4_moduli",
+          "label": "MODELLO 2 O 4 MODULI",
+          "rule": "rule_qbt03_posa_sostituzione_censimento_facoltativo",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "MODELLO 2 MODULI",
+              "label": "modello 2 moduli"
+            },
+            {
+              "value": "MODELLO 4 MODULI",
+              "label": "modello 4 moduli"
+            },
+            {
+              "value": "ENTRAMBI",
+              "label": "entrambi"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt03_presenza_congiuntore_interruttore_generale",
+          "label": "PRESENZA DI UN CONGIUNTORE o INTERRUTTORE GENERALE",
+          "rule": "rule_qbt03_posa_sostituzione_censimento",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_02": [
+        {
+          "type": "select",
+          "id": "qbt03_tipo_funzionale",
+          "label": "TIPO FUNZIONALE",
+          "rule": "rule_qbt03_tipo_funzionale_01",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE GENERALE",
+              "label": "interruttore generale"
+            },
+            {
+              "value": "CONGIUNTORE",
+              "label": "congiuntore"
+            },
+            {
+              "value": "ENTRAMBI",
+              "label": "entrambi"
+            }
+          ]
+        }
+      ],
+      "row_03": [
+        {
+          "type": "text",
+          "id": "qbt03_modello_interruttore_generale",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MODELLO INTERRUTTORE GENERALE",
+          "rule": "rule_qbt03_tipo_funzionale_02"
+        },
+        {
+          "type": "text",
+          "id": "qbt03_marca_interruttore_generale",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MARCA INTERRUTTORE GENERALE",
+          "rule": "rule_qbt03_tipo_funzionale_02"
+        },
+        {
+          "type": "select",
+          "id": "qbt03_tipo_interruttore_generale",
+          "label": "TIPO INTERRUTTORE GENERALE",
+          "rule": "rule_qbt03_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE AUTOMATICO",
+              "label": "interruttore automatico"
+            },
+            {
+              "value": "IMS",
+              "label": "ims"
+            },
+            {
+              "value": "Altro",
+              "label": "Altro"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "qbt03_portata_interruttore_generale",
+          "label": "PORTATA INTERRUTTORE GENERALE (A)",
+          "rule": "rule_qbt03_tipo_funzionale_02",
+          "size": "8",
+          "maxlength": "6",
+          "pattern": "1_to_6_comma_1_to_2_digit",
+          "patMessage": "PORTATA INTERRUTTORE GENERALE (A) deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
+        },
+        {
+          "type": "select",
+          "id": "qbt03_potere_interruzione_interruttore_generale",
+          "label": "POTERE DI INTERRUZIONE INTERRUTTORE GENERALE",
+          "rule": "rule_qbt03_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "16,00",
+              "label": "16,00"
+            },
+            {
+              "value": "25,00",
+              "label": "25,00"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt03_interruttore_generale_tarabile",
+          "label": "INTERRUTTORE GENERALE TARABILE",
+          "rule": "rule_qbt03_tipo_funzionale_02",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_04": [
+        {
+          "type": "text",
+          "id": "qbt03_modello_congiuntore",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MODELLO CONGIUNTORE",
+          "rule": "rule_qbt03_tipo_funzionale_03"
+        },
+        {
+          "type": "text",
+          "id": "qbt03_marca_congiuntore",
+          "size": "40",
+          "maxlength": "30",
+          "label": "MARCA CONGIUNTORE",
+          "rule": "rule_qbt03_tipo_funzionale_03"
+        },
+        {
+          "type": "select",
+          "id": "qbt03_tipo_congiuntore",
+          "label": "TIPO CONGIUNTORE",
+          "rule": "rule_qbt03_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "INTERRUTTORE AUTOMATICO",
+              "label": "interruttore automatico"
+            },
+            {
+              "value": "IMS",
+              "label": "ims"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "qbt03_portata_congiuntore",
+          "label": "PORTATA CONGIUNTORE (A)",
+          "rule": "rule_qbt03_tipo_funzionale_03",
+          "size": "8",
+          "maxlength": "6",
+          "pattern": "1_to_6_comma_1_to_2_digit",
+          "patMessage": "PORTATA CONGIUNTORE (A) PORTATA FUSIBILE deve essere numerico 6 caratteri max (di cui 2 decimali max, esempio: 123,23)"
+        },
+        {
+          "type": "select",
+          "id": "qbt03_potere_interruzione_congiuntore",
+          "label": "POTERE DI INTERRUZIONE CONGIUNTORE",
+          "rule": "rule_qbt03_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "16,00",
+              "label": "16,00"
+            },
+            {
+              "value": "25,00",
+              "label": "25,00"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "qbt03_congiuntore_tarabile",
+          "label": "CONGIUNTORE TARABILE",
+          "rule": "rule_qbt03_tipo_funzionale_03",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_05": [
+        {
+          "type": "textarea",
+          "rows": "2",
+          "cols": "40",
+          "id": "qbt03_note",
+          "label": "NOTE"
+        },
+        {
+          "type": "select",
+          "id": "qbt03_ulteriore_derivazione_gestire",
+          "label": "ULTERIORE QUADRO DA GESTIRE",
+          "rule": "mandatory",
+          "option": [
+            {
+              "value": "",
+              "label": ""
+            },
+            {
+              "value": "SI",
+              "label": "si"
+            },
+            {
+              "value": "NO",
+              "label": "no"
+            }
+          ]
+        }
+      ],
+      "row_06": [
+        {
+          "type": "file",
+          "id": "qbt03_foto_01",
+          "accept": "image/*",
+          "label": "foto 1"
+        },
+        {
+          "type": "file",
+          "id": "qbt03_foto_02",
+          "accept": "image/*",
+          "label": "foto 2"
+        },
+        {
+          "type": "file",
+          "id": "qbt03_foto_03",
+          "accept": "image/*",
+          "label": "foto 3"
+        },
+        {
+          "type": "file",
+          "id": "qbt03_foto_04",
+          "accept": "image/*",
+          "label": "foto 4"
+        }
+      ]
+    }
 }
