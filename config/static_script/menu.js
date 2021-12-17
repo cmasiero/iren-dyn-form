@@ -218,6 +218,19 @@ document.getElementById("buttonClear").addEventListener("click", () => {
 });
 
 
+// document.getElementById("buttonSave").addEventListener("click", () => {
+
+//     alert('Funzionalità disponibile nella prossima versione!');
+
+// });
+
+// document.getElementById("buttonRecap").addEventListener("click", () => {
+
+//     alert('Funzionalità disponibile nella prossima versione!');
+
+// });
+
+
 let popUpMsg = (param, msg) => {
 
     if (!this.initiazed) {

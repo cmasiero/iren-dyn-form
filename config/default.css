@@ -4,6 +4,11 @@
     border-right: 1px solid black;
 } */
 
+:root{
+    --left-first-button: 90px;
+    --button-gap: 63px;
+}
+
 *{
     font-family: Helvetica,Arial,sans-serif;
     letter-spacing: .01em;   
@@ -52,7 +57,7 @@ input[type=checkbox], input[type=radio] {
 .buttonMenuSend{
     background-color: green;
     top: 19px;
-    left: 90px;
+    left: var(--left-first-button);
     border-radius: 50%;
     display: none;
 }
@@ -60,7 +65,23 @@ input[type=checkbox], input[type=radio] {
 .buttonMenuClear{
     background-color:red;
     top: 19px;
-    left: 153px;
+    left:  calc(var(--left-first-button) + var(--button-gap));
+    border-radius: 50%;
+    display: none;
+}
+
+.buttonMenuSave{
+    background-color:blue;
+    top: 19px;
+    left:  calc(var(--left-first-button) + var(--button-gap) * 2);
+    border-radius: 50%;
+    display: none;
+}
+
+.buttonMenuRecap{
+    background-color:cadetblue;
+    top: 19px;
+    left:  calc(var(--left-first-button) + var(--button-gap) * 3);
     border-radius: 50%;
     display: none;
 }
@@ -68,7 +89,7 @@ input[type=checkbox], input[type=radio] {
 .buttonExtra0{
     background-color: #000;
     top: 19px;
-    left: 216px;
+    left:  calc(var(--left-first-button) + var(--button-gap) * 2);
     border-radius: 50%;
     display: none;
 }
@@ -76,7 +97,7 @@ input[type=checkbox], input[type=radio] {
 .buttonExtra1{
     background-color: #aaaaaa;
     top: 19px;
-    left: 279px;
+    left:  calc(var(--left-first-button) + var(--button-gap) * 3);
     border-radius: 50%;
     display: none;
 }
@@ -84,7 +105,7 @@ input[type=checkbox], input[type=radio] {
 .buttonExtra2{
     background-color:#ccc;
     top: 19px;
-    left: 342px;
+    left:  calc(var(--left-first-button) + var(--button-gap) * 4);
     border-radius: 50%;
     display: none;
 }
@@ -92,7 +113,7 @@ input[type=checkbox], input[type=radio] {
 .buttonExtra3{
     background-color:#fefefe;
     top: 19px;
-    left: 405px;
+    left:  calc(var(--left-first-button) + var(--button-gap) * 5);
     border-radius: 50%;
     display: none;
 }
