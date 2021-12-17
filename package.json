@@ -11,10 +11,10 @@
   "scripts": {
     "test": "jest",
     "clean": "node ./app/clean.js",
-    "build": "node ./app/split.json.js && node ./app/builder.js && node ./app/builder.single.js",
+    "build": "node ./app/clean.js && node ./app/split.json.js && node ./app/builder.js && node ./app/builder.single.js",
     "split-json": "node ./app/split.json.js",
     "build-all": "node ./app/builder.js",
-    "build-single": "node ./app/builder.single.js",
+    "build-single": "node ./app/clean.js && node ./app/builder.single.js",
     "extra-scheda-racc-dati": "node ./customization_project/SchedaRaccDati/app/menu-to-output.js"
   },
   "dependencies": {
