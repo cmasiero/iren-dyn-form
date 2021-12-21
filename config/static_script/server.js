@@ -1,7 +1,7 @@
 var server = {};
 
 server.sendDocOnServer = function (jsonDoc, url, contentType, callback){
-    console.log("[sendDocOnServer] url: %s, contentType: %s", url, contentType);
+    console.log("[server.sendDocOnServer] url: %s, contentType: %s", url, contentType);
     
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -9,7 +9,7 @@ server.sendDocOnServer = function (jsonDoc, url, contentType, callback){
     xhr.send(jsonDoc);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && ( xhr.status === 200 || xhr.status === 201)) {
-          console.log("[sendDocOnServer] json response: %s", xhr.responseText);
+          console.log("[server.sendDocOnServer] json response: %s", xhr.responseText);
           callback(xhr);
         }
         if ( xhr.readyState === 4 && xhr.status === 500 ){
@@ -27,13 +27,13 @@ server.sendDocOnServer = function (jsonDoc, url, contentType, callback){
 
 server.sendFileOnServer = function(fileObj, url, contentType, callback) {
     let t0 = new Date().getTime();
-    console.log("[sendFileOnServer] Send file, name: %s", fileObj.filename);
+    console.log("[server.sendFileOnServer] Send file, name: %s", fileObj.filename);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url + '?filename=' + fileObj.filename , true);
     xhr.send(fileObj.file);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && ( xhr.status === 200 || xhr.status === 201)) {
-          console.log("[sendFileOnServer] json response: %s", xhr.responseText);
+          console.log("[server.sendFileOnServer] json response: %s", xhr.responseText);
           callback(xhr);
         }
         if ( xhr.readyState === 4 && xhr.status === 500 ){

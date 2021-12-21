@@ -3,50 +3,42 @@ var syncCard = {};
 // Configuration
 syncCard.urlJson = "";
 syncCard.urlFile = "";
+syncCard.syncResult = "";
 
 syncCard.syncCardStoreNotSend = function () {
-    console.log("[syncCardStoreNotSend]")
+    console.log("[syncCard.syncCardStoreNotSend]")
 
     const docOnServer = (doc, callback) => {
         server.sendDocOnServer(JSON.stringify(doc, null, 2), syncCard.urlJson, 'application/json', function (e) {
-            if (e.type === "error") {
-                console.error("[syncCardStoreNotSend.docOnServer]", `Can't send file on server! url: ${syncCard.urlJson}`);
-            } else {
-                // doc.uuid: "2pn2wbayhqxt6nn28lfh4"
-                clientdb.deleteByUuid(store_not_send, doc.uuid, (f) => {
-                    console.log("[syncCardStoreNotSend.docOnServer]", f, "removed");
-                });
-                callback(e);
-            }
+            callback(e);
         });
     };
 
     const fileOnServer = (el, filename, callback) => {
         server.sendFileOnServer({ "file": el, "filename": filename }, syncCard.urlFile, "", (e) => {
-            if (e.type === "error") {
-                console.error("[syncCardStoreNotSend.fileOnServer]", `Can't send file on server! url: ${syncCard.urlFile}`);
-            } else {
-                clientdb.deleteByUuid(store_not_send, filename, (f) => {
-                    console.log("[syncCardStoreNotSend.fileOnServer]", f, "removed");
-                });
-                callback();
-            }
+            callback(e);
         });
     };
-
+    
     const sendAllFilesDeclaredInJson = (fls, callback) => {
-
-        if (fls.length === 0) callback();
 
         // tries to send Files to Server
         fls.forEach((f, idx, array) => {
             clientdb.getByUuid(store_not_send, f.value, (ftmp) => {
-                fileOnServer(ftmp, f.value, () => {
+                if (ftmp){ // json doc could link an attachment already sent to server.
+                    fileOnServer(ftmp, f.value, (e) => {
+                        if (e.type === "error") syncCard.syncResult = "ERROR_IMAGES";
+                        if (idx === array.length - 1) {
+                            // Last file sended, now can callback to docOnServer
+                            callback(syncCard.syncResult);
+                        }
+                    });
+                } else {
                     if (idx === array.length - 1) {
                         // Last file sended, now can callback to docOnServer
-                        callback();
+                        callback(syncCard.syncResult);
                     }
-                });
+                }
             });
         });
     }
@@ -57,28 +49,33 @@ syncCard.syncCardStoreNotSend = function () {
         let jsonObjs = docs.filter(doc => doc.constructor.name === 'Object');
 
         jsonObjs.forEach((jsonObj, idxJson, array) => {
+            // Init
+            syncCard.syncResult = "SUCCESS_IMAGES";
 
             // Gets files filtering inside jsonObject.
             let fls = jsonObj.content.filter(c => c.type === "file");
 
             // Tries to send JsonObj to Server! Files at beginning, after json doc.
-            sendAllFilesDeclaredInJson(fls, () => {
-                docOnServer(jsonObj, (e) => {
-                    if (e.type !== "error") {
-                        if (idxJson === array.length - 1) {
-                            // Last json doc sended, show message!
-                            alert("La connessione al server è nuovamente attiva, i file salvati localmente sono ora stati inviati!");
-                        }
-                    }
-                });
+            sendAllFilesDeclaredInJson(fls, (result) => {
+                if (result === "SUCCESS_IMAGES") { // Sent all images.
+                    docOnServer(jsonObj, (e) => { 
+                        if (e.type !== "error") { // Sent json file
+                            if (idxJson === array.length - 1) { // Last json doc
+                                clientdb.deleteDocAndRelativeFiles(store_not_send, jsonObjs, (result) => {
+                                    if (result === "SUCCESS") {// Show message!
+                                        alert("La connessione al server è nuovamente attiva, i file salvati localmente sono ora stati inviati!");
+                                    }
+                                });
+                            }
+                        } 
+                    });
+                } 
             });
-
         });
-
     });
 
 };
 
 setInterval(function () {
     syncCard.syncCardStoreNotSend();
-}, 30000);//run every 30 seconds
+}, 1000 * 30);//run every 30 seconds
