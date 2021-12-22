@@ -130,6 +130,33 @@ clientdb.getAllDoc = (object_store, callback) => {
 
 };
 
+clientdb.getAllJson = (object_store, callback) => {
+    console.log("[clientdb.getAllJson]");
+
+    var open = clientdb.initDb(object_store);
+
+    open.onsuccess = function () {
+        var db = open.result;
+        var tx = db.transaction(object_store, "readwrite");
+        var store = tx.objectStore(object_store);
+
+        var getAll = store.getAll();
+
+        getAll.onsuccess = function () {
+            let result = getAll.result.filter(c => c.uuid !== undefined);
+            callback(result);
+        };
+
+        // Close the db when the transaction is done
+        tx.oncomplete = function () {
+            console.log("[clientdb.getAllDoc] close db!");
+            db.close();
+        };
+
+    };
+
+};
+
 clientdb.deleteByUuid = (object_store, uuid, callback) => {
 
     console.log("[clientdb.deleteByUuid]");

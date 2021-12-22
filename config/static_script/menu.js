@@ -27,6 +27,20 @@ document.getElementById("buttonSend").addEventListener("click", () => {
         // Object in str format.
         let finalDoc = JSON.stringify(currentCard.card, null, 2);
 
+        if (currentCard.attachments.length === 0) {
+            popUpMsg('open', 'Invio in corso...');
+            popUpMsg('addText', 'Invio file ' + currentCard.card.uuid + '.json');
+            server.sendDocOnServer(finalDoc, menu.urlJson, "application/json", (e) => {
+                if (e.type === "error") {
+                    clientdb.saveOnDB(store_not_send, currentCard.card, currentCard.card.uuid);
+                    popUpMsg('open', '');// Open reset content of pop-up
+                    errorJsonPopUp();
+                } else {
+                    successPopUp();
+                }
+            });
+        }
+
         currentCard.attachments.forEach((objAttachment, idxAttachment, arrayAttachment) => {
 
             // Show first message!
@@ -43,8 +57,8 @@ document.getElementById("buttonSend").addEventListener("click", () => {
                 }
 
                 // 1) All attachments have been sent
-                if (idxAttachment === arrayAttachment.length - 1){
-                    
+                if (idxAttachment === arrayAttachment.length - 1) {
+
                     switch (menu.sendResult) {
                         case "SUCCESS_IMAGES":
                             // 2) All success, now send the json.
@@ -83,7 +97,7 @@ document.getElementById("buttonSend").addEventListener("click", () => {
             errorJsonPopUp();
         }
 
-        function errorJsonPopUp(){
+        function errorJsonPopUp() {
             // message pop up: Error
             popUpMsg('addText', "Invio documento al server fallito, il documento è salvato solo in locale.");
             popUpMsg('addText', "Al ripristino della connessione il documento verrà invitato automaticamente!");
@@ -92,7 +106,7 @@ document.getElementById("buttonSend").addEventListener("click", () => {
             popUpMsg('closeButton');
         }
 
-        function successPopUp(){
+        function successPopUp() {
             // message pop up
             popUpMsg('addText', 'Salvataggio sul server completato!');
             popUpMsg('addText', "");
@@ -122,22 +136,43 @@ document.getElementById("buttonClear").addEventListener("click", () => {
 
 });
 
-
 document.getElementById("buttonSave").addEventListener("click", () => {
 
-    alert('Funzionalità disponibile nella prossima versione!');
+    // Utility function for message.
+    const showMessage = (filename, attachQty) => {
+        alert("Salvataggio locale del file '" + filename + "' con allegate: " + attachQty + " foto, effettuato!");
+    }
 
     // Obtains json doc from current page.
-    // let currentCard = utilCard.currentCardToObj();
-    // console.log(currentCard);
+    let currentCard = utilCard.currentCardToObj();
 
-    // saveRestore.save();
+    // Save file json
+    clientdb.saveOnDB(store_save, currentCard.card, currentCard.card.uuid);
+    currentCard.attachments.forEach((objAttachment, idxAttachment, arrayAttachment) => {
+        // Save attachments.
+        clientdb.saveOnDB(store_save, objAttachment.file, objAttachment.filename);
+        if (idxAttachment === arrayAttachment.length - 1) { // last attachment.
+            showMessage(currentCard.card.uuid, arrayAttachment.length);
+        }
+    });
+    if (currentCard.attachments.length === 0) {
+        showMessage(currentCard.card.uuid, 0);
+    }
 
 });
 
 document.getElementById("buttonRecap").addEventListener("click", () => {
 
-    alert('Funzionalità disponibile nella prossima versione!');
+    // alert('Funzionalità disponibile nella prossima versione!');
+    clientdb.getAllJson(store_save, (docs) => {
+        // console.log(docs);
+        docs.forEach((doc) => {
+            console.log(doc);
+            doc.content.filter(c => c.type === "file").forEach(f => {
+                document.getElementById(f.id).type = "text" ;
+            });
+        });
+    })
 
 });
 

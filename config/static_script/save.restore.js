@@ -1,5 +1,6 @@
 /**
  * Save current card in indexed db in Browser
+ * @unused
  */
 console.log("save restore");
 
