@@ -11,5 +11,9 @@ exports.confArray = [
     {
         outname: "pere.html",
         files: ["config.json", "pere.json", "pere_01.json", "pere_02.json"]
+    },
+    {
+        outname: "save_recap.html",
+        files: ["config.json", "save_recap.json"]
     }
 ];

@@ -185,7 +185,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 /* The Modal (background) */
-.modal {
+.modal-custom {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -200,7 +200,7 @@ input[type=checkbox], input[type=radio] {
   }
   
   /* Modal Content */
-  .modal-content {
+  .modal-custom-content {
     font-size: 18px;
     background-color: #fefefe;
     /* margin: auto; */

@@ -1,7 +1,7 @@
 {
     "config": {
         "filename": "allcards.html",
-        "css": "example.css",
+        "css": "main.css",
         "title": "Scheda Raccolta dati U4",
         "sendJson": "http://localhost:5000/resource",
         "sendFile": "http://localhost:5000/upload",
@@ -286,6 +286,75 @@
             {
                 "type": "file",
                 "id": "ba_foto_04",
+                "accept": "image/*",
+                "label": "foto 4"
+            }
+        ]
+    },
+    "save_recap":{
+        "title": {
+            "value": "Save recap"
+        },
+        "row_00": [
+            {
+            "type": "text", "id": "sr_text", "label": "TEXT "
+            },
+            {
+                "type": "date", "id": "sr_date", "label": "DATE ", "init": "today"
+            },
+            {
+                "type": "select", "id": "sr_select", "label": "SELECT",
+                "option": [
+                    {
+                        "value": "", "label": ""
+                    },
+                    {
+                        "value": "0", "label": "zero"
+                    },
+                    {
+                        "value": "1", "label": "one"
+                    }
+                ]
+            },
+            {
+                "type": "checkbox", "id": "sr_checkbox", "label": "CHECKBOX"
+            },
+            {
+                "type": "radio", "id": "sr_radio", "option": [
+                    {
+                        "value": "radio value 00", "label": "radio 00"
+                    },
+                    {
+                        "value": "radio value 01", "label": "radio 01"
+                    },
+                    {
+                        "value": "radio value Other", "label": "radio other"
+                    }
+                ]
+            }
+        ],
+        "row_01": [
+            {
+                "type": "file",
+                "id": "sr_foto_01",
+                "accept": "image/*",
+                "label": "foto 1"
+            },
+            {
+                "type": "file",
+                "id": "sr_foto_02",
+                "accept": "image/*",
+                "label": "foto 2"
+            },
+            {
+                "type": "file",
+                "id": "sr_foto_03",
+                "accept": "image/*",
+                "label": "foto 3"
+            },
+            {
+                "type": "file",
+                "id": "sr_foto_04",
                 "accept": "image/*",
                 "label": "foto 4"
             }

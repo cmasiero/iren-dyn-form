@@ -18,7 +18,7 @@ utilCard.currentCardToObj = function () {
     let validArray = [];
 
     let querable = 'input[type="text"], input[type="date"], select, input[type="radio"], input[type="checkbox"], input[type="file"], textarea';
-    let nl = document.querySelectorAll(querable);
+    let nl = document.forms[0].querySelectorAll(querable);
     for (item of nl) {
         /* Fields are evaluated if under a visible title.
          * Search for title visibility, invisible title means unused table therefore unset values.

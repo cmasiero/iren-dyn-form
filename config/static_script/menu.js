@@ -148,6 +148,12 @@ document.getElementById("buttonSave").addEventListener("click", () => {
 
     // Save file json
     clientdb.saveOnDB(store_save, currentCard.card, currentCard.card.uuid);
+
+    // No attachments, show message!
+    if (currentCard.attachments.length === 0) {
+        showMessage(currentCard.card.uuid, 0);
+    }
+
     currentCard.attachments.forEach((objAttachment, idxAttachment, arrayAttachment) => {
         // Save attachments.
         clientdb.saveOnDB(store_save, objAttachment.file, objAttachment.filename);
@@ -155,24 +161,71 @@ document.getElementById("buttonSave").addEventListener("click", () => {
             showMessage(currentCard.card.uuid, arrayAttachment.length);
         }
     });
-    if (currentCard.attachments.length === 0) {
-        showMessage(currentCard.card.uuid, 0);
-    }
 
 });
 
-document.getElementById("buttonRecap").addEventListener("click", () => {
 
+
+$( "#selectSaved" ).click(function() {
+    alert( "Handler for .click() called." );
+});
+
+document.getElementById("buttonRecap").addEventListener("click", () => {
+    
     // alert('Funzionalità disponibile nella prossima versione!');
+    $('#popup-saved').modal('show');
+    // $("#table-saved tbody").empty(); // doesn't work!
+    $("#table-saved").find("tr:gt(0)").remove();
+
+    document.getElementById("popup-saved-cards").innerHTML = document.getElementById("cards").value;
+
+    clientdb.getAllJson(store_save, (docs) => {
+        docs.filter(doc => doc.filename === document.getElementById("filename").value ).forEach(doc => {
+            console.log(doc);
+            let t = `<tr><td>${doc.uuid}</td><td>${"valido/invalido"}</td><td><div class="ui radio checkbox"><input type="radio" name="frequency"><label> </label></div> </td></tr>`;
+            $('#table-saved tr:last').after(t);
+        });
+    });
+
+    /*
+
+    let t = '<tr> <td>New</td> <td>Azione</td> <td> <div class="ui radio checkbox"> <input type="radio" name="frequency"> <label>Once a week 2</label></div> </td> </tr>';
+    $('#table-saved tr:last').after(t);
+    $('#table-saved tr:last').after(t);
+    */
+
+    /*
+    document.forms[0].reset();
+    initialize();
+    initializeData();
+    visibility();
+
     clientdb.getAllJson(store_save, (docs) => {
         // console.log(docs);
         docs.forEach((doc) => {
-            console.log(doc);
-            doc.content.filter(c => c.type === "file").forEach(f => {
-                document.getElementById(f.id).type = "text" ;
+            doc.content.forEach(c => {
+                // console.log( `${c.id} --- ${c.type}` );
+                switch (c.type) {
+                    case "text": case "date": case "select-one":
+                        document.getElementById(c.id).value = c.value;
+                        break;
+                    case "checkbox":
+                        document.getElementById(c.id).checked = c.value;
+                        break;
+                    case "radio":
+                        document.getElementById(c.value).checked = true;
+                        break;
+                    case "file":
+                        
+                        break;
+                
+                    default:
+                        break;
+                }
             });
         });
     })
+    */
 
 });
 
