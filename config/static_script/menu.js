@@ -146,6 +146,10 @@ document.getElementById("buttonSave").addEventListener("click", () => {
     // Obtains json doc from current page.
     let currentCard = utilCard.currentCardToObj();
 
+    // Is a valid document?
+    let isValid = validation().length === 0 ? true : false;
+    currentCard.card.isValid = isValid;
+
     // Save file json
     clientdb.saveOnDB(store_save, currentCard.card, currentCard.card.uuid);
 
@@ -165,67 +169,45 @@ document.getElementById("buttonSave").addEventListener("click", () => {
 });
 
 
-
-$( "#selectSaved" ).click(function() {
-    alert( "Handler for .click() called." );
-});
-
 document.getElementById("buttonRecap").addEventListener("click", () => {
     
     // alert('Funzionalità disponibile nella prossima versione!');
-    $('#popup-saved').modal('show');
-    // $("#table-saved tbody").empty(); // doesn't work!
-    $("#table-saved").find("tr:gt(0)").remove();
 
-    document.getElementById("popup-saved-cards").innerHTML = document.getElementById("cards").value;
+    $('#popup-saved').modal({
+        onShow: function () {
 
-    clientdb.getAllJson(store_save, (docs) => {
-        docs.filter(doc => doc.filename === document.getElementById("filename").value ).forEach(doc => {
-            console.log(doc);
-            let t = `<tr><td>${doc.uuid}</td><td>${"valido/invalido"}</td><td><div class="ui radio checkbox"><input type="radio" name="frequency"><label> </label></div> </td></tr>`;
-            $('#table-saved tr:last').after(t);
-        });
-    });
+            $("#popup-saved-message").addClass("hidden");
+            
+            $("#table-saved").find("tr:gt(0)").remove(); // Removes current content.
+            $("#popup-saved-cards").innerHTML = $("#cards").value;
 
-    /*
-
-    let t = '<tr> <td>New</td> <td>Azione</td> <td> <div class="ui radio checkbox"> <input type="radio" name="frequency"> <label>Once a week 2</label></div> </td> </tr>';
-    $('#table-saved tr:last').after(t);
-    $('#table-saved tr:last').after(t);
-    */
-
-    /*
-    document.forms[0].reset();
-    initialize();
-    initializeData();
-    visibility();
-
-    clientdb.getAllJson(store_save, (docs) => {
-        // console.log(docs);
-        docs.forEach((doc) => {
-            doc.content.forEach(c => {
-                // console.log( `${c.id} --- ${c.type}` );
-                switch (c.type) {
-                    case "text": case "date": case "select-one":
-                        document.getElementById(c.id).value = c.value;
-                        break;
-                    case "checkbox":
-                        document.getElementById(c.id).checked = c.value;
-                        break;
-                    case "radio":
-                        document.getElementById(c.value).checked = true;
-                        break;
-                    case "file":
-                        
-                        break;
-                
-                    default:
-                        break;
-                }
+            clientdb.getAllJson(store_save, (docs) => {
+                docs.filter(doc => doc.filename === document.getElementById("filename").value)
+                    .forEach(doc => {
+                        let validMessage = doc.isValid ? "completo" : "incompleto";
+                        let t = `<tr><td>${doc.uuid}</td>
+                                 <td>${validMessage}</td>
+                                 <td><div class="ui radio checkbox"><input type="radio" name="cardCheck" value="${doc.uuid}"><label> </label></div> 
+                             </tr>`;
+                        $('#table-saved tr:last').after(t);
+                    });
             });
-        });
-    })
-    */
+
+            return true;
+        },
+        onApprove($element){
+
+            let docChecked = document.querySelector("input[name=cardCheck]:checked");
+            if (!docChecked) {
+                $("#popup-saved-message").removeClass("hidden");
+                $("#popup-saved-message").children("p").text("Seleziona un elemento");
+                return false;
+            }
+
+        },
+        onDeny($element){
+        }
+    }).modal('show');
 
 });
 
