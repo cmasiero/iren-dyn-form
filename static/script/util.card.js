@@ -5,20 +5,30 @@ var utilCard = {};
  * and an array of attachment files.
  * @returns Obj {card: {}, attachments: []}.
  */
-utilCard.currentCardToObj = function () {
+utilCard.currentCardToObj = function (callback) {
 
     console.log("[utilCard.currentCardToJson]");
 
     let result = {
-        card: {},
+        card: {
+        },
         attachments: []
     };
 
-    /* Create a valid json obj */
-    let validArray = [];
+    /* Hidden fields in final object */
+    let nh = document.querySelectorAll('input[type="hidden"]:not([name="fileFromStoreSave"])')
+    for (item of nh) {
+        if (item.id === 'uuid' || item.id === 'cards' || item.id === 'filename') {
+            result.card[item.id] = item.value;
+        } 
+    }
 
-    let querable = 'input[type="text"], input[type="date"], select, input[type="radio"], input[type="checkbox"], input[type="file"], textarea';
-    let nl = document.forms[0].querySelectorAll(querable);
+    // Init content
+    result.card.content = [];
+
+    /* Edited fields */
+    let querableField = 'input[type="text"], input[type="date"], select, input[type="radio"], input[type="checkbox"], input[type="file"], input[name="fileFromStoreSave"], textarea';
+    let nl = document.forms[0].querySelectorAll(querableField);
     for (item of nl) {
         /* Fields are evaluated if under a visible title.
          * Search for title visibility, invisible title means unused table therefore unset values.
@@ -66,10 +76,11 @@ utilCard.currentCardToObj = function () {
                         let uuid = document.getElementById('uuid').value;
                         let uuidAndName = uuid.concat("_").concat(f.name);
                         objToPush = { "id": item.id, "value": uuidAndName, "type": item.type };
-                        result.attachments.push({ "file": f, "filename": uuidAndName });
                     }
-                } else if ((item.type !== 'checkbox' && item.value.trim() !== '') ||
-                    (item.type === 'checkbox' && item.value === 'true')) { // only setted values in json doc
+                } else if (item.type == 'hidden' && item.name === 'fileFromStoreSave'){
+                    // back to original format
+                    objToPush = { "id": item.id, "value": item.value, "type": "file" };
+                } else if ((item.type !== 'checkbox' && item.value.trim() !== '') || (item.type === 'checkbox' && item.value === 'true')) { // only setted values in json doc
                     objToPush = { "id": item.id, "value": item.value, "type": item.type };
                     /* Adds 'join' an 'valuemap' if they exist. */
                     if (item.join !== null) { objToPush.join = item.join }
@@ -77,24 +88,87 @@ utilCard.currentCardToObj = function () {
                 }
             }
 
-            if (objToPush !== null) { validArray.push(objToPush); }
+            if (objToPush !== null) { result.card.content.push(objToPush); }
 
         }
     }
 
-    /* Hidden fields in final object */
-    let nh = document.querySelectorAll('input[type="hidden"]');
-    for (item of nh) {
-        if (item.id === 'uuid' || item.id === 'cards' || item.id === 'filename') {
-            result.card[item.id] = item.value;
-        } else {
-            let objToPush = { "id": item.id, "value": item.value, "type": item.type };
-            validArray.push(objToPush);
+    /* Add files */
+    let querableFile = 'input[type="file"]';
+    let nlFile = document.forms[0].querySelectorAll(querableFile);
+    for (item of nlFile){
+        let f = document.getElementById(item.id).files[0];
+        if (f){
+            let uuid = document.getElementById('uuid').value;
+            let uuidAndName = uuid.concat("_").concat(f.name);
+            result.attachments.push({ "file": f, "filename": uuidAndName });
         }
     }
 
-    result.card.content = validArray;
+    /* Adds files from store save */
+    let querableFileStoreSave = 'input[name="fileFromStoreSave"]';
+    let nlFileStoreSave = document.forms[0].querySelectorAll(querableFileStoreSave);
 
-    return result;
+    // No file from store_save
+    if (nlFileStoreSave.length === 0) {
+        callback(result);
+    }
+
+    // There are some files from store_save, callback here!
+    nlFileStoreSave.forEach( (item, i, array) => {
+        clientdb.getByUuid(store_save, item.value, (f) => {
+            result.attachments.push({ "file": f, "filename": item.value });
+            if (i === array.length - 1) {
+                callback(result);
+            }
+        });
+    });
 
 };
+
+utilCard.objToCurrentCard = function (jsonDoc) {
+    
+    console.log("[utilCard.objToCurrentCard]");
+
+    document.getElementById("filename").value = jsonDoc.filename;
+    document.getElementById("cards").value = jsonDoc.cards;
+    document.getElementById("uuid").value = jsonDoc.uuid;
+
+    jsonDoc.content.forEach(element => {
+        
+        if (element.type === "checkbox") {
+            document.getElementById(element.id).checked = (element.value === "true");
+        } else if (element.type === "radio") {
+            document.getElementById(element.value).checked = true;
+        } else if (element.type === "file") {
+            let fileElement = document.getElementById(element.id);
+            fileElement.type = "hidden";
+            fileElement.name = "fileFromStoreSave";
+            fileElement.value = `${element.value}`;
+            $(`<span>: ${element.value}</span>`).insertAfter(fileElement);
+        } else {
+            document.getElementById(element.id).value = element.value;
+        }
+
+    });
+
+};
+
+utilCard.resetFilesFromStoreSave = function () {
+
+    let ids = [];
+    let nl = document.getElementsByName("fileFromStoreSave");
+    for (let hiddenFile of nl) {
+        ids.push(hiddenFile.id);
+    }
+
+    // Now it can modify name and the others property using the id.
+    ids.forEach(id => {
+        let hiddenFile = document.getElementById(id);
+        hiddenFile.type = "file";
+        hiddenFile.removeAttribute("name")
+        hiddenFile.removeAttribute("value");
+        hiddenFile.nextElementSibling.remove();
+    });
+
+}

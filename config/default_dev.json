@@ -223,7 +223,7 @@
                 "type": "hint", "id": "ba_hint00", "rule": "visible if ba_text00 == 'apri'", "value": "testo"
             },
             {
-                "type": "date", "id": "ba_data", "label": "DATA", "init": "today", "rule": "mandatory"
+                "type": "date", "id": "ba_data", "label": "DATA", "rule": "mandatory"
             },
             {
                 "type": "select", "id": "ba_select0", "label": "tipo banane", "rule": "mandatory",

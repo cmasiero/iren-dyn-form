@@ -76,6 +76,28 @@ clientdb.getByUuid = (object_store, uuid, callback) => {
 
 };
 
+clientdb.getByUuidPromise = (object_store, uuid) => {
+    return new Promise((resolve, reject) => {
+        clientdb.getByUuid(object_store, uuid, (result) => {
+            if (result) {
+                resolve(result);
+            }
+            let errMsg = `"Uuid ${uuid} does not exist in: ${object_store}`;
+            reject(new Error(errMsg));
+        });
+    });
+
+    // return await promise;
+}
+
+clientdb.getByUuidPromiseAsync = async (object_store, uuid) => {
+    const result = await clientdb.getByUuidPromise(object_store, uuid);
+    if (result){
+        return result;
+    }
+}
+
+
 clientdb.getLastDoc = (object_store, callback) => {
     console.log("[clientdb.getLastDoc]");
 

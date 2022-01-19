@@ -19,75 +19,109 @@ document.getElementById("buttonSend").addEventListener("click", () => {
     if (message !== "") {
         alert(message);
     } else {
+        
         alert("FORM VALIDO, VERRA INVIATO AL SERVER!");
 
         // Obtains json doc from current page.
-        let currentCard = utilCard.currentCardToObj();
+        utilCard.currentCardToObj(currentCard => {
 
-        // Object in str format.
-        let finalDoc = JSON.stringify(currentCard.card, null, 2);
+            if (currentCard.attachments.length === 0) {
+                docToServer(currentCard);
+            } else {
+                docAndFilesToServer(currentCard);
+            }
 
-        if (currentCard.attachments.length === 0) {
+            /* DEBUG: Downloads file locally for test purpose! */
+            let finalDoc = JSON.stringify(currentCard.card, null, 2); // Object in str format.
+            let today = new Date();
+            let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + '_' + today.toLocaleTimeString().split(':').join('');
+            menu.download(finalDoc, 'dee_scheda' + date + '.json', 'text/plain');
+            currentCard.attachments.forEach(obj => {
+                menu.download(obj.file, obj.filename, 'image');
+            });
+
+        });
+        
+
+        function docToServer(crd) {
+            // Object in str format.
+            let finalDoc = JSON.stringify(crd.card, null, 2);
+
             popUpMsg('open', 'Invio in corso...');
-            popUpMsg('addText', 'Invio file ' + currentCard.card.uuid + '.json');
+            popUpMsg('addText', 'Invio file ' + crd.card.uuid + '.json');
             server.sendDocOnServer(finalDoc, menu.urlJson, "application/json", (e) => {
                 if (e.type === "error") {
-                    clientdb.saveOnDB(store_not_send, currentCard.card, currentCard.card.uuid);
+                    clientdb.saveOnDB(store_not_send, crd.card, crd.card.uuid);
                     popUpMsg('open', '');// Open reset content of pop-up
                     errorJsonPopUp();
                 } else {
                     successPopUp();
+                    deleteStoreSave(crd.card.uuid);
                 }
             });
         }
 
-        currentCard.attachments.forEach((objAttachment, idxAttachment, arrayAttachment) => {
+        function docAndFilesToServer(crd) {
 
-            // Show first message!
-            if (idxAttachment === 0) {
-                popUpMsg('open', 'Invio in corso...');
-                popUpMsg('addText', 'Invio files verso il server! ');
-            }
+            // Object in str format.
+            let finalDoc = JSON.stringify(crd.card, null, 2);
 
-            // Send file to server
-            server.sendFileOnServer(objAttachment, menu.urlFile, "", (e) => {
-                if (e.type === "error") {
-                    clientdb.saveOnDB(store_not_send, objAttachment.file, objAttachment.filename);
-                    menu.sendResult = "ERROR_IMAGES";
+            crd.attachments.forEach((objAttachment, idxAttachment, arrayAttachment) => {
+
+                // Show first message!
+                if (idxAttachment === 0) {
+                    popUpMsg('open', 'Invio in corso...');
+                    popUpMsg('addText', 'Invio files verso il server! ');
                 }
 
-                // 1) All attachments have been sent
-                if (idxAttachment === arrayAttachment.length - 1) {
-
-                    switch (menu.sendResult) {
-                        case "SUCCESS_IMAGES":
-                            // 2) All success, now send the json.
-                            // message pop up
-                            popUpMsg('addText', 'Invio file ' + currentCard.card.uuid + '.json');
-                            server.sendDocOnServer(finalDoc, menu.urlJson, "application/json", (e) => {
-                                if (e.type === "error") {
-                                    clientdb.saveOnDB(store_not_send, currentCard.card, currentCard.card.uuid);
-                                    popUpMsg('open', '');// Open reset content of pop-up
-                                    errorJsonPopUp();
-                                } else {
-                                    successPopUp();
-                                }
-                            });
-                            break;
-                        case "ERROR_IMAGES":
-                            // 3) there were some errors...
-                            // In case of error on attachment it still saves the doc on local database.
-                            clientdb.saveOnDB(store_not_send, currentCard.card, currentCard.card.uuid);
-                            popUpMsg('open', ''); // Open reset content of pop-up
-                            errorAttachmentPopUP();
-                            break;
-                        default:
-                            break;
+                // Send file to server
+                server.sendFileOnServer(objAttachment, menu.urlFile, "", (e) => {
+                    if (e.type === "error") {
+                        clientdb.saveOnDB(store_not_send, objAttachment.file, objAttachment.filename);
+                        menu.sendResult = "ERROR_IMAGES";
                     }
-                }
+
+                    // 1) All attachments have been sent
+                    if (idxAttachment === arrayAttachment.length - 1) {
+
+                        switch (menu.sendResult) {
+                            case "SUCCESS_IMAGES":
+                                // 2) All success, now send the json.
+                                // message pop up
+                                popUpMsg('addText', 'Invio file ' + crd.card.uuid + '.json');
+                                server.sendDocOnServer(finalDoc, menu.urlJson, "application/json", (e) => {
+                                    if (e.type === "error") {
+                                        clientdb.saveOnDB(store_not_send, crd.card, crd.card.uuid);
+                                        popUpMsg('open', '');// Open reset content of pop-up
+                                        errorJsonPopUp();
+                                    } else {
+                                        successPopUp();
+                                        deleteStoreSave(crd.card.uuid);
+                                    }
+                                });
+                                break;
+                            case "ERROR_IMAGES":
+                                // 3) there were some errors...
+                                // In case of error on attachment it still saves the doc on local database.
+                                clientdb.saveOnDB(store_not_send, crd.card, crd.card.uuid);
+                                popUpMsg('open', ''); // Open reset content of pop-up
+                                errorAttachmentPopUP();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+
             });
 
-        });
+        }
+
+        function deleteStoreSave(uuid) {
+            console.log(`[menu.deleteStoreSave] uuid ${uuid}`);
+            // TODO:
+
+        }
 
         function errorAttachmentPopUP() {
             // message pop up: Error
@@ -113,14 +147,6 @@ document.getElementById("buttonSend").addEventListener("click", () => {
             popUpMsg('closeButton');
         }
 
-        /* DEBUG: Downloads file locally for test purpose! */
-        let today = new Date();
-        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + '_' + today.toLocaleTimeString().split(':').join('');
-        menu.download(finalDoc, 'dee_scheda' + date + '.json', 'text/plain');
-        currentCard.attachments.forEach(obj => {
-            menu.download(obj.file, obj.filename, 'image');
-        });
-
     }
 });
 
@@ -130,6 +156,7 @@ document.getElementById("buttonClear").addEventListener("click", () => {
         initialize();
         initializeData();
         visibility();
+        utilCard.resetFilesFromStoreSave();
     } else {
         alert('Nessuna azione eseguita!');
     }
@@ -144,52 +171,89 @@ document.getElementById("buttonSave").addEventListener("click", () => {
     }
 
     // Obtains json doc from current page.
-    let currentCard = utilCard.currentCardToObj();
+    utilCard.currentCardToObj(currentCard => {
 
-    // Is a valid document?
-    let isValid = validation().length === 0 ? true : false;
-    currentCard.card.isValid = isValid;
+        // Is a valid document?
+        let isValid = validation().length === 0 ? true : false;
+        currentCard.card.isValid = isValid;
+    
+        // saving date
+        currentCard.card.saveDate = utilDate.toDDMMYYYY_HHMMSS(new Date(),"/",":");
 
-    // Save file json
-    clientdb.saveOnDB(store_save, currentCard.card, currentCard.card.uuid);
-
-    // No attachments, show message!
-    if (currentCard.attachments.length === 0) {
-        showMessage(currentCard.card.uuid, 0);
-    }
-
-    currentCard.attachments.forEach((objAttachment, idxAttachment, arrayAttachment) => {
-        // Save attachments.
-        clientdb.saveOnDB(store_save, objAttachment.file, objAttachment.filename);
-        if (idxAttachment === arrayAttachment.length - 1) { // last attachment.
-            showMessage(currentCard.card.uuid, arrayAttachment.length);
-        }
+        clientdb.getByUuid(store_save, currentCard.card.uuid, (currentCardSaved) => {
+    
+            // Array of files saved on db store_save.
+            let arrayFileSaved = [];
+            if (currentCardSaved && currentCardSaved.content){
+                arrayFileSaved = currentCardSaved.content.filter(el => el.type === 'file');
+            }
+            
+            // Array of files on current document.
+            let arrayFileCurDoc = currentCard.card.content.filter(el => el.type === 'file');
+            
+            // Files not il doc.
+            let array4Add = arrayFileSaved.filter(elSaved => {
+                let el = arrayFileCurDoc.find(elCurDoc => elCurDoc.id === elSaved.id);
+                return el ? false : true;
+            });
+    
+            // Adds files not il doc.
+            currentCard.card.content.push(...array4Add);
+    
+            // Save file json
+            clientdb.saveOnDB(store_save, currentCard.card, currentCard.card.uuid);
+    
+            // No attachments, show message!
+            if (currentCard.attachments.length === 0) {
+                showMessage(currentCard.card.uuid, 0);
+            }
+    
+            currentCard.attachments.forEach((objAttachment, idxAttachment, arrayAttachment) => {
+                // Save attachments.
+                clientdb.saveOnDB(store_save, objAttachment.file, objAttachment.filename);
+                if (idxAttachment === arrayAttachment.length - 1) { // last attachment.
+                    showMessage(currentCard.card.uuid, arrayAttachment.length);
+                }
+            });
+    
+        });
     });
 
-});
 
+});
 
 document.getElementById("buttonRecap").addEventListener("click", () => {
     
     // alert('Funzionalità disponibile nella prossima versione!');
 
-    $('#popup-saved').modal({
+    $('#list-popup').modal({
         onShow: function () {
 
-            $("#popup-saved-message").addClass("hidden");
+            // Initilialize view
+            $("#list-popup-header").html( $("#cards").attr('value') );
+            $("#list-popup-table-header").html("<th>Uuid scheda</th> <th>Ultimo salvataggio</th> <th>Stato</th> <th>Edit</th>");
+            $("#list-popup-message").addClass("hidden");
+            $("#list-popup-table").find("tr:gt(0)").remove(); // Removes current content.
             
-            $("#table-saved").find("tr:gt(0)").remove(); // Removes current content.
-            $("#popup-saved-cards").innerHTML = $("#cards").value;
 
+            // Table rows
             clientdb.getAllJson(store_save, (docs) => {
+
+                // no documents in store_save
+                if (docs.length === 0){
+                        $("#list-popup-message").removeClass("hidden");
+                        $("#list-popup-message").children("p").text("Non ci sono documenti salvati!");
+                }
+
                 docs.filter(doc => doc.filename === document.getElementById("filename").value)
                     .forEach(doc => {
                         let validMessage = doc.isValid ? "completo" : "incompleto";
                         let t = `<tr><td>${doc.uuid}</td>
+                                 <td>${doc.saveDate}</td>
                                  <td>${validMessage}</td>
                                  <td><div class="ui radio checkbox"><input type="radio" name="cardCheck" value="${doc.uuid}"><label> </label></div> 
-                             </tr>`;
-                        $('#table-saved tr:last').after(t);
+                                 </tr>`;
+                        $('#list-popup-table tr:last').after(t);
                     });
             });
 
@@ -199,18 +263,27 @@ document.getElementById("buttonRecap").addEventListener("click", () => {
 
             let docChecked = document.querySelector("input[name=cardCheck]:checked");
             if (!docChecked) {
-                $("#popup-saved-message").removeClass("hidden");
-                $("#popup-saved-message").children("p").text("Seleziona un elemento");
+                $("#list-popup-message").removeClass("hidden");
+                $("#list-popup-message").children("p").text("Seleziona un elemento!");
                 return false;
             }
 
+            clientdb.getByUuid(store_save,docChecked.value, (result) => {
+                document.forms[0].reset();
+                initialize();
+                initializeData();
+                visibility();
+                utilCard.resetFilesFromStoreSave();
+
+                utilCard.objToCurrentCard(result);
+            });
+            
         },
         onDeny($element){
         }
     }).modal('show');
 
 });
-
 
 let popUpMsg = (param, msg) => {
 
