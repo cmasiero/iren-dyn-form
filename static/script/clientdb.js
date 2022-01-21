@@ -97,7 +97,6 @@ clientdb.getByUuidPromiseAsync = async (object_store, uuid) => {
     }
 }
 
-
 clientdb.getLastDoc = (object_store, callback) => {
     console.log("[clientdb.getLastDoc]");
 
@@ -207,6 +206,12 @@ clientdb.deleteByUuid = (object_store, uuid, callback) => {
 
 };
 
+/**
+ * 
+ * @param {string} object_store 
+ * @param {Array} jsonObjs 
+ * @param {*} callback 
+ */
 clientdb.deleteDocAndRelativeFiles = (object_store, jsonObjs, callback) => {
 
     console.log("[clientdb.deleteDocAndRelativeFiles");
@@ -219,12 +224,12 @@ clientdb.deleteDocAndRelativeFiles = (object_store, jsonObjs, callback) => {
         var store = tx.objectStore(object_store);
         
         let getUuid;
-        jsonObjs.forEach(jsonObj => {
-            let fls = jsonObj.content.filter( c => c.type === "file" );
+        jsonObjs.forEach(elem => {
+            let fls = elem.content.filter( c => c.type === "file" );
             fls.forEach(f => {
                 getUuid = store.delete(f.value);
             });
-            getUuid = store.delete(jsonObj.uuid);
+            getUuid = store.delete(elem.uuid);
         });
 
         // success

@@ -19,7 +19,10 @@ syncCard.syncCardStoreNotSend = function () {
             if (e.type !== "error" && lastJson === true) {
                 clientdb.deleteDocAndRelativeFiles(store_not_send, jsonObjsToDelete, (result) => {
                     if (result === "SUCCESS") {// Show message!
-                        alert("La connessione al server è nuovamente attiva, i file salvati localmente sono ora stati inviati!");
+                        ui.popUpMessage(
+                            "Invio messaggi al server automatici",
+                            "La connessione al server è nuovamente attiva, i file salvati localmente sono ora stati inviati!"
+                            );
                     }
                 });
             }

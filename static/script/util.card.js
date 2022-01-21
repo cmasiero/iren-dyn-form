@@ -153,22 +153,3 @@ utilCard.objToCurrentCard = function (jsonDoc) {
     });
 
 };
-
-utilCard.resetFilesFromStoreSave = function () {
-
-    let ids = [];
-    let nl = document.getElementsByName("fileFromStoreSave");
-    for (let hiddenFile of nl) {
-        ids.push(hiddenFile.id);
-    }
-
-    // Now it can modify name and the others property using the id.
-    ids.forEach(id => {
-        let hiddenFile = document.getElementById(id);
-        hiddenFile.type = "file";
-        hiddenFile.removeAttribute("name")
-        hiddenFile.removeAttribute("value");
-        hiddenFile.nextElementSibling.remove();
-    });
-
-}
