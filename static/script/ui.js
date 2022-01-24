@@ -56,8 +56,7 @@ ui.popUpRecap = () => {
         onShow: function () {
 
             // Initilialize view
-            // $("#list-popup-header").html( "Lista schede salvate, tipo: " + $("#cards").attr('value') );
-            $("#list-popup-header").html( "Lista schede salvate");
+            $("#list-popup-header").html( "Lista schede salvate (Solo del tipo della scheda corrente!)");
             $("#list-popup-table-header").html("<th>Uuid scheda</th> <th>Ultimo salvataggio</th> <th>Stato</th> <th>Edit</th> <th>Elimina</th>");
             $("#list-popup-message").addClass("hidden");
             $("#list-popup-table").find("tr:gt(0)").remove(); // Removes current content.
@@ -74,11 +73,12 @@ ui.popUpRecap = () => {
                 }
 
                 docs.filter(doc => doc.filename === document.getElementById("filename").value)
+                    .sort((a, b) => (a.saveDate < b.saveDate) ? 1 : -1) // sorts by date descending
                     .forEach(doc => {
                         let validMessage = doc.isValid ? "completo" : "incompleto";
                         let t = `<tr id="row_${doc.uuid}">
                                  <td>${doc.uuid}</td>
-                                 <td>${doc.saveDate}</td>
+                                 <td>${utilDate.toDDMMYYYY_HHMMSS(doc.saveDate,"/",":")}</td>
                                  <td>${validMessage}</td>
                                  <td><div class="ui radio checkbox"><input type="radio" name="cardCheck" value="${doc.uuid}"><label> </label></div> 
                                  <td><button class="ui button" onClick="ui.popUpRecapUtility.deleteUuid('${doc.uuid}')">Elimina</button></td>

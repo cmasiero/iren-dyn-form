@@ -197,7 +197,8 @@ document.getElementById("buttonSave").addEventListener("click", () => {
         currentCard.card.isValid = isValid;
     
         // saving date
-        currentCard.card.saveDate = utilDate.toDDMMYYYY_HHMMSS(new Date(),"/",":");
+        // currentCard.card.saveDate = utilDate.toDDMMYYYY_HHMMSS(new Date(),"/",":");
+        currentCard.card.saveDate = new Date();
 
         clientdb.getByUuid(store_save, currentCard.card.uuid, (currentCardSaved) => {
     
