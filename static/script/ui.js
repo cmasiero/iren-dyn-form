@@ -66,19 +66,20 @@ ui.popUpRecap = () => {
             // Table rows
             clientdb.getAllJson(store_save, (docs) => {
 
+                let docsFiltered = docs.filter(doc => doc.filename === document.getElementById("filename").value);
+
                 // no documents in store_save
-                if (docs.length === 0){
+                if (docsFiltered.length === 0){
                         $("#list-popup-message").removeClass("hidden");
                         $("#list-popup-message").children("p").text("Non ci sono documenti salvati!");
                 }
 
-                docs.filter(doc => doc.filename === document.getElementById("filename").value)
-                    .sort((a, b) => (a.saveDate < b.saveDate) ? 1 : -1) // sorts by date descending
+                docsFiltered.sort((a, b) => (a.saveDate < b.saveDate) ? 1 : -1) // sorts by date descending
                     .forEach(doc => {
                         let validMessage = doc.isValid ? "completo" : "incompleto";
                         let t = `<tr id="row_${doc.uuid}">
                                  <td>${doc.uuid}</td>
-                                 <td>${utilDate.toDDMMYYYY_HHMMSS(doc.saveDate,"/",":")}</td>
+                                 <td>${utilDate.toDDMMYYYY_HHMMSS(doc.saveDate, "/", ":")}</td>
                                  <td>${validMessage}</td>
                                  <td><div class="ui radio checkbox"><input type="radio" name="cardCheck" value="${doc.uuid}"><label> </label></div> 
                                  <td><button class="ui button" onClick="ui.popUpRecapUtility.deleteUuid('${doc.uuid}')">Elimina</button></td>
@@ -102,10 +103,20 @@ ui.popUpRecap = () => {
                 document.forms[0].reset();
                 initialize();
                 initializeData();
-                visibility();
                 ui.resetFilesFromStoreSave();
-
                 utilCard.objToCurrentCard(result);
+                visibility();
+
+                /* collapse open cards */
+                let el = document.getElementsByClassName("table-title");
+                for (let i = 0; i < el.length; i++) {
+                    if (el[i].style.display != 'none') { // some titles/cards can be invisible.
+                        el[i].style.width = '30%';
+                        let table = el[i].nextElementSibling; // hides cards.
+                        table.style.display = 'none';
+                    }
+                }
+
             });
             
         },
