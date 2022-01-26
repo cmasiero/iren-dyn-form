@@ -5,7 +5,7 @@ const store_main = "CardStore";
 const store_not_send = "CardStoreNotSend";
 const store_save = "CardStoreSave"
 
-clientdb.initDb = (object_store) => {
+clientdb.initDb = () => {
     // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
     var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
@@ -15,7 +15,7 @@ clientdb.initDb = (object_store) => {
     // Create the schema
     open.onupgradeneeded = function () {
         console.log("[clientdb.initDb] open.onupgradeneeded");
-        var db = open.result;
+        let db = open.result;
         
         try { db.createObjectStore(store_not_send, { autoIncrement: false }); }
         catch (error) { console.log(`[clientdb.initDb] Object Store ${store_not_send} already exists!`); }
@@ -30,12 +30,12 @@ clientdb.initDb = (object_store) => {
 
 clientdb.saveOnDB = (object_store, finalObj, uuid) => {
     console.log("[clientdb.saveOnDB]");
-    var open = clientdb.initDb(object_store);
+    let open = clientdb.initDb();
 
     open.onsuccess = function () {
-        var db = open.result;
-        var tx = db.transaction(object_store, "readwrite");
-        var store = tx.objectStore(object_store);
+        let db = open.result;
+        let tx = db.transaction(object_store, "readwrite");
+        let store = tx.objectStore(object_store);
 
         store.put(finalObj, uuid);
 
@@ -52,12 +52,12 @@ clientdb.getByUuid = (object_store, uuid, callback) => {
 
     console.log("[clientdb.getByUuid]");
 
-    var open = clientdb.initDb(object_store);
+    let open = clientdb.initDb();
 
     open.onsuccess = function () {
-        var db = open.result;
-        var tx = db.transaction(object_store, "readwrite");
-        var store = tx.objectStore(object_store);
+        let db = open.result;
+        let tx = db.transaction(object_store, "readwrite");
+        let store = tx.objectStore(object_store);
         let getUuid = store.get(uuid);
 
         // success
@@ -100,14 +100,14 @@ clientdb.getByUuidPromiseAsync = async (object_store, uuid) => {
 clientdb.getLastDoc = (object_store, callback) => {
     console.log("[clientdb.getLastDoc]");
 
-    var open = clientdb.initDb(object_store);
+    let open = clientdb.initDb();
 
     open.onsuccess = function () {
-        var db = open.result;
-        var tx = db.transaction(object_store, "readwrite");
-        var store = tx.objectStore(object_store);
+        let db = open.result;
+        let tx = db.transaction(object_store, "readwrite");
+        let store = tx.objectStore(object_store);
 
-        var getAll = store.getAll();
+        let getAll = store.getAll();
 
         // get last
         getAll.onsuccess = function () {
@@ -128,14 +128,14 @@ clientdb.getLastDoc = (object_store, callback) => {
 clientdb.getAllDoc = (object_store, callback) => {
     console.log("[clientdb.getAllDoc]");
 
-    var open = clientdb.initDb(object_store);
+    let open = clientdb.initDb();
 
     open.onsuccess = function () {
-        var db = open.result;
-        var tx = db.transaction(object_store, "readwrite");
-        var store = tx.objectStore(object_store);
+        let db = open.result;
+        let tx = db.transaction(object_store, "readwrite");
+        let store = tx.objectStore(object_store);
 
-        var getAll = store.getAll();
+        let getAll = store.getAll();
 
         getAll.onsuccess = function () {
             callback(getAll.result);
@@ -154,14 +154,14 @@ clientdb.getAllDoc = (object_store, callback) => {
 clientdb.getAllJson = (object_store, callback) => {
     console.log("[clientdb.getAllJson]");
 
-    var open = clientdb.initDb(object_store);
+    let open = clientdb.initDb();
 
     open.onsuccess = function () {
-        var db = open.result;
-        var tx = db.transaction(object_store, "readwrite");
-        var store = tx.objectStore(object_store);
+        let db = open.result;
+        let tx = db.transaction(object_store, "readwrite");
+        let store = tx.objectStore(object_store);
 
-        var getAll = store.getAll();
+        let getAll = store.getAll();
 
         getAll.onsuccess = function () {
             let result = getAll.result.filter(c => c.uuid !== undefined);
@@ -182,12 +182,12 @@ clientdb.deleteByUuid = (object_store, uuid, callback) => {
 
     console.log("[clientdb.deleteByUuid]");
 
-    var open = clientdb.initDb(object_store);
+    let open = clientdb.initDb();
 
     open.onsuccess = function () {
-        var db = open.result;
-        var tx = db.transaction(object_store, "readwrite");
-        var store = tx.objectStore(object_store);
+        let db = open.result;
+        let tx = db.transaction(object_store, "readwrite");
+        let store = tx.objectStore(object_store);
         let getUuid = store.delete(uuid);
 
         // success
@@ -212,40 +212,42 @@ clientdb.deleteByUuid = (object_store, uuid, callback) => {
  * @param {Array} jsonObjs 
  * @param {*} callback 
  */
-clientdb.deleteDocAndRelativeFiles = (object_store, jsonObjs, callback) => {
+clientdb.deleteDocsAndRelativeFiles = (object_store, jsonObjs, callback) => {
 
-    console.log("[clientdb.deleteDocAndRelativeFiles");
+    console.log("[clientdb.deleteDocsAndRelativeFiles");
 
-    var open = clientdb.initDb(object_store);
+    let open = clientdb.initDb();
 
     open.onsuccess = function () {
-        var db = open.result;
-        var tx = db.transaction(object_store, "readwrite");
-        var store = tx.objectStore(object_store);
+        let db = open.result;
+        let tx = db.transaction(object_store, "readwrite");
+        let store = tx.objectStore(object_store);
         
         let getUuid;
         jsonObjs.forEach(elem => {
+
             let fls = elem.content.filter( c => c.type === "file" );
             fls.forEach(f => {
                 getUuid = store.delete(f.value);
             });
             getUuid = store.delete(elem.uuid);
+
+            // success
+            getUuid.onsuccess = function () {
+                console.log("[clientdb.deleteDocsAndRelativeFiles] getUuid.onsuccess");
+            };
+
+            // error
+            getUuid.onerror = function () {
+                console.error(`[clientdb.deleteDocsAndRelativeFiles] getUuid.onerror ondelete ${elem.uuid}`);
+            };
+
         });
-
-        // success
-        getUuid.onsuccess = function () {
-            console.log("[clientdb.deleteDocAndRelativeFiles] getUuid.onsuccess");
-        };
-
-        // error
-        getUuid.onerror = function () {
-            console.log("[clientdb.deleteDocAndRelativeFiles] getUuid.onsuccess");
-            callback("ERROR");
-        };
+       
 
         // Close the db when the transaction is done
         tx.oncomplete = function () {
-            console.log("[clientdb.deleteDocAndRelativeFiles] tx.oncomplete, close db");
+            console.log("[clientdb.deleteDocsAndRelativeFiles] tx.oncomplete, close db");
             db.close();
             callback("SUCCESS");
         };
