@@ -17,7 +17,7 @@ syncCard.syncCardStoreNotSend = function () {
     const jsonObjToServer = (jsonObj, lastJson, jsonObjsToDelete) => {
         server.sendDocOnServer(JSON.stringify(jsonObj, null, 2), syncCard.urlJson, 'application/json', (e) => {
             if (e.type !== "error" && lastJson === true) {
-                clientdb.deleteDocAndRelativeFiles(store_not_send, jsonObjsToDelete, (result) => {
+                clientdb.deleteDocsAndRelativeFiles(store_not_send, jsonObjsToDelete, (result) => {
                     if (result === "SUCCESS") {// Show message!
                         ui.popUpMessage(
                             "Invio messaggi al server automatici",
@@ -80,6 +80,36 @@ syncCard.syncCardStoreNotSend = function () {
 
 };
 
+
+syncCard.deleteOldSaved = function (retentionInDay) {
+    console.log("[syncCard.deleteOldSaved]");
+
+    /* Removes old documents and files from store_save */
+    clientdb.getAllDoc(store_save, (docs) => {
+        
+        let jsonObjs = docs.filter(doc => doc.constructor.name === 'Object');
+        
+        let docsToDelete = jsonObjs.filter(doc => {
+            let dayDiff = (new Date().getTime() - doc.saveDate.getTime()) / (1000 * 3600 * 24);
+            if (dayDiff > retentionInDay){
+                console.log(`delete ${doc.uuid} - ${dayDiff}`);
+                return true;
+            }
+        });
+        
+        clientdb.deleteDocsAndRelativeFiles(store_save, docsToDelete, (result) => {
+            if (result === "SUCCESS") {
+                console.log(`[syncCard.deleteOldSaved] ${docsToDelete} DELETED!`);
+            } else {
+                console.error(`[syncCard.deleteOldSaved] ${docsToDelete} NOT DELETED!`);
+            }
+        });
+
+    });
+
+};
+
 setInterval(function () {
     syncCard.syncCardStoreNotSend();
+    syncCard.deleteOldSaved(30);
 }, 1000 * 30);//run every 30 seconds
