@@ -119,17 +119,6 @@ document.getElementById("buttonSend").addEventListener("click", () => {
 
         }
 
-        // function deleteStoreSave(jsonObj) {
-        //     console.log(`[menu.deleteStoreSave]`);
-        //     clientdb.deleteDocAndRelativeFiles(store_save, [jsonObj], (result) => {
-        //         if (result === "SUCCESS") {
-        //             console.log("[menu.deleteStoreSave] removed");
-        //         } else {
-        //             console.error("[menu.deleteStoreSave] store_save ");
-        //         }
-        //     });
-        // }
-
         function errorAttachmentPopUP() {
             // message pop up: Error
             ui.popUpMsg('addText', 'Invio immagini al server fallita, le immagini sono salvate solo in locale.');

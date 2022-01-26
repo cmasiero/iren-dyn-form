@@ -37,7 +37,7 @@ ui.popUpRecapUtility = {
 
         // remove from db
         clientdb.getByUuid(store_save, uuid, jsonObj => {
-            clientdb.deleteDocAndRelativeFiles(store_save, [jsonObj], (result) => {
+            clientdb.deleteDocsAndRelativeFiles(store_save, [jsonObj], (result) => {
                 if (result === "SUCCESS") {
                     console.log(`[ui.popUpRecapUtility.deleteUuid] ${uuid} removed`);
                 } else {
