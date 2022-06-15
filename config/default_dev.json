@@ -76,6 +76,7 @@
                 "type": "select",
                 "id": "me_select1",
                 "label": "SELECT1",
+                "ruleValue": "set if me_select0 == 'SELECT0_VAL0' : '{'':'','AAA':'aaa','BBB':'bbb'}'#set if me_select0 == 'SELECT0_VAL1' : '{'':'','CCC':'ccc','DDD':'ddd'}'",
                 "option": [
                     {
                         "value": "",
