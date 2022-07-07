@@ -6,25 +6,25 @@ const builder_util = require('./builder-util.js');
  */
 const scomparti = [
     "scomparti.json",
-    "scomparti_01.json",
-    "scomparti_02.json",
-    "scomparti_03.json",
-    "scomparti_04.json",
-    "scomparti_05.json",
-    "scomparti_06.json",
-    "scomparti_07.json",
-    "scomparti_08.json",
-    "scomparti_09.json",
-    "scomparti_10.json",
-    "scomparti_11.json",
-    "scomparti_12.json",
-    "scomparti_13.json"
+    // "scomparti_01.json",
+    // "scomparti_02.json",
+    // "scomparti_03.json",
+    // "scomparti_04.json",
+    // "scomparti_05.json",
+    // "scomparti_06.json",
+    // "scomparti_07.json",
+    // "scomparti_08.json",
+    // "scomparti_09.json",
+    // "scomparti_10.json",
+    // "scomparti_11.json",
+    // "scomparti_12.json",
+    // "scomparti_13.json"
 ];
 const trasformatori = [
     "trasformatori_mt_bt.json",
-    "trasformatori_mt_bt_01.json",
-    "trasformatori_mt_bt_02.json",
-    "trasformatori_mt_bt_03.json"
+    // "trasformatori_mt_bt_01.json",
+    // "trasformatori_mt_bt_02.json",
+    // "trasformatori_mt_bt_03.json"
 ];
 const derivazioni_bt = [
     "derivazioni_bt.json",

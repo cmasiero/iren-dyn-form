@@ -92,7 +92,6 @@ app.post('/upload', (req, res, next) => {
 
 });
 
-
 app.get('/card', (req, res) => {
 
   console.log(`${log_filename_tag} [card]`);
@@ -106,17 +105,30 @@ app.get('/card', (req, res) => {
     .then((dom) => {
       let doc = dom.window.document;
 
+      /* Files used to add extra notes */
+      // html
+      let cardPopup = fs.readFileSync('output/card-menu.html');
+      doc.body.insertAdjacentHTML("afterbegin", cardPopup);
+      // javascript
+      doc.getElementById('inpage').insertAdjacentHTML("beforebegin", '<script type="text/javascript" src="card-menu.js"></script>\n');
+
       // disable menù!
       doc.getElementById('buttonToggle').setAttribute('style', 'display: none;');
 
       // set uuid
       doc.getElementById('uuid').setAttribute('value', uuidObj.uuid);
 
+      try { 
+        // Declares the page came from card request.
+        doc.getElementById('pageFrom').setAttribute('value', 'card');
+      } catch (e) {
+        console.error(`${log_filename_tag} [card] An old document, attribute pageFrom does not exist!`);
+      }
+
       uuidObj.content.forEach(objContent => {
 
         switch (objContent.type) {
           case 'text':
-
             if (doc.getElementById(objContent.id)) {
               doc.getElementById(objContent.id).setAttribute('value', objContent.value);
             } else {
@@ -136,11 +148,7 @@ app.get('/card', (req, res) => {
             break;
           case 'select-one':
             let ops = doc.getElementById(objContent.id).options;
-            for (let i = 0; i < ops.length; i++) {
-              if (objContent.value === ops[i].value) {
-                ops[i].setAttribute('selected', '');
-              }
-            }
+            ops[objContent.selectedIndex].setAttribute('selected', '');
             break;
           case 'checkbox':
             if (objContent.value === 'true') {
@@ -166,7 +174,6 @@ app.get('/card', (req, res) => {
 
       });
 
-      // res.send(doc.documentElement.outerHTML);
       res.send(dom.serialize());
 
     })

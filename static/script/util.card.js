@@ -81,7 +81,13 @@ utilCard.currentCardToObj = function (callback) {
                     // back to original format
                     objToPush = { "id": item.id, "value": item.value, "type": "file" };
                 } else if ((item.type !== 'checkbox' && item.value.trim() !== '') || (item.type === 'checkbox' && item.value === 'true')) { // only setted values in json doc
-                    objToPush = { "id": item.id, "value": item.value, "type": item.type };
+
+                    if (item.type === 'select-one'){
+                        objToPush = { "id": item.id, "value": item.value, "selectedIndex": item.selectedIndex, "type": item.type };
+                    } else {
+                        objToPush = { "id": item.id, "value": item.value, "type": item.type };
+                    }
+
                     /* Adds 'join' an 'valuemap' if they exist. */
                     if (item.join !== null) { objToPush.join = item.join }
                     if (item.valuemap !== null) { objToPush.valuemap = item.valuemap; }

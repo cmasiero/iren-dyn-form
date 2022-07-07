@@ -44,6 +44,10 @@
                 "pattern": "/^[a-zA-Z0-9]{1,6}$/"
             },
             {
+                "name": "3_digit",
+                "pattern": "/^[0-9]{3}$/"
+            },
+            {
                 "name": "4_digit",
                 "pattern": "/^[0-9]{4}$/"
             },
@@ -435,7 +439,7 @@
           {"type": "text", "size": "31", "maxlength": "30", "id": "cs_sbarra_mt_alimentante", "label": "SBARRA MT ALIMENTANTE", "rule": "rule_messa_in_servizio_facoltativo"},
           {"type": "text", "size": "31", "maxlength": "30", "id": "cs_feeder_alimentante", "label": "FEEDER ALIMENTANTE", "rule": "rule_messa_in_servizio_parma_facoltativo"},
           {"type": "text", "size": "3", "maxlength": "3", "id": "cs_codice_frazione_territoriale", "label": "CODICE FRAZIONE TERRITORIALE", 
-            "rule": "rule_messa_in_servizio_parma_facoltativo", "pattern": "1_to_3_digit", "patMessage": "CODICE FRAZIONE TERRITORIALE deve essere di al massimo 3 caratteri numerici!"}
+            "rule": "rule_messa_in_servizio_parma_facoltativo", "pattern": "3_digit", "patMessage": "CODICE FRAZIONE TERRITORIALE deve essere di 3 caratteri numerici, es: 012!"}
 
         ],
         "row_09": [
