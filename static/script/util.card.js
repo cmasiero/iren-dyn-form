@@ -152,6 +152,8 @@ utilCard.objToCurrentCard = function (jsonDoc) {
             fileElement.name = "fileFromStoreSave";
             fileElement.value = `${element.value}`;
             $(`<span>: ${element.value}</span>`).insertAfter(fileElement);
+        } else if (element.type === "select-one") {
+            $(`#${element.id} option`).eq(element.selectedIndex).prop('selected', true);
         } else {
             document.getElementById(element.id).value = element.value;
         }

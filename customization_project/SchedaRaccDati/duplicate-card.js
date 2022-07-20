@@ -1,3 +1,7 @@
+/*
+ * start command: node .\customization_project\SchedaRaccDati\duplicate-card.js
+ */
+
 const fs = require('fs');
 const path = require('path');
 

@@ -101,6 +101,7 @@ ui.popUpRecap = () => {
 
             clientdb.getByUuid(store_save,docChecked.value, (result) => {
                 document.forms[0].reset();
+                document.getElementById("pageFrom").setAttribute('value', 'localDb'); 
                 initialize();
                 initializeData();
                 ui.resetFilesFromStoreSave();

@@ -107,10 +107,11 @@ app.get('/card', (req, res) => {
 
       /* Files used to add extra notes */
       // html
-      let cardPopup = fs.readFileSync('output/card-menu.html');
+      let cardPopup = fs.readFileSync('output/card.menu.html');
       doc.body.insertAdjacentHTML("afterbegin", cardPopup);
       // javascript
-      doc.getElementById('inpage').insertAdjacentHTML("beforebegin", '<script type="text/javascript" src="card-menu.js"></script>\n');
+      doc.getElementById('inpage').insertAdjacentHTML("beforebegin", '<script type="text/javascript" src="card.menu.js"></script>\n');
+      doc.getElementById('inpage').insertAdjacentHTML("beforebegin", '<script type="text/javascript" src="card.js"></script>\n');
 
       // disable menù!
       doc.getElementById('buttonToggle').setAttribute('style', 'display: none;');
@@ -148,6 +149,15 @@ app.get('/card', (req, res) => {
             break;
           case 'select-one':
             let ops = doc.getElementById(objContent.id).options;
+            let elemToAdd = objContent.selectedIndex - (ops.length - 1);
+            for (let i = 1; i <= elemToAdd; i++) {
+              /* 
+              * In the current HTML doc, default options are less than the specific index. 
+              * This situation can happen using "ruleValue" in the Json configuration.
+              */
+              // console.log("---->" + objContent.id + " " + elemToAdd)
+              ops.add(doc.createElement("option"));
+            }
             ops[objContent.selectedIndex].setAttribute('selected', '');
             break;
           case 'checkbox':
@@ -185,28 +195,23 @@ app.get('/card', (req, res) => {
 
 const addImage = (dom, id, filename) => {
 
-  let doc = dom.window.document;
+  const imgId = id + '_img';
 
+  let doc = dom.window.document;
   let dimensions = sizeOf(outPathJson.concat(filename));
 
   let f = doc.getElementById(id);
   let c = f.closest('div');
   let ul = doc.createElement('img');
   let iconSize = 42;
-  ul.setAttribute('id', 'image_id');
+  ul.setAttribute('id', imgId);
   ul.setAttribute('src', filename);
   ul.setAttribute('height', iconSize);
   ul.setAttribute('width', iconSize);
   ul.setAttribute('style', 'border: 1px solid red; border-radius: 10%; cursor: pointer;');
   ul.setAttribute('title', 'Clicca per ingrandire!');
-  ul.setAttribute('onclick', `
-                            this.toggle = !this.toggle;
-                            if (toggle){ this.height = ${dimensions.height}; this.width = ${dimensions.width}; this.title = 'Clicca per iconizzare!' }
-                            else {this.height = ${iconSize}; this.width = ${iconSize}; this.title = 'Clicca per ingrandire!'}
-                            `
-
-  );
-  c.appendChild(ul)
+  ul.setAttribute('onclick', `card.imageClick(this,${dimensions.height},${dimensions.width},${iconSize})`);
+  c.appendChild(ul);
 }
 
 
