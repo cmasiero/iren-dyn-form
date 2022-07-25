@@ -1,6 +1,6 @@
 {
   "name": "@cristiano_msr/irendynform",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "module for generating html dynamically",
   "main": "index.js",
   "devDependencies": {
