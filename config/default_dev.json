@@ -5,6 +5,7 @@
         "title": "Scheda Raccolta dati U4",
         "sendJson": "http://localhost:5000/resource",
         "sendFile": "http://localhost:5000/upload",
+        "sendJsonCard": "http://localhost:5000/resourceFromCard",
         "menuExtra": [
             {
                 "id": "back_to_menu",
@@ -113,16 +114,27 @@
                 "checked": "true",
                 "value": "Botola",
                 "valuemap": "B"
-            },
-            {
-                "type": "textarea",
-                "join": "caratteristicaSAP_02",
-                "id": "textarea0",
-                "label": "TEXTAREA0",
-                "rows": "2",
-                "cols": "40"
             }
-        ]
+        ],
+    "row01":[
+        {
+            "type": "textarea",
+            "join": "caratteristicaSAP_02",
+            "id": "textarea0",
+            "label": "TEXTAREA0",
+            "rows": "2",
+            "cols": "40",
+            "editCard": "true"
+        },
+        {
+            "type": "textarea",
+            "id": "textarea1",
+            "label": "TEXTAREA1",
+            "rows": "2",
+            "cols": "40",
+            "editCard": "true"
+        }
+    ]
     },
     "pere": {
         "comment": "foo",

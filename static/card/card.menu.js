@@ -1,8 +1,27 @@
-var cardPopUp = {};
+var cardMenu = {};
 
 $("#changeNote").click(function () {
-    alert("Manca implementazione");
-    
+
+    const sendDoc = () => {
+        utilCard.currentCardToObj(crd => {
+            let finalDoc = JSON.stringify(crd.card, null, 2);
+            server.sendDocOnServer(finalDoc, cardMenu.urlJson, "application/json", (e) => {
+                if (e.type === "error") {
+                    alert("Errore invio documento!")
+                } else {
+                    alert("Documento modificato (Per i soli campi in sfondo verde!)")
+                }
+            });
+        });
+    }
+
+
+    if (confirm("Confermi, per i soli campi in sfondo verde, l'invio e la modifica del documento?") == true) {
+        sendDoc();
+    } else {
+        alert("Operazione annullata!")
+    }
+
 });
 
 $("#card-popup-send").click(function () {

@@ -6,6 +6,7 @@
         "title": "Scheda Raccolta dati U4",
         "sendJson": "http://srvnode.gruppoiren.it:5000/resource",
         "sendFile": "http://srvnode.gruppoiren.it:5000/upload",
+        "sendJsonCard": "http://srvnode.gruppoiren.it/resourceFromCard",
         "menuExtra": [
           {
               "id": "back_to_menu",
@@ -329,7 +330,7 @@
                 {"type": "text", "size": "5", "maxlength": "3", "id": "cs_dimesioni_porta_a", "label": "DIMENSIONI PORTA (axb) (centimetri)", "rule": "rule_001_optional"},
                 {"type": "text", "size": "5", "maxlength": "3", "id": "cs_dimesioni_porta_b", "rule": "rule_001_optional"}
             ]},
-            {"type": "textarea", "rows": "2", "cols": "40", "maxlength": "30", "id": "cs_posizionamento_chiave", "label": "POSIZIONAMENTO CHIAVE (indicare ubicazione nottolino)", "rule": "visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"},
+            {"type": "textarea", "editCard": "true", "rows": "2", "cols": "40", "maxlength": "30", "id": "cs_posizionamento_chiave", "label": "POSIZIONAMENTO CHIAVE (indicare ubicazione nottolino)", "rule": "visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"},
             {"type": "select", "id": "cs_tipo_porta", "label": "TIPO PORTA", "rule": "rule_001_optional",
                 "option": [
                     {"value":"", "label":""},
@@ -453,7 +454,7 @@
             {"type": "date", "id": "cs_data_cessazione", "label": "DATA DI CESSAZIONE", "rule": "mandatory if cs_tipologia_di_attivita == 'DISMISSIONE'#visible if cs_tipologia_di_attivita == 'DISMISSIONE'"}
         ],
         "row_10": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "cs_note", "label": "NOTE"}
+            {"type": "textarea", "editCard": "true", "rows": "2", "cols": "40", "id": "cs_note", "label": "NOTE"}
         ],
         "row_11": [
             {"type": "file", "id": "cs_foto_01", "accept": "image/*", "label": "foto 1"},
@@ -708,7 +709,7 @@
             }
         ],
         "row_05": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "sc_note", "label": "NOTE"},
+            {"type": "textarea", "editCard": "true", "rows": "2", "cols": "40", "id": "sc_note", "label": "NOTE"},
             {"type": "select", "id": "sc_ulteriore_scomparto_gestire", "label": "ULTERIORE SCOMPARTO DA GESTIRE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -1374,6 +1375,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc01_note",
@@ -2077,6 +2079,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc02_note",
@@ -2780,6 +2783,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc03_note",
@@ -3483,6 +3487,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc04_note",
@@ -4186,6 +4191,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc05_note",
@@ -4889,6 +4895,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc06_note",
@@ -5592,6 +5599,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc07_note",
@@ -6295,6 +6303,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc08_note",
@@ -6998,6 +7007,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc09_note",
@@ -7701,6 +7711,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc10_note",
@@ -8404,6 +8415,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc11_note",
@@ -9107,6 +9119,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc12_note",
@@ -9810,6 +9823,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "sc13_note",
@@ -10070,7 +10084,7 @@
           }
       ],
       "row_11":[
-          {"type": "textarea", "rows": "2", "cols": "40", "id": "tr_note", "label": "NOTE"},
+          {"type": "textarea", "editCard": "true", "rows": "2", "cols": "40", "id": "tr_note", "label": "NOTE"},
           {"type": "select", "id": "tr_ulteriore_trasformatore_gestire", "label": "ULTERIORE TRASFORMATORE DA GESTIRE", "rule": "mandatory",
               "option":[
                   {"value":"", "label":""},
@@ -10610,6 +10624,7 @@
       "row_11": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "tr01_note",
@@ -11187,6 +11202,7 @@
       "row_11": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "tr02_note",
@@ -11764,6 +11780,7 @@
       "row_11": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "tr03_note",
@@ -11915,7 +11932,7 @@
             }
         ],
         "row_02": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "dbt_note", "label": "NOTE"},
+            {"type": "textarea", "editCard": "true", "rows": "2", "cols": "40", "id": "dbt_note", "label": "NOTE"},
             {"type": "select", "id": "dbt_ulteriore_derivazione_gestire", "label": "ULTERIORE DERIVAZIONE DA GESTIRE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -12151,6 +12168,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt01_note",
@@ -12424,6 +12442,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt02_note",
@@ -12697,6 +12716,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt03_note",
@@ -12970,6 +12990,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt04_note",
@@ -13243,6 +13264,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt05_note",
@@ -13516,6 +13538,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt06_note",
@@ -13789,6 +13812,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt07_note",
@@ -14062,6 +14086,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt08_note",
@@ -14335,6 +14360,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt09_note",
@@ -14608,6 +14634,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt10_note",
@@ -14881,6 +14908,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt11_note",
@@ -15154,6 +15182,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt12_note",
@@ -15427,6 +15456,7 @@
       "row_02": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "dbt13_note",
@@ -15649,7 +15679,7 @@
             }
         ],
         "row_05": [
-            {"type": "textarea", "rows": "2", "cols": "40", "id": "qbt_note", "label": "NOTE"},
+            {"type": "textarea", "editCard": "true", "rows": "2", "cols": "40", "id": "qbt_note", "label": "NOTE"},
             {"type": "select", "id": "qbt_ulteriore_derivazione_gestire", "label": "ULTERIORE QUADRO DA GESTIRE", "rule": "mandatory",
                 "option":[
                     {"value":"", "label":""},
@@ -16112,6 +16142,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "qbt01_note",
@@ -16612,6 +16643,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "qbt02_note",
@@ -17112,6 +17144,7 @@
       "row_05": [
         {
           "type": "textarea",
+          "editCard": "true",
           "rows": "2",
           "cols": "40",
           "id": "qbt03_note",

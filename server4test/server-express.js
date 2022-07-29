@@ -48,6 +48,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+
 app.post('/resource', (req, res) => {
   if (req.is('application/json')) {
     console.log(`${log_filename_tag} [resource]`);
@@ -107,8 +108,8 @@ app.get('/card', (req, res) => {
 
       /* Files used to add extra notes */
       // html
-      let cardPopup = fs.readFileSync('output/card.menu.html');
-      doc.body.insertAdjacentHTML("afterbegin", cardPopup);
+      let cardMenu = fs.readFileSync('output/card.menu.html');
+      doc.body.insertAdjacentHTML("afterbegin", cardMenu);
       // javascript
       doc.getElementById('inpage').insertAdjacentHTML("beforebegin", '<script type="text/javascript" src="card.menu.js"></script>\n');
       doc.getElementById('inpage').insertAdjacentHTML("beforebegin", '<script type="text/javascript" src="card.js"></script>\n');
@@ -126,7 +127,22 @@ app.get('/card', (req, res) => {
         console.error(`${log_filename_tag} [card] An old document, attribute pageFrom does not exist!`);
       }
 
+      // Background color LightGreen for editable fields in card mode!
+      let editableElements = doc.getElementsByTagName('form')[0].querySelectorAll('textarea, input, select, checkbox');
+      editableElements.forEach( ede => {
+        if (ede.getAttribute('editcard') === "true"){
+          ede.parentNode.style.background = "LightGreen";
+        } else {
+          ede.disabled = true;
+        }
+      })
+
+
       uuidObj.content.forEach(objContent => {
+
+        // if (doc.getElementById(objContent.id).getAttribute('editcard') !== "true"){
+        //   doc.getElementById(objContent.id).disabled = true;
+        // }
 
         switch (objContent.type) {
           case 'text':
@@ -213,6 +229,52 @@ const addImage = (dom, id, filename) => {
   ul.setAttribute('onclick', `card.imageClick(this,${dimensions.height},${dimensions.width},${iconSize})`);
   c.appendChild(ul);
 }
+
+/**
+ * Receives the entire JSON from mode Card, 
+ * searches in the relative HTML file for elements with attributes "Editcard", 
+ * and changes them in output JSON file.
+ */
+app.post('/resourceFromCard', (req, res) => {
+
+  console.log(`${log_filename_tag} [resourceFromCard]`);
+  // console.log(req.body)
+
+  let originalPath = outPathJson.concat(req.body.uuid).concat('.json');
+
+  JSDOM.fromFile(htmlPath.concat(req.body.filename)).then((dom) => {
+    // relative HTML file.
+    let doc = dom.window.document;
+
+    // JSON previously saved.
+    let rawdata = fs.readFileSync(originalPath);
+    let jsonPrevSaved = JSON.parse(rawdata);
+
+    // Filter for elements to change!
+    let elementToChange = req.body.content.filter(el => {
+      let elFromHtml = doc.getElementById(el.id);
+      return elFromHtml.getAttribute("editcard") === "true";
+    });
+
+    // Delete all editable elements from the original json file.
+    let jsonPrevSavedNewContent = jsonPrevSaved.content.filter(elPrevSaved => {
+      return elementToChange.find(elToChange => elToChange.id === elPrevSaved.id) === undefined;
+    });
+
+    // Inserts all the new editable elements into the original JSON file.
+    jsonPrevSaved.content = jsonPrevSavedNewContent;
+    jsonPrevSaved.content.push(...elementToChange);
+
+    // Print out result
+    let newPath = originalPath.concat('.').concat(new Date().getTime());
+    fs.renameSync(originalPath, newPath); // Do a backup of the current file.
+    fs.writeFileSync(originalPath, JSON.stringify(jsonPrevSaved, null, 2)); // Modify file
+   
+  });
+
+  res.json(req.body);
+  
+});
 
 
 function errorHandler(err, req, res, next) {
