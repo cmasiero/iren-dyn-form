@@ -18,7 +18,7 @@ utilCard.currentCardToObj = function (callback) {
     /* Hidden fields in final object */
     let nh = document.querySelectorAll('input[type="hidden"]:not([name="fileFromStoreSave"])')
     for (item of nh) {
-        if (item.id === 'uuid' || item.id === 'cards' || item.id === 'filename') {
+        if (item.id === 'uuid' || item.id === 'cards' || item.id === 'filename' || item.id === 'version' || item.id === 'pageFrom') {
             result.card[item.id] = item.value;
         } 
     }

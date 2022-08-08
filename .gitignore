@@ -107,6 +107,7 @@ dist
 # Custom
 *.txt
 output
+output_17
 test/output
 server4test/out
 trash

@@ -6,6 +6,7 @@
         "sendJson": "http://localhost:5000/resource",
         "sendFile": "http://localhost:5000/upload",
         "sendJsonCard": "http://localhost:5000/resourceFromCard",
+        "version": "17",
         "menuExtra": [
             {
                 "id": "back_to_menu",

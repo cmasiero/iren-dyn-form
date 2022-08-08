@@ -7,6 +7,7 @@
         "sendJson": "http://srvnode.gruppoiren.it:5000/resource",
         "sendFile": "http://srvnode.gruppoiren.it:5000/upload",
         "sendJsonCard": "http://srvnode.gruppoiren.it/resourceFromCard",
+        "version": "17",
         "menuExtra": [
           {
               "id": "back_to_menu",

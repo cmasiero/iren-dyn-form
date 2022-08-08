@@ -11,9 +11,14 @@ let sizeOf = require('image-size');
 let log_filename_tag = `[${new Date().toLocaleDateString('it-IT')} ${new Date().toLocaleTimeString('it-IT')} ${path.basename(__filename)}]`;
 
 /*** Path configuration *********************************************************/
+// public: path for json and images.
 const outPathJson = 'server4test/out/';
 const outPathFile = outPathJson;
-const htmlPath = 'output/';
+// public path for html
+const htmlPathDefault = 'output_17/'; // Last version!
+const mapHtmlVersionPath = new Map();
+mapHtmlVersionPath.set('0', 'output/');
+mapHtmlVersionPath.set('17', htmlPathDefault); // Add new to this map!!!
 /********************************************************************************/
 
 /* CORS options ***/
@@ -30,8 +35,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use(errorHandler);
 
-// public: path for json and images.
-app.use(express.static(htmlPath));
+// Static folders
+app.use(express.static(htmlPathDefault));
 app.use(express.static(outPathJson));
 
 // Check paths
@@ -102,13 +107,22 @@ app.get('/card', (req, res) => {
   let rawdata = fs.readFileSync(outPathJson.concat(req.query.uuid).concat('.json'));
   let uuidObj = JSON.parse(rawdata);
 
+  // The HTML file can come from previous version.
+  let htmlPath = mapHtmlVersionPath.get(uuidObj.version);
+  if (htmlPath === undefined) { 
+    // JSON file without VERSION attribute belonged to the first deploy!
+    htmlPath = mapHtmlVersionPath.get("0")
+  }
+  
+  console.log(`${log_filename_tag} [card] request version: ${uuidObj.version} - path: ${htmlPath}`);
+
   JSDOM.fromFile(htmlPath.concat(uuidObj.filename))
     .then((dom) => {
       let doc = dom.window.document;
 
       /* Files used to add extra notes */
       // html
-      let cardMenu = fs.readFileSync('output/card.menu.html');
+      let cardMenu = fs.readFileSync(htmlPathDefault.concat('card.menu.html'));
       doc.body.insertAdjacentHTML("afterbegin", cardMenu);
       // javascript
       doc.getElementById('inpage').insertAdjacentHTML("beforebegin", '<script type="text/javascript" src="card.menu.js"></script>\n');
@@ -137,12 +151,8 @@ app.get('/card', (req, res) => {
         }
       })
 
-
+      // Values from JSON to HTML
       uuidObj.content.forEach(objContent => {
-
-        // if (doc.getElementById(objContent.id).getAttribute('editcard') !== "true"){
-        //   doc.getElementById(objContent.id).disabled = true;
-        // }
 
         switch (objContent.type) {
           case 'text':
@@ -164,17 +174,30 @@ app.get('/card', (req, res) => {
             doc.getElementById(objContent.id).textContent = objContent.value;
             break;
           case 'select-one':
-            let ops = doc.getElementById(objContent.id).options;
-            let elemToAdd = objContent.selectedIndex - (ops.length - 1);
-            for (let i = 1; i <= elemToAdd; i++) {
-              /* 
-              * In the current HTML doc, default options are less than the specific index. 
-              * This situation can happen using "ruleValue" in the Json configuration.
-              */
-              // console.log("---->" + objContent.id + " " + elemToAdd)
-              ops.add(doc.createElement("option"));
-            }
-            ops[objContent.selectedIndex].setAttribute('selected', '');
+            
+            if (objContent.selectedIndex === undefined){
+              // Workaround: The old version of JSON doesn't contain the "selectedIndex" attribute.
+              let ops = doc.getElementById(objContent.id).options;
+              for (let i = 0; i < ops.length; i++) {
+                if (objContent.value === ops[i].value) {
+                  ops[i].setAttribute('selected', '');
+                }
+              }
+            } else {
+              let ops = doc.getElementById(objContent.id).options;
+              let elemToAdd = objContent.selectedIndex - (ops.length - 1);
+              for (let i = 1; i <= elemToAdd; i++) {
+                /* 
+                * In the current HTML doc, default options are less than the specific index. 
+                * This situation can happen using "ruleValue" in the Json configuration.
+                */
+                // console.log("---->" + objContent.id + " " + elemToAdd)
+                ops.add(doc.createElement("option"));
+              }
+              ops[objContent.selectedIndex].setAttribute('selected', '');
+           }
+
+
             break;
           case 'checkbox':
             if (objContent.value === 'true') {
@@ -231,7 +254,7 @@ const addImage = (dom, id, filename) => {
 }
 
 /**
- * Receives the entire JSON from mode Card, 
+ * It receives the entire JSON from mode Card, 
  * searches in the relative HTML file for elements with attributes "Editcard", 
  * and changes them in output JSON file.
  */
@@ -242,7 +265,7 @@ app.post('/resourceFromCard', (req, res) => {
 
   let originalPath = outPathJson.concat(req.body.uuid).concat('.json');
 
-  JSDOM.fromFile(htmlPath.concat(req.body.filename)).then((dom) => {
+  JSDOM.fromFile(htmlPathDefault.concat(req.body.filename)).then((dom) => {
     // relative HTML file.
     let doc = dom.window.document;
 
@@ -264,6 +287,9 @@ app.post('/resourceFromCard', (req, res) => {
     // Inserts all the new editable elements into the original JSON file.
     jsonPrevSaved.content = jsonPrevSavedNewContent;
     jsonPrevSaved.content.push(...elementToChange);
+
+    // It changes attribute pageFrom
+    jsonPrevSaved.pageFrom = req.body.pageFrom;
 
     // Print out result
     let newPath = originalPath.concat('.').concat(new Date().getTime());
