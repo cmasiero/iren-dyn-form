@@ -15,9 +15,9 @@ let log_filename_tag = `[${new Date().toLocaleDateString('it-IT')} ${new Date().
 const outPathJson = 'server4test/out/';
 const outPathFile = outPathJson;
 // public path for html
-const htmlPathDefault = 'output_17/'; // Last version!
+const htmlPathDefault = 'output/'; // Last version!
 const mapHtmlVersionPath = new Map();
-mapHtmlVersionPath.set('0', 'output/');
+mapHtmlVersionPath.set('0', 'output_old/');
 mapHtmlVersionPath.set('17', htmlPathDefault); // Add new to this map!!!
 /********************************************************************************/
 
@@ -98,6 +98,27 @@ app.post('/upload', (req, res, next) => {
 
 });
 
+app.get('/download', (req, res) => {
+
+  var p = req.query;
+  var html = '<html><body style="font-family: sans-serif; text-align: center;"><script> ';
+
+  for (var key in p) {
+
+     html += 'var a = document.createElement("a"); ' +
+             'a.href = "' + p[key] + '";' +
+             'a.setAttribute("download", "' + key + '.jpg"); ' +
+             'document.body.appendChild(a); ' +
+             'a.click(); ';
+  }
+  html += '</script><h3>';
+  html += 'Confermare download multiplo se richiesto dal browser<br><br>'
+  html += '<a href="javascript:history.back()">Torna al dettaglio</a>';
+  html += '<h3></body></html>';
+  res.send(html);
+
+});
+
 app.get('/card', (req, res) => {
 
   console.log(`${log_filename_tag} [card]`);
@@ -141,15 +162,21 @@ app.get('/card', (req, res) => {
         console.error(`${log_filename_tag} [card] An old document, attribute pageFrom does not exist!`);
       }
 
+      /* Editable cards management ********************/
       // Background color LightGreen for editable fields in card mode!
+      let disableChangeNote = true;
       let editableElements = doc.getElementsByTagName('form')[0].querySelectorAll('textarea, input, select, checkbox');
       editableElements.forEach( ede => {
         if (ede.getAttribute('editcard') === "true"){
           ede.parentNode.style.background = "LightGreen";
+          disableChangeNote = false;
         } else {
           ede.disabled = true;
         }
       })
+      // Disable the "ChangeNote" button with no editable fields.
+      if (disableChangeNote) { doc.getElementById("changeNote").setAttribute('style', 'display: none;'); }
+      /* Editable cards management ********************/
 
       // Values from JSON to HTML
       uuidObj.content.forEach(objContent => {

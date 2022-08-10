@@ -1,6 +1,6 @@
 {
   "_comment": "environments available are dev, test or prod",
-  "environment": "prod",
+  "environment": "test",
   "dev": {
     "path_json": "config/default_dev.json",
     "path_css": "config/default.css",
@@ -10,7 +10,8 @@
     "path_template_html": "config/version5.html",
     "path_folder_output": "output",
     "path_folder_output_test": "test/output",
-    "builder_config": "../config/build/builder-config-dev.js"
+    "builder_config": "../config/build/builder-config-dev.js",
+    "minify": false
   },
   "test": {
     "path_json": "config/default_test.json",
@@ -21,7 +22,8 @@
     "path_template_html": "config/version5.html",
     "path_folder_output": "output",
     "path_folder_output_test": "test/output",
-    "builder_config": "../config/build/builder-config-test.js"
+    "builder_config": "../config/build/builder-config-test.js",
+    "minify": false
   },
   "prod": {
     "path_json": "config/default_prod.json",
@@ -32,6 +34,7 @@
     "path_template_html": "config/version5.html",
     "path_folder_output": "output",
     "path_folder_output_test": "test/output",
-    "builder_config": "../config/build/builder-config-prod.js"
+    "builder_config": "../config/build/builder-config-prod.js",
+    "minify": true
   }
 }

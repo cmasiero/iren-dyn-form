@@ -4,6 +4,11 @@ const fs = require('fs');
 const path = require('path');
 const parser = require('../lib/json.parser');
 const pretty = require('pretty');
+const minify = require('html-minifier').minify;
+
+// Load building environment configuration.
+const {initializeEnv} = require(`../config/build/env.js`); 
+const env = initializeEnv();
 
 // logging purpose
 let log_filename_tag = `[${path.basename(__filename)}]`;
@@ -29,10 +34,24 @@ try {
     }
   });
 
+  // copy css
   fs.writeFileSync(outputPath + '/' + jsonObj.config.css, resource.getCss(dt));
-  let pathHtmlFile = outputPath + '/' + jsonObj.config.filename;
-  fs.writeFileSync(pathHtmlFile, pretty(dom.serialize()));
-  console.log(`${log_filename_tag} file: ${jsonObj.config.filename} CREATED! `);
+  
+  // Generate html
+  if (env.minify) {
+    fs.writeFileSync(outputPath + '/' + jsonObj.config.filename,
+      minify(dom.serialize(), {
+        collapseWhitespace: true,
+        minifyJS: true,
+        removeComments: true
+      })
+    );
+    console.log(`${log_filename_tag} file: ${jsonObj.config.filename} CREATED (minify)!`);
+  } else {
+    fs.writeFileSync(outputPath + '/' + jsonObj.config.filename, pretty(dom.serialize()));
+    console.log(`${log_filename_tag} file: ${jsonObj.config.filename} CREATED!`);
+  }
+
 } catch (err) {
   console.error(err)
 }

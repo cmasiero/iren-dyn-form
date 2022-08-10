@@ -6,7 +6,7 @@
         "title": "Scheda Raccolta dati U4",
         "sendJson": "http://srvnode.gruppoiren.it:5000/resource",
         "sendFile": "http://srvnode.gruppoiren.it:5000/upload",
-        "sendJsonCard": "http://srvnode.gruppoiren.it/resourceFromCard",
+        "sendJsonCard": "http://srvnode.gruppoiren.it:5000/resourceFromCard",
         "menuExtra": [
           {
               "id": "back_to_menu",

@@ -6,7 +6,7 @@
         "title": "Scheda Raccolta dati U4",
         "sendJson": "http://srvnode.gruppoiren.it:5000/resource",
         "sendFile": "http://srvnode.gruppoiren.it:5000/upload",
-        "sendJsonCard": "http://srvnode.gruppoiren.it/resourceFromCard",
+        "sendJsonCard": "http://srvnode.gruppoiren.it:5000/resourceFromCard",
         "version": "17",
         "menuExtra": [
           {
@@ -331,7 +331,7 @@
                 {"type": "text", "size": "5", "maxlength": "3", "id": "cs_dimesioni_porta_a", "label": "DIMENSIONI PORTA (axb) (centimetri)", "rule": "rule_001_optional"},
                 {"type": "text", "size": "5", "maxlength": "3", "id": "cs_dimesioni_porta_b", "rule": "rule_001_optional"}
             ]},
-            {"type": "textarea", "editCard": "true", "rows": "2", "cols": "40", "maxlength": "30", "id": "cs_posizionamento_chiave", "label": "POSIZIONAMENTO CHIAVE (indicare ubicazione nottolino)", "rule": "visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"},
+            {"type": "textarea", "rows": "2", "cols": "40", "maxlength": "30", "id": "cs_posizionamento_chiave", "label": "POSIZIONAMENTO CHIAVE (indicare ubicazione nottolino)", "rule": "visible if cs_tipologia_di_attivita == 'MESSA IN SERVIZIO' || cs_tipologia_di_attivita == 'CENSIMENTO'"},
             {"type": "select", "id": "cs_tipo_porta", "label": "TIPO PORTA", "rule": "rule_001_optional",
                 "option": [
                     {"value":"", "label":""},
